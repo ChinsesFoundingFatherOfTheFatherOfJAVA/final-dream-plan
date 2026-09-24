@@ -1,9 +1,13 @@
-# 07 DDL 变更清单（①②③ 已于 2026-09-23 执行并校验）
+# 07 DDL 变更清单（①②③ 已于 2026-09-23 执行并校验；⑤ 为 2026-09-24 新增的可重放脚本）
 
 > 库：`final_dream` @ `10.100.26.200:3306`（**共享开发库**）
 > 状态：**①②③ 已按顺序执行完毕**，用户批准由智能体代为执行；每步"执行前检查"均已先跑，结果见各节「执行结果」。
 > 尚有一条**纯注释**变更（§④）未批，与功能无关，不阻塞任何链路。
 > `schema.sql` 已按变更后的目标结构同步；库侧实际结构以 `SHOW CREATE TABLE` 为准（已比对，差异仅 §④ 一条注释）。
+> **§⑤（2026-09-24 新增）**：①②③ 的**幂等可重放版**整理为 `sql/v1.2-评分维度与声学特征-表结构扩展.sql` + v1.3 的
+> `sql/v1.3-口型驱动-视频资产表.sql`，堵"新环境按 sql/ 目录脚本升级会缺列缺表"的部署隐患（该目录此前停在 v1.1，
+> 本轮审计发现并备案于 09 §J）。脚本已按 S0-1 落盘（10-工程实施提示词 §1），并已在开发库连续执行两遍验证幂等；
+> 开发库原有结构已包含等效变更，本次验证未改动既有数据，脚本仍供新环境/重建环境使用。
 
 ---
 
@@ -224,7 +228,125 @@ ALTER TABLE scoring_dimension
 
 ---
 
-## 执行完毕后的动作（已逐项完成）
+## ⑤ v1.2 幂等增量脚本 + v1.3 视频资产表（2026-09-24 新增，未执行）
+
+### ⑤-1 为什么
+
+2026-09-23 修复轮的 DDL ①②③ 只执行进了开发库并同步了 `schema.sql`，**`sql/` 目录的增量脚本停留在 v1.1**——
+新环境按目录脚本逐版升级会在 v1.2 断档：`scoring_dimension` 缺两列（管理端保存维度即报 Unknown column）、
+`training_round_acoustic` 缺表（**语音消息整笔回滚**，见 ③ 部署顺序警告）、缺 `uk_session_seq` 兜底闸。
+（2026-09-24 审计发现，09 §J 备案。）
+
+### ⑤-2 `sql/v1.2-评分维度与声学特征-表结构扩展.sql`（内容即下文，code agent 按 S0-1 落盘）
+
+> 幂等实现：MySQL 8 的 `ADD COLUMN / ADD INDEX` 不支持 `IF NOT EXISTS`，用临时存储过程 + information_schema
+> 守卫；回填 UPDATE 带条件排除已回填行。**执行两遍不报错**。前置假设：库结构 = v1.1
+> （已跑 `学员端话术训练-新增表.sql` + `v1.1-语音与形象-表结构扩展.sql`）。
+
+```sql
+-- v1.2 评分维度与声学特征（幂等，可重复执行；开发库已于 2026-09-23 直接执行过等效语句，勿重复跑也无妨）
+DELIMITER $$
+
+DROP PROCEDURE IF EXISTS p_v12_upgrade$$
+CREATE PROCEDURE p_v12_upgrade()
+BEGIN
+  -- ① scoring_dimension: evidence_type / metric_config
+  IF NOT EXISTS (SELECT 1 FROM information_schema.COLUMNS
+      WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'scoring_dimension' AND COLUMN_NAME = 'evidence_type') THEN
+    ALTER TABLE scoring_dimension
+      ADD COLUMN evidence_type TINYINT DEFAULT 1
+        COMMENT '评分依据: 1=文字, 2=语音, 3=文字+语音。语音依据维度在本次训练无语音数据时不参与评分'
+        AFTER scoring_rule;
+  END IF;
+  IF NOT EXISTS (SELECT 1 FROM information_schema.COLUMNS
+      WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'scoring_dimension' AND COLUMN_NAME = 'metric_config') THEN
+    ALTER TABLE scoring_dimension
+      ADD COLUMN metric_config VARCHAR(500)
+        COMMENT '量化指标配置(JSON): {"metric":"speech_speed","params":{...}}。空=该维度由AI评分；非空=得分由后端规则计算，AI只写评语'
+        AFTER evidence_type;
+  END IF;
+  -- ① 回填（rule_type 5=公式计算=语速、6=扣分制=违禁词；条件排除已回填行，幂等）
+  UPDATE scoring_dimension SET evidence_type = 2, metric_config = '{"metric":"speech_speed"}'
+   WHERE rule_type = 5 AND metric_config IS NULL;
+  UPDATE scoring_dimension SET metric_config = '{"metric":"forbidden_words"}'
+   WHERE rule_type = 6 AND metric_config IS NULL;
+
+  -- ② training_session_message: uk_session_seq（若存量有重复 seq，下面的 ALTER 会报错——
+  --    先跑 ② 的执行前检查（09-23 实测开发库重复组为 0），有人工裁决后再重跑本脚本）
+  IF NOT EXISTS (SELECT 1 FROM information_schema.STATISTICS
+      WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'training_session_message' AND INDEX_NAME = 'uk_session_seq') THEN
+    ALTER TABLE training_session_message
+      ADD UNIQUE INDEX uk_session_seq (session_id, seq),
+      MODIFY COLUMN seq INT NOT NULL COMMENT '会话内序号(在会话行锁内取 MAX+1,并发下不得重复)';
+  END IF;
+END$$
+
+CALL p_v12_upgrade()$$
+
+DROP PROCEDURE IF EXISTS p_v12_upgrade$$
+DELIMITER ;
+
+-- ③ training_round_acoustic（CREATE IF NOT EXISTS 天然幂等）
+CREATE TABLE IF NOT EXISTS training_round_acoustic (
+  id BIGINT PRIMARY KEY AUTO_INCREMENT,
+  session_id BIGINT NOT NULL COMMENT '会话ID',
+  message_id BIGINT NOT NULL COMMENT '学员语音消息ID(撤回的消息同样留存)',
+  round_no INT COMMENT '轮次号(1起)',
+  audio_ms INT COMMENT '录音时长(毫秒,本端WAV头,含静音)',
+  speech_ms INT COMMENT '净发声时长(毫秒,各分句首尾跨度之和)',
+  utterance_count INT COMMENT '分句数',
+  pause_count INT COMMENT '停顿次数(相邻分句间隔≥300ms才计)',
+  pause_total_ms INT COMMENT '停顿总时长(毫秒,与pause_count同口径)',
+  max_pause_ms INT COMMENT '最长一次分句间隔(毫秒,不设阈值)',
+  text_length INT COMMENT '识别文本长度(含标点)',
+  lid_lang VARCHAR(32) COMMENT '豆包检出语种(粤语=speech_dia_cant,未检出为空)',
+  definite TINYINT COMMENT '末分句是否终结结果: 0/1, NULL=无分句',
+  words_json JSON COMMENT '豆包逐字时间戳原文(跨分句拼接的JSON数组)',
+  server_audio_ms INT COMMENT '豆包回传音频时长(毫秒),与audio_ms不符即WAV封装头有问题',
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  UNIQUE INDEX uk_message (message_id),
+  INDEX idx_session_round (session_id, round_no)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='每轮语音声学特征表(v1.3起语速评分读speech_ms,停顿供混合维度参考)';
+```
+
+### ⑤-3 执行前检查（新环境必跑）
+
+```sql
+-- ② 的重复序号检查：有输出先人工裁决，否则建唯一索引会失败
+SELECT session_id, seq, COUNT(*) AS c, GROUP_CONCAT(id) AS ids
+FROM training_session_message GROUP BY session_id, seq HAVING c > 1;
+```
+
+### ⑤-4 `sql/v1.3-口型驱动-视频资产表.sql`（FP-29；**S3 才启用，落盘不执行**）
+
+```sql
+-- v1.3 口型驱动：陪练者视频资产表（设计见 08 §1.3.2；随 S3 阶段执行）
+CREATE TABLE IF NOT EXISTS trainer_video_asset (
+  id BIGINT PRIMARY KEY AUTO_INCREMENT,
+  asset_key CHAR(32) NOT NULL COMMENT '缓存键 md5(text|voice_id|speed|avatar_image|model),五要素任一变化即重新生成',
+  text TEXT COMMENT '生成用台词原文(排查冗余,不参与逻辑)',
+  voice_id VARCHAR(64) COMMENT '生成用音色',
+  speed INT COMMENT '生成用语速刻度',
+  avatar_image VARCHAR(255) COMMENT '生成用形象图URL',
+  model VARCHAR(32) COMMENT '唇形模型(wav2lip/sadtalker)',
+  status TINYINT DEFAULT 0 COMMENT '0=待生成 1=生成中 2=成功 3=失败(可重试)',
+  file_path VARCHAR(255) COMMENT '成功后=/video/lip/{asset_key}.mp4',
+  duration_ms INT COMMENT '视频时长(毫秒,与TTS durationMs同源)',
+  error_msg VARCHAR(500) COMMENT '失败原因(如 no_face_detected=形象图不适合驱动)',
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  UNIQUE INDEX uk_asset_key (asset_key)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='陪练者口型视频资产(发布时预生成,运行时只读)';
+```
+
+> 时钟纪律（09 §K45 同款）：`updated_at` 由 DB 写。若后续给本表加"生成中超时回收"扫描，阈值必须用
+> `DATE_SUB(CURRENT_TIMESTAMP, …)` 数据库时钟，不得用 JVM 时钟相减。
+> 部署顺序：本表建好前不得部署启用了 `speech.lipsync.enabled=true` 的后端（否则查表报错——但降级路径返回
+> videoUrl=null 不影响训练，风险远低于 ③ 的"整笔回滚"，仍建议先 DDL 后部署）。
+
+---
+
+## 执行完毕后的动作（①②③ 于 2026-09-23，已逐项完成）
 
 1. ✅ 用 `SHOW CREATE TABLE scoring_dimension / training_session_message / training_round_acoustic` 取回线上真实结构，与
    `after-end/SpeechTraining/src/main/resources/schema.sql` 比对：**唯一差异是 §④ 的 `rule_type` 注释**，其余列、默认值、
@@ -239,4 +361,3 @@ ALTER TABLE scoring_dimension
 3. ✅ 报告页两种口径均已实测：语音项目的语音维度**未出分**（该轮 ASR 未拿到通过答案，见 09 §K 残留说明），
    报告按设计写明"本次为文字作答，语音类维度不参与评分"；纯文字项目的 `违禁词` 由后端定分并配模板评语。
 4. ⚠️ **冒烟残留数据留在共享开发库**，未擅自删除，清单见 `09-问题清单.md` §H.3。
-
