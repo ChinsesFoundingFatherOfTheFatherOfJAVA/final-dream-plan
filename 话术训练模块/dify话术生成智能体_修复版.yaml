@@ -1,0 +1,307 @@
+app:
+  name: "话术流程生成器"
+  description: "根据对话场景和轮次生成AI话术对练的对话流程节点"
+  mode: workflow
+  icon: "🤖"
+  icon_background: "#FFEAD5"
+  use_icon_as_answer_icon: false
+
+dependencies:
+  - current_identifier: null
+    type: marketplace
+    value:
+      marketplace_plugin_unique_identifier: yangyaofei/vllm:0.2.3@455b644bfcfe0f8d7af1ad191a9e5d0b2d87214b0c6c804012d2d5cccdbbf88a
+      version: null
+
+kind: app
+version: 0.5.0
+
+workflow:
+  conversation_variables: []
+  environment_variables: []
+
+  features:
+    file_upload:
+      image:
+        enabled: false
+    opening_statement: ""
+    retriever_resource:
+      enabled: false
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ""
+      voice: ""
+
+  graph:
+    nodes:
+      - data:
+          title: "开始"
+          type: start
+          variables:
+            - variable: "description"
+              label: "对话场景"
+              type: paragraph
+              required: true
+              max_length: 2000
+            - variable: "rounds"
+              label: "对话轮次"
+              type: number
+              required: true
+        height: 116
+        id: start
+        position:
+          x: 80
+          y: 282
+        positionAbsolute:
+          x: 80
+          y: 282
+        sourcePosition: right
+        targetPosition: left
+        type: custom
+        width: 244
+
+      - data:
+          title: "AI生成话术"
+          type: llm
+          model:
+            provider: "yangyaofei/vllm/vllm"
+            name: "Qwen/Qwen3-30B-A3B-Instruct-2507"
+            mode: chat
+            completion_params:
+              temperature: 0.7
+              max_tokens: 4096
+          prompt_template:
+            - role: system
+              text: |
+                你是一个专业的AI话术对练流程设计师。
+
+                任务：根据用户提供的对话场景和轮次，生成一个完整的对话流程。
+
+                要求：
+                1. 每一轮对话包含一个"学员说"节点
+                2. 节点包含标准话术、要点（3-5个）、解析
+                3. 整个流程是一条直线，没有分支
+                4. 包含开始和结束节点
+
+                输出格式（JSON数组）：
+                [
+                  {
+                    "nodeType": 3,
+                    "nodeName": "学员说",
+                    "standardScript": "标准话术内容",
+                    "keyPoints": [
+                      {"content": "要点1", "order": 1},
+                      {"content": "要点2", "order": 2}
+                    ],
+                    "analysis": "解析说明"
+                  }
+                ]
+
+                注意：
+                - nodeType 固定为 3（学员问陪练者）
+                - 只生成学员说的节点，不生成陪练者说的节点
+                - 陪练者说的内容由系统自动处理
+                - 确保输出是合法的JSON格式，不要输出JSON以外的任何文字或markdown代码块标记
+            - role: user
+              text: |
+                对话场景：{{#start.description#}}
+                对话轮次：{{#start.rounds#}}
+
+                请生成{{#start.rounds#}}轮对话流程节点。
+          context:
+            enabled: false
+            variable_selector: []
+          vision:
+            enabled: false
+        height: 98
+        id: llm_generate
+        position:
+          x: 380
+          y: 282
+        positionAbsolute:
+          x: 380
+          y: 282
+        sourcePosition: right
+        targetPosition: left
+        type: custom
+        width: 244
+
+      - data:
+          title: "解析话术数据"
+          type: code
+          code_language: python3
+          code: |
+            import json
+
+            def main(llm_output: str, description: str, rounds: int) -> dict:
+                try:
+                    # 尝试解析LLM输出的JSON
+                    # 去除可能的markdown代码块标记
+                    cleaned = llm_output.strip()
+                    if cleaned.startswith("```"):
+                        cleaned = cleaned.split("\n", 1)[1]
+                    if cleaned.endswith("```"):
+                        cleaned = cleaned.rsplit("```", 1)[0]
+                    cleaned = cleaned.strip()
+
+                    nodes_data = json.loads(cleaned)
+
+                    # 构建完整流程（包含开始和结束节点）
+                    all_nodes = []
+                    all_edges = []
+
+                    # 开始节点
+                    start_node = {
+                        "nodeType": 1,
+                        "nodeName": "开始",
+                        "positionX": 100,
+                        "positionY": 100
+                    }
+                    all_nodes.append(start_node)
+
+                    # 生成的节点
+                    prev_id = 0
+                    for i, node_data in enumerate(nodes_data):
+                        node = {
+                            "nodeType": node_data.get("nodeType", 3),
+                            "nodeName": node_data.get("nodeName", f"学员说_{i+1}"),
+                            "standardScript": node_data.get("standardScript", ""),
+                            "keyPoints": node_data.get("keyPoints", []),
+                            "analysis": node_data.get("analysis", ""),
+                            "positionX": 100,
+                            "positionY": 100 + (i + 1) * 150
+                        }
+                        all_nodes.append(node)
+
+                        # 连线
+                        all_edges.append({
+                            "source": prev_id,
+                            "target": i + 1,
+                            "weight": 1
+                        })
+                        prev_id = i + 1
+
+                    # 结束节点
+                    end_node = {
+                        "nodeType": 4,
+                        "nodeName": "结束",
+                        "positionX": 100,
+                        "positionY": 100 + (len(nodes_data) + 1) * 150
+                    }
+                    all_nodes.append(end_node)
+                    all_edges.append({
+                        "source": prev_id,
+                        "target": len(all_nodes) - 1,
+                        "weight": 1
+                    })
+
+                    return {
+                        "nodes": json.dumps(all_nodes, ensure_ascii=False),
+                        "edges": json.dumps(all_edges, ensure_ascii=False),
+                        "success": True,
+                        "message": ""
+                    }
+                except Exception as e:
+                    return {
+                        "nodes": "[]",
+                        "edges": "[]",
+                        "success": False,
+                        "message": str(e)
+                    }
+          variables:
+            - variable: "llm_output"
+              value_selector: ["llm_generate", "text"]
+            - variable: "description"
+              value_selector: ["start", "description"]
+            - variable: "rounds"
+              value_selector: ["start", "rounds"]
+          outputs:
+            nodes:
+              type: string
+            edges:
+              type: string
+            success:
+              type: string
+            message:
+              type: string
+        height: 54
+        id: parse_json
+        position:
+          x: 680
+          y: 282
+        positionAbsolute:
+          x: 680
+          y: 282
+        sourcePosition: right
+        targetPosition: left
+        type: custom
+        width: 244
+
+      - data:
+          title: "结束"
+          type: end
+          outputs:
+            - variable: "nodes"
+              value_selector: ["parse_json", "nodes"]
+            - variable: "edges"
+              value_selector: ["parse_json", "edges"]
+            - variable: "success"
+              value_selector: ["parse_json", "success"]
+            - variable: "message"
+              value_selector: ["parse_json", "message"]
+        height: 90
+        id: end
+        position:
+          x: 980
+          y: 282
+        positionAbsolute:
+          x: 980
+          y: 282
+        sourcePosition: right
+        targetPosition: left
+        type: custom
+        width: 244
+
+    edges:
+      - source: start
+        target: llm_generate
+        sourceHandle: source
+        targetHandle: target
+        id: start-llm_generate
+        type: custom
+        data:
+          sourceType: start
+          targetType: llm
+          isLoop: false
+      - source: llm_generate
+        target: parse_json
+        sourceHandle: source
+        targetHandle: target
+        id: llm_generate-parse_json
+        type: custom
+        data:
+          sourceType: llm
+          targetType: code
+          isLoop: false
+      - source: parse_json
+        target: end
+        sourceHandle: source
+        targetHandle: target
+        id: parse_json-end
+        type: custom
+        data:
+          sourceType: code
+          targetType: end
+          isLoop: false
+
+    viewport:
+      x: 0
+      y: 0
+      zoom: 0.8

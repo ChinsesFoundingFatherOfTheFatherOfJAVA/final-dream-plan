@@ -1,0 +1,682 @@
+[
+ {
+  "t": "06:38:23",
+  "m": "POST",
+  "u": "https://api-phx-ali.yunxuetang.cn/xuiappserver/api/session-v2",
+  "status": 201,
+  "req": "{\"externalId\":\"f0f949de-8baf-499f-b502-2321eb7bbdcf\",\"isNew\":false,\"code\":\"side_free\",\"sharedType\":\"group\"}",
+  "resp": "{\"success\":true,\"message\":\"创建成功\",\"data\":{\"id\":\"6717f04f-a874-41f5-9e1c-b521d03170c4\",\"title\":\"与 自由演练设计助手 的对话\",\"agentId\":\"\",\"agentV2Id\":\"a34a25b4-f937-47a8-aa14-67c79b45030d\",\"userId\":\"fca2c7ad-f5bb-4f62-85cc-d591d1a5f1ea\",\"externalId\":\"f0f949de-8baf-499f-b502-2321eb7bbdcf\",\"unreadCount\":null,\"contextId\":null,\"createdAt\":\"2026-09-17 14:38:24\",\"updatedAt\":\"2026-09-17 14:38:24\",\"metadata\":null,\"taskId\":null,\"taskState\":null,\"topicId\":\"e414721a-d031-4bb2-a8c1-083244159c00\",\"orgId\":\"984354a0-d966-41db-80c6-09befd7749ad\",\"sharedType\":\"group\",\"kind\":\"normal\"},\"timestamp\":\"2026-09-17 14:38:24\"}"
+ },
+ {
+  "t": "06:38:23",
+  "m": "OPTIONS",
+  "u": "https://api-phx-ali.yunxuetang.cn/xuiappserver/api/session-v2",
+  "status": 200,
+  "req": "",
+  "resp": ""
+ },
+ {
+  "t": "06:38:23",
+  "m": "GET",
+  "u": "https://api-phx-ali.yunxuetang.cn/xuiappserver/api/session-v2/6717f04f-a874-41f5-9e1c-b521d03170c4",
+  "status": 200,
+  "req": "",
+  "resp": "{\"success\":true,\"message\":\"查询成功\",\"data\":{\"id\":\"6717f04f-a874-41f5-9e1c-b521d03170c4\",\"title\":\"与 自由演练设计助手 的对话\",\"agentId\":\"\",\"agentV2Id\":\"a34a25b4-f937-47a8-aa14-67c79b45030d\",\"userId\":\"fca2c7ad-f5bb-4f62-85cc-d591d1a5f1ea\",\"externalId\":\"f0f949de-8baf-499f-b502-2321eb7bbdcf\",\"unreadCount\":null,\"contextId\":null,\"createdAt\":\"2026-09-17 14:38:24\",\"updatedAt\":\"2026-09-17 14:38:24\",\"metadata\":null,\"taskId\":null,\"taskState\":null,\"topicId\":\"e414721a-d031-4bb2-a8c1-083244159c00\",\"orgId\":\"984354a0-d966-41db-80c6-09befd7749ad\",\"sharedType\":\"group\",\"kind\":\"normal\"},\"timestamp\":\"2026-09-17 14:38:24\"}"
+ },
+ {
+  "t": "06:38:23",
+  "m": "GET",
+  "u": "https://api-phx-ali.yunxuetang.cn/xuiappserver/api/agent-v2?limit=20&page=1",
+  "status": 200,
+  "req": "",
+  "resp": "{\"success\":true,\"message\":\"列表查询成功\",\"data\":[{\"id\":\"7a50fddd-44f5-4b57-9cd7-12118f223f6a\",\"code\":\"ask-salescoach\",\"name\":\"ask-ai销售端\",\"description\":\"ask-ai销售端\",\"avatar\":\"https://stc.yxt.com/ufd/f71cc7/554dbaaf58b54884b872cf8dd08078c2.png\",\"type\":1,\"status\":1,\"statusDescription\":\"启用\",\"agentCardId\":\"cf11e4df-2ecb-4362-bc4b-3e0969b4c9cb\",\"umdUrl\":\"http://127.0.0.1:8080/index.main.js\",\"h5UmdUrl\":\"http://127.0.0.1:8080/index.main.js\",\"subUmdUrls\":[],\"subH5UmdUrls\":[],\"callbackUrl\":\"\",\"element\":\"\",\"i18nKey\":\"AI销售教练\",\"userId\":\"54D6A9BAA01148A4A72E07F520F73F2B\",\"disableSimultaneousChatAgent\":false,\"disableSimultaneousChatTopic\":false,\"disableSimultaneousChatSession\":false,\"productCodes\":[],\"createdAt\":\"2026-07-22 19:33:39\",\"updatedAt\":\"2026-07-22 11:35:39\",\"asrConfig\":null,\"ttsConfig\":null},{\"id\":\"a9bbd733-68ba-4cdb-88ce-b60d4d0837a1\",\"code\":\"teamnova\",\"name\":\"teamnova\",\"description\":\"\",\"avatar\":\"https://picobd.yunxuetang.cn/orgsv2/demo/pro-stable-phx20210519/test_module/test_function/202504/5fdc99ab639d4c22aaa2da73f51b5b5f.png\",\"type\":1,\"status\":1,\"statusDescription\":\"启用\",\"agentCardId\":\"7dd828bf-b08c-4a22-ab2e-00ce5895a217\",\"umdUrl\":\"\",\"h5UmdUrl\":\"\",\"subUmdUrls\":[],\"subH5UmdUrls\":[],\"callbackUrl\":\"\",\"element\":\"\",\"i18nKey\":\"zh\",\"userId\":\"8564f1c1-5fcc-4047-8128-89154f5bfeb4\",\"disableSimultaneousChatAgent\":false,\"disableSimultaneousChatTopic\":false,\"disableSimultaneousChatSession\":true,\"productCodes\":[],\"createdAt\":\"2026-06-25 22:53:22\",\"updatedAt\":\"2026-07-09 15:58:09\",\"asrConfig\":null,\"ttsConfig\":null},{\"id\":\"50addd54-2943-43ac-86f1-457cdd120def\",\"code\":\"ai-question-agent\",\"name\":\"AI动态题库\",\"avatar\":\"https://picobd.yunxuetang.cn/orgsv2/demo/pro-stable-phx20210519/test_module/test_function/202504/5fdc99ab639d4c22aaa2da73f51b5b5f.png\",\"type\":1,\"status\":1,\"statusDescription\":\"启用\",\"agentCardId\":\"7d2bfbb9-061e-4652-9719-b9664e266108\",\"umdUrl\":\"https://media-phx.yunxuetang.com.cn/common/basepc/workbench-web/lib/index.min.js\",\"subUmdUrls\":[],\"subH5UmdUrls\":[],\"i18nKey\":\"ai-question-agent\",\"userId\":\"bf232a28-1ea5-42cd-8313-e2148ba1141d\",\"disableSimultaneousChatAgent\":false,\"disableSimultaneousChatTopic\":false,\"disableSimultaneousChatSession\":false,\"productCodes\":[],\"createdAt\":\"2026-06-02 00:26:07\",\"updatedAt\":\"2026-06-02 00:26:07\",\"asrConfig\":null,\"ttsConfig\":null},{\"id\":\"cd821b06-24dc-4b1d-917d-87f55cddcd6a\",\"code\":\"ai-practice-agent\",\"name\":\"AI定时练\",\"avatar\":\"https://picobd.yunxuetang.cn/orgsv2/demo/pro-stable-phx20210519/test_module/test_function/202504/5fdc99ab639d4c22aaa2da73f51b5b5f.png\",\"type\":1,\"status\":1,\"statusDescription\":\"启用\",\"agentCardId\":\"8691127b-29e1-484a-a88f-2be61f8dfa23\",\"umdUrl\":\"https://media-phx.yunxuetang.com.cn/common/basepc/workbench-web/lib/index.min.js\",\"h5UmdUrl\":\"\",\"subUmdUrls\":[],\"subH5UmdUrls\":[],\"i18nKey\":\"ai-practice-agent\",\"userId\":\"bf232a28-1ea5-42cd-8313-e2148ba1141d\",\"disableSimultaneousChatAgent\":false,\"disableSimultaneousChatTopic\":false,\"disableSimultaneousChatSession\":false,\"productCodes\":[],\"createdAt\":\"2026-06-02 00:24:48\",\"updatedAt\":\"2026-06-02 00:24:48\",\"asrConfig\":null,\"ttsConfig\":null},{\"id\":\"75c43508-fb96-477c-bac3-73ab229576fc\",\"code\":\"extraction-merge-agent\",\"name\":\"extraction-merge-agent\",\"description\":\"extraction-merge-agent\",\"avatar\":\"https://picobd.yunxuetang.cn/orgsv2/demo/pro-stable-phx20210519/test_module/test_function/202504/5fdc99ab639d4c22aaa2da73f51b5b5f.png\",\"type\":1,\"status\":1,\"statusDescription\":\"启用\",\"agentCardId\":\"d495fdcb-fc67-4c00-8d7d-bf7d80e543c9\",\"umdUrl\":\"\",\"h5UmdUrl\":\"\",\"subUmdUrls\":[],\"subH5UmdUrls\":[],\"callbackUrl\":\"\",\"element\":\"\",\"i18nKey\":\"extraction-merge-agent\",\"userId\":\"ab3879c6-26bc-4115-a03f-25fa579177f0\",\"disableSimultaneousChatAgent\":false,\"disableSimultaneousChatTopic\":false,\"disableSimultaneousChatSession\":false,\"productCodes\":[],\"createdAt\":\"2026-05-29 00:34:23\",\"updatedAt\":\"2026-06-02 16:51:41\",\"asrConfig\":null,\"ttsConfig\":null},{\"id\":\"f794000e-2029-49e4-9ceb-6a39388dabd8\",\"code\":\"extraction-agent\",\"name\":\"extraction-agent\",\"description\":\"\",\"avatar\":\"https://picobd.yunxuetang.cn/orgsv2/demo/pro-stable-phx20210519/test_module/test_function/202504/5fdc99ab639d4c22aaa2da73f51b5b5f.png\",\"type\":1,\"status\":1,\"statusDescription\":\"启用\",\"agentCardId\":\"9e82c3be-1209-4c4a-b32f-da795a77125f\",\"umdUrl\":\"\",\"h5UmdUrl\":\"\",\"subUmdUrls\":[],\"subH5UmdUrls\":[],\"callbackUrl\":\"\",\"element\":\"\",\"i18nKey\":\"extraction-agent\",\"userId\":\"ab3879c6-26bc-4115-a03f-25fa579177f0\",\"disableSimultaneousChatAgent\":false,\"disableSimultaneousChatTopic\":false,\"disableSimultaneousChatSession\":false,\"productCodes\":[],\"createdAt\":\"2026-05-29 00:30:23\",\"updatedAt\":\"2026-06-02 15:27:30\",\"asrConfig\":null,\"ttsConfig\":null},{\"id\":\"c05c4eaa-14cc-4b6a-bfcc-f8669a7def36\",\"code\":\"neo-ora\",\"name\":\"管理端侧边栏 Ora Chat\",\"description\":\"AI老师\",\"avatar\":\"https://picobd.yunxuetang.cn/orgsv2/demo/pro-stable-phx20210519/test_module/test_function/202504/5fdc99ab639d4c22aaa2da73f51b5b5f.png\",\"type\":1,\"status\":1,\"statusDescription\":\"启用\",\"agentCardId\":\"0636111b-065d-458b-9d16-10f4f6d27270\",\"umdUrl\":\"tutor-web\",\"h5UmdUrl\":\"\",\"subUmdUrls\":[],\"subH5UmdUrls\":[],\"callbackUrl\":\"\",\"element\":\"\",\"i18nKey\":\"neo-ora\",\"userId\":\"6dff0c3e-de0a-428d-aef7-0102c205cce9\",\"disableSimultaneousChatAgent\":false,\"disableSimultaneousChatTopic\":false,\"disableSimultaneousChatSession\":false,\"productCodes\":[],\"createdAt\":\"2026-05-28 00:45:13\",\"updatedAt\":\"2026-06-16 10:38:01\",\"asrConfig\":null,\"ttsConfig\":null},{\"id\":\"2a1e18dc-f46d-47a4-854b-7ea9c61708ce\",\"code\":\"neo_roleplay_coach\",\"name\":\"对练页 （ roleplay，coach 旁观agent）\",\"description\":\"AI老师\",\"avatar\":\"https://picobd.yunxuetang.cn/orgsv2/demo/pro-stable-phx20210519/test_module/test_function/202504/5fdc99ab639d4c22aaa2da73f51b5b5f.png\",\"type\":1,\"status\":1,\"statusDescription\":\"启用\",\"agentCardId\":\"26aa5dc9-3aa8-47f2-bc9c-097d99ccf074\",\"umdUrl\":\"tutor-web\",\"h5UmdUrl\":\"\",\"subUmdUrls\":[],\"subH5UmdUrls\":[],\"callbackUrl\":\"\",\"element\":\"\",\"i18nKey\":\"neo_roleplay_coach\",\"userId\":\"6dff0c3e-de0a-428d-aef7-0102c205cce9\",\"disableSimultaneousChatAgent\":false,\"disableSimultaneousChatTopic\":false,\"disableSimultaneousChatSession\":true,\"productCodes\":[],\"createdAt\":\"2026-05-28 00:44:08\",\"updatedAt\":\"2026-07-28 21:10:38\",\"asrConfig\":null,\"ttsConfig\":null},{\"id\":\"43488f19-95a9-466f-8244-81ecd4acfb91\",\"code\":\"neo_roleplay\",\"name\":\"对练页 （roleplay，角色扮演agent)\",\"description\":\"AI老师\",\"avatar\":\"https://picobd.yunxuetang.cn/orgsv2/demo/pro-stable-phx20210519/test_module/test_function/202504/5fdc99ab639d4c22aaa2da73f51b5b5f.png\",\"type\":1,\"status\":1,\"statusDescription\":\"启用\",\"agentCardId\":\"26aa5dc9-3aa8-47f2-bc9c-097d99ccf074\",\"umdUrl\":\"tutor-web\",\"subUmdUrls\":[],\"subH5UmdUrls\":[],\"i18nKey\":\"neo_roleplay\",\"userId\":\"6dff0c3e-de0a-428d-aef7-0102c205cce9\",\"disableSimultaneousChatAgent\":false,\"disableSimultaneousChatTopic\":false,\"disableSimultaneousChatSession\":true,\"productCodes\":[],\"createdAt\":\"2026-05-28 00:43:03\",\"updatedAt\":\"2026-07-28 21:10:27\",\"asrConfig\":null,\"ttsConfig\":null},{\"id\":\"db81e777-4c46-4b9f-b747-462f06b390d4\",\"code\":\"neo-agent-hall-coach\",\"name\":\"学员大厅（hall)\",\"description\":\"AI老师\",\"avatar\":\"https://picobd.yunxuetang.cn/orgsv2/demo/pro-stable-phx20210519/test_module/test_function/202504/5fdc99ab639d4c22aaa2da73f51b5b5f.png\",\"type\":1,\"status\":1,\"statusDescription\":\"启用\",\"agentCardId\":\"26aa5dc9-3aa8-47f2-bc9c-097d99ccf074\",\"umdUrl\":\"tutor-web\",\"h5UmdUrl\":\"\",\"subUmdUrls\":[],\"subH5UmdUrls\":[],\"callbackUrl\":\"\",\"element\":\"\",\"i18nKey\":\"neo-agent-hall-coach\",\"userId\":\"6dff0c3e-de0a-428d-aef7-0102c205cce9\",\"disableSimultaneousChatAgent\":false,\"disableSimultaneousChatTopic\":false,\"disableSimultaneousChatSession\":false,\"productCodes\":[],\"createdAt\":\"2026-05-28 00:41:46\",\"updatedAt\":\"2026-05-29 19:17:07\",\"asrConfig\":null,\"ttsConfig\":null},{\"id\":\"4ad65f6c-0940-4d42-9ed4-9d7f765807b5\",\"code\":\"tutor-recap-agent\",\"name\":\"小结页 (recap)\",\"avatar\":\"https://picobd.yunxuetang.cn/orgsv2/demo/pro-stable-phx20210519/test_module/test_function/202504/5fdc99ab639d4c22aaa2da73f51b5b5f.png\",\"type\":1,\"status\":1,\"statusDescription\":\"启用\",\"agentCardId\":\"26aa5dc9-3aa8-47f2-bc9c-097d99ccf074\",\""
+ },
+ {
+  "t": "06:38:23",
+  "m": "GET",
+  "u": "https://api-phx-ali.yunxuetang.cn/xuiappserver/api/message/session/6717f04f-a874-41f5-9e1c-b521d03170c4?limit=1000",
+  "status": 200,
+  "req": "",
+  "resp": "{\"success\":true,\"message\":\"查询成功\",\"data\":{\"messages\":[],\"pagination\":{\"limit\":1000,\"hasNextPage\":false,\"nextCursor\":\"\"}},\"timestamp\":\"2026-09-17 14:38:24\"}"
+ },
+ {
+  "t": "06:38:23",
+  "m": "OPTIONS",
+  "u": "https://api-phx-ali.yunxuetang.cn/xuiappserver/api/session-v2/6717f04f-a874-41f5-9e1c-b521d03170c4",
+  "status": 200,
+  "req": "",
+  "resp": ""
+ },
+ {
+  "t": "06:38:23",
+  "m": "OPTIONS",
+  "u": "https://api-phx-ali.yunxuetang.cn/xuiappserver/api/agent-v2?limit=20&page=1",
+  "status": 200,
+  "req": "",
+  "resp": ""
+ },
+ {
+  "t": "06:38:23",
+  "m": "OPTIONS",
+  "u": "https://api-phx-ali.yunxuetang.cn/xuiappserver/api/message/session/6717f04f-a874-41f5-9e1c-b521d03170c4?limit=1000",
+  "status": 200,
+  "req": "",
+  "resp": ""
+ },
+ {
+  "t": "06:38:23",
+  "m": "GET",
+  "u": "wss://api-phx-ali.yunxuetang.cn/xuiappserver/ws/chat?sessionId=6717f04f-a874-41f5-9e1c-b521d03170c4&token=eyJhbGciOiJIUzUxMiJ9.eyJvcmdJZCI6Ijk4NDM1NGEwLWQ5NjYtNDFkYi04MGM2LTA5YmVmZDc3NDlhZCIsInVzZXJJZCI6ImZjYTJjN2FkLWY1YmItNGY2Mi04NWNjLWQ1OTFkMWE1ZjF",
+  "status": 101,
+  "req": "",
+  "resp": ""
+ },
+ {
+  "t": "06:38:23",
+  "m": "GET",
+  "u": "https://api-phx-ali.yunxuetang.cn/xuiappserver/api/agent-v2/code/side_free",
+  "status": 200,
+  "req": "",
+  "resp": "{\"success\":true,\"message\":\"查询成功\",\"data\":{\"id\":\"a34a25b4-f937-47a8-aa14-67c79b45030d\",\"code\":\"side_free\",\"name\":\"自由演练设计助手\",\"description\":\"https://images.yxt.com/dynamic/packages/drillmate-web/green/lib/manage/index.min.js\\nhttps://s1.yxt.com/static/packages/drillmate-web/2.0.48/lib/manage/index.min.js\",\"avatar\":\"https://stc.yxt.com/ufd/2338a3/newhome/pc/img/leadermate/head_logo.png\",\"type\":1,\"status\":1,\"statusDescription\":\"启用\",\"agentCardId\":\"3d2297ba-2383-410d-a475-e9fb44fe396d\",\"umdUrl\":\"https://s1.yxt.com/static/packages/drillmate-web/2.0.48/lib/manage/index.min.js\",\"h5UmdUrl\":\"\",\"subUmdUrls\":[],\"subH5UmdUrls\":[],\"callbackUrl\":\"\",\"element\":\"\",\"i18nKey\":\"自由演练设计助手\",\"userId\":\"a7c8f0cc-cedc-4e87-8801-82ee79294670\",\"disableSimultaneousChatAgent\":false,\"disableSimultaneousChatTopic\":false,\"disableSimultaneousChatSession\":false,\"productCodes\":[],\"createdAt\":\"2026-04-15 03:35:19\",\"updatedAt\":\"2026-05-08 15:47:15\",\"asrConfig\":null,\"ttsConfig\":null},\"timestamp\":\"2026-09-17 14:38:24\"}"
+ },
+ {
+  "t": "06:38:23",
+  "m": "OPTIONS",
+  "u": "https://api-phx-ali.yunxuetang.cn/xuiappserver/api/agent-v2/code/side_free",
+  "status": 200,
+  "req": "",
+  "resp": ""
+ },
+ {
+  "t": "06:39:55",
+  "m": "GET",
+  "u": "https://api-phx-ali.yunxuetang.cn/artifact-server/artifacts/755678979576512722",
+  "status": 200,
+  "req": "",
+  "resp": "{\"id\":\"755678979576512722\",\"name\":\"订单运营新人实战演练\",\"type\":\"biz\",\"sub_type\":\"json\",\"biz_type\":\"\",\"context_id\":null,\"ext_info\":null,\"content\":\"\",\"storage_type\":\"db\",\"oss_platform\":null,\"oss_bucket_name\":null,\"oss_key\":null,\"oss_presigned_url\":null,\"version\":1,\"create_time\":\"2026-09-17T14:38:28\",\"update_time\":\"2026-09-17T14:39:53\"}"
+ },
+ {
+  "t": "06:39:55",
+  "m": "OPTIONS",
+  "u": "https://api-phx-ali.yunxuetang.cn/artifact-server/artifacts/755678979576512722",
+  "status": 200,
+  "req": "",
+  "resp": ""
+ },
+ {
+  "t": "06:41:09",
+  "m": "GET",
+  "u": "https://api-phx-ali.yunxuetang.cn/artifact-server/artifacts/755678979576512722",
+  "status": 200,
+  "req": "",
+  "resp": "{\"id\":\"755678979576512722\",\"name\":\"订单运营新人实战演练\",\"type\":\"biz\",\"sub_type\":\"json\",\"biz_type\":\"\",\"context_id\":null,\"ext_info\":null,\"content\":\"{\\\"materials\\\":[{\\\"id\\\":\\\"3a20da33-dd08-47a2-ae0c-8228f66f3ada\\\",\\\"name\\\":\\\"订单运营部职能介绍\\\",\\\"fileType\\\":\\\"ppt\\\",\\\"fileSize\\\":2,\\\"fileSizeUnit\\\":\\\"M\\\",\\\"visibility\\\":1,\\\"fileServId\\\":\\\"file\\\",\\\"fileSource\\\":2,\\\"targetId\\\":\\\"217f8c53-6f2c-4a78-8062-6c66af5038c7\\\"}],\\\"scenarios\\\":[{\\\"id\\\":\\\"e16ebbdd-de18-40e1-9e44-7f5be10b393a\\\",\\\"name\\\":\\\"CRM订单录入规范演练\\\",\\\"audiences\\\":[\\\"新入职订单运营专员\\\",\\\"0-3个月试用期员工\\\"],\\\"businessGoal\\\":\\\"确保订单信息录入准确无误，避免因信息缺失导致的发货错误或物流延误。\\\",\\\"behaviorGoals\\\":[\\\"准确识别客户类型并选择对应的系统入口（CRM/PRM）\\\",\\\"完整录入产品编码、数量、单价及特殊包装要求\\\",\\\"核对收货地址与物流方式的匹配性，确保地址详细到门牌号\\\"],\\\"relatedIcebergElements\\\":{\\\"knowledge\\\":[\\\"订单处理系统知识\\\",\\\"国内订单事项规范\\\"],\\\"skills\\\":[\\\"CRM系统操作技能\\\",\\\"信息核对与录入技能\\\"],\\\"roles\\\":[\\\"订单处理专员\\\"],\\\"selfConcept\\\":[\\\"严谨细致\\\"],\\\"personalities\\\":[\\\"注重细节\\\"],\\\"motives\\\":[\\\"追求零差错\\\"]},\\\"businessImpact\\\":\\\"提高订单处理效率，减少因录入错误导致的退单和客诉。\\\",\\\"failureCost\\\":\\\"发货错误导致物流成本增加，客户满意度下降，甚至产生坏账风险。\\\",\\\"coreConflict\\\":\\\"业务催单压力大与订单信息核对耗时之间的矛盾。\\\",\\\"failureReasons\\\":[\\\"漏填关键信息（如联系人电话）\\\",\\\"产品编码选择错误\\\",\\\"地址模糊导致物流无法派送\\\"],\\\"difficulties\\\":[\\\"在高压下保持录入准确性\\\",\\\"快速识别特殊订单要求\\\"],\\\"constraints\\\":{\\\"forbidBehaviors\\\":[\\\"禁止在未核对库存的情况下直接录入订单\\\",\\\"禁止使用模糊地址（如‘某某路口’）\\\"],\\\"maxTime\\\":10},\\\"relatedKnowledgeIds\\\":[],\\\"relatedScriptIds\\\":[],\\\"dimensionWeights\\\":[{\\\"dimensionId\\\":\\\"d1a2b3c4-1234-5678-90ab-cdef12345678\\\",\\\"weight\\\":40},{\\\"dimensionId\\\":\\\"d2b3c4d5-2345-6789-01bc-def123456789\\\",\\\"weight\\\":30},{\\\"dimensionId\\\":\\\"d3c4d5e6-3456-7890-12cd-ef1234567890\\\",\\\"weight\\\":30}],\\\"relatedProductProfileArtifactIds\\\":[],\\\"caseArtifactIds\\\":[],\\\"cases\\\":[]},{\\\"id\\\":\\\"0fb54cb6-768a-4ccd-8e8b-ea7800429c41\\\",\\\"name\\\":\\\"超授信发货审批沟通\\\",\\\"audiences\\\":[\\\"新入职订单运营专员\\\",\\\"销售支持人员\\\"],\\\"businessGoal\\\":\\\"在合规前提下协助业务完成超授信订单的审批，平衡风控与销售需求。\\\",\\\"behaviorGoals\\\":[\\\"准确判断超授信金额层级（100万以下/100-300万/300万以上）\\\",\\\"按流程向对应审批人（总监/赖总/美芳等）发起申请\\\",\\\"清晰说明超授信原因及客户回款计划，提供完整审批材料\\\"],\\\"relatedIcebergElements\\\":{\\\"knowledge\\\":[\\\"应收账款管控流程\\\",\\\"超授信审批层级规定\\\"],\\\"skills\\\":[\\\"跨部门沟通技巧\\\",\\\"流程合规判断能力\\\"],\\\"roles\\\":[\\\"风控协调员\\\"],\\\"selfConcept\\\":[\\\"原则性与灵活性并重\\\"],\\\"personalities\\\":[\\\"冷静客观\\\"],\\\"motives\\\":[\\\"保障公司资金安全\\\"]},\\\"businessImpact\\\":\\\"确保公司应收账款安全，同时支持重点客户的紧急发货需求。\\\",\\\"failureCost\\\":\\\"违规发货导致坏账，或审批流程延误导致客户流失。\\\",\\\"coreConflict\\\":\\\"业务经理的紧急发货需求与财务风控审批流程的冲突。\\\",\\\"failureReasons\\\":[\\\"找错审批人导致流程退回\\\",\\\"未说明超授信原因被财务驳回\\\",\\\"遗漏核算审核环节\\\"],\\\"difficulties\\\":[\\\"应对业务经理的催促和施压\\\",\\\"快速准备齐全的审批佐证材料\\\"],\\\"constraints\\\":{\\\"forbidBehaviors\\\":[\\\"禁止越级审批\\\",\\\"禁止在未获批准前通知仓库发货\\\"],\\\"maxTime\\\":15},\\\"relatedKnowledgeIds\\\":[],\\\"relatedScriptIds\\\":[],\\\"dimensionWeights\\\":[{\\\"dimensionId\\\":\\\"d1a2b3c4-1234-5678-90ab-cdef12345678\\\",\\\"weight\\\":50},{\\\"dimensionId\\\":\\\"d4d5e6f7-4567-8901-23de-f12345678901\\\",\\\"weight\\\":50}],\\\"relatedProductProfileArtifactIds\\\":[],\\\"caseArtifactIds\\\":[],\\\"cases\\\":[]},{\\\"id\\\":\\\"96553e74-f443-47b8-9cb3-9c6df30a1099\\\",\\\"name\\\":\\\"退返修流程处理与费用界定\\\",\\\"audiences\\\":[\\\"新入职订单运营专员\\\",\\\"售后服务支持\\\"],\\\"businessGoal\\\":\\\"规范处理客户退返修请求，明确费用责任，降低公司物流损失。\\\",\\\"behaviorGoals\\\":[\\\"引导客户在DMS系统提交退返修流程并粘贴标识卡\\\",\\\"根据退货原因（质量/非质量）准确界定运费承担方\\\",\\\"协调物流退回并跟进途损索赔事宜\\\"],\\\"relatedIcebergElements\\\":{\\\"knowledge\\\":[\\\"退返修处理规范\\\",\\\"物流运费承担政策\\\"],\\\"skills\\\":[\\\"客户情绪安抚技巧\\\",\\\"物流索赔处理能力\\\"],\\\"roles\\\":[\\\"售后服务协调员\\\"],\\\"selfConcept\\\":[\\\"客户导向\\\"],\\\"personalities\\\":[\\\"耐心细致\\\"],\\\"motives\\\":[\\\"维护客户关系\\\"]},\\\"businessImpact\\\":\\\"提升客户售后体验，规范退返修流程，减少不必要的运费支出。\\\",\\\"failureCost\\\":\\\"公司承担不应承担的运费，或因流程不规范导致货物丢失无法索赔。\\\",\\\"coreConflict\\\":\\\"客户希望免费退货与公司严格界定费用责任之间的冲突。\\\",\\\"failureReasons\\\":[\\\"未要求客户粘贴标识卡导致仓库拒收\\\",\\\"错误判断运费承担方引发客户投诉\\\",\\\"未跟进物流途损索赔\\\"],\\\"difficulties\\\":[\\\"向愤怒的客户解释非质量退货需自费\\\",\\\"处理复杂的批量退货审批\\\"],\\\"constraints\\\":{\\\"forbidBehaviors\\\":[\\\"禁止接受快递到付（质量原因除外）\\\",\\\"禁止在未明确费用承担前安排物流取件\\\"],\\\"maxTime\\\":12},\\\"relatedKnowledgeIds\\\":[],\\\"relatedScriptIds\\\":[],\\\"dimensionWeights\\\":[{\\\"dimensionId\\\":\\\"d4d5e6f7-4567-8901-23de-f12345678901\\\",\\\"weight\\\":40},{\\\"dimensionId\\\":\\\"d5e6f7a8-5678-9012-34ef-123456789012\\\",\\\"weight\\\":60}],\\\"relatedProductProfileArtifactIds\\\":[],\\\"caseArtifactIds\\\":[],\\\"cases\\\":[]},{\\\"id\\\":\\\"f7333a6c-388f-4845-af4d-aae42db4307c\\\",\\\"name\\\":\\\"运输方式优化选择与成本管控\\\",\\\"audiences\\\":[\\\"新入职订单运营专员\\\",\\\"物流协调员\\\"],\\\"businessGoal\\\":\\\"根据订单特性选择最优运输方式，平衡到货时效与物流成本。\\\",\\\"behaviorGoals\\\":[\\\"根据订单数量、地址偏远程度及紧急度选择物流方式（快递/物流/专车/拼车）\\\",\\\"向业务解释选择理由（如：为何选专车而非快递）\\\",\\\"预估并告知准确到货时间，管理客户预期\\\"],\\\"relatedIcebergElements\\\":{\\\"knowledge\\\":[\\\"运输管理知识\\\",\\\"物流成本结构\\\"],\\\"skills\\\":[\\\"成本效益分析能力\\\",\\\"物流方案推荐能力\\\"],\\\"roles\\\":[\\\"物流方案专家\\\"],\\\"selfConcept\\\":[\\\"成本意识\\\"],\\\"personalities\\\":[\\\"逻辑清晰\\\"],\\\"motives\\\":[\\\"优化资源配置\\\"]},\\\"businessImpact\\\":\\\"降低公司整体物流成本，提高客户对到货时间的满意度。\\\",\\\"failureCost\\\":\\\"物流成本过高侵蚀利润，或到货延误导致客户索赔。\\\",\\\"coreConflict\\\":\\\"业务要求最快到货与公司控制物流成本之间的冲突。\\\",\\\"failureReasons\\\":[\\\"小批量急单误选物流导致延误\\\",\\\"大批量订单误选快递导致成本激增\\\",\\\"未考虑地址偏僻性导致多次中转延误\\\"],\\\"difficulties\\\":[\\\"在多种物流方式中快速做出最优决策\\\",\\\"说服业务接受稍慢但更经济的物流方式\\\"],\\\"constraints\\\":{\\\"forbidBehaviors\\\":[\\\"禁止在不考虑成本的情况下盲目选择专车\\\",\\\"禁止对偏远地址使用无法直达的物流\\\"],\\\"maxTime\\\":8},\\\"relatedKnowledgeIds\\\":[],\\\"relatedScriptIds\\\":[],\\\"dimensionWeights\\\":[{\\\"dimensionId\\\":\\\"d2b3c4d5-2345-6789-01bc-def123456789\\\",\\\"weight\\\":30},{\\\"dimensionId\\\":\\\"d5e6f7a8-5678-9012-34ef-123456789012\\\",\\\"weight\\\":70}],\\\"relatedProductProfileArtifactIds\\\":[],\\\"caseArtifactIds\\\":[],\\\"cases\\\":[]},{\\\"id\\\":\\\"4c0cef91-7036-46ad-9008-a7f7d10856b3\\\",\\\"name\\\":\\\"库存查询与缺货应对策略\\\",\\\"audiences\\\":[\\\"新入职订单运营专员\\\",\\\"销售支持人员\\\"],\\\"businessGoal\\\":\\\"快速响应客户库存查询，针对缺货情况提供有效替代方案。\\\",\\\"behaviorGoals\\\":[\\\"快速通过WMS查询各仓库（下陈/椒江/临海/集聚区）库存\\\",\\\"针对缺货产品提供替代型号或调拨建议\\\",\\\"协调仓库优先处理急单，并反馈预计发货时间\\\"],\\\"relatedIcebergElements\\\":{\\\"knowledge\\\":[\\\"成品仓库分布知识\\\",\\\"库存管控流程\\\"],\\\"skills\\\":[\\\"WMS系统查询技能\\\",\\\"应急问题解决能力\\\"],\\\"roles\\\":[\\\"库存协调员\\\"],\\\"selfConcept\\\":[\\\"积极主动\\\"],\\\"personalities\\\":[\\\"反应敏捷\\\"],\\\"motives\\\":[\\\"达成销售目标\\\"]},\\\"businessImpact\\\":\\\"提高订单转化率，减少因缺货导致的订单流失。\\\",\\\"failureCost\\\":\\\"因回复不及时或方案无效导致客户取消订单。\\\",\\\"coreConflict\\\":\\\"客户急单需求与仓库实际库存分布不均的冲突。\\\",\\\"failureReasons\\\":[\\\"只查询主仓库忽略其他分仓库存\\\",\\\"未提供替代方案直接告知缺货\\\",\\\"协调仓库优先处理时沟通不畅\\\"],\\\"difficulties\\\":[\\\"在多个仓库系统中快速定位准确库存\\\",\\\"在缺货情况下说服客户接受替代方案\\\"],\\\"constraints\\\":{\\\"forbidBehaviors\\\":[\\\"禁止在未核实库存的情况下承诺发货时间\\\",\\\"禁止忽略立体库库存直接告知无货\\\"],\\\"maxTime\\\":10},\\\"relatedKnowledgeIds\\\":[],\\\"relatedScriptIds\\\":[],\\\"dimensionWeights\\\":[{\\\"dimensionId\\\":\\\"d2b3c4d5-2345-6789-01bc-def123456789\\\",\\\"weight\\\":40},{\\\"dimensionId\\\":\\\"d3c4d5e6-3456-7890-12cd-ef1234567890\\\",\\\"weight\\\":60}],\\\"relatedProductProfileArtifactIds\\\":[],\\\"caseArtifactIds\\\":[],\\\"cases\\\":[]}],\\\"customerProfiles\\\":[{\\\"id\\\":\\\"f1a2b3c4-d5e6-7890-abcd-ef1234567890\\\",\\\"type\\\":\\\"急躁型业务经理\\\",\\\"description\\\":\\\"负责区域销售，业绩压力大，经常为了赶发货时间而忽略流程规范，喜欢直接催促订单专员。\\\",\\\"personalities\\\":[\\\"强势\\\",\\\"结果导向\\\",\\\"缺乏耐心\\\"],\\\"decisionFactors\\\":[\\\"发货速度\\\",\\\"客户满意度\\\"],\\\"communicationStyle\\\":\\\"语速快，语气强硬，喜欢直接下达指令，不喜欢听解释。\\\",\\\"painPoints\\\":[\\\"订单处理慢影响业绩\\\",\\\"流程繁琐耽误时间\\\"]},{\\\"id\\\":\\\"f2b3c4d5-e6f7-8901-bcde-f12345678901\\\",\\\"type\\\":\\\"严谨型核算专员\\\",\\\"description\\\":\\\"负责财务风控，对超授信审批非常严格，要求所有材料齐全且符合规定，不容许任何违规操作。\\\",\\\"personalities\\\":[\\\"严谨\\\",\\\"原则性强\\\",\\\"保守\\\"],\\\"decisionFactors\\\":[\\\"合规性\\\",\\\"资金安全\\\"],\\\"communicationStyle\\\":\\\"语气正式，注重细节，喜欢引用公司规定，对模糊信息零容忍。\\\",\\\"painPoints\\\":[\\\"审批材料不全\\\",\\\"业务违规操作\\\"]},{\\\"id\\\":\\\"f3c4d5e6-f7a8-9012-cdef-123456789012\\\",\\\"type\\\":\\\"焦虑型渠道客户\\\",\\\"description\\\":\\\"对退返修流程不熟悉，担心运费损失，情绪容易激动，希望得到快速且免费的解决方案。\\\",\\\"personalities\\\":[\\\"敏感\\\",\\\"情绪化\\\",\\\"价格敏感\\\"],\\\"decisionFactors\\\":[\\\"费用承担\\\",\\\"处理效率\\\"],\\\"communicationStyle\\\":\\\"语气焦急，经常抱怨，喜欢追问进度，对费用问题非常在意。\\\",\\\"painPoints\\\":[\\\"退货运费高\\\",\\\"处理流程复杂\\\"]}],\\\"icebergModel\\\":{\\\"visible\\\":{\\\"knowledge\\\":[\\\"订单处理系统知识: 熟练掌握CRM、PRM、SAP、WMS等系统的功能模块及操作路径\\\",\\\"国内订单事项规范: 熟悉订单录入、审批、发货、退返修等全流程的业务规范\\\",\\\"应收账款管控流程: 掌握超授信审批层级及所需材料，了解逾期发货流程\\\",\\\"运输管理知识: 了解快递、物流、专车、拼车等不同运输方式的适用场景及成本结构\\\",\\\"成品仓库分布知识: 熟悉下陈、椒江、临海、集聚区等仓库的产品分布及库存特点\\\"],\\\"skills\\\":[\\\"CRM系统操作技能: 能够准确、快速地在CRM系统中录入订单信息\\\",\\\"WMS系统查询技能: 能够快速在多仓库系统中查询准确库存\\\",\\\"跨部门沟通技巧: 能够与业务、财务、仓库等部门进行有效沟通\\\",\\\"成本效益分析能力: 能够根据订单特性选择最优物流方式以平衡成本与时效\\\",\\\"客户情绪安抚技巧: 能够在退返修等敏感场景中安抚客户情绪并解决问题\\\"]},\\\"hidden\\\":{\\\"roles\\\":[\\\"订单处理专员\\\",\\\"风控协调员\\\",\\\"售后服务协调员\\\",\\\"物流方案专家\\\",\\\"库存协调员\\\"],\\\"selfConcept\\\":[\\\"严谨细致\\\",\\\"原则性与灵活性并重\\\",\\\"客户导向\\\",\\\"成本意识\\\",\\\"积极主动\\\"],\\\"personalities\\\":[\\\"注重细节\\\",\\\"冷静客观\\\",\\\"耐心细致\\\",\\\"逻辑清晰\\\",\\\"反应敏捷\\\"],\\\"motives\\\":[\\\"追求零差错\\\",\\\"保障公司资金安全\\\",\\\"维护客户关系\\\",\\\"优化资源配置\\\",\\\"达成销售目标\\\"]}},\\\"evaluationCriteria\\\":{\\\"passScore\\\":70,\\\"dimensions\\\":[{\\\"i"
+ },
+ {
+  "t": "06:41:09",
+  "m": "OPTIONS",
+  "u": "https://api-phx-ali.yunxuetang.cn/artifact-server/artifacts/755678979576512722",
+  "status": 200,
+  "req": "",
+  "resp": ""
+ },
+ {
+  "t": "06:41:13",
+  "m": "GET",
+  "u": "https://api-phx-ali.yunxuetang.cn/artifact-server/artifacts/755678979576512722",
+  "status": 200,
+  "req": "",
+  "resp": "{\"id\":\"755678979576512722\",\"name\":\"订单运营新人实战演练\",\"type\":\"biz\",\"sub_type\":\"json\",\"biz_type\":\"\",\"context_id\":null,\"ext_info\":null,\"content\":\"{\\\"materials\\\":[{\\\"id\\\":\\\"3a20da33-dd08-47a2-ae0c-8228f66f3ada\\\",\\\"name\\\":\\\"订单运营部职能介绍\\\",\\\"fileType\\\":\\\"ppt\\\",\\\"fileSize\\\":2,\\\"fileSizeUnit\\\":\\\"M\\\",\\\"visibility\\\":1,\\\"fileServId\\\":\\\"file\\\",\\\"fileSource\\\":2,\\\"targetId\\\":\\\"217f8c53-6f2c-4a78-8062-6c66af5038c7\\\"}],\\\"scenarios\\\":[{\\\"id\\\":\\\"e16ebbdd-de18-40e1-9e44-7f5be10b393a\\\",\\\"name\\\":\\\"CRM订单录入规范演练\\\",\\\"audiences\\\":[\\\"新入职订单运营专员\\\",\\\"0-3个月试用期员工\\\"],\\\"businessGoal\\\":\\\"确保订单信息录入准确无误，避免因信息缺失导致的发货错误或物流延误。\\\",\\\"behaviorGoals\\\":[\\\"准确识别客户类型并选择对应的系统入口（CRM/PRM）\\\",\\\"完整录入产品编码、数量、单价及特殊包装要求\\\",\\\"核对收货地址与物流方式的匹配性，确保地址详细到门牌号\\\"],\\\"relatedIcebergElements\\\":{\\\"knowledge\\\":[\\\"订单处理系统知识\\\",\\\"国内订单事项规范\\\"],\\\"skills\\\":[\\\"CRM系统操作技能\\\",\\\"信息核对与录入技能\\\"],\\\"roles\\\":[\\\"订单处理专员\\\"],\\\"selfConcept\\\":[\\\"严谨细致\\\"],\\\"personalities\\\":[\\\"注重细节\\\"],\\\"motives\\\":[\\\"追求零差错\\\"]},\\\"businessImpact\\\":\\\"提高订单处理效率，减少因录入错误导致的退单和客诉。\\\",\\\"failureCost\\\":\\\"发货错误导致物流成本增加，客户满意度下降，甚至产生坏账风险。\\\",\\\"coreConflict\\\":\\\"业务催单压力大与订单信息核对耗时之间的矛盾。\\\",\\\"failureReasons\\\":[\\\"漏填关键信息（如联系人电话）\\\",\\\"产品编码选择错误\\\",\\\"地址模糊导致物流无法派送\\\"],\\\"difficulties\\\":[\\\"在高压下保持录入准确性\\\",\\\"快速识别特殊订单要求\\\"],\\\"constraints\\\":{\\\"forbidBehaviors\\\":[\\\"禁止在未核对库存的情况下直接录入订单\\\",\\\"禁止使用模糊地址（如‘某某路口’）\\\"],\\\"maxTime\\\":10},\\\"relatedKnowledgeIds\\\":[],\\\"relatedScriptIds\\\":[],\\\"dimensionWeights\\\":[{\\\"dimensionId\\\":\\\"d1a2b3c4-1234-5678-90ab-cdef12345678\\\",\\\"weight\\\":40},{\\\"dimensionId\\\":\\\"d2b3c4d5-2345-6789-01bc-def123456789\\\",\\\"weight\\\":30},{\\\"dimensionId\\\":\\\"d3c4d5e6-3456-7890-12cd-ef1234567890\\\",\\\"weight\\\":30}],\\\"relatedProductProfileArtifactIds\\\":[],\\\"caseArtifactIds\\\":[],\\\"cases\\\":[]},{\\\"id\\\":\\\"0fb54cb6-768a-4ccd-8e8b-ea7800429c41\\\",\\\"name\\\":\\\"超授信发货审批沟通\\\",\\\"audiences\\\":[\\\"新入职订单运营专员\\\",\\\"销售支持人员\\\"],\\\"businessGoal\\\":\\\"在合规前提下协助业务完成超授信订单的审批，平衡风控与销售需求。\\\",\\\"behaviorGoals\\\":[\\\"准确判断超授信金额层级（100万以下/100-300万/300万以上）\\\",\\\"按流程向对应审批人（总监/赖总/美芳等）发起申请\\\",\\\"清晰说明超授信原因及客户回款计划，提供完整审批材料\\\"],\\\"relatedIcebergElements\\\":{\\\"knowledge\\\":[\\\"应收账款管控流程\\\",\\\"超授信审批层级规定\\\"],\\\"skills\\\":[\\\"跨部门沟通技巧\\\",\\\"流程合规判断能力\\\"],\\\"roles\\\":[\\\"风控协调员\\\"],\\\"selfConcept\\\":[\\\"原则性与灵活性并重\\\"],\\\"personalities\\\":[\\\"冷静客观\\\"],\\\"motives\\\":[\\\"保障公司资金安全\\\"]},\\\"businessImpact\\\":\\\"确保公司应收账款安全，同时支持重点客户的紧急发货需求。\\\",\\\"failureCost\\\":\\\"违规发货导致坏账，或审批流程延误导致客户流失。\\\",\\\"coreConflict\\\":\\\"业务经理的紧急发货需求与财务风控审批流程的冲突。\\\",\\\"failureReasons\\\":[\\\"找错审批人导致流程退回\\\",\\\"未说明超授信原因被财务驳回\\\",\\\"遗漏核算审核环节\\\"],\\\"difficulties\\\":[\\\"应对业务经理的催促和施压\\\",\\\"快速准备齐全的审批佐证材料\\\"],\\\"constraints\\\":{\\\"forbidBehaviors\\\":[\\\"禁止越级审批\\\",\\\"禁止在未获批准前通知仓库发货\\\"],\\\"maxTime\\\":15},\\\"relatedKnowledgeIds\\\":[],\\\"relatedScriptIds\\\":[],\\\"dimensionWeights\\\":[{\\\"dimensionId\\\":\\\"d1a2b3c4-1234-5678-90ab-cdef12345678\\\",\\\"weight\\\":50},{\\\"dimensionId\\\":\\\"d4d5e6f7-4567-8901-23de-f12345678901\\\",\\\"weight\\\":50}],\\\"relatedProductProfileArtifactIds\\\":[],\\\"caseArtifactIds\\\":[],\\\"cases\\\":[]},{\\\"id\\\":\\\"96553e74-f443-47b8-9cb3-9c6df30a1099\\\",\\\"name\\\":\\\"退返修流程处理与费用界定\\\",\\\"audiences\\\":[\\\"新入职订单运营专员\\\",\\\"售后服务支持\\\"],\\\"businessGoal\\\":\\\"规范处理客户退返修请求，明确费用责任，降低公司物流损失。\\\",\\\"behaviorGoals\\\":[\\\"引导客户在DMS系统提交退返修流程并粘贴标识卡\\\",\\\"根据退货原因（质量/非质量）准确界定运费承担方\\\",\\\"协调物流退回并跟进途损索赔事宜\\\"],\\\"relatedIcebergElements\\\":{\\\"knowledge\\\":[\\\"退返修处理规范\\\",\\\"物流运费承担政策\\\"],\\\"skills\\\":[\\\"客户情绪安抚技巧\\\",\\\"物流索赔处理能力\\\"],\\\"roles\\\":[\\\"售后服务协调员\\\"],\\\"selfConcept\\\":[\\\"客户导向\\\"],\\\"personalities\\\":[\\\"耐心细致\\\"],\\\"motives\\\":[\\\"维护客户关系\\\"]},\\\"businessImpact\\\":\\\"提升客户售后体验，规范退返修流程，减少不必要的运费支出。\\\",\\\"failureCost\\\":\\\"公司承担不应承担的运费，或因流程不规范导致货物丢失无法索赔。\\\",\\\"coreConflict\\\":\\\"客户希望免费退货与公司严格界定费用责任之间的冲突。\\\",\\\"failureReasons\\\":[\\\"未要求客户粘贴标识卡导致仓库拒收\\\",\\\"错误判断运费承担方引发客户投诉\\\",\\\"未跟进物流途损索赔\\\"],\\\"difficulties\\\":[\\\"向愤怒的客户解释非质量退货需自费\\\",\\\"处理复杂的批量退货审批\\\"],\\\"constraints\\\":{\\\"forbidBehaviors\\\":[\\\"禁止接受快递到付（质量原因除外）\\\",\\\"禁止在未明确费用承担前安排物流取件\\\"],\\\"maxTime\\\":12},\\\"relatedKnowledgeIds\\\":[],\\\"relatedScriptIds\\\":[],\\\"dimensionWeights\\\":[{\\\"dimensionId\\\":\\\"d4d5e6f7-4567-8901-23de-f12345678901\\\",\\\"weight\\\":40},{\\\"dimensionId\\\":\\\"d5e6f7a8-5678-9012-34ef-123456789012\\\",\\\"weight\\\":60}],\\\"relatedProductProfileArtifactIds\\\":[],\\\"caseArtifactIds\\\":[],\\\"cases\\\":[]},{\\\"id\\\":\\\"f7333a6c-388f-4845-af4d-aae42db4307c\\\",\\\"name\\\":\\\"运输方式优化选择与成本管控\\\",\\\"audiences\\\":[\\\"新入职订单运营专员\\\",\\\"物流协调员\\\"],\\\"businessGoal\\\":\\\"根据订单特性选择最优运输方式，平衡到货时效与物流成本。\\\",\\\"behaviorGoals\\\":[\\\"根据订单数量、地址偏远程度及紧急度选择物流方式（快递/物流/专车/拼车）\\\",\\\"向业务解释选择理由（如：为何选专车而非快递）\\\",\\\"预估并告知准确到货时间，管理客户预期\\\"],\\\"relatedIcebergElements\\\":{\\\"knowledge\\\":[\\\"运输管理知识\\\",\\\"物流成本结构\\\"],\\\"skills\\\":[\\\"成本效益分析能力\\\",\\\"物流方案推荐能力\\\"],\\\"roles\\\":[\\\"物流方案专家\\\"],\\\"selfConcept\\\":[\\\"成本意识\\\"],\\\"personalities\\\":[\\\"逻辑清晰\\\"],\\\"motives\\\":[\\\"优化资源配置\\\"]},\\\"businessImpact\\\":\\\"降低公司整体物流成本，提高客户对到货时间的满意度。\\\",\\\"failureCost\\\":\\\"物流成本过高侵蚀利润，或到货延误导致客户索赔。\\\",\\\"coreConflict\\\":\\\"业务要求最快到货与公司控制物流成本之间的冲突。\\\",\\\"failureReasons\\\":[\\\"小批量急单误选物流导致延误\\\",\\\"大批量订单误选快递导致成本激增\\\",\\\"未考虑地址偏僻性导致多次中转延误\\\"],\\\"difficulties\\\":[\\\"在多种物流方式中快速做出最优决策\\\",\\\"说服业务接受稍慢但更经济的物流方式\\\"],\\\"constraints\\\":{\\\"forbidBehaviors\\\":[\\\"禁止在不考虑成本的情况下盲目选择专车\\\",\\\"禁止对偏远地址使用无法直达的物流\\\"],\\\"maxTime\\\":8},\\\"relatedKnowledgeIds\\\":[],\\\"relatedScriptIds\\\":[],\\\"dimensionWeights\\\":[{\\\"dimensionId\\\":\\\"d2b3c4d5-2345-6789-01bc-def123456789\\\",\\\"weight\\\":30},{\\\"dimensionId\\\":\\\"d5e6f7a8-5678-9012-34ef-123456789012\\\",\\\"weight\\\":70}],\\\"relatedProductProfileArtifactIds\\\":[],\\\"caseArtifactIds\\\":[],\\\"cases\\\":[]},{\\\"id\\\":\\\"4c0cef91-7036-46ad-9008-a7f7d10856b3\\\",\\\"name\\\":\\\"库存查询与缺货应对策略\\\",\\\"audiences\\\":[\\\"新入职订单运营专员\\\",\\\"销售支持人员\\\"],\\\"businessGoal\\\":\\\"快速响应客户库存查询，针对缺货情况提供有效替代方案。\\\",\\\"behaviorGoals\\\":[\\\"快速通过WMS查询各仓库（下陈/椒江/临海/集聚区）库存\\\",\\\"针对缺货产品提供替代型号或调拨建议\\\",\\\"协调仓库优先处理急单，并反馈预计发货时间\\\"],\\\"relatedIcebergElements\\\":{\\\"knowledge\\\":[\\\"成品仓库分布知识\\\",\\\"库存管控流程\\\"],\\\"skills\\\":[\\\"WMS系统查询技能\\\",\\\"应急问题解决能力\\\"],\\\"roles\\\":[\\\"库存协调员\\\"],\\\"selfConcept\\\":[\\\"积极主动\\\"],\\\"personalities\\\":[\\\"反应敏捷\\\"],\\\"motives\\\":[\\\"达成销售目标\\\"]},\\\"businessImpact\\\":\\\"提高订单转化率，减少因缺货导致的订单流失。\\\",\\\"failureCost\\\":\\\"因回复不及时或方案无效导致客户取消订单。\\\",\\\"coreConflict\\\":\\\"客户急单需求与仓库实际库存分布不均的冲突。\\\",\\\"failureReasons\\\":[\\\"只查询主仓库忽略其他分仓库存\\\",\\\"未提供替代方案直接告知缺货\\\",\\\"协调仓库优先处理时沟通不畅\\\"],\\\"difficulties\\\":[\\\"在多个仓库系统中快速定位准确库存\\\",\\\"在缺货情况下说服客户接受替代方案\\\"],\\\"constraints\\\":{\\\"forbidBehaviors\\\":[\\\"禁止在未核实库存的情况下承诺发货时间\\\",\\\"禁止忽略立体库库存直接告知无货\\\"],\\\"maxTime\\\":10},\\\"relatedKnowledgeIds\\\":[],\\\"relatedScriptIds\\\":[],\\\"dimensionWeights\\\":[{\\\"dimensionId\\\":\\\"d2b3c4d5-2345-6789-01bc-def123456789\\\",\\\"weight\\\":40},{\\\"dimensionId\\\":\\\"d3c4d5e6-3456-7890-12cd-ef1234567890\\\",\\\"weight\\\":60}],\\\"relatedProductProfileArtifactIds\\\":[],\\\"caseArtifactIds\\\":[],\\\"cases\\\":[]}],\\\"customerProfiles\\\":[{\\\"id\\\":\\\"f1a2b3c4-d5e6-7890-abcd-ef1234567890\\\",\\\"type\\\":\\\"急躁型业务经理\\\",\\\"description\\\":\\\"负责区域销售，业绩压力大，经常为了赶发货时间而忽略流程规范，喜欢直接催促订单专员。\\\",\\\"personalities\\\":[\\\"强势\\\",\\\"结果导向\\\",\\\"缺乏耐心\\\"],\\\"decisionFactors\\\":[\\\"发货速度\\\",\\\"客户满意度\\\"],\\\"communicationStyle\\\":\\\"语速快，语气强硬，喜欢直接下达指令，不喜欢听解释。\\\",\\\"painPoints\\\":[\\\"订单处理慢影响业绩\\\",\\\"流程繁琐耽误时间\\\"]},{\\\"id\\\":\\\"f2b3c4d5-e6f7-8901-bcde-f12345678901\\\",\\\"type\\\":\\\"严谨型核算专员\\\",\\\"description\\\":\\\"负责财务风控，对超授信审批非常严格，要求所有材料齐全且符合规定，不容许任何违规操作。\\\",\\\"personalities\\\":[\\\"严谨\\\",\\\"原则性强\\\",\\\"保守\\\"],\\\"decisionFactors\\\":[\\\"合规性\\\",\\\"资金安全\\\"],\\\"communicationStyle\\\":\\\"语气正式，注重细节，喜欢引用公司规定，对模糊信息零容忍。\\\",\\\"painPoints\\\":[\\\"审批材料不全\\\",\\\"业务违规操作\\\"]},{\\\"id\\\":\\\"f3c4d5e6-f7a8-9012-cdef-123456789012\\\",\\\"type\\\":\\\"焦虑型渠道客户\\\",\\\"description\\\":\\\"对退返修流程不熟悉，担心运费损失，情绪容易激动，希望得到快速且免费的解决方案。\\\",\\\"personalities\\\":[\\\"敏感\\\",\\\"情绪化\\\",\\\"价格敏感\\\"],\\\"decisionFactors\\\":[\\\"费用承担\\\",\\\"处理效率\\\"],\\\"communicationStyle\\\":\\\"语气焦急，经常抱怨，喜欢追问进度，对费用问题非常在意。\\\",\\\"painPoints\\\":[\\\"退货运费高\\\",\\\"处理流程复杂\\\"]}],\\\"icebergModel\\\":{\\\"visible\\\":{\\\"knowledge\\\":[\\\"订单处理系统知识: 熟练掌握CRM、PRM、SAP、WMS等系统的功能模块及操作路径\\\",\\\"国内订单事项规范: 熟悉订单录入、审批、发货、退返修等全流程的业务规范\\\",\\\"应收账款管控流程: 掌握超授信审批层级及所需材料，了解逾期发货流程\\\",\\\"运输管理知识: 了解快递、物流、专车、拼车等不同运输方式的适用场景及成本结构\\\",\\\"成品仓库分布知识: 熟悉下陈、椒江、临海、集聚区等仓库的产品分布及库存特点\\\"],\\\"skills\\\":[\\\"CRM系统操作技能: 能够准确、快速地在CRM系统中录入订单信息\\\",\\\"WMS系统查询技能: 能够快速在多仓库系统中查询准确库存\\\",\\\"跨部门沟通技巧: 能够与业务、财务、仓库等部门进行有效沟通\\\",\\\"成本效益分析能力: 能够根据订单特性选择最优物流方式以平衡成本与时效\\\",\\\"客户情绪安抚技巧: 能够在退返修等敏感场景中安抚客户情绪并解决问题\\\"]},\\\"hidden\\\":{\\\"roles\\\":[\\\"订单处理专员\\\",\\\"风控协调员\\\",\\\"售后服务协调员\\\",\\\"物流方案专家\\\",\\\"库存协调员\\\"],\\\"selfConcept\\\":[\\\"严谨细致\\\",\\\"原则性与灵活性并重\\\",\\\"客户导向\\\",\\\"成本意识\\\",\\\"积极主动\\\"],\\\"personalities\\\":[\\\"注重细节\\\",\\\"冷静客观\\\",\\\"耐心细致\\\",\\\"逻辑清晰\\\",\\\"反应敏捷\\\"],\\\"motives\\\":[\\\"追求零差错\\\",\\\"保障公司资金安全\\\",\\\"维护客户关系\\\",\\\"优化资源配置\\\",\\\"达成销售目标\\\"]}},\\\"evaluationCriteria\\\":{\\\"passScore\\\":70,\\\"dimensions\\\":[{\\\"i"
+ },
+ {
+  "t": "06:41:13",
+  "m": "OPTIONS",
+  "u": "https://api-phx-ali.yunxuetang.cn/artifact-server/artifacts/755678979576512722",
+  "status": 200,
+  "req": "",
+  "resp": ""
+ },
+ {
+  "t": "06:41:15",
+  "m": "GET",
+  "u": "https://api-phx-ali.yunxuetang.cn/artifact-server/artifacts/755678979576512722",
+  "status": 200,
+  "req": "",
+  "resp": "{\"id\":\"755678979576512722\",\"name\":\"订单运营新人实战演练\",\"type\":\"biz\",\"sub_type\":\"json\",\"biz_type\":\"\",\"context_id\":null,\"ext_info\":null,\"content\":\"{\\\"materials\\\":[{\\\"id\\\":\\\"3a20da33-dd08-47a2-ae0c-8228f66f3ada\\\",\\\"name\\\":\\\"订单运营部职能介绍\\\",\\\"fileType\\\":\\\"ppt\\\",\\\"fileSize\\\":2,\\\"fileSizeUnit\\\":\\\"M\\\",\\\"visibility\\\":1,\\\"fileServId\\\":\\\"file\\\",\\\"fileSource\\\":2,\\\"targetId\\\":\\\"217f8c53-6f2c-4a78-8062-6c66af5038c7\\\"}],\\\"scenarios\\\":[{\\\"id\\\":\\\"e16ebbdd-de18-40e1-9e44-7f5be10b393a\\\",\\\"name\\\":\\\"CRM订单录入规范演练\\\",\\\"audiences\\\":[\\\"新入职订单运营专员\\\",\\\"0-3个月试用期员工\\\"],\\\"businessGoal\\\":\\\"确保订单信息录入准确无误，避免因信息缺失导致的发货错误或物流延误。\\\",\\\"behaviorGoals\\\":[\\\"准确识别客户类型并选择对应的系统入口（CRM/PRM）\\\",\\\"完整录入产品编码、数量、单价及特殊包装要求\\\",\\\"核对收货地址与物流方式的匹配性，确保地址详细到门牌号\\\"],\\\"relatedIcebergElements\\\":{\\\"knowledge\\\":[\\\"订单处理系统知识\\\",\\\"国内订单事项规范\\\"],\\\"skills\\\":[\\\"CRM系统操作技能\\\",\\\"信息核对与录入技能\\\"],\\\"roles\\\":[\\\"订单处理专员\\\"],\\\"selfConcept\\\":[\\\"严谨细致\\\"],\\\"personalities\\\":[\\\"注重细节\\\"],\\\"motives\\\":[\\\"追求零差错\\\"]},\\\"businessImpact\\\":\\\"提高订单处理效率，减少因录入错误导致的退单和客诉。\\\",\\\"failureCost\\\":\\\"发货错误导致物流成本增加，客户满意度下降，甚至产生坏账风险。\\\",\\\"coreConflict\\\":\\\"业务催单压力大与订单信息核对耗时之间的矛盾。\\\",\\\"failureReasons\\\":[\\\"漏填关键信息（如联系人电话）\\\",\\\"产品编码选择错误\\\",\\\"地址模糊导致物流无法派送\\\"],\\\"difficulties\\\":[\\\"在高压下保持录入准确性\\\",\\\"快速识别特殊订单要求\\\"],\\\"constraints\\\":{\\\"forbidBehaviors\\\":[\\\"禁止在未核对库存的情况下直接录入订单\\\",\\\"禁止使用模糊地址（如‘某某路口’）\\\"],\\\"maxTime\\\":10},\\\"relatedKnowledgeIds\\\":[],\\\"relatedScriptIds\\\":[],\\\"dimensionWeights\\\":[{\\\"dimensionId\\\":\\\"d1a2b3c4-1234-5678-90ab-cdef12345678\\\",\\\"weight\\\":40},{\\\"dimensionId\\\":\\\"d2b3c4d5-2345-6789-01bc-def123456789\\\",\\\"weight\\\":30},{\\\"dimensionId\\\":\\\"d3c4d5e6-3456-7890-12cd-ef1234567890\\\",\\\"weight\\\":30}],\\\"relatedProductProfileArtifactIds\\\":[],\\\"caseArtifactIds\\\":[],\\\"cases\\\":[]},{\\\"id\\\":\\\"0fb54cb6-768a-4ccd-8e8b-ea7800429c41\\\",\\\"name\\\":\\\"超授信发货审批沟通\\\",\\\"audiences\\\":[\\\"新入职订单运营专员\\\",\\\"销售支持人员\\\"],\\\"businessGoal\\\":\\\"在合规前提下协助业务完成超授信订单的审批，平衡风控与销售需求。\\\",\\\"behaviorGoals\\\":[\\\"准确判断超授信金额层级（100万以下/100-300万/300万以上）\\\",\\\"按流程向对应审批人（总监/赖总/美芳等）发起申请\\\",\\\"清晰说明超授信原因及客户回款计划，提供完整审批材料\\\"],\\\"relatedIcebergElements\\\":{\\\"knowledge\\\":[\\\"应收账款管控流程\\\",\\\"超授信审批层级规定\\\"],\\\"skills\\\":[\\\"跨部门沟通技巧\\\",\\\"流程合规判断能力\\\"],\\\"roles\\\":[\\\"风控协调员\\\"],\\\"selfConcept\\\":[\\\"原则性与灵活性并重\\\"],\\\"personalities\\\":[\\\"冷静客观\\\"],\\\"motives\\\":[\\\"保障公司资金安全\\\"]},\\\"businessImpact\\\":\\\"确保公司应收账款安全，同时支持重点客户的紧急发货需求。\\\",\\\"failureCost\\\":\\\"违规发货导致坏账，或审批流程延误导致客户流失。\\\",\\\"coreConflict\\\":\\\"业务经理的紧急发货需求与财务风控审批流程的冲突。\\\",\\\"failureReasons\\\":[\\\"找错审批人导致流程退回\\\",\\\"未说明超授信原因被财务驳回\\\",\\\"遗漏核算审核环节\\\"],\\\"difficulties\\\":[\\\"应对业务经理的催促和施压\\\",\\\"快速准备齐全的审批佐证材料\\\"],\\\"constraints\\\":{\\\"forbidBehaviors\\\":[\\\"禁止越级审批\\\",\\\"禁止在未获批准前通知仓库发货\\\"],\\\"maxTime\\\":15},\\\"relatedKnowledgeIds\\\":[],\\\"relatedScriptIds\\\":[],\\\"dimensionWeights\\\":[{\\\"dimensionId\\\":\\\"d1a2b3c4-1234-5678-90ab-cdef12345678\\\",\\\"weight\\\":50},{\\\"dimensionId\\\":\\\"d4d5e6f7-4567-8901-23de-f12345678901\\\",\\\"weight\\\":50}],\\\"relatedProductProfileArtifactIds\\\":[],\\\"caseArtifactIds\\\":[],\\\"cases\\\":[]},{\\\"id\\\":\\\"96553e74-f443-47b8-9cb3-9c6df30a1099\\\",\\\"name\\\":\\\"退返修流程处理与费用界定\\\",\\\"audiences\\\":[\\\"新入职订单运营专员\\\",\\\"售后服务支持\\\"],\\\"businessGoal\\\":\\\"规范处理客户退返修请求，明确费用责任，降低公司物流损失。\\\",\\\"behaviorGoals\\\":[\\\"引导客户在DMS系统提交退返修流程并粘贴标识卡\\\",\\\"根据退货原因（质量/非质量）准确界定运费承担方\\\",\\\"协调物流退回并跟进途损索赔事宜\\\"],\\\"relatedIcebergElements\\\":{\\\"knowledge\\\":[\\\"退返修处理规范\\\",\\\"物流运费承担政策\\\"],\\\"skills\\\":[\\\"客户情绪安抚技巧\\\",\\\"物流索赔处理能力\\\"],\\\"roles\\\":[\\\"售后服务协调员\\\"],\\\"selfConcept\\\":[\\\"客户导向\\\"],\\\"personalities\\\":[\\\"耐心细致\\\"],\\\"motives\\\":[\\\"维护客户关系\\\"]},\\\"businessImpact\\\":\\\"提升客户售后体验，规范退返修流程，减少不必要的运费支出。\\\",\\\"failureCost\\\":\\\"公司承担不应承担的运费，或因流程不规范导致货物丢失无法索赔。\\\",\\\"coreConflict\\\":\\\"客户希望免费退货与公司严格界定费用责任之间的冲突。\\\",\\\"failureReasons\\\":[\\\"未要求客户粘贴标识卡导致仓库拒收\\\",\\\"错误判断运费承担方引发客户投诉\\\",\\\"未跟进物流途损索赔\\\"],\\\"difficulties\\\":[\\\"向愤怒的客户解释非质量退货需自费\\\",\\\"处理复杂的批量退货审批\\\"],\\\"constraints\\\":{\\\"forbidBehaviors\\\":[\\\"禁止接受快递到付（质量原因除外）\\\",\\\"禁止在未明确费用承担前安排物流取件\\\"],\\\"maxTime\\\":12},\\\"relatedKnowledgeIds\\\":[],\\\"relatedScriptIds\\\":[],\\\"dimensionWeights\\\":[{\\\"dimensionId\\\":\\\"d4d5e6f7-4567-8901-23de-f12345678901\\\",\\\"weight\\\":40},{\\\"dimensionId\\\":\\\"d5e6f7a8-5678-9012-34ef-123456789012\\\",\\\"weight\\\":60}],\\\"relatedProductProfileArtifactIds\\\":[],\\\"caseArtifactIds\\\":[],\\\"cases\\\":[]},{\\\"id\\\":\\\"f7333a6c-388f-4845-af4d-aae42db4307c\\\",\\\"name\\\":\\\"运输方式优化选择与成本管控\\\",\\\"audiences\\\":[\\\"新入职订单运营专员\\\",\\\"物流协调员\\\"],\\\"businessGoal\\\":\\\"根据订单特性选择最优运输方式，平衡到货时效与物流成本。\\\",\\\"behaviorGoals\\\":[\\\"根据订单数量、地址偏远程度及紧急度选择物流方式（快递/物流/专车/拼车）\\\",\\\"向业务解释选择理由（如：为何选专车而非快递）\\\",\\\"预估并告知准确到货时间，管理客户预期\\\"],\\\"relatedIcebergElements\\\":{\\\"knowledge\\\":[\\\"运输管理知识\\\",\\\"物流成本结构\\\"],\\\"skills\\\":[\\\"成本效益分析能力\\\",\\\"物流方案推荐能力\\\"],\\\"roles\\\":[\\\"物流方案专家\\\"],\\\"selfConcept\\\":[\\\"成本意识\\\"],\\\"personalities\\\":[\\\"逻辑清晰\\\"],\\\"motives\\\":[\\\"优化资源配置\\\"]},\\\"businessImpact\\\":\\\"降低公司整体物流成本，提高客户对到货时间的满意度。\\\",\\\"failureCost\\\":\\\"物流成本过高侵蚀利润，或到货延误导致客户索赔。\\\",\\\"coreConflict\\\":\\\"业务要求最快到货与公司控制物流成本之间的冲突。\\\",\\\"failureReasons\\\":[\\\"小批量急单误选物流导致延误\\\",\\\"大批量订单误选快递导致成本激增\\\",\\\"未考虑地址偏僻性导致多次中转延误\\\"],\\\"difficulties\\\":[\\\"在多种物流方式中快速做出最优决策\\\",\\\"说服业务接受稍慢但更经济的物流方式\\\"],\\\"constraints\\\":{\\\"forbidBehaviors\\\":[\\\"禁止在不考虑成本的情况下盲目选择专车\\\",\\\"禁止对偏远地址使用无法直达的物流\\\"],\\\"maxTime\\\":8},\\\"relatedKnowledgeIds\\\":[],\\\"relatedScriptIds\\\":[],\\\"dimensionWeights\\\":[{\\\"dimensionId\\\":\\\"d2b3c4d5-2345-6789-01bc-def123456789\\\",\\\"weight\\\":30},{\\\"dimensionId\\\":\\\"d5e6f7a8-5678-9012-34ef-123456789012\\\",\\\"weight\\\":70}],\\\"relatedProductProfileArtifactIds\\\":[],\\\"caseArtifactIds\\\":[],\\\"cases\\\":[]},{\\\"id\\\":\\\"4c0cef91-7036-46ad-9008-a7f7d10856b3\\\",\\\"name\\\":\\\"库存查询与缺货应对策略\\\",\\\"audiences\\\":[\\\"新入职订单运营专员\\\",\\\"销售支持人员\\\"],\\\"businessGoal\\\":\\\"快速响应客户库存查询，针对缺货情况提供有效替代方案。\\\",\\\"behaviorGoals\\\":[\\\"快速通过WMS查询各仓库（下陈/椒江/临海/集聚区）库存\\\",\\\"针对缺货产品提供替代型号或调拨建议\\\",\\\"协调仓库优先处理急单，并反馈预计发货时间\\\"],\\\"relatedIcebergElements\\\":{\\\"knowledge\\\":[\\\"成品仓库分布知识\\\",\\\"库存管控流程\\\"],\\\"skills\\\":[\\\"WMS系统查询技能\\\",\\\"应急问题解决能力\\\"],\\\"roles\\\":[\\\"库存协调员\\\"],\\\"selfConcept\\\":[\\\"积极主动\\\"],\\\"personalities\\\":[\\\"反应敏捷\\\"],\\\"motives\\\":[\\\"达成销售目标\\\"]},\\\"businessImpact\\\":\\\"提高订单转化率，减少因缺货导致的订单流失。\\\",\\\"failureCost\\\":\\\"因回复不及时或方案无效导致客户取消订单。\\\",\\\"coreConflict\\\":\\\"客户急单需求与仓库实际库存分布不均的冲突。\\\",\\\"failureReasons\\\":[\\\"只查询主仓库忽略其他分仓库存\\\",\\\"未提供替代方案直接告知缺货\\\",\\\"协调仓库优先处理时沟通不畅\\\"],\\\"difficulties\\\":[\\\"在多个仓库系统中快速定位准确库存\\\",\\\"在缺货情况下说服客户接受替代方案\\\"],\\\"constraints\\\":{\\\"forbidBehaviors\\\":[\\\"禁止在未核实库存的情况下承诺发货时间\\\",\\\"禁止忽略立体库库存直接告知无货\\\"],\\\"maxTime\\\":10},\\\"relatedKnowledgeIds\\\":[],\\\"relatedScriptIds\\\":[],\\\"dimensionWeights\\\":[{\\\"dimensionId\\\":\\\"d2b3c4d5-2345-6789-01bc-def123456789\\\",\\\"weight\\\":40},{\\\"dimensionId\\\":\\\"d3c4d5e6-3456-7890-12cd-ef1234567890\\\",\\\"weight\\\":60}],\\\"relatedProductProfileArtifactIds\\\":[],\\\"caseArtifactIds\\\":[],\\\"cases\\\":[]}],\\\"customerProfiles\\\":[{\\\"id\\\":\\\"f1a2b3c4-d5e6-7890-abcd-ef1234567890\\\",\\\"type\\\":\\\"急躁型业务经理\\\",\\\"description\\\":\\\"负责区域销售，业绩压力大，经常为了赶发货时间而忽略流程规范，喜欢直接催促订单专员。\\\",\\\"personalities\\\":[\\\"强势\\\",\\\"结果导向\\\",\\\"缺乏耐心\\\"],\\\"decisionFactors\\\":[\\\"发货速度\\\",\\\"客户满意度\\\"],\\\"communicationStyle\\\":\\\"语速快，语气强硬，喜欢直接下达指令，不喜欢听解释。\\\",\\\"painPoints\\\":[\\\"订单处理慢影响业绩\\\",\\\"流程繁琐耽误时间\\\"]},{\\\"id\\\":\\\"f2b3c4d5-e6f7-8901-bcde-f12345678901\\\",\\\"type\\\":\\\"严谨型核算专员\\\",\\\"description\\\":\\\"负责财务风控，对超授信审批非常严格，要求所有材料齐全且符合规定，不容许任何违规操作。\\\",\\\"personalities\\\":[\\\"严谨\\\",\\\"原则性强\\\",\\\"保守\\\"],\\\"decisionFactors\\\":[\\\"合规性\\\",\\\"资金安全\\\"],\\\"communicationStyle\\\":\\\"语气正式，注重细节，喜欢引用公司规定，对模糊信息零容忍。\\\",\\\"painPoints\\\":[\\\"审批材料不全\\\",\\\"业务违规操作\\\"]},{\\\"id\\\":\\\"f3c4d5e6-f7a8-9012-cdef-123456789012\\\",\\\"type\\\":\\\"焦虑型渠道客户\\\",\\\"description\\\":\\\"对退返修流程不熟悉，担心运费损失，情绪容易激动，希望得到快速且免费的解决方案。\\\",\\\"personalities\\\":[\\\"敏感\\\",\\\"情绪化\\\",\\\"价格敏感\\\"],\\\"decisionFactors\\\":[\\\"费用承担\\\",\\\"处理效率\\\"],\\\"communicationStyle\\\":\\\"语气焦急，经常抱怨，喜欢追问进度，对费用问题非常在意。\\\",\\\"painPoints\\\":[\\\"退货运费高\\\",\\\"处理流程复杂\\\"]}],\\\"icebergModel\\\":{\\\"visible\\\":{\\\"knowledge\\\":[\\\"订单处理系统知识: 熟练掌握CRM、PRM、SAP、WMS等系统的功能模块及操作路径\\\",\\\"国内订单事项规范: 熟悉订单录入、审批、发货、退返修等全流程的业务规范\\\",\\\"应收账款管控流程: 掌握超授信审批层级及所需材料，了解逾期发货流程\\\",\\\"运输管理知识: 了解快递、物流、专车、拼车等不同运输方式的适用场景及成本结构\\\",\\\"成品仓库分布知识: 熟悉下陈、椒江、临海、集聚区等仓库的产品分布及库存特点\\\"],\\\"skills\\\":[\\\"CRM系统操作技能: 能够准确、快速地在CRM系统中录入订单信息\\\",\\\"WMS系统查询技能: 能够快速在多仓库系统中查询准确库存\\\",\\\"跨部门沟通技巧: 能够与业务、财务、仓库等部门进行有效沟通\\\",\\\"成本效益分析能力: 能够根据订单特性选择最优物流方式以平衡成本与时效\\\",\\\"客户情绪安抚技巧: 能够在退返修等敏感场景中安抚客户情绪并解决问题\\\"]},\\\"hidden\\\":{\\\"roles\\\":[\\\"订单处理专员\\\",\\\"风控协调员\\\",\\\"售后服务协调员\\\",\\\"物流方案专家\\\",\\\"库存协调员\\\"],\\\"selfConcept\\\":[\\\"严谨细致\\\",\\\"原则性与灵活性并重\\\",\\\"客户导向\\\",\\\"成本意识\\\",\\\"积极主动\\\"],\\\"personalities\\\":[\\\"注重细节\\\",\\\"冷静客观\\\",\\\"耐心细致\\\",\\\"逻辑清晰\\\",\\\"反应敏捷\\\"],\\\"motives\\\":[\\\"追求零差错\\\",\\\"保障公司资金安全\\\",\\\"维护客户关系\\\",\\\"优化资源配置\\\",\\\"达成销售目标\\\"]}},\\\"evaluationCriteria\\\":{\\\"passScore\\\":70,\\\"dimensions\\\":[{\\\"i"
+ },
+ {
+  "t": "06:41:15",
+  "m": "OPTIONS",
+  "u": "https://api-phx-ali.yunxuetang.cn/artifact-server/artifacts/755678979576512722",
+  "status": 200,
+  "req": "",
+  "resp": ""
+ },
+ {
+  "t": "06:41:34",
+  "m": "GET",
+  "u": "https://api-phx-ali.yunxuetang.cn/artifact-server/artifacts/755678979576512722",
+  "status": 200,
+  "req": "",
+  "resp": "{\"id\":\"755678979576512722\",\"name\":\"订单运营新人实战演练\",\"type\":\"biz\",\"sub_type\":\"json\",\"biz_type\":\"\",\"context_id\":null,\"ext_info\":null,\"content\":\"{\\\"materials\\\":[{\\\"id\\\":\\\"3a20da33-dd08-47a2-ae0c-8228f66f3ada\\\",\\\"name\\\":\\\"订单运营部职能介绍\\\",\\\"fileType\\\":\\\"ppt\\\",\\\"fileSize\\\":2,\\\"fileSizeUnit\\\":\\\"M\\\",\\\"visibility\\\":1,\\\"fileServId\\\":\\\"file\\\",\\\"fileSource\\\":2,\\\"targetId\\\":\\\"217f8c53-6f2c-4a78-8062-6c66af5038c7\\\"}],\\\"scenarios\\\":[{\\\"id\\\":\\\"e16ebbdd-de18-40e1-9e44-7f5be10b393a\\\",\\\"name\\\":\\\"CRM订单录入规范演练\\\",\\\"audiences\\\":[\\\"新入职订单运营专员\\\",\\\"0-3个月试用期员工\\\"],\\\"businessGoal\\\":\\\"确保订单信息录入准确无误，避免因信息缺失导致的发货错误或物流延误。\\\",\\\"behaviorGoals\\\":[\\\"准确识别客户类型并选择对应的系统入口（CRM/PRM）\\\",\\\"完整录入产品编码、数量、单价及特殊包装要求\\\",\\\"核对收货地址与物流方式的匹配性，确保地址详细到门牌号\\\"],\\\"relatedIcebergElements\\\":{\\\"knowledge\\\":[\\\"订单处理系统知识\\\",\\\"国内订单事项规范\\\"],\\\"skills\\\":[\\\"CRM系统操作技能\\\",\\\"信息核对与录入技能\\\"],\\\"roles\\\":[\\\"订单处理专员\\\"],\\\"selfConcept\\\":[\\\"严谨细致\\\"],\\\"personalities\\\":[\\\"注重细节\\\"],\\\"motives\\\":[\\\"追求零差错\\\"]},\\\"businessImpact\\\":\\\"提高订单处理效率，减少因录入错误导致的退单和客诉。\\\",\\\"failureCost\\\":\\\"发货错误导致物流成本增加，客户满意度下降，甚至产生坏账风险。\\\",\\\"coreConflict\\\":\\\"业务催单压力大与订单信息核对耗时之间的矛盾。\\\",\\\"failureReasons\\\":[\\\"漏填关键信息（如联系人电话）\\\",\\\"产品编码选择错误\\\",\\\"地址模糊导致物流无法派送\\\"],\\\"difficulties\\\":[\\\"在高压下保持录入准确性\\\",\\\"快速识别特殊订单要求\\\"],\\\"constraints\\\":{\\\"forbidBehaviors\\\":[\\\"禁止在未核对库存的情况下直接录入订单\\\",\\\"禁止使用模糊地址（如‘某某路口’）\\\"],\\\"maxTime\\\":10},\\\"relatedKnowledgeIds\\\":[],\\\"relatedScriptIds\\\":[],\\\"dimensionWeights\\\":[{\\\"dimensionId\\\":\\\"d1a2b3c4-1234-5678-90ab-cdef12345678\\\",\\\"weight\\\":40},{\\\"dimensionId\\\":\\\"d2b3c4d5-2345-6789-01bc-def123456789\\\",\\\"weight\\\":30},{\\\"dimensionId\\\":\\\"d3c4d5e6-3456-7890-12cd-ef1234567890\\\",\\\"weight\\\":30}],\\\"relatedProductProfileArtifactIds\\\":[],\\\"caseArtifactIds\\\":[],\\\"cases\\\":[]},{\\\"id\\\":\\\"0fb54cb6-768a-4ccd-8e8b-ea7800429c41\\\",\\\"name\\\":\\\"超授信发货审批沟通\\\",\\\"audiences\\\":[\\\"新入职订单运营专员\\\",\\\"销售支持人员\\\"],\\\"businessGoal\\\":\\\"在合规前提下协助业务完成超授信订单的审批，平衡风控与销售需求。\\\",\\\"behaviorGoals\\\":[\\\"准确判断超授信金额层级（100万以下/100-300万/300万以上）\\\",\\\"按流程向对应审批人（总监/赖总/美芳等）发起申请\\\",\\\"清晰说明超授信原因及客户回款计划，提供完整审批材料\\\"],\\\"relatedIcebergElements\\\":{\\\"knowledge\\\":[\\\"应收账款管控流程\\\",\\\"超授信审批层级规定\\\"],\\\"skills\\\":[\\\"跨部门沟通技巧\\\",\\\"流程合规判断能力\\\"],\\\"roles\\\":[\\\"风控协调员\\\"],\\\"selfConcept\\\":[\\\"原则性与灵活性并重\\\"],\\\"personalities\\\":[\\\"冷静客观\\\"],\\\"motives\\\":[\\\"保障公司资金安全\\\"]},\\\"businessImpact\\\":\\\"确保公司应收账款安全，同时支持重点客户的紧急发货需求。\\\",\\\"failureCost\\\":\\\"违规发货导致坏账，或审批流程延误导致客户流失。\\\",\\\"coreConflict\\\":\\\"业务经理的紧急发货需求与财务风控审批流程的冲突。\\\",\\\"failureReasons\\\":[\\\"找错审批人导致流程退回\\\",\\\"未说明超授信原因被财务驳回\\\",\\\"遗漏核算审核环节\\\"],\\\"difficulties\\\":[\\\"应对业务经理的催促和施压\\\",\\\"快速准备齐全的审批佐证材料\\\"],\\\"constraints\\\":{\\\"forbidBehaviors\\\":[\\\"禁止越级审批\\\",\\\"禁止在未获批准前通知仓库发货\\\"],\\\"maxTime\\\":15},\\\"relatedKnowledgeIds\\\":[],\\\"relatedScriptIds\\\":[],\\\"dimensionWeights\\\":[{\\\"dimensionId\\\":\\\"d1a2b3c4-1234-5678-90ab-cdef12345678\\\",\\\"weight\\\":50},{\\\"dimensionId\\\":\\\"d4d5e6f7-4567-8901-23de-f12345678901\\\",\\\"weight\\\":50}],\\\"relatedProductProfileArtifactIds\\\":[],\\\"caseArtifactIds\\\":[],\\\"cases\\\":[]},{\\\"id\\\":\\\"96553e74-f443-47b8-9cb3-9c6df30a1099\\\",\\\"name\\\":\\\"退返修流程处理与费用界定\\\",\\\"audiences\\\":[\\\"新入职订单运营专员\\\",\\\"售后服务支持\\\"],\\\"businessGoal\\\":\\\"规范处理客户退返修请求，明确费用责任，降低公司物流损失。\\\",\\\"behaviorGoals\\\":[\\\"引导客户在DMS系统提交退返修流程并粘贴标识卡\\\",\\\"根据退货原因（质量/非质量）准确界定运费承担方\\\",\\\"协调物流退回并跟进途损索赔事宜\\\"],\\\"relatedIcebergElements\\\":{\\\"knowledge\\\":[\\\"退返修处理规范\\\",\\\"物流运费承担政策\\\"],\\\"skills\\\":[\\\"客户情绪安抚技巧\\\",\\\"物流索赔处理能力\\\"],\\\"roles\\\":[\\\"售后服务协调员\\\"],\\\"selfConcept\\\":[\\\"客户导向\\\"],\\\"personalities\\\":[\\\"耐心细致\\\"],\\\"motives\\\":[\\\"维护客户关系\\\"]},\\\"businessImpact\\\":\\\"提升客户售后体验，规范退返修流程，减少不必要的运费支出。\\\",\\\"failureCost\\\":\\\"公司承担不应承担的运费，或因流程不规范导致货物丢失无法索赔。\\\",\\\"coreConflict\\\":\\\"客户希望免费退货与公司严格界定费用责任之间的冲突。\\\",\\\"failureReasons\\\":[\\\"未要求客户粘贴标识卡导致仓库拒收\\\",\\\"错误判断运费承担方引发客户投诉\\\",\\\"未跟进物流途损索赔\\\"],\\\"difficulties\\\":[\\\"向愤怒的客户解释非质量退货需自费\\\",\\\"处理复杂的批量退货审批\\\"],\\\"constraints\\\":{\\\"forbidBehaviors\\\":[\\\"禁止接受快递到付（质量原因除外）\\\",\\\"禁止在未明确费用承担前安排物流取件\\\"],\\\"maxTime\\\":12},\\\"relatedKnowledgeIds\\\":[],\\\"relatedScriptIds\\\":[],\\\"dimensionWeights\\\":[{\\\"dimensionId\\\":\\\"d4d5e6f7-4567-8901-23de-f12345678901\\\",\\\"weight\\\":40},{\\\"dimensionId\\\":\\\"d5e6f7a8-5678-9012-34ef-123456789012\\\",\\\"weight\\\":60}],\\\"relatedProductProfileArtifactIds\\\":[],\\\"caseArtifactIds\\\":[],\\\"cases\\\":[]},{\\\"id\\\":\\\"f7333a6c-388f-4845-af4d-aae42db4307c\\\",\\\"name\\\":\\\"运输方式优化选择与成本管控\\\",\\\"audiences\\\":[\\\"新入职订单运营专员\\\",\\\"物流协调员\\\"],\\\"businessGoal\\\":\\\"根据订单特性选择最优运输方式，平衡到货时效与物流成本。\\\",\\\"behaviorGoals\\\":[\\\"根据订单数量、地址偏远程度及紧急度选择物流方式（快递/物流/专车/拼车）\\\",\\\"向业务解释选择理由（如：为何选专车而非快递）\\\",\\\"预估并告知准确到货时间，管理客户预期\\\"],\\\"relatedIcebergElements\\\":{\\\"knowledge\\\":[\\\"运输管理知识\\\",\\\"物流成本结构\\\"],\\\"skills\\\":[\\\"成本效益分析能力\\\",\\\"物流方案推荐能力\\\"],\\\"roles\\\":[\\\"物流方案专家\\\"],\\\"selfConcept\\\":[\\\"成本意识\\\"],\\\"personalities\\\":[\\\"逻辑清晰\\\"],\\\"motives\\\":[\\\"优化资源配置\\\"]},\\\"businessImpact\\\":\\\"降低公司整体物流成本，提高客户对到货时间的满意度。\\\",\\\"failureCost\\\":\\\"物流成本过高侵蚀利润，或到货延误导致客户索赔。\\\",\\\"coreConflict\\\":\\\"业务要求最快到货与公司控制物流成本之间的冲突。\\\",\\\"failureReasons\\\":[\\\"小批量急单误选物流导致延误\\\",\\\"大批量订单误选快递导致成本激增\\\",\\\"未考虑地址偏僻性导致多次中转延误\\\"],\\\"difficulties\\\":[\\\"在多种物流方式中快速做出最优决策\\\",\\\"说服业务接受稍慢但更经济的物流方式\\\"],\\\"constraints\\\":{\\\"forbidBehaviors\\\":[\\\"禁止在不考虑成本的情况下盲目选择专车\\\",\\\"禁止对偏远地址使用无法直达的物流\\\"],\\\"maxTime\\\":8},\\\"relatedKnowledgeIds\\\":[],\\\"relatedScriptIds\\\":[],\\\"dimensionWeights\\\":[{\\\"dimensionId\\\":\\\"d2b3c4d5-2345-6789-01bc-def123456789\\\",\\\"weight\\\":30},{\\\"dimensionId\\\":\\\"d5e6f7a8-5678-9012-34ef-123456789012\\\",\\\"weight\\\":70}],\\\"relatedProductProfileArtifactIds\\\":[],\\\"caseArtifactIds\\\":[],\\\"cases\\\":[]},{\\\"id\\\":\\\"4c0cef91-7036-46ad-9008-a7f7d10856b3\\\",\\\"name\\\":\\\"库存查询与缺货应对策略\\\",\\\"audiences\\\":[\\\"新入职订单运营专员\\\",\\\"销售支持人员\\\"],\\\"businessGoal\\\":\\\"快速响应客户库存查询，针对缺货情况提供有效替代方案。\\\",\\\"behaviorGoals\\\":[\\\"快速通过WMS查询各仓库（下陈/椒江/临海/集聚区）库存\\\",\\\"针对缺货产品提供替代型号或调拨建议\\\",\\\"协调仓库优先处理急单，并反馈预计发货时间\\\"],\\\"relatedIcebergElements\\\":{\\\"knowledge\\\":[\\\"成品仓库分布知识\\\",\\\"库存管控流程\\\"],\\\"skills\\\":[\\\"WMS系统查询技能\\\",\\\"应急问题解决能力\\\"],\\\"roles\\\":[\\\"库存协调员\\\"],\\\"selfConcept\\\":[\\\"积极主动\\\"],\\\"personalities\\\":[\\\"反应敏捷\\\"],\\\"motives\\\":[\\\"达成销售目标\\\"]},\\\"businessImpact\\\":\\\"提高订单转化率，减少因缺货导致的订单流失。\\\",\\\"failureCost\\\":\\\"因回复不及时或方案无效导致客户取消订单。\\\",\\\"coreConflict\\\":\\\"客户急单需求与仓库实际库存分布不均的冲突。\\\",\\\"failureReasons\\\":[\\\"只查询主仓库忽略其他分仓库存\\\",\\\"未提供替代方案直接告知缺货\\\",\\\"协调仓库优先处理时沟通不畅\\\"],\\\"difficulties\\\":[\\\"在多个仓库系统中快速定位准确库存\\\",\\\"在缺货情况下说服客户接受替代方案\\\"],\\\"constraints\\\":{\\\"forbidBehaviors\\\":[\\\"禁止在未核实库存的情况下承诺发货时间\\\",\\\"禁止忽略立体库库存直接告知无货\\\"],\\\"maxTime\\\":10},\\\"relatedKnowledgeIds\\\":[],\\\"relatedScriptIds\\\":[],\\\"dimensionWeights\\\":[{\\\"dimensionId\\\":\\\"d2b3c4d5-2345-6789-01bc-def123456789\\\",\\\"weight\\\":40},{\\\"dimensionId\\\":\\\"d3c4d5e6-3456-7890-12cd-ef1234567890\\\",\\\"weight\\\":60}],\\\"relatedProductProfileArtifactIds\\\":[],\\\"caseArtifactIds\\\":[],\\\"cases\\\":[]}],\\\"customerProfiles\\\":[{\\\"id\\\":\\\"f1a2b3c4-d5e6-7890-abcd-ef1234567890\\\",\\\"type\\\":\\\"急躁型业务经理\\\",\\\"description\\\":\\\"负责区域销售，业绩压力大，经常为了赶发货时间而忽略流程规范，喜欢直接催促订单专员。\\\",\\\"personalities\\\":[\\\"强势\\\",\\\"结果导向\\\",\\\"缺乏耐心\\\"],\\\"decisionFactors\\\":[\\\"发货速度\\\",\\\"客户满意度\\\"],\\\"communicationStyle\\\":\\\"语速快，语气强硬，喜欢直接下达指令，不喜欢听解释。\\\",\\\"painPoints\\\":[\\\"订单处理慢影响业绩\\\",\\\"流程繁琐耽误时间\\\"]},{\\\"id\\\":\\\"f2b3c4d5-e6f7-8901-bcde-f12345678901\\\",\\\"type\\\":\\\"严谨型核算专员\\\",\\\"description\\\":\\\"负责财务风控，对超授信审批非常严格，要求所有材料齐全且符合规定，不容许任何违规操作。\\\",\\\"personalities\\\":[\\\"严谨\\\",\\\"原则性强\\\",\\\"保守\\\"],\\\"decisionFactors\\\":[\\\"合规性\\\",\\\"资金安全\\\"],\\\"communicationStyle\\\":\\\"语气正式，注重细节，喜欢引用公司规定，对模糊信息零容忍。\\\",\\\"painPoints\\\":[\\\"审批材料不全\\\",\\\"业务违规操作\\\"]},{\\\"id\\\":\\\"f3c4d5e6-f7a8-9012-cdef-123456789012\\\",\\\"type\\\":\\\"焦虑型渠道客户\\\",\\\"description\\\":\\\"对退返修流程不熟悉，担心运费损失，情绪容易激动，希望得到快速且免费的解决方案。\\\",\\\"personalities\\\":[\\\"敏感\\\",\\\"情绪化\\\",\\\"价格敏感\\\"],\\\"decisionFactors\\\":[\\\"费用承担\\\",\\\"处理效率\\\"],\\\"communicationStyle\\\":\\\"语气焦急，经常抱怨，喜欢追问进度，对费用问题非常在意。\\\",\\\"painPoints\\\":[\\\"退货运费高\\\",\\\"处理流程复杂\\\"]}],\\\"icebergModel\\\":{\\\"visible\\\":{\\\"knowledge\\\":[\\\"订单处理系统知识: 熟练掌握CRM、PRM、SAP、WMS等系统的功能模块及操作路径\\\",\\\"国内订单事项规范: 熟悉订单录入、审批、发货、退返修等全流程的业务规范\\\",\\\"应收账款管控流程: 掌握超授信审批层级及所需材料，了解逾期发货流程\\\",\\\"运输管理知识: 了解快递、物流、专车、拼车等不同运输方式的适用场景及成本结构\\\",\\\"成品仓库分布知识: 熟悉下陈、椒江、临海、集聚区等仓库的产品分布及库存特点\\\"],\\\"skills\\\":[\\\"CRM系统操作技能: 能够准确、快速地在CRM系统中录入订单信息\\\",\\\"WMS系统查询技能: 能够快速在多仓库系统中查询准确库存\\\",\\\"跨部门沟通技巧: 能够与业务、财务、仓库等部门进行有效沟通\\\",\\\"成本效益分析能力: 能够根据订单特性选择最优物流方式以平衡成本与时效\\\",\\\"客户情绪安抚技巧: 能够在退返修等敏感场景中安抚客户情绪并解决问题\\\"]},\\\"hidden\\\":{\\\"roles\\\":[\\\"订单处理专员\\\",\\\"风控协调员\\\",\\\"售后服务协调员\\\",\\\"物流方案专家\\\",\\\"库存协调员\\\"],\\\"selfConcept\\\":[\\\"严谨细致\\\",\\\"原则性与灵活性并重\\\",\\\"客户导向\\\",\\\"成本意识\\\",\\\"积极主动\\\"],\\\"personalities\\\":[\\\"注重细节\\\",\\\"冷静客观\\\",\\\"耐心细致\\\",\\\"逻辑清晰\\\",\\\"反应敏捷\\\"],\\\"motives\\\":[\\\"追求零差错\\\",\\\"保障公司资金安全\\\",\\\"维护客户关系\\\",\\\"优化资源配置\\\",\\\"达成销售目标\\\"]}},\\\"evaluationCriteria\\\":{\\\"passScore\\\":70,\\\"dimensions\\\":[{\\\"i"
+ },
+ {
+  "t": "06:41:34",
+  "m": "OPTIONS",
+  "u": "https://api-phx-ali.yunxuetang.cn/artifact-server/artifacts/755678979576512722",
+  "status": 200,
+  "req": "",
+  "resp": ""
+ },
+ {
+  "t": "06:43:10",
+  "m": "GET",
+  "u": "https://api-phx-ali.yunxuetang.cn/artifact-server/artifacts/755678979576512722",
+  "status": 200,
+  "req": "",
+  "resp": "{\"id\":\"755678979576512722\",\"name\":\"订单运营新人实战演练\",\"type\":\"biz\",\"sub_type\":\"json\",\"biz_type\":\"\",\"context_id\":null,\"ext_info\":null,\"content\":\"{\\\"materials\\\":[{\\\"id\\\":\\\"3a20da33-dd08-47a2-ae0c-8228f66f3ada\\\",\\\"name\\\":\\\"订单运营部职能介绍\\\",\\\"fileType\\\":\\\"ppt\\\",\\\"fileSize\\\":2,\\\"fileSizeUnit\\\":\\\"M\\\",\\\"visibility\\\":1,\\\"fileServId\\\":\\\"file\\\",\\\"fileSource\\\":2,\\\"targetId\\\":\\\"217f8c53-6f2c-4a78-8062-6c66af5038c7\\\"}],\\\"scenarios\\\":[{\\\"id\\\":\\\"e16ebbdd-de18-40e1-9e44-7f5be10b393a\\\",\\\"name\\\":\\\"CRM订单录入规范演练\\\",\\\"audiences\\\":[\\\"新入职订单运营专员\\\",\\\"0-3个月试用期员工\\\"],\\\"businessGoal\\\":\\\"确保订单信息录入准确无误，避免因信息缺失导致的发货错误或物流延误。\\\",\\\"behaviorGoals\\\":[\\\"准确识别客户类型并选择对应的系统入口（CRM/PRM）\\\",\\\"完整录入产品编码、数量、单价及特殊包装要求\\\",\\\"核对收货地址与物流方式的匹配性，确保地址详细到门牌号\\\"],\\\"relatedIcebergElements\\\":{\\\"knowledge\\\":[\\\"订单处理系统知识\\\",\\\"国内订单事项规范\\\"],\\\"skills\\\":[\\\"CRM系统操作技能\\\",\\\"信息核对与录入技能\\\"],\\\"roles\\\":[\\\"订单处理专员\\\"],\\\"selfConcept\\\":[\\\"严谨细致\\\"],\\\"personalities\\\":[\\\"注重细节\\\"],\\\"motives\\\":[\\\"追求零差错\\\"]},\\\"businessImpact\\\":\\\"提高订单处理效率，减少因录入错误导致的退单和客诉。\\\",\\\"failureCost\\\":\\\"发货错误导致物流成本增加，客户满意度下降，甚至产生坏账风险。\\\",\\\"coreConflict\\\":\\\"业务催单压力大与订单信息核对耗时之间的矛盾。\\\",\\\"failureReasons\\\":[\\\"漏填关键信息（如联系人电话）\\\",\\\"产品编码选择错误\\\",\\\"地址模糊导致物流无法派送\\\"],\\\"difficulties\\\":[\\\"在高压下保持录入准确性\\\",\\\"快速识别特殊订单要求\\\"],\\\"constraints\\\":{\\\"forbidBehaviors\\\":[\\\"禁止在未核对库存的情况下直接录入订单\\\",\\\"禁止使用模糊地址（如‘某某路口’）\\\"],\\\"maxTime\\\":10},\\\"relatedKnowledgeIds\\\":[],\\\"relatedScriptIds\\\":[],\\\"dimensionWeights\\\":[{\\\"dimensionId\\\":\\\"d1a2b3c4-1234-5678-90ab-cdef12345678\\\",\\\"weight\\\":40},{\\\"dimensionId\\\":\\\"d2b3c4d5-2345-6789-01bc-def123456789\\\",\\\"weight\\\":30},{\\\"dimensionId\\\":\\\"d3c4d5e6-3456-7890-12cd-ef1234567890\\\",\\\"weight\\\":30}],\\\"relatedProductProfileArtifactIds\\\":[],\\\"caseArtifactIds\\\":[],\\\"cases\\\":[]},{\\\"id\\\":\\\"0fb54cb6-768a-4ccd-8e8b-ea7800429c41\\\",\\\"name\\\":\\\"超授信发货审批沟通\\\",\\\"audiences\\\":[\\\"新入职订单运营专员\\\",\\\"销售支持人员\\\"],\\\"businessGoal\\\":\\\"在合规前提下协助业务完成超授信订单的审批，平衡风控与销售需求。\\\",\\\"behaviorGoals\\\":[\\\"准确判断超授信金额层级（100万以下/100-300万/300万以上）\\\",\\\"按流程向对应审批人（总监/赖总/美芳等）发起申请\\\",\\\"清晰说明超授信原因及客户回款计划，提供完整审批材料\\\"],\\\"relatedIcebergElements\\\":{\\\"knowledge\\\":[\\\"应收账款管控流程\\\",\\\"超授信审批层级规定\\\"],\\\"skills\\\":[\\\"跨部门沟通技巧\\\",\\\"流程合规判断能力\\\"],\\\"roles\\\":[\\\"风控协调员\\\"],\\\"selfConcept\\\":[\\\"原则性与灵活性并重\\\"],\\\"personalities\\\":[\\\"冷静客观\\\"],\\\"motives\\\":[\\\"保障公司资金安全\\\"]},\\\"businessImpact\\\":\\\"确保公司应收账款安全，同时支持重点客户的紧急发货需求。\\\",\\\"failureCost\\\":\\\"违规发货导致坏账，或审批流程延误导致客户流失。\\\",\\\"coreConflict\\\":\\\"业务经理的紧急发货需求与财务风控审批流程的冲突。\\\",\\\"failureReasons\\\":[\\\"找错审批人导致流程退回\\\",\\\"未说明超授信原因被财务驳回\\\",\\\"遗漏核算审核环节\\\"],\\\"difficulties\\\":[\\\"应对业务经理的催促和施压\\\",\\\"快速准备齐全的审批佐证材料\\\"],\\\"constraints\\\":{\\\"forbidBehaviors\\\":[\\\"禁止越级审批\\\",\\\"禁止在未获批准前通知仓库发货\\\"],\\\"maxTime\\\":15},\\\"relatedKnowledgeIds\\\":[],\\\"relatedScriptIds\\\":[],\\\"dimensionWeights\\\":[{\\\"dimensionId\\\":\\\"d1a2b3c4-1234-5678-90ab-cdef12345678\\\",\\\"weight\\\":50},{\\\"dimensionId\\\":\\\"d4d5e6f7-4567-8901-23de-f12345678901\\\",\\\"weight\\\":50}],\\\"relatedProductProfileArtifactIds\\\":[],\\\"caseArtifactIds\\\":[\\\"755680059688649166\\\"],\\\"cases\\\":[{\\\"roleplayScriptArtifactId\\\":\\\"755680059688649166\\\",\\\"roleplayScriptJsonArtifactId\\\":\\\"755680140227675018\\\",\\\"scriptName\\\":\\\"高压下的合规坚守：超授信发货审批博弈\\\",\\\"difficulty\\\":2,\\\"actorName\\\":\\\"王强\\\",\\\"actorPosition\\\":null,\\\"actorCompany\\\":null,\\\"actorType\\\":\\\"销售部经理\\\",\\\"actorPersonality\\\":\\\"急躁、结果导向、强势、缺乏耐心\\\",\\\"actorCommunicationStyle\\\":null,\\\"scriptBackground\\\":\\\"资深销售经理，业绩导向极强，性格强势直接。他刚拿下宏达科技的大单，但因客户临时追加订单导致超授信。他担心如果今天不发，客户会流失，影响他的季度奖金。\\\",\\\"scriptOpening\\\":\\\"（身体前倾，手指急促地敲击桌面，眼神死死盯着你的屏幕）“别转圈了！李总刚才电话里说了，今天见不到发货单，明天就转单给竞品。这50万超授信又不是第一次，你先让仓库把货备出来，审批我回头补，行不行？这责任你担还是我担？”\\\"}]},{\\\"id\\\":\\\"96553e74-f443-47b8-9cb3-9c6df30a1099\\\",\\\"name\\\":\\\"退返修流程处理与费用界定\\\",\\\"audiences\\\":[\\\"新入职订单运营专员\\\",\\\"售后服务支持\\\"],\\\"businessGoal\\\":\\\"规范处理客户退返修请求，明确费用责任，降低公司物流损失。\\\",\\\"behaviorGoals\\\":[\\\"引导客户在DMS系统提交退返修流程并粘贴标识卡\\\",\\\"根据退货原因（质量/非质量）准确界定运费承担方\\\",\\\"协调物流退回并跟进途损索赔事宜\\\"],\\\"relatedIcebergElements\\\":{\\\"knowledge\\\":[\\\"退返修处理规范\\\",\\\"物流运费承担政策\\\"],\\\"skills\\\":[\\\"客户情绪安抚技巧\\\",\\\"物流索赔处理能力\\\"],\\\"roles\\\":[\\\"售后服务协调员\\\"],\\\"selfConcept\\\":[\\\"客户导向\\\"],\\\"personalities\\\":[\\\"耐心细致\\\"],\\\"motives\\\":[\\\"维护客户关系\\\"]},\\\"businessImpact\\\":\\\"提升客户售后体验，规范退返修流程，减少不必要的运费支出。\\\",\\\"failureCost\\\":\\\"公司承担不应承担的运费，或因流程不规范导致货物丢失无法索赔。\\\",\\\"coreConflict\\\":\\\"客户希望免费退货与公司严格界定费用责任之间的冲突。\\\",\\\"failureReasons\\\":[\\\"未要求客户粘贴标识卡导致仓库拒收\\\",\\\"错误判断运费承担方引发客户投诉\\\",\\\"未跟进物流途损索赔\\\"],\\\"difficulties\\\":[\\\"向愤怒的客户解释非质量退货需自费\\\",\\\"处理复杂的批量退货审批\\\"],\\\"constraints\\\":{\\\"forbidBehaviors\\\":[\\\"禁止接受快递到付（质量原因除外）\\\",\\\"禁止在未明确费用承担前安排物流取件\\\"],\\\"maxTime\\\":12},\\\"relatedKnowledgeIds\\\":[],\\\"relatedScriptIds\\\":[],\\\"dimensionWeights\\\":[{\\\"dimensionId\\\":\\\"d4d5e6f7-4567-8901-23de-f12345678901\\\",\\\"weight\\\":40},{\\\"dimensionId\\\":\\\"d5e6f7a8-5678-9012-34ef-123456789012\\\",\\\"weight\\\":60}],\\\"relatedProductProfileArtifactIds\\\":[],\\\"caseArtifactIds\\\":[],\\\"cases\\\":[]},{\\\"id\\\":\\\"f7333a6c-388f-4845-af4d-aae42db4307c\\\",\\\"name\\\":\\\"运输方式优化选择与成本管控\\\",\\\"audiences\\\":[\\\"新入职订单运营专员\\\",\\\"物流协调员\\\"],\\\"businessGoal\\\":\\\"根据订单特性选择最优运输方式，平衡到货时效与物流成本。\\\",\\\"behaviorGoals\\\":[\\\"根据订单数量、地址偏远程度及紧急度选择物流方式（快递/物流/专车/拼车）\\\",\\\"向业务解释选择理由（如：为何选专车而非快递）\\\",\\\"预估并告知准确到货时间，管理客户预期\\\"],\\\"relatedIcebergElements\\\":{\\\"knowledge\\\":[\\\"运输管理知识\\\",\\\"物流成本结构\\\"],\\\"skills\\\":[\\\"成本效益分析能力\\\",\\\"物流方案推荐能力\\\"],\\\"roles\\\":[\\\"物流方案专家\\\"],\\\"selfConcept\\\":[\\\"成本意识\\\"],\\\"personalities\\\":[\\\"逻辑清晰\\\"],\\\"motives\\\":[\\\"优化资源配置\\\"]},\\\"businessImpact\\\":\\\"降低公司整体物流成本，提高客户对到货时间的满意度。\\\",\\\"failureCost\\\":\\\"物流成本过高侵蚀利润，或到货延误导致客户索赔。\\\",\\\"coreConflict\\\":\\\"业务要求最快到货与公司控制物流成本之间的冲突。\\\",\\\"failureReasons\\\":[\\\"小批量急单误选物流导致延误\\\",\\\"大批量订单误选快递导致成本激增\\\",\\\"未考虑地址偏僻性导致多次中转延误\\\"],\\\"difficulties\\\":[\\\"在多种物流方式中快速做出最优决策\\\",\\\"说服业务接受稍慢但更经济的物流方式\\\"],\\\"constraints\\\":{\\\"forbidBehaviors\\\":[\\\"禁止在不考虑成本的情况下盲目选择专车\\\",\\\"禁止对偏远地址使用无法直达的物流\\\"],\\\"maxTime\\\":8},\\\"relatedKnowledgeIds\\\":[],\\\"relatedScriptIds\\\":[],\\\"dimensionWeights\\\":[{\\\"dimensionId\\\":\\\"d2b3c4d5-2345-6789-01bc-def123456789\\\",\\\"weight\\\":30},{\\\"dimensionId\\\":\\\"d5e6f7a8-5678-9012-34ef-123456789012\\\",\\\"weight\\\":70}],\\\"relatedProductProfileArtifactIds\\\":[],\\\"caseArtifactIds\\\":[],\\\"cases\\\":[]},{\\\"id\\\":\\\"4c0cef91-7036-46ad-9008-a7f7d10856b3\\\",\\\"name\\\":\\\"库存查询与缺货应对策略\\\",\\\"audiences\\\":[\\\"新入职订单运营专员\\\",\\\"销售支持人员\\\"],\\\"businessGoal\\\":\\\"快速响应客户库存查询，针对缺货情况提供有效替代方案。\\\",\\\"behaviorGoals\\\":[\\\"快速通过WMS查询各仓库（下陈/椒江/临海/集聚区）库存\\\",\\\"针对缺货产品提供替代型号或调拨建议\\\",\\\"协调仓库优先处理急单，并反馈预计发货时间\\\"],\\\"relatedIcebergElements\\\":{\\\"knowledge\\\":[\\\"成品仓库分布知识\\\",\\\"库存管控流程\\\"],\\\"skills\\\":[\\\"WMS系统查询技能\\\",\\\"应急问题解决能力\\\"],\\\"roles\\\":[\\\"库存协调员\\\"],\\\"selfConcept\\\":[\\\"积极主动\\\"],\\\"personalities\\\":[\\\"反应敏捷\\\"],\\\"motives\\\":[\\\"达成销售目标\\\"]},\\\"businessImpact\\\":\\\"提高订单转化率，减少因缺货导致的订单流失。\\\",\\\"failureCost\\\":\\\"因回复不及时或方案无效导致客户取消订单。\\\",\\\"coreConflict\\\":\\\"客户急单需求与仓库实际库存分布不均的冲突。\\\",\\\"failureReasons\\\":[\\\"只查询主仓库忽略其他分仓库存\\\",\\\"未提供替代方案直接告知缺货\\\",\\\"协调仓库优先处理时沟通不畅\\\"],\\\"difficulties\\\":[\\\"在多个仓库系统中快速定位准确库存\\\",\\\"在缺货情况下说服客户接受替代方案\\\"],\\\"constraints\\\":{\\\"forbidBehaviors\\\":[\\\"禁止在未核实库存的情况下承诺发货时间\\\",\\\"禁止忽略立体库库存直接告知无货\\\"],\\\"maxTime\\\":10},\\\"relatedKnowledgeIds\\\":[],\\\"relatedScriptIds\\\":[],\\\"dimensionWeights\\\":[{\\\"dimensionId\\\":\\\"d2b3c4d5-2345-6789-01bc-def123456789\\\",\\\"weight\\\":40},{\\\"dimensionId\\\":\\\"d3c4d5e6-3456-7890-12cd-ef1234567890\\\",\\\"weight\\\":60}],\\\"relatedProductProfileArtifactIds\\\":[],\\\"caseArtifactIds\\\":[],\\\"cases\\\":[]}],\\\"customerProfiles\\\":[{\\\"id\\\":\\\"f1a2b3c4-d5e6-7890-abcd-ef1234567890\\\",\\\"type\\\":\\\"急躁型业务经理\\\",\\\"description\\\":\\\"负责区域销售，业绩压力大，经常为了赶发货时间而忽略流程规范，喜欢直接催促订单专员。\\\",\\\"personalities\\\":[\\\"强势\\\",\\\"结果导向\\\",\\\"缺乏耐心\\\"],\\\"decisionFactors\\\":[\\\"发货速度\\\",\\\"客户满意度\\\"],\\\"communicationStyle\\\":\\\"语速快，语气强硬，喜欢直接下达指令，不喜欢听解释。\\\",\\\"painPoints\\\":[\\\"订单处理慢影响业绩\\\",\\\"流程繁琐耽误时间\\\"]},{\\\"id\\\":\\\"f2b3c4d5-e6f7-8901-bcde-f12345678901\\\",\\\"type\\\":\\\"严谨型核算专员\\\",\\\"description\\\":\\\"负责财务风控，对超授信审批非常严格，要求所有材料齐全且符合规定，不容许任何违规操作。\\\",\\\"personalities\\\":[\\\"严谨\\\",\\\"原则性强\\\",\\\"保守\\\"],\\\"decisionFactors\\\":[\\\"合规性\\\",\\\"资金安全\\\"],\\\"communicationStyle\\\":\\\"语气正式，注重细节，喜欢引用公司规定，对模糊信息零容忍。\\\",\\\"painPoints\\\":[\\\"审批材料不全\\\",\\\"业务违规操作\\\"]},{\\\"id\\\":\\\"f3c4d5e6-f7a8-9012-cdef-123456789012\\\",\\\"type\\\":\\\"焦虑型渠道客户\\\",\\\"description\\\":\\\"对退返修流程不熟悉，担心运费损失，情绪容易激动，希望得到快速且免费的解决方案。\\\",\\\"personalities\\\":[\\\"敏感\\\",\\\"情绪化\\\",\\\"价格敏感\\\"],\\\"decisionFactors\\\":[\\\"费用承担\\\",\\\"处理效率\\\"],\\\"communicationStyle\\\":\\\"语气焦急，经常抱怨，喜欢追问进度，对费用问题非常在意。\\\",\\\"painPoints\\\":[\\\"退货运费高\\\",\\\"处理流程复杂\\\"]}],\\\"icebergModel\\\":{\\\"visible\\\":{\\\"knowledge\\\":[\\\"订单处理系统知识: 熟练掌握CRM、PRM、SAP、WMS等系统的功能模块及操作路径\\\",\\\"国内订单事项规范: 熟悉订单录入、审批、发货、退返修等全流程的业务规范\\\",\\\"应收账款管控流程: 掌握超授信审批层级及所需材料，了解逾期发货流程\\\",\\\"运输管理知识: 了解快递、物流、专车、拼车等不同运输方式的适用场景及成本结构\\\",\\"
+ },
+ {
+  "t": "06:43:10",
+  "m": "GET",
+  "u": "https://api-phx-ali.yunxuetang.cn/artifact-server/artifacts/755680140227675018?version=1",
+  "status": 200,
+  "req": "",
+  "resp": "{\"id\":\"755680140227675018\",\"name\":\"roleplay-script-structured\",\"type\":\"biz\",\"sub_type\":\"biz-wba-roleplay-script-structured\",\"biz_type\":\"biz\",\"context_id\":\"040ed32a-7d2f-4b96-9f5c-00c4552ae2af\",\"ext_info\":null,\"content\":\"\",\"storage_type\":\"oss\",\"oss_platform\":\"baidu\",\"oss_bucket_name\":\"elearninge\",\"oss_key\":\"orgsv2/984354a0-d966-41db-80c6-09befd7749ad/drill-scene/202609/755680139435786946.txt\",\"oss_presigned_url\":\"https://elearninge.bj.bcebos.com/orgsv2/984354a0-d966-41db-80c6-09befd7749ad/drill-scene/202609/755680139435786946.txt?authorization=bce-auth-v1%2F8fb139c6c2b84d59bd5b91efead094cf%2F2026-09-17T06%3A43%3A11Z%2F3600%2F%2F859c68e00b7c5ce57cb8624f5e91a1270d33d4a89d20da9813547a2bc05cea12\",\"version\":1,\"create_time\":\"2026-09-17T14:43:05\",\"update_time\":\"2026-09-17T14:43:05\"}"
+ },
+ {
+  "t": "06:43:10",
+  "m": "OPTIONS",
+  "u": "https://api-phx-ali.yunxuetang.cn/artifact-server/artifacts/755678979576512722",
+  "status": 200,
+  "req": "",
+  "resp": ""
+ },
+ {
+  "t": "06:43:10",
+  "m": "OPTIONS",
+  "u": "https://api-phx-ali.yunxuetang.cn/artifact-server/artifacts/755680140227675018?version=1",
+  "status": 200,
+  "req": "",
+  "resp": ""
+ },
+ {
+  "t": "06:49:30",
+  "m": "GET",
+  "u": "https://api-phx-ali.yunxuetang.cn/artifact-server/artifacts/755678979576512722",
+  "status": 200,
+  "req": "",
+  "resp": "{\"id\":\"755678979576512722\",\"name\":\"订单运营新人实战演练\",\"type\":\"biz\",\"sub_type\":\"json\",\"biz_type\":\"\",\"context_id\":null,\"ext_info\":null,\"content\":\"{\\\"materials\\\":[{\\\"id\\\":\\\"3a20da33-dd08-47a2-ae0c-8228f66f3ada\\\",\\\"name\\\":\\\"订单运营部职能介绍\\\",\\\"fileType\\\":\\\"ppt\\\",\\\"fileSize\\\":2,\\\"fileSizeUnit\\\":\\\"M\\\",\\\"visibility\\\":1,\\\"fileServId\\\":\\\"file\\\",\\\"fileSource\\\":2,\\\"targetId\\\":\\\"217f8c53-6f2c-4a78-8062-6c66af5038c7\\\"}],\\\"scenarios\\\":[{\\\"id\\\":\\\"e16ebbdd-de18-40e1-9e44-7f5be10b393a\\\",\\\"name\\\":\\\"CRM订单录入规范演练\\\",\\\"audiences\\\":[\\\"新入职订单运营专员\\\",\\\"0-3个月试用期员工\\\"],\\\"businessGoal\\\":\\\"确保订单信息录入准确无误，避免因信息缺失导致的发货错误或物流延误。\\\",\\\"behaviorGoals\\\":[\\\"准确识别客户类型并选择对应的系统入口（CRM/PRM）\\\",\\\"完整录入产品编码、数量、单价及特殊包装要求\\\",\\\"核对收货地址与物流方式的匹配性，确保地址详细到门牌号\\\"],\\\"relatedIcebergElements\\\":{\\\"knowledge\\\":[\\\"订单处理系统知识\\\",\\\"国内订单事项规范\\\"],\\\"skills\\\":[\\\"CRM系统操作技能\\\",\\\"信息核对与录入技能\\\"],\\\"roles\\\":[\\\"订单处理专员\\\"],\\\"selfConcept\\\":[\\\"严谨细致\\\"],\\\"personalities\\\":[\\\"注重细节\\\"],\\\"motives\\\":[\\\"追求零差错\\\"]},\\\"businessImpact\\\":\\\"提高订单处理效率，减少因录入错误导致的退单和客诉。\\\",\\\"failureCost\\\":\\\"发货错误导致物流成本增加，客户满意度下降，甚至产生坏账风险。\\\",\\\"coreConflict\\\":\\\"业务催单压力大与订单信息核对耗时之间的矛盾。\\\",\\\"failureReasons\\\":[\\\"漏填关键信息（如联系人电话）\\\",\\\"产品编码选择错误\\\",\\\"地址模糊导致物流无法派送\\\"],\\\"difficulties\\\":[\\\"在高压下保持录入准确性\\\",\\\"快速识别特殊订单要求\\\"],\\\"constraints\\\":{\\\"forbidBehaviors\\\":[\\\"禁止在未核对库存的情况下直接录入订单\\\",\\\"禁止使用模糊地址（如‘某某路口’）\\\"],\\\"maxTime\\\":10},\\\"relatedKnowledgeIds\\\":[],\\\"relatedScriptIds\\\":[],\\\"dimensionWeights\\\":[{\\\"dimensionId\\\":\\\"d1a2b3c4-1234-5678-90ab-cdef12345678\\\",\\\"weight\\\":40},{\\\"dimensionId\\\":\\\"d2b3c4d5-2345-6789-01bc-def123456789\\\",\\\"weight\\\":30},{\\\"dimensionId\\\":\\\"d3c4d5e6-3456-7890-12cd-ef1234567890\\\",\\\"weight\\\":30}],\\\"relatedProductProfileArtifactIds\\\":[],\\\"caseArtifactIds\\\":[\\\"755680546295857440\\\"],\\\"cases\\\":[{\\\"roleplayScriptArtifactId\\\":\\\"755680546295857440\\\",\\\"roleplayScriptJsonArtifactId\\\":\\\"755680620261573256\\\",\\\"scriptName\\\":\\\"高压催单下的精准录入：特殊包装与地址核对的“生死线”\\\",\\\"difficulty\\\":1,\\\"actorName\\\":\\\"王强\\\",\\\"actorPosition\\\":null,\\\"actorCompany\\\":null,\\\"actorType\\\":\\\"公司业务部经理\\\",\\\"actorPersonality\\\":\\\"急躁、结果导向、强势、对细节不耐烦，但讲道理（如果涉及他的利益）。\\\",\\\"actorCommunicationStyle\\\":null,\\\"scriptBackground\\\":\\\"资深业务经理，业绩压力大，性格急躁，认为订单运营是“后勤支持”，应该无条件配合业务速度。他手头有多个大客户，对细节缺乏耐心，但非常在意客户体验（怕投诉）。\\\",\\\"scriptOpening\\\":\\\"（眉头紧锁，手指急促地敲击桌面，身体前倾压迫感十足）“哎，小刘，你怎么还在看？地址不就写‘宏达科技园区南门’吗？赶紧录进去提交啊！客户那边生产线都停了，就等这批货，每耽误一分钟都是钱！别磨磨蹭蹭的，快点！”\\\"}]},{\\\"id\\\":\\\"0fb54cb6-768a-4ccd-8e8b-ea7800429c41\\\",\\\"name\\\":\\\"超授信发货审批沟通\\\",\\\"audiences\\\":[\\\"新入职订单运营专员\\\",\\\"销售支持人员\\\"],\\\"businessGoal\\\":\\\"在合规前提下协助业务完成超授信订单的审批，平衡风控与销售需求。\\\",\\\"behaviorGoals\\\":[\\\"准确判断超授信金额层级（100万以下/100-300万/300万以上）\\\",\\\"按流程向对应审批人（总监/赖总/美芳等）发起申请\\\",\\\"清晰说明超授信原因及客户回款计划，提供完整审批材料\\\"],\\\"relatedIcebergElements\\\":{\\\"knowledge\\\":[\\\"应收账款管控流程\\\",\\\"超授信审批层级规定\\\"],\\\"skills\\\":[\\\"跨部门沟通技巧\\\",\\\"流程合规判断能力\\\"],\\\"roles\\\":[\\\"风控协调员\\\"],\\\"selfConcept\\\":[\\\"原则性与灵活性并重\\\"],\\\"personalities\\\":[\\\"冷静客观\\\"],\\\"motives\\\":[\\\"保障公司资金安全\\\"]},\\\"businessImpact\\\":\\\"确保公司应收账款安全，同时支持重点客户的紧急发货需求。\\\",\\\"failureCost\\\":\\\"违规发货导致坏账，或审批流程延误导致客户流失。\\\",\\\"coreConflict\\\":\\\"业务经理的紧急发货需求与财务风控审批流程的冲突。\\\",\\\"failureReasons\\\":[\\\"找错审批人导致流程退回\\\",\\\"未说明超授信原因被财务驳回\\\",\\\"遗漏核算审核环节\\\"],\\\"difficulties\\\":[\\\"应对业务经理的催促和施压\\\",\\\"快速准备齐全的审批佐证材料\\\"],\\\"constraints\\\":{\\\"forbidBehaviors\\\":[\\\"禁止越级审批\\\",\\\"禁止在未获批准前通知仓库发货\\\"],\\\"maxTime\\\":15},\\\"relatedKnowledgeIds\\\":[],\\\"relatedScriptIds\\\":[],\\\"dimensionWeights\\\":[{\\\"dimensionId\\\":\\\"d1a2b3c4-1234-5678-90ab-cdef12345678\\\",\\\"weight\\\":50},{\\\"dimensionId\\\":\\\"d4d5e6f7-4567-8901-23de-f12345678901\\\",\\\"weight\\\":50}],\\\"relatedProductProfileArtifactIds\\\":[],\\\"caseArtifactIds\\\":[\\\"755680059688649166\\\"],\\\"cases\\\":[{\\\"roleplayScriptArtifactId\\\":\\\"755680059688649166\\\",\\\"roleplayScriptJsonArtifactId\\\":\\\"755680140227675018\\\",\\\"scriptName\\\":\\\"高压下的合规坚守：超授信发货审批博弈\\\",\\\"difficulty\\\":2,\\\"actorName\\\":\\\"王强\\\",\\\"actorPosition\\\":null,\\\"actorCompany\\\":null,\\\"actorType\\\":\\\"销售部经理\\\",\\\"actorPersonality\\\":\\\"急躁、结果导向、强势、缺乏耐心\\\",\\\"actorCommunicationStyle\\\":null,\\\"scriptBackground\\\":\\\"资深销售经理，业绩导向极强，性格强势直接。他刚拿下宏达科技的大单，但因客户临时追加订单导致超授信。他担心如果今天不发，客户会流失，影响他的季度奖金。\\\",\\\"scriptOpening\\\":\\\"（身体前倾，手指急促地敲击桌面，眼神死死盯着你的屏幕）“别转圈了！李总刚才电话里说了，今天见不到发货单，明天就转单给竞品。这50万超授信又不是第一次，你先让仓库把货备出来，审批我回头补，行不行？这责任你担还是我担？”\\\"}]},{\\\"id\\\":\\\"96553e74-f443-47b8-9cb3-9c6df30a1099\\\",\\\"name\\\":\\\"退返修流程处理与费用界定\\\",\\\"audiences\\\":[\\\"新入职订单运营专员\\\",\\\"售后服务支持\\\"],\\\"businessGoal\\\":\\\"规范处理客户退返修请求，明确费用责任，降低公司物流损失。\\\",\\\"behaviorGoals\\\":[\\\"引导客户在DMS系统提交退返修流程并粘贴标识卡\\\",\\\"根据退货原因（质量/非质量）准确界定运费承担方\\\",\\\"协调物流退回并跟进途损索赔事宜\\\"],\\\"relatedIcebergElements\\\":{\\\"knowledge\\\":[\\\"退返修处理规范\\\",\\\"物流运费承担政策\\\"],\\\"skills\\\":[\\\"客户情绪安抚技巧\\\",\\\"物流索赔处理能力\\\"],\\\"roles\\\":[\\\"售后服务协调员\\\"],\\\"selfConcept\\\":[\\\"客户导向\\\"],\\\"personalities\\\":[\\\"耐心细致\\\"],\\\"motives\\\":[\\\"维护客户关系\\\"]},\\\"businessImpact\\\":\\\"提升客户售后体验，规范退返修流程，减少不必要的运费支出。\\\",\\\"failureCost\\\":\\\"公司承担不应承担的运费，或因流程不规范导致货物丢失无法索赔。\\\",\\\"coreConflict\\\":\\\"客户希望免费退货与公司严格界定费用责任之间的冲突。\\\",\\\"failureReasons\\\":[\\\"未要求客户粘贴标识卡导致仓库拒收\\\",\\\"错误判断运费承担方引发客户投诉\\\",\\\"未跟进物流途损索赔\\\"],\\\"difficulties\\\":[\\\"向愤怒的客户解释非质量退货需自费\\\",\\\"处理复杂的批量退货审批\\\"],\\\"constraints\\\":{\\\"forbidBehaviors\\\":[\\\"禁止接受快递到付（质量原因除外）\\\",\\\"禁止在未明确费用承担前安排物流取件\\\"],\\\"maxTime\\\":12},\\\"relatedKnowledgeIds\\\":[],\\\"relatedScriptIds\\\":[],\\\"dimensionWeights\\\":[{\\\"dimensionId\\\":\\\"d4d5e6f7-4567-8901-23de-f12345678901\\\",\\\"weight\\\":40},{\\\"dimensionId\\\":\\\"d5e6f7a8-5678-9012-34ef-123456789012\\\",\\\"weight\\\":60}],\\\"relatedProductProfileArtifactIds\\\":[],\\\"caseArtifactIds\\\":[\\\"755680885422112980\\\"],\\\"cases\\\":[{\\\"roleplayScriptArtifactId\\\":\\\"755680885422112980\\\",\\\"roleplayScriptJsonArtifactId\\\":\\\"755680951964746260\\\",\\\"scriptName\\\":\\\"非质量退货的运费博弈与流程合规引导\\\",\\\"difficulty\\\":2,\\\"actorName\\\":\\\"王志强（王总）\\\",\\\"actorPosition\\\":null,\\\"actorCompany\\\":null,\\\"actorType\\\":\\\"渠道商老板\\\",\\\"actorPersonality\\\":\\\"急躁、务实、爱面子、对成本敏感\\\",\\\"actorCommunicationStyle\\\":null,\\\"scriptBackground\\\":\\\"一家中型渠道商的老板，与公司合作半年，近期因下游项目变动导致一批货物规格不符，急需退货回笼资金。他对公司内部流程不熟悉，且认为自己是重要客户，应享受特殊待遇。\\\",\\\"scriptOpening\\\":\\\"（语气急促且带着怒气）“喂！我是王志强。我上次发过去的那批货，规格不对我要退回来。你们赶紧安排物流来拉走，运费你们出啊！别跟我扯什么规定，我这么大的客户，这点面子都不给？赶紧的，我这边等着用钱呢！”\\\"}]},{\\\"id\\\":\\\"f7333a6c-388f-4845-af4d-aae42db4307c\\\",\\\"name\\\":\\\"运输方式优化选择与成本管控\\\",\\\"audiences\\\":[\\\"新入职订单运营专员\\\",\\\"物流协调员\\\"],\\\"businessGoal\\\":\\\"根据订单特性选择最优运输方式，平衡到货时效与物流成本。\\\",\\\"behaviorGoals\\\":[\\\"根据订单数量、地址偏远程度及紧急度选择物流方式（快递/物流/专车/拼车）\\\",\\\"向业务解释选择理由（如：为何选专车而非快递）\\\",\\\"预估并告知准确到货时间，管理客户预期\\\"],\\\"relatedIcebergElements\\\":{\\\"knowledge\\\":[\\\"运输管理知识\\\",\\\"物流成本结构\\\"],\\\"skills\\\":[\\\"成本效益分析能力\\\",\\\"物流方案推荐能力\\\"],\\\"roles\\\":[\\\"物流方案专家\\\"],\\\"selfConcept\\\":[\\\"成本意识\\\"],\\\"personalities\\\":[\\\"逻辑清晰\\\"],\\\"motives\\\":[\\\"优化资源配置\\\"]},\\\"businessImpact\\\":\\\"降低公司整体物流成本，提高客户对到货时间的满意度。\\\",\\\"failureCost\\\":\\\"物流成本过高侵蚀利润，或到货延误导致客户索赔。\\\",\\\"coreConflict\\\":\\\"业务要求最快到货与公司控制物流成本之间的冲突。\\\",\\\"failureReasons\\\":[\\\"小批量急单误选物流导致延误\\\",\\\"大批量订单误选快递导致成本激增\\\",\\\"未考虑地址偏僻性导致多次中转延误\\\"],\\\"difficulties\\\":[\\\"在多种物流方式中快速做出最优决策\\\",\\\"说服业务接受稍慢但更经济的物流方式\\\"],\\\"constraints\\\":{\\\"forbidBehaviors\\\":[\\\"禁止在不考虑成本的情况下盲目选择专车\\\",\\\"禁止对偏远地址使用无法直达的物流\\\"],\\\"maxTime\\\":8},\\\"relatedKnowledgeIds\\\":[],\\\"relatedScriptIds\\\":[],\\\"dimensionWeights\\\":[{\\\"dimensionId\\\":\\\"d2b3c4d5-2345-6789-01bc-def123456789\\\",\\\"weight\\\":30},{\\\"dimensionId\\\":\\\"d5e6f7a8-5678-9012-34ef-123456789012\\\",\\\"weight\\\":70}],\\\"relatedProductProfileArtifactIds\\\":[],\\\"caseArtifactIds\\\":[\\\"755681248283099988\\\"],\\\"cases\\\":[{\\\"roleplayScriptArtifactId\\\":\\\"755681248283099988\\\",\\\"roleplayScriptJsonArtifactId\\\":\\\"755681319951172322\\\",\\\"scriptName\\\":\\\"物流成本与时效的博弈：说服急躁业务接受经济方案\\\",\\\"difficulty\\\":2,\\\"actorName\\\":\\\"王强\\\",\\\"actorPosition\\\":null,\\\"actorCompany\\\":null,\\\"actorType\\\":\\\"资深销售经理\\\",\\\"actorPersonality\\\":\\\"急躁、直接、结果导向、对成本不敏感、喜欢施压\\\",\\\"actorCommunicationStyle\\\":null,\\\"scriptBackground\\\":\\\"区域销售经理，业绩压力大，性格急躁，以结果为导向。他刚向一个重要客户承诺了“最快发货”，因此对物流时效极其敏感，往往忽略成本细节。\\\",\\\"scriptOpening\\\":\\\"（眉头紧锁，语速极快，带着明显的压迫感）“哎，这单华东的客户，赶紧给我安排专车发走！客户催得急，我答应了他最快到货。别跟我提什么拼车零担，万一晚了谁负责？就按专车走，费用我后面补签字！”\\\"}]},{\\\"id\\\":\\\"4c0cef91-7036-46ad-9008-a7f7d10856b3\\\",\\\"name\\\":\\\"库存查询与缺货应对策略\\\",\\\"audiences\\\":[\\\"新入职订单运营专员\\\",\\\"销售支持人员\\\"],\\\"businessGoal\\\":\\\"快速响应客户库存查询，针对缺货情况提供有效替代方案。\\\",\\\"behaviorGoals\\\":[\\\"快速通过WMS查询各仓库（下陈/椒江/临海/集聚区）库存\\\",\\\"针对缺货产品提供替代型号或调拨建议\\\",\\\"协调仓库优先处理急单，并反馈预计发货时间\\\"],\\\"relatedIcebergElements\\\":{\\\"knowledge\\\":[\\\"成品仓库分布知识\\\",\\\"库存管控流程\\\"],\\\"skills\\\":[\\\"WMS系统查询技能\\\",\\\"应急问题解决能力\\\"],\\\"roles\\\":[\\\"库存协调员\\\"],\\\"selfConcept\\\":[\\\"积极主动\\\"],\\\"personalities\\\":[\\\"反应敏捷\\\"],\\\"motives\\\":[\\\"达成销售目标\\\"]},\\\"businessImpact\\\":\\\"提高订单转化率，减少因缺货导致的订单流失。\\\",\\\"failureCost\\\":\\\"因回复不及时或方案无效导致客"
+ },
+ {
+  "t": "06:49:30",
+  "m": "GET",
+  "u": "https://api-phx-ali.yunxuetang.cn/artifact-server/artifacts/755680620261573256?version=1",
+  "status": 200,
+  "req": "",
+  "resp": "{\"id\":\"755680620261573256\",\"name\":\"roleplay-script-structured\",\"type\":\"biz\",\"sub_type\":\"biz-wba-roleplay-script-structured\",\"biz_type\":\"biz\",\"context_id\":\"040ed32a-7d2f-4b96-9f5c-00c4552ae2af\",\"ext_info\":null,\"content\":\"\",\"storage_type\":\"oss\",\"oss_platform\":\"baidu\",\"oss_bucket_name\":\"elearninge\",\"oss_key\":\"orgsv2/984354a0-d966-41db-80c6-09befd7749ad/drill-scene/202609/755680619520016991.txt\",\"oss_presigned_url\":\"https://elearninge.bj.bcebos.com/orgsv2/984354a0-d966-41db-80c6-09befd7749ad/drill-scene/202609/755680619520016991.txt?authorization=bce-auth-v1%2F8fb139c6c2b84d59bd5b91efead094cf%2F2026-09-17T06%3A49%3A31Z%2F3600%2F%2Fc78ba804a270ded68c0fc02f75df1643286a0819403d2795bfd96492167b1f84\",\"version\":1,\"create_time\":\"2026-09-17T14:44:59\",\"update_time\":\"2026-09-17T14:44:59\"}"
+ },
+ {
+  "t": "06:49:30",
+  "m": "GET",
+  "u": "https://api-phx-ali.yunxuetang.cn/artifact-server/artifacts/755680951964746260?version=1",
+  "status": 200,
+  "req": "",
+  "resp": "{\"id\":\"755680951964746260\",\"name\":\"roleplay-script-structured\",\"type\":\"biz\",\"sub_type\":\"biz-wba-roleplay-script-structured\",\"biz_type\":\"biz\",\"context_id\":\"040ed32a-7d2f-4b96-9f5c-00c4552ae2af\",\"ext_info\":null,\"content\":\"\",\"storage_type\":\"oss\",\"oss_platform\":\"baidu\",\"oss_bucket_name\":\"elearninge\",\"oss_key\":\"orgsv2/984354a0-d966-41db-80c6-09befd7749ad/drill-scene/202609/755680951175381790.txt\",\"oss_presigned_url\":\"https://elearninge.bj.bcebos.com/orgsv2/984354a0-d966-41db-80c6-09befd7749ad/drill-scene/202609/755680951175381790.txt?authorization=bce-auth-v1%2F8fb139c6c2b84d59bd5b91efead094cf%2F2026-09-17T06%3A49%3A31Z%2F3600%2F%2F46b47ea7b9ae1a51bb49604221430822a2f61e25a365ea4f8ecc58d33fcc0810\",\"version\":1,\"create_time\":\"2026-09-17T14:46:18\",\"update_time\":\"2026-09-17T14:46:18\"}"
+ },
+ {
+  "t": "06:49:30",
+  "m": "GET",
+  "u": "https://api-phx-ali.yunxuetang.cn/artifact-server/artifacts/755681319951172322?version=1",
+  "status": 200,
+  "req": "",
+  "resp": "{\"id\":\"755681319951172322\",\"name\":\"roleplay-script-structured\",\"type\":\"biz\",\"sub_type\":\"biz-wba-roleplay-script-structured\",\"biz_type\":\"biz\",\"context_id\":\"040ed32a-7d2f-4b96-9f5c-00c4552ae2af\",\"ext_info\":null,\"content\":\"\",\"storage_type\":\"oss\",\"oss_platform\":\"baidu\",\"oss_bucket_name\":\"elearninge\",\"oss_key\":\"orgsv2/984354a0-d966-41db-80c6-09befd7749ad/drill-scene/202609/755681319213810083.txt\",\"oss_presigned_url\":\"https://elearninge.bj.bcebos.com/orgsv2/984354a0-d966-41db-80c6-09befd7749ad/drill-scene/202609/755681319213810083.txt?authorization=bce-auth-v1%2F8fb139c6c2b84d59bd5b91efead094cf%2F2026-09-17T06%3A49%3A31Z%2F3600%2F%2F0eae23a571c4313e599700d8a3401d7d70fdaf6e87314cb0b11dc58e74e78a46\",\"version\":1,\"create_time\":\"2026-09-17T14:47:46\",\"update_time\":\"2026-09-17T14:47:46\"}"
+ },
+ {
+  "t": "06:49:30",
+  "m": "GET",
+  "u": "https://api-phx-ali.yunxuetang.cn/artifact-server/artifacts/755681727667716515?version=1",
+  "status": 200,
+  "req": "",
+  "resp": "{\"id\":\"755681727667716515\",\"name\":\"roleplay-script-structured\",\"type\":\"biz\",\"sub_type\":\"biz-wba-roleplay-script-structured\",\"biz_type\":\"biz\",\"context_id\":\"040ed32a-7d2f-4b96-9f5c-00c4552ae2af\",\"ext_info\":null,\"content\":\"\",\"storage_type\":\"oss\",\"oss_platform\":\"baidu\",\"oss_bucket_name\":\"elearninge\",\"oss_key\":\"orgsv2/984354a0-d966-41db-80c6-09befd7749ad/drill-scene/202609/755681726869963561.txt\",\"oss_presigned_url\":\"https://elearninge.bj.bcebos.com/orgsv2/984354a0-d966-41db-80c6-09befd7749ad/drill-scene/202609/755681726869963561.txt?authorization=bce-auth-v1%2F8fb139c6c2b84d59bd5b91efead094cf%2F2026-09-17T06%3A49%3A31Z%2F3600%2F%2F20a146814169e29b906630a75b3bd6e6076ab4c9e4a2c60f0c84200bc0d1ef53\",\"version\":1,\"create_time\":\"2026-09-17T14:49:23\",\"update_time\":\"2026-09-17T14:49:23\"}"
+ },
+ {
+  "t": "06:49:30",
+  "m": "OPTIONS",
+  "u": "https://api-phx-ali.yunxuetang.cn/artifact-server/artifacts/755678979576512722",
+  "status": 200,
+  "req": "",
+  "resp": ""
+ },
+ {
+  "t": "06:49:30",
+  "m": "OPTIONS",
+  "u": "https://api-phx-ali.yunxuetang.cn/artifact-server/artifacts/755680620261573256?version=1",
+  "status": 200,
+  "req": "",
+  "resp": ""
+ },
+ {
+  "t": "06:49:30",
+  "m": "OPTIONS",
+  "u": "https://api-phx-ali.yunxuetang.cn/artifact-server/artifacts/755680951964746260?version=1",
+  "status": 200,
+  "req": "",
+  "resp": ""
+ },
+ {
+  "t": "06:49:30",
+  "m": "OPTIONS",
+  "u": "https://api-phx-ali.yunxuetang.cn/artifact-server/artifacts/755681319951172322?version=1",
+  "status": 200,
+  "req": "",
+  "resp": ""
+ },
+ {
+  "t": "06:49:30",
+  "m": "OPTIONS",
+  "u": "https://api-phx-ali.yunxuetang.cn/artifact-server/artifacts/755681727667716515?version=1",
+  "status": 200,
+  "req": "",
+  "resp": ""
+ },
+ {
+  "t": "06:49:44",
+  "m": "GET",
+  "u": "https://api-phx-ali.yunxuetang.cn/core/token/check",
+  "status": 200,
+  "req": "",
+  "resp": "{\"isValid\":1,\"expireTtl\":411231}"
+ },
+ {
+  "t": "06:49:44",
+  "m": "OPTIONS",
+  "u": "https://api-phx-ali.yunxuetang.cn/core/token/check",
+  "status": 200,
+  "req": "",
+  "resp": ""
+ },
+ {
+  "t": "06:49:44",
+  "m": "GET",
+  "u": "https://api-phx-ali.yunxuetang.cn/core/org/orgname?orgId=984354a0-d966-41db-80c6-09befd7749ad",
+  "status": 200,
+  "req": "",
+  "resp": "{\"orgId\":\"984354a0-d966-41db-80c6-09befd7749ad\",\"orgName\":\"杰克数字人陪练\",\"i18nOrgName\":\"keys.org.core.nav.name.1775738575662.984354a0-d966-41db-80c6-09befd7749ad\",\"i18nOrgNames\":{\"en\":\"杰克数字人陪练\",\"ha\":\"杰克数字人陪练\",\"zh\":\"杰克数字人陪练\"},\"logoUrl\":\"https://picobd.yunxuetang.cn/orgsv2/train.chinajack.com20260409/cropper/images/202604/8303ac35c189444a8d21b4461b010089.png\",\"enableI18n\":1,\"lang4Get\":[{\"langName\":\"简体中文\",\"langTag\":\"zh\"},{\"langName\":\"繁體中文\",\"langTag\":\"ha\"},{\"langName\":\"English\",\"langTag\":\"en\"},{\"langName\":\"Tiếng Việt\",\"langTag\":\"vi\"}],\"editionUpgrade\":0,\"salePkgName\":null,\"pcUrl\":null,\"h5Url\":null,\"sourceCode\":\"103\",\"domainName\":\"train.chinajack.com\",\"productVersion\":\"2.0\",\"platEnv\":\"aliyun\",\"appSso\":0,\"forgetPwd\":null,\"singleChatSwitch\":0,\"siteName\":\"杰克数字人陪练\",\"isShowNavFooter\":null,\"showMoreLoginFn\":null,\"orgType\":1,\"profileId\":null,\"operateLevel\":\"\",\"batchId\":null}"
+ },
+ {
+  "t": "06:49:44",
+  "m": "OPTIONS",
+  "u": "https://api-phx-ali.yunxuetang.cn/core/org/orgname?orgId=984354a0-d966-41db-80c6-09befd7749ad",
+  "status": 200,
+  "req": "",
+  "resp": ""
+ },
+ {
+  "t": "06:49:46",
+  "m": "POST",
+  "u": "https://api-phx-ali.yunxuetang.cn/core/factors/verify/984354a0-d966-41db-80c6-09befd7749ad",
+  "status": 200,
+  "req": "[\"selfDelivery\"]",
+  "resp": "[{\"factorCode\":\"selfDelivery\",\"factorState\":-1,\"purchaseType\":-1,\"capacityList\":[]}]"
+ },
+ {
+  "t": "06:49:46",
+  "m": "OPTIONS",
+  "u": "https://api-phx-ali.yunxuetang.cn/core/factors/verify/984354a0-d966-41db-80c6-09befd7749ad",
+  "status": 200,
+  "req": "",
+  "resp": ""
+ },
+ {
+  "t": "06:49:46",
+  "m": "GET",
+  "u": "https://api-phx-ali.yunxuetang.cn/core/factors/984354a0-d966-41db-80c6-09befd7749ad/func-points/refresh/check",
+  "status": 200,
+  "req": "",
+  "resp": "{\"refresh\":1,\"lastUpdate\":1789619409541}"
+ },
+ {
+  "t": "06:49:46",
+  "m": "GET",
+  "u": "https://api-phx-ali.yunxuetang.cn/core/user/nav/code/name",
+  "status": 200,
+  "req": "",
+  "resp": "{\"lectuer_statistics\":\"讲师统计\",\"ai_question_config\":\"出题规则配置\",\"enterprise_pra_participation\":\"练习参与情况\",\"sp_speech_prj_report_prj\":\"训练统计数据\",\"knowledge_details\":\"课程学习详情\",\"sys_psn_daily\":\"个人学习结果日统计\",\"active_statistics_cumulative\":\"平台活跃累计统计\",\"kng_systemSetting\":\"系统设置\",\"group_project_participation\":\"项目参与情况\",\"certificate_award\":\"证书颁发详情\",\"system_usage\":\"系统使用情况\",\"group_live_participation\":\"直播参与情况\",\"reward_setting_exp\":\"经验值管理\",\"project_completion\":\"项目完成结果\",\"quick_start\":\"QuickStart\",\"decorate_custom_nav\":\"导航\",\"reward_medal_mgmt\":\"勋章管理\",\"talent_personal\":\"个人发展\",\"bbs_mgmt_post\":\"帖子管理\",\"ssp_other_settings\":\"入学通知设置\",\"rpt_sparring_personal_details\":\"个人完成详情\",\"m_learningdynamics\":\"学习动态\",\"ote_mark\":\"考试批阅\",\"sp_gwnl_certificate_project\":\"认证项目\",\"decorate_custom_other\":\"其他\",\"sp_position_dashboard\":\"岗位指标看板\",\"rpt_sparring_task_details\":\"训练完成详情\",\"o2o_myteam_m\":\"我的团队\",\"sdcs_supplier\":\"供应商管理系统\",\"sp_gwnl_talentrv_achievements\":\"绩效管理\",\"practice_result\":\"练习结果统计\",\"live_personal_details\":\"个人完成详情\",\"kng_param_set\":\"课程设置\",\"rpt_hierarchy_personal\":\"个人维度\",\"ttitems_report\":\"测训项目统计\",\"group_utility_tag_mgmt\":\"标签管理\",\"group_decorate_web_login\":\"登录\",\"sp_tm_aimodel\":\"AI建模\",\"sys_psn_score\":\"个人学分统计\",\"reward_exp_edit\":\"经验值调整\",\"group_task_exam_list\":\"考试\",\"o2o_myteam\":\"我的团队\",\"o2o_myteamorg\":\"团队成员\",\"operation_report\":\"运营报告\",\"ote_recurring_ind_answer_detail\":\"个人循环考试作答详情\",\"paas_customReport\":\"自定义报表\",\"ote_ques_lib_mgmt\":\"题库管理\",\"udp_position\":\"职级管理\",\"tcm_settings\":\"课程设置\",\"gwnl_resource_plantemplate\":\"学习方案模板库\",\"account_security\":\"账号安全\",\"sp_gwnl_model\":\"岗位中心\",\"h5_nav_setting\":\"移动端\",\"jf_welfareexchange_m\":\"福利兑换\",\"rpt_gwnl_map_statistics\":\"岗位地图统计\",\"system_report_new\":\"使用总览\",\"sp_gwnl_certificate_center\":\"认证中心\",\"group_ftfi_department\":\"部门维度\",\"o2o_myidentify\":\"我的鉴定\",\"pra_question_answer_detail\":\"小题作答详情\",\"certificate_department\":\"部门维度\",\"kng_catalog_mgmt\":\"分类管理\",\"ote_ind_arrange\":\"个人安排考试统计\",\"ssp_words_lang\":\"名词设置\",\"sp_tm_datamanage\":\"数据管理\",\"group_udp_orgoumgmt\":\"员工管理\",\"group_learning_statistics\":\"课程学习统计\",\"audit_center_manage\":\"审核中心\",\"sp_gwnl_eval_report\":\"测评报告\",\"pc_decorate_login\":\"电脑端\",\"sp_gwnl_model_skills\":\"能力\",\"jf_lottery_mgmt\":\"积分抽奖\",\"shopcenter_mgmt_classification\":\"门店分类\",\"investigation_details\":\"调查完成详情\",\"sp_ai_model\":\"智能建模\",\"practice_file\":\"练习档案\",\"sp_modelmaster\":\"模型母版\",\"ojt_task_personal_details\":\"学员学习详情\",\"group_project_department\":\"部门维度\",\"o2o_train_responsible\":\"项目管理\",\"tlive_ind_teache\":\"个人直播授课统计\",\"knowledge_department\":\"部门维度\",\"ttitems_person_details\":\"个人完成详情\",\"sp_simulate\":\"实战演练\",\"loop_practice_person_details\":\"个人作答详情\",\"install_statistics_new\":\"APP安装统计\",\"loop_practice_details\":\"批次作答详情\",\"sys_psn_exp\":\"个人经验值统计\",\"group_org_center\":\"组织中心\",\"core_userhome\":\"我的陪练\",\"group_task_exam_practice\":\"练习\",\"gwnl_template\":\"资源管理\",\"enterprise_active_statistics_monthly\":\"平台活跃月度统计\",\"hierarchy_details\":\"任务完成详情\",\"gwnl_map_task_completion\":\"地图任务完成情况\",\"message_template_manage\":\"消息模板管理\",\"import_files\":\"导入档案\",\"exam_personal\":\"个人维度\",\"gwnl_map_dept_participation\":\"部门地图参与情况\",\"gwnl_permissions_setting\":\"权限设置\",\"sys_position_daily\":\"岗位学习结果日统计\",\"ote_ind_participation\":\"个人参加考试统计\",\"cer_acq_dept_status\":\"部门证书获取情况\",\"decorate_custom_footer\":\"页脚\",\"kng_audit\":\"课程审核\",\"exam_results\":\"考试结果统计\",\"msg_tuwen_mgmt\":\"公告消息\",\"gwnl_map_details\":\"任务完成情况\",\"no_screenshot\":\"防截屏/录屏\",\"sp_succession_settings\":\"继任设置\",\"h5_decorate_login\":\"移动端\",\"staff_file\":\"员工档案\",\"exam_batch_details\":\"批次作答详情\",\"systemSettings\":\"系统设置\",\"install_statistics\":\"APP安装统计\",\"decorate_custom_home\":\"首页\",\"jf_order_mgmt\":\"自营商品订单\",\"rpt_gwnl_map_details\":\"任务完成情况\",\"o2o_purchased\":\"购买的项目\",\"AI_event_operations\":\"AI活动运营\",\"sd_register_rule\":\"注册设置\",\"sp_prj_account_new\":\"账号管理\",\"pc_audit_center\":\"审核中心\",\"te_manage\":\"讲师管理\",\"rd_classpay_settlement\":\"研发课酬结算\",\"active_statistics_quarterly\":\"平台活跃季度统计\",\"shopcenter_check_item\":\"检查项\",\"ftfi_details\":\"面授完成详情\",\"decorate_custom_info\":\"资讯管理\",\"shoptour\":\"智慧门店\",\"tlive_statistic\":\"直播统计\",\"shopcenter_inspection_offline\":\"线下巡检\",\"sp_talentmanagement\":\"人才管理\",\"project_plan_report\":\"培训计划统计\",\"core_me_m\":\"我\",\"security_center\":\"安全中心\",\"h5_specific_page\":\"移动端\",\"gwnl_map_department\":\"部门维度\",\"tcm_index_m\":\"微课中心\",\"find_expire\":\"开通续费\",\"gwnl_index\":\"人才发展\",\"free_simulate_settings\":\"设置\",\"decorate_custom_login\":\"登录PC\",\"ote_ind_question_answer_detail\":\"个人作答详情\",\"knowledge_report\":\"课程统计\",\"ftfi_person_details\":\"个人完成详情\",\"sp_gwnl_model_position\":\"岗位学习方案\",\"pra_ind_question_answer_detail\":\"个人小题作答详情\",\"screen_project\":\"项目详情\",\"live_personal\":\"个人维度\",\"udp_extend_field\":\"账号字段设置\",\"ote_exam\":\"组卷\",\"down_center\":\"下载中心\",\"sys_psn_point\":\"个人积分统计\",\"screen_exam\":\"考试详情\",\"bbs_setting_expert\":\"专家管理\",\"sp_gwnl_talentfile\":\"人才档案\",\"decorate_index_m\":\"首页\",\"sp_prj_center\":\"话术训练中心\",\"gwnl_tracking\":\"学习任务管理\",\"group_practice_department\":\"部门维度\",\"sp_idpproject\":\"员工IDP\",\"sp_tm_interview\":\"AI校准\",\"screen\":\"数据大屏\",\"sp_standard_new\":\"话术训练（新）\",\"cc_mgmt_slience\":\"禁言管理\",\"sp_gwnl_model_duty\":\"任务\",\"pra_ind_arrange\":\"个人安排练习统计\",\"project_ojt_student_result\":\"带教学员学习详情\",\"enterprise_kng_participation\":\"课程学习统计\",\"o2o_template_list\":\"模板库\",\"sp_speech_prj_center\":\"演讲训练中心\",\"sp_simulate_prj_report_stl\":\"员工学习统计\",\"self_collect_mgmt\":\"自采课\",\"learner_pk_m\":\"PK活动\",\"udp_account_recovery\":\"恢复账号\",\"ote_arrange\":\"考试管理\",\"ssp_gratuity_tool\":\"打赏工具\",\"sp_modelsetting\":\"岗位设置\",\"group_jf_statement_mgmt\":\"云学堂对账单\",\"ai_questionAnswerManagement\":\"AI问答\",\"sp_dimensionalitylist\":\"维度库\",\"rpt_sparring_personal\":\"个人维度\",\"sys_dept_cumulative\":\"部门学习结果累计统计\",\"kng_comments_mgmt\":\"课程评论\",\"sp_gwnl_expert_center\":\"专家库\",\"pra_recurring_ind_answer_detail\":\"个人批次作答详情\",\"udp_usergroup\":\"用户组\",\"survey_completion_detail\":\"调查完成详情\",\"gwnl_file_tag\":\"人才标签\",\"shoptour_checklist\":\"检查表维度\",\"sparring_dialog_dept_participation\":\"部门话术训练参与情况\",\"m_report\":\"报表中心\",\"sp_gwnl_eval\":\"测评中心\",\"ote_myexam_m\":\"测练中心\",\"gwnl_map_ind_completion\":\"个人地图完成情况\",\"udp_dynamic_usergroup\":\"动态用户组\",\"learning_statistics\":\"学习统计\",\"kng_production_task\":\"萃取任务管理\",\"group_nav_setting\":\"导航管理\",\"kng_overview_resource\":\"资源概览\",\"operation_log\":\"操作日志\",\"kng_production_board\":\"生产看板\",\"core_homepage_new\":\"首页\",\"project_dept_plan_impl_status\":\"部门培训计划实施情况\",\"sp_gwnl_dictionary\":\"指标库\",\"group_jf_mgmt\":\"积分商城\",\"survey_ind_organized\":\"个人组织调查详情\",\"knglib_home_m\":\"知识空间\",\"sp_Organizational_Portrait\":\"组织看板\",\"exttrain_file\":\"外训档案\",\"exam_participation\":\"考试参与情况\",\"investigation_personal\":\"个人维度\",\"gwnl_model_position\":\"岗位配置管理\",\"survey_template_type\":\"类型管理\",\"lecture_teaching_new\":\"讲师教学统计\",\"ssp_point_mgmt\":\"积分管理\",\"exam_task_details\":\"小题作答详情\",\"ftfi_participation\":\"面授参与情况\",\"apaas_index\":\"APaaS平台\",\"ai_trainingOverview\":\"仪表盘\",\"ssp_duration_mgmt\":\"时长管理\",\"ttitems_participation\":\"测训参与情况\",\"rpt_gwnl_map_completion\":\"地图结果统计\",\"cc_mgmt_opinion\":\"舆论管理\",\"project_plan_completion_details\":\"培训计划完成情况\",\"gwnl_eval_index\":\"测评首页\",\"group_exam_participation\":\"考试参与情况\",\"tlive_ind_participation\":\"个人参与直播统计\",\"gwnl_achievements_setting\":\"绩效设置\",\"es_data_statistic\":\"数据统计\",\"system_report\":\"使用总览\",\"tcm_coopera_list\":\"协作微课\",\"sp_gwnl_model_template\":\"模型列表\",\"gwnl_training\":\"测训项目管理\",\"shoptour_store\":\"门店维度\",\"ote_statistic\":\"考试统计\",\"exam_department\":\"部门维度\",\"hierarchy_participation\":\"地图参与情况\",\"kng_ind_upload\":\"个人上传课程统计\",\"decorate_skin_theme\":\"皮肤设置\",\"sdcs_contract\":\"合同管理\",\"kng_ind_study_completion\":\"个人完成课程统计\",\"practice_personal\":\"个人维度\",\"project_ind_participation\":\"个人参与项目统计\",\"learning_results\":\"学习结果统计\",\"sp_gwnl_new_skills\":\"技能\",\"group_server\":\"集团服务\",\"exam_report\":\"考试统计\",\"ttitems_department\":\"部门维度\",\"group_exam_department\":\"部门维度\",\"log_management\":\"日志管理\",\"information_settings\":\"信息设置\",\"survey_ind_participation\":\"个人参加调查详情\",\"sp_gwnl_talentrv_project\":\"盘点项目\",\"group_ftfi_participation\":\"面授参与情况\",\"enterprise_project_participation\":\"项目参与情况\",\"operationsCenter\":\"平台运营\",\"o2o_train_template\":\"项目模板\",\"group_practice_participation\":\"练习参与情况\",\"custom_page_management\":\"页面管理\",\"rpt_gwnl_map_department\":\"部门维度\",\"group_jf_account_mgmt\":\"商城设置\",\"sp_gwnl_study_map\":\"岗位地图\",\"IDP\":\"IDP\",\"sp_tm_target_list\":\"指标列表\",\"o2o_train_resource_mgmt\":\"资源管理\",\"o2o_train_center\":\"项目中心\",\"digitalVoiceoverLibrary\":\"配音库\",\"ttitems_result\":\"测训完成结果\",\"tlive_completion_detail\":\"直播完成详情\",\"Purchased_Courses\":\"已购课程\",\"group_ssp_point_mgmt_all\":\"积分设置\",\"paas_customReportSetting\":\"设置\",\"sp_gwnl_"
+ },
+ {
+  "t": "06:49:46",
+  "m": "OPTIONS",
+  "u": "https://api-phx-ali.yunxuetang.cn/core/factors/984354a0-d966-41db-80c6-09befd7749ad/func-points/refresh/check",
+  "status": 200,
+  "req": "",
+  "resp": ""
+ },
+ {
+  "t": "06:49:46",
+  "m": "OPTIONS",
+  "u": "https://api-phx-ali.yunxuetang.cn/core/user/nav/code/name",
+  "status": 200,
+  "req": "",
+  "resp": ""
+ },
+ {
+  "t": "06:49:46",
+  "m": "GET",
+  "u": "https://api-phx-ali.yunxuetang.cn/core/user/nav/latest?type=2",
+  "status": 200,
+  "req": "",
+  "resp": "{\"updateTime\":1789619448000}"
+ },
+ {
+  "t": "06:49:46",
+  "m": "GET",
+  "u": "https://api-phx-ali.yunxuetang.cn/core/secretprotocol/privacy/984354a0-d966-41db-80c6-09befd7749ad",
+  "status": 200,
+  "req": "",
+  "resp": "{\"secretSwitch\":0,\"secretUpdateTime\":null,\"privacySwitch\":0,\"url\":null,\"orgPrivacySetting\":null}"
+ },
+ {
+  "t": "06:49:46",
+  "m": "GET",
+  "u": "https://api-phx-ali.yunxuetang.cn/core/org/orgname?orgId=984354a0-d966-41db-80c6-09befd7749ad",
+  "status": 200,
+  "req": "",
+  "resp": "{\"orgId\":\"984354a0-d966-41db-80c6-09befd7749ad\",\"orgName\":\"杰克数字人陪练\",\"i18nOrgName\":\"keys.org.core.nav.name.1775738575662.984354a0-d966-41db-80c6-09befd7749ad\",\"i18nOrgNames\":{\"en\":\"杰克数字人陪练\",\"ha\":\"杰克数字人陪练\",\"zh\":\"杰克数字人陪练\"},\"logoUrl\":\"https://picobd.yunxuetang.cn/orgsv2/train.chinajack.com20260409/cropper/images/202604/8303ac35c189444a8d21b4461b010089.png\",\"enableI18n\":1,\"lang4Get\":[{\"langName\":\"简体中文\",\"langTag\":\"zh\"},{\"langName\":\"繁體中文\",\"langTag\":\"ha\"},{\"langName\":\"English\",\"langTag\":\"en\"},{\"langName\":\"Tiếng Việt\",\"langTag\":\"vi\"}],\"editionUpgrade\":0,\"salePkgName\":null,\"pcUrl\":null,\"h5Url\":null,\"sourceCode\":\"103\",\"domainName\":\"train.chinajack.com\",\"productVersion\":\"2.0\",\"platEnv\":\"aliyun\",\"appSso\":0,\"forgetPwd\":null,\"singleChatSwitch\":0,\"siteName\":\"杰克数字人陪练\",\"isShowNavFooter\":null,\"showMoreLoginFn\":null,\"orgType\":1,\"profileId\":null,\"operateLevel\":\"\",\"batchId\":null}"
+ },
+ {
+  "t": "06:49:46",
+  "m": "OPTIONS",
+  "u": "https://api-phx-ali.yunxuetang.cn/core/user/nav/latest?type=2",
+  "status": 200,
+  "req": "",
+  "resp": ""
+ },
+ {
+  "t": "06:49:46",
+  "m": "OPTIONS",
+  "u": "https://api-phx-ali.yunxuetang.cn/core/secretprotocol/privacy/984354a0-d966-41db-80c6-09befd7749ad",
+  "status": 200,
+  "req": "",
+  "resp": ""
+ },
+ {
+  "t": "06:49:46",
+  "m": "OPTIONS",
+  "u": "https://api-phx-ali.yunxuetang.cn/core/org/orgname?orgId=984354a0-d966-41db-80c6-09befd7749ad",
+  "status": 200,
+  "req": "",
+  "resp": ""
+ },
+ {
+  "t": "06:49:47",
+  "m": "GET",
+  "u": "https://api-phx-ali.yunxuetang.cn/aiassist/access/check",
+  "status": 200,
+  "req": "",
+  "resp": "{\"access\":true,\"info\":\"\"}"
+ },
+ {
+  "t": "06:49:47",
+  "m": "OPTIONS",
+  "u": "https://api-phx-ali.yunxuetang.cn/aiassist/access/check",
+  "status": 200,
+  "req": "",
+  "resp": ""
+ },
+ {
+  "t": "06:49:47",
+  "m": "GET",
+  "u": "https://api-phx-ali.yunxuetang.cn/sparring/freeprac/mgr/projects/0e65872c96244107990190fd910f3baf/info",
+  "status": 200,
+  "req": "",
+  "resp": "{\"id\":\"0e65872c96244107990190fd910f3baf\",\"name\":\"订单运营新人实战演练\",\"description\":\"基于订单运营部职能介绍文档，设计针对订单处理、应收账款及物流库存管理的实战演练项目。\",\"projectStatus\":1,\"principals\":[{\"id\":\"fca2c7ad-f5bb-4f62-85cc-d591d1a5f1ea\",\"name\":\"管理员\"}],\"openMode\":1,\"startAt\":null,\"endAt\":null,\"createdAt\":\"2026-09-17 14:39:02\",\"updatedAt\":\"2026-09-17 14:49:42\",\"conversationId\":\"6717f04f-a874-41f5-9e1c-b521d03170c4\",\"artifact\":{\"id\":\"502f6f894853443fa9fc07e5126adc01\",\"targetId\":\"755678979576512722\",\"targetVersion\":1,\"versionCount\":0},\"memberCnt\":0,\"contentSummary\":{\"sceneCnt\":5,\"custProfileCnt\":3,\"icebergElementCnt\":30,\"evalDimensionCnt\":5},\"shortUrl\":\"https://short-phx-ali.yunxuetang.cn/segwcrbys\",\"upgrading\":0,\"totalDrillCount\":-1,\"stuMaxDrillCount\":-1,\"allowGuest\":0,\"guestInfoCollectFields\":{\"required\":[\"fullname\",\"mobile\"],\"optional\":[]},\"createType\":0,\"mode\":\"DAILY_TRAIN\",\"languages\":[\"zh_cn\"]}"
+ },
+ {
+  "t": "06:49:47",
+  "m": "GET",
+  "u": "https://api-phx-ali.yunxuetang.cn/sparring/freeprac/mgr/projects/0e65872c96244107990190fd910f3baf/stats",
+  "status": 200,
+  "req": "",
+  "resp": "{\"mode\":\"DAILY_TRAIN\",\"completionRate\":0,\"completedCount\":0,\"passCount\":0,\"passRate\":0,\"memberCnt\":0,\"activityCnt\":5,\"avgScore\":null,\"trainAvgScore\":null,\"examAvgScore\":null,\"totalTrainCount\":0,\"totalExamCount\":null,\"totalTimes\":0}"
+ },
+ {
+  "t": "06:49:47",
+  "m": "OPTIONS",
+  "u": "https://api-phx-ali.yunxuetang.cn/sparring/freeprac/mgr/projects/0e65872c96244107990190fd910f3baf/info",
+  "status": 200,
+  "req": "",
+  "resp": ""
+ },
+ {
+  "t": "06:49:47",
+  "m": "GET",
+  "u": "https://api-phx-ali.yunxuetang.cn/sparring/freeprac/mgr/activities/0e65872c96244107990190fd910f3baf",
+  "status": 200,
+  "req": "",
+  "resp": "[{\"projectId\":\"0e65872c96244107990190fd910f3baf\",\"id\":\"871155c62d444da391fdc490cc234d0c\",\"activityTargetId\":\"e16ebbdd-de18-40e1-9e44-7f5be10b393a\",\"name\":\"CRM订单录入规范演练\",\"maxDuration\":600,\"tags\":[\"0-3个月试用期员工\",\"新入职订单运营专员\"]},{\"projectId\":\"0e65872c96244107990190fd910f3baf\",\"id\":\"54d9421292d843e9bd7bfcb588bc8790\",\"activityTargetId\":\"0fb54cb6-768a-4ccd-8e8b-ea7800429c41\",\"name\":\"超授信发货审批沟通\",\"maxDuration\":900,\"tags\":[\"新入职订单运营专员\",\"销售支持人员\"]},{\"projectId\":\"0e65872c96244107990190fd910f3baf\",\"id\":\"f8cd90df05e54d8d8ea838effd7c10f1\",\"activityTargetId\":\"96553e74-f443-47b8-9cb3-9c6df30a1099\",\"name\":\"退返修流程处理与费用界定\",\"maxDuration\":720,\"tags\":[\"新入职订单运营专员\",\"售后服务支持\"]},{\"projectId\":\"0e65872c96244107990190fd910f3baf\",\"id\":\"3b4a6c8e6a31407e87b4d21207093b54\",\"activityTargetId\":\"f7333a6c-388f-4845-af4d-aae42db4307c\",\"name\":\"运输方式优化选择与成本管控\",\"maxDuration\":480,\"tags\":[\"新入职订单运营专员\",\"物流协调员\"]},{\"projectId\":\"0e65872c96244107990190fd910f3baf\",\"id\":\"b0ccff6c0443454ebd2da1a71216ce36\",\"activityTargetId\":\"4c0cef91-7036-46ad-9008-a7f7d10856b3\",\"name\":\"库存查询与缺货应对策略\",\"maxDuration\":600,\"tags\":[\"新入职订单运营专员\",\"销售支持人员\"]}]"
+ },
+ {
+  "t": "06:49:47",
+  "m": "OPTIONS",
+  "u": "https://api-phx-ali.yunxuetang.cn/sparring/freeprac/mgr/projects/0e65872c96244107990190fd910f3baf/stats",
+  "status": 200,
+  "req": "",
+  "resp": ""
+ },
+ {
+  "t": "06:49:47",
+  "m": "OPTIONS",
+  "u": "https://api-phx-ali.yunxuetang.cn/sparring/freeprac/mgr/activities/0e65872c96244107990190fd910f3baf",
+  "status": 200,
+  "req": "",
+  "resp": ""
+ },
+ {
+  "t": "06:49:48",
+  "m": "GET",
+  "u": "https://api-phx-ali.yunxuetang.cn/core/product/code",
+  "status": 200,
+  "req": "",
+  "resp": "[{\"productCode\":\"xxv2\",\"factorCode\":\"xxv2mgmt\",\"homePath\":\"\",\"homePathIsMidPage\":0}]"
+ },
+ {
+  "t": "06:49:48",
+  "m": "OPTIONS",
+  "u": "https://api-phx-ali.yunxuetang.cn/core/product/code",
+  "status": 200,
+  "req": "",
+  "resp": ""
+ },
+ {
+  "t": "06:49:48",
+  "m": "GET",
+  "u": "https://api-phx-ali.yunxuetang.cn/sparring/freeprac/mgr/projects/0e65872c96244107990190fd910f3baf/train-strategy",
+  "status": 200,
+  "req": "",
+  "resp": "{\"responseMode\":1,\"dailyTrain\":{\"enabled\":true,\"realtimeCommentEnabled\":true,\"coachDemoEnabled\":false},\"examMode\":{\"enabled\":false,\"faceRecognitionEnabled\":false,\"facePreCheckEnabled\":true,\"faceContinuousCheckEnabled\":true,\"faceMatchLimit\":80,\"screenSwitchDetectionEnabled\":false,\"maxScreenSwitchCount\":0},\"minTrainCountToUnlockExam\":null,\"maxExamCount\":null,\"practiceTypes\":[1,2,3],\"difficulty\":2,\"allowCustomDifficulty\":true}"
+ },
+ {
+  "t": "06:49:48",
+  "m": "GET",
+  "u": "https://api-phx-ali.yunxuetang.cn/sparring/freeprac/mgr/projects/0e65872c96244107990190fd910f3baf/pass-criteria",
+  "status": 200,
+  "req": "",
+  "resp": "{\"scenePassType\":1,\"scenePassCount\":1}"
+ },
+ {
+  "t": "06:49:48",
+  "m": "OPTIONS",
+  "u": "https://api-phx-ali.yunxuetang.cn/sparring/freeprac/mgr/projects/0e65872c96244107990190fd910f3baf/train-strategy",
+  "status": 200,
+  "req": "",
+  "resp": ""
+ },
+ {
+  "t": "06:49:48",
+  "m": "OPTIONS",
+  "u": "https://api-phx-ali.yunxuetang.cn/sparring/freeprac/mgr/projects/0e65872c96244107990190fd910f3baf/pass-criteria",
+  "status": 200,
+  "req": "",
+  "resp": ""
+ },
+ {
+  "t": "06:50:32",
+  "m": "POST",
+  "u": "https://api-phx-ali.yunxuetang.cn/sparring/freeprac/mgr/projects/0e65872c96244107990190fd910f3baf/publish",
+  "status": 200,
+  "req": "",
+  "resp": ""
+ },
+ {
+  "t": "06:50:32",
+  "m": "OPTIONS",
+  "u": "https://api-phx-ali.yunxuetang.cn/sparring/freeprac/mgr/projects/0e65872c96244107990190fd910f3baf/publish",
+  "status": 200,
+  "req": "",
+  "resp": ""
+ },
+ {
+  "t": "06:50:32",
+  "m": "GET",
+  "u": "https://api-phx-ali.yunxuetang.cn/sparring/freeprac/mgr/projects/0e65872c96244107990190fd910f3baf/info",
+  "status": 200,
+  "req": "",
+  "resp": "{\"id\":\"0e65872c96244107990190fd910f3baf\",\"name\":\"订单运营新人实战演练\",\"description\":\"基于订单运营部职能介绍文档，设计针对订单处理、应收账款及物流库存管理的实战演练项目。\",\"projectStatus\":8,\"principals\":[{\"id\":\"fca2c7ad-f5bb-4f62-85cc-d591d1a5f1ea\",\"name\":\"管理员\"}],\"openMode\":1,\"startAt\":null,\"endAt\":null,\"createdAt\":\"2026-09-17 14:39:02\",\"updatedAt\":\"2026-09-17 14:50:33\",\"conversationId\":\"6717f04f-a874-41f5-9e1c-b521d03170c4\",\"artifact\":{\"id\":\"502f6f894853443fa9fc07e5126adc01\",\"targetId\":\"755678979576512722\",\"targetVersion\":1,\"versionCount\":1},\"memberCnt\":0,\"contentSummary\":{\"sceneCnt\":5,\"custProfileCnt\":3,\"icebergElementCnt\":30,\"evalDimensionCnt\":5},\"shortUrl\":\"https://short-phx-ali.yunxuetang.cn/segwcrbys\",\"upgrading\":0,\"totalDrillCount\":-1,\"stuMaxDrillCount\":-1,\"allowGuest\":0,\"guestInfoCollectFields\":{\"required\":[\"fullname\",\"mobile\"],\"optional\":[]},\"createType\":0,\"mode\":\"DAILY_TRAIN\",\"languages\":[\"zh_cn\"]}"
+ },
+ {
+  "t": "06:50:32",
+  "m": "OPTIONS",
+  "u": "https://api-phx-ali.yunxuetang.cn/sparring/freeprac/mgr/projects/0e65872c96244107990190fd910f3baf/info",
+  "status": 200,
+  "req": "",
+  "resp": ""
+ },
+ {
+  "t": "06:50:33",
+  "m": "GET",
+  "u": "https://api-phx-ali.yunxuetang.cn/sparring/freeprac/mgr/projects/0e65872c96244107990190fd910f3baf/train-strategy",
+  "status": 200,
+  "req": "",
+  "resp": "{\"responseMode\":1,\"dailyTrain\":{\"enabled\":true,\"realtimeCommentEnabled\":true,\"coachDemoEnabled\":false},\"examMode\":{\"enabled\":false,\"faceRecognitionEnabled\":false,\"facePreCheckEnabled\":true,\"faceContinuousCheckEnabled\":true,\"faceMatchLimit\":80,\"screenSwitchDetectionEnabled\":false,\"maxScreenSwitchCount\":0},\"minTrainCountToUnlockExam\":null,\"maxExamCount\":null,\"practiceTypes\":[1,2,3],\"difficulty\":2,\"allowCustomDifficulty\":true}"
+ },
+ {
+  "t": "06:50:33",
+  "m": "GET",
+  "u": "https://api-phx-ali.yunxuetang.cn/sparring/freeprac/mgr/projects/0e65872c96244107990190fd910f3baf/pass-criteria",
+  "status": 200,
+  "req": "",
+  "resp": "{\"scenePassType\":1,\"scenePassCount\":1}"
+ },
+ {
+  "t": "06:50:33",
+  "m": "OPTIONS",
+  "u": "https://api-phx-ali.yunxuetang.cn/sparring/freeprac/mgr/projects/0e65872c96244107990190fd910f3baf/train-strategy",
+  "status": 200,
+  "req": "",
+  "resp": ""
+ },
+ {
+  "t": "06:50:33",
+  "m": "OPTIONS",
+  "u": "https://api-phx-ali.yunxuetang.cn/sparring/freeprac/mgr/projects/0e65872c96244107990190fd910f3baf/pass-criteria",
+  "status": 200,
+  "req": "",
+  "resp": ""
+ },
+ {
+  "t": "06:51:32",
+  "m": "GET",
+  "u": "https://api-phx-ali.yunxuetang.cn/sparring/freeprac/mgr/projects/0e65872c96244107990190fd910f3baf/script-progress",
+  "status": 200,
+  "req": "",
+  "resp": "{\"total\":10,\"completed\":0,\"failed\":0,\"progress\":0,\"status\":8}"
+ },
+ {
+  "t": "06:51:32",
+  "m": "OPTIONS",
+  "u": "https://api-phx-ali.yunxuetang.cn/sparring/freeprac/mgr/projects/0e65872c96244107990190fd910f3baf/script-progress",
+  "status": 200,
+  "req": "",
+  "resp": ""
+ },
+ {
+  "t": "06:52:33",
+  "m": "GET",
+  "u": "https://api-phx-ali.yunxuetang.cn/sparring/freeprac/mgr/projects/0e65872c96244107990190fd910f3baf/script-progress",
+  "status": 200,
+  "req": "",
+  "resp": "{\"total\":10,\"completed\":4,\"failed\":0,\"progress\":40,\"status\":8}"
+ },
+ {
+  "t": "06:52:33",
+  "m": "OPTIONS",
+  "u": "https://api-phx-ali.yunxuetang.cn/sparring/freeprac/mgr/projects/0e65872c96244107990190fd910f3baf/script-progress",
+  "status": 200,
+  "req": "",
+  "resp": ""
+ },
+ {
+  "t": "06:53:33",
+  "m": "GET",
+  "u": "https://api-phx-ali.yunxuetang.cn/sparring/freeprac/mgr/projects/0e65872c96244107990190fd910f3baf/script-progress",
+  "status": 200,
+  "req": "",
+  "resp": "{\"total\":10,\"completed\":10,\"failed\":0,\"progress\":100,\"status\":10}"
+ },
+ {
+  "t": "06:53:33",
+  "m": "OPTIONS",
+  "u": "https://api-phx-ali.yunxuetang.cn/sparring/freeprac/mgr/projects/0e65872c96244107990190fd910f3baf/script-progress",
+  "status": 200,
+  "req": "",
+  "resp": ""
+ },
+ {
+  "t": "06:53:33",
+  "m": "GET",
+  "u": "https://api-phx-ali.yunxuetang.cn/sparring/freeprac/mgr/projects/0e65872c96244107990190fd910f3baf/info",
+  "status": 200,
+  "req": "",
+  "resp": "{\"id\":\"0e65872c96244107990190fd910f3baf\",\"name\":\"订单运营新人实战演练\",\"description\":\"基于订单运营部职能介绍文档，设计针对订单处理、应收账款及物流库存管理的实战演练项目。\",\"projectStatus\":10,\"principals\":[{\"id\":\"fca2c7ad-f5bb-4f62-85cc-d591d1a5f1ea\",\"name\":\"管理员\"}],\"openMode\":1,\"startAt\":null,\"endAt\":null,\"createdAt\":\"2026-09-17 14:39:02\",\"updatedAt\":\"2026-09-17 14:52:46\",\"conversationId\":\"6717f04f-a874-41f5-9e1c-b521d03170c4\",\"artifact\":{\"id\":\"502f6f894853443fa9fc07e5126adc01\",\"targetId\":\"755678979576512722\",\"targetVersion\":1,\"versionCount\":1},\"memberCnt\":0,\"contentSummary\":{\"sceneCnt\":5,\"custProfileCnt\":3,\"icebergElementCnt\":30,\"evalDimensionCnt\":5},\"shortUrl\":\"https://short-phx-ali.yunxuetang.cn/segwcrbys\",\"upgrading\":0,\"totalDrillCount\":-1,\"stuMaxDrillCount\":-1,\"allowGuest\":0,\"guestInfoCollectFields\":{\"required\":[\"fullname\",\"mobile\"],\"optional\":[]},\"createType\":0,\"mode\":\"DAILY_TRAIN\",\"languages\":[\"zh_cn\"]}"
+ },
+ {
+  "t": "06:53:33",
+  "m": "OPTIONS",
+  "u": "https://api-phx-ali.yunxuetang.cn/sparring/freeprac/mgr/projects/0e65872c96244107990190fd910f3baf/info",
+  "status": 200,
+  "req": "",
+  "resp": ""
+ },
+ {
+  "t": "06:53:34",
+  "m": "GET",
+  "u": "https://api-phx-ali.yunxuetang.cn/sparring/freeprac/mgr/projects/0e65872c96244107990190fd910f3baf/train-strategy",
+  "status": 200,
+  "req": "",
+  "resp": "{\"responseMode\":1,\"dailyTrain\":{\"enabled\":true,\"realtimeCommentEnabled\":true,\"coachDemoEnabled\":false},\"examMode\":{\"enabled\":false,\"faceRecognitionEnabled\":false,\"facePreCheckEnabled\":true,\"faceContinuousCheckEnabled\":true,\"faceMatchLimit\":80,\"screenSwitchDetectionEnabled\":false,\"maxScreenSwitchCount\":0},\"minTrainCountToUnlockExam\":null,\"maxExamCount\":null,\"practiceTypes\":[1,2,3],\"difficulty\":2,\"allowCustomDifficulty\":true}"
+ },
+ {
+  "t": "06:53:34",
+  "m": "GET",
+  "u": "https://api-phx-ali.yunxuetang.cn/sparring/freeprac/mgr/projects/0e65872c96244107990190fd910f3baf/pass-criteria",
+  "status": 200,
+  "req": "",
+  "resp": "{\"scenePassType\":1,\"scenePassCount\":1}"
+ },
+ {
+  "t": "06:53:34",
+  "m": "OPTIONS",
+  "u": "https://api-phx-ali.yunxuetang.cn/sparring/freeprac/mgr/projects/0e65872c96244107990190fd910f3baf/train-strategy",
+  "status": 200,
+  "req": "",
+  "resp": ""
+ },
+ {
+  "t": "06:53:34",
+  "m": "OPTIONS",
+  "u": "https://api-phx-ali.yunxuetang.cn/sparring/freeprac/mgr/projects/0e65872c96244107990190fd910f3baf/pass-criteria",
+  "status": 200,
+  "req": "",
+  "resp": ""
+ }
+]

@@ -1,0 +1,44 @@
+=== UPLOAD-LIKE REQUESTS ===
+=== KEY BIZ DATA PARTS (reassembled) ===
+--- msg=a0139796-6b8e-4e8c part=0 bizType=biz-common-parse-file len=273
+{"bizType": "biz-common-parse-file", "data": {"context_id": "040ed32a-7d2f-4b96-9f5c-00c4552ae2af", "call_id": "call_e4acd6db72694e54bfbc9da609d7d265", "content": "> 文件正在解析...", "files": [{"id": "3a20da33-dd08-47a2-ae0c-8228f66f3ada", "name": "订单运营部职能介绍", "status": "0"}]}}
+
+--- msg=a0139796-6b8e-4e8c part=1 bizType=biz-common-parse-file len=270
+{"bizType": "biz-common-parse-file", "data": {"context_id": "040ed32a-7d2f-4b96-9f5c-00c4552ae2af", "call_id": "call_e4acd6db72694e54bfbc9da609d7d265", "content": "> 文件解析完成", "files": [{"id": "3a20da33-dd08-47a2-ae0c-8228f66f3ada", "name": "订单运营部职能介绍", "status": "1"}]}}
+
+--- msg=a0139796-6b8e-4e8c part=3 bizType=biz-side-manage-topic-changed len=159
+{"bizType": "biz-side-manage-topic-changed", "params": {"explicit": true, "topic": "订单运营部职能培训设计", "description": "基于订单运营部职能介绍文档，设计针对订单处理、应收账款及物流库存管理的实战演练项目。"}}
+
+--- msg=6d51113b-2897-43e8 part=2 bizType=biz-side-manage-topic-changed len=156
+{"bizType": "biz-side-manage-topic-changed", "params": {"explicit": true, "topic": "订单运营新人实战演练", "description": "基于订单运营部职能文档，设计针对新人的订单处理、应收管控及物流库存实战演练项目。"}}
+
+--- msg=6d51113b-2897-43e8 part=3 bizType=biz-side-manage-artifact-updated len=438
+{"bizType": "biz-side-manage-artifact-updated", "params": {"id": "755678979576512722", "version": 1, "content": [{"op": "full_replace", "path": "/materials", "value": [{"id": "3a20da33-dd08-47a2-ae0c-8228f66f3ada", "name": "订单运营部职能介绍", "fileType": "ppt", "fileSize": 2, "fileSizeUnit": "M", "visibility": 1, "fileServId": "file", "fileSource": 2, "targetId": "217f8c53-6f2c-4a78-8062-6c66af5038c7"}], "reason": "Replace all materials"}]}}
+
+--- msg=6d51113b-2897-43e8 part=4 bizType=biz-side-manage-artifact-generated len=8882
+{"bizType": "biz-side-manage-artifact-generated", "params": {"id": "755678979576512722", "version": 1, "status": "in_progress", "content": {"scenarios": [{"id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890", "name": "CRM订单录入规范演练", "audiences": ["新入职订单运营专员", "0-3个月试用期员工"], "businessGoal": "确保订单信息录入准确无误，避免因信息缺失导致的发货错误或物流延误。", "behaviorGoals": ["准确识别客户类型并选择对应的系统入口（CRM/PRM）", "完整录入产品编码、数量、单价及特殊包装要求", "核对收货地址与物流方式的匹配性，确保地址详细到门牌号"], "relatedIcebergElements": {"knowledge": ["订单处理系统知识", "国内订单事项规范"], "skills": ["CRM系统操作技能", "信息核对与录入技能"], "roles": ["订单处理专员"], "selfConcept": ["严谨细致"], "personalities": ["注重细节"], "motives": ["追求零差错"]}, "businessImpact": "提高订单处理效率，减少因录入错误导致的退单和客诉。", "failureCost": "发货错误导致物流成本增加，客户满意度下降，甚至产生坏账风险。", "coreConflict": "业务催单压力大与订单信息核对耗时之间的矛盾。", "failureReasons": ["漏填关键信息（如联系人电话）", "产品编码选择错误", "地址模糊导致物流无法派送"], "difficulties": ["在高压下保持录入准确性", "快速识别特殊订单要求"], "constraints": {"forbidBehaviors": ["禁止在未核对库存的情况下直接录入订单", "禁止使用模糊地址（如‘某某路口’）"], "maxTime": 10}, "relatedKnowledgeIds": [], "relatedScriptIds": [], "dimensionWeights": [{"dimensionId": "d1a2b3c4-1234-5678-90ab-cdef12345678", "weight": 40}, {"dimensionId": "d2b3c4d5-2345-6789-01bc-def123456789", "weight": 30}, {"dimensionId": "d3c4d5e6-3456-7890-12cd-ef1234567890", "weight": 30}]}, {"id": "b2c3d4e5-f6a7-8901-bcde-f12345678901", "name": "超授信发货审批沟通", "audiences": ["新入职订单运营专员", "销售支持人员"], "businessGoal": "在合规前提下协助业务完成超授信订单的审批，平衡风控与销售需求。", "behaviorGoals": ["准确判断超授信金额层级（100万以下/100-300万/300万以上）", "按流程向对应审批人（总监/赖总/美芳等）发起申请", "清晰说明超授信原因及客户回款计划，提供完整审批材料"], "relatedIcebergElements": {"knowledge": ["应收账款管控流程", "超授信审批层级规定"], "skills": ["跨部门沟通技巧", "流程合规判断能力"], "roles": ["风控协调员"], "selfConcept": ["原则性与灵活性并重"], "personalities": ["冷静客观"], "motives": ["保障公司资金安全"]}, "businessImpact": "确保公司应收账款安全，同时支持重点客户的紧急发货需求。", "failureCost": "违规发货导致坏账，或审批流程延误导致客户流失。", "coreConflict": "业务经理的紧急发货需求与财务风控审批流程的冲突。", "failureReasons": ["找错审批人导致流程退回", "未说明超授信原因被财务驳回", "遗漏核算审核环节"], "difficulties": ["应对业务经理的催促和施压", "快速准备齐全的审批佐证材料"], "constraints": {"forbidBehaviors": ["禁止越级审批", "禁止在未获批准前通知仓库发货"], "maxTime": 15}, "relatedKnowledgeIds": [], "relatedScriptIds": [], "dimensionWeights": [{"dimensionId": "d1a2b3c4-1234-5678-90ab-cdef12345678", "weight": 50}, {"dimensionId": "d4d5e6f7-4567-8901-23de-f12345678901", "weight": 50}]}, {"id": "c3d4e5f6-a7b8-9012-cdef-123456789012", "name": "退返修流程处理与费用界定", "audiences": ["新入职订单运营专员", "售后服务支持"], "businessGoal": "规范处理客户退返修请求，明确费用责任，降低公司物流损失。", "behaviorGoals": ["引导客户在DMS系统提交退返修流程并粘贴标识卡", "根据退货原因（质量/非质量）准确界定运费承担方", "协调物流退回并跟进途损索赔事宜"], "relatedIcebergElements": {"knowledge": ["退返修处理规范", "物流运费承担政策"], "ski
+
+--- msg=6d51113b-2897-43e8 part=5 bizType=biz-side-manage-artifact-generated len=126
+{"bizType": "biz-side-manage-artifact-generated", "params": {"id": "755678979576512722", "version": 1, "status": "completed"}}
+
+--- msg=6d51113b-2897-43e8 part=7 bizType=biz-side-manage-artifact-updated len=438
+{"bizType": "biz-side-manage-artifact-updated", "params": {"id": "755678979576512722", "version": 1, "content": [{"op": "full_replace", "path": "/materials", "value": [{"id": "3a20da33-dd08-47a2-ae0c-8228f66f3ada", "name": "订单运营部职能介绍", "fileType": "ppt", "fileSize": 2, "fileSizeUnit": "M", "visibility": 1, "fileServId": "file", "fileSource": 2, "targetId": "217f8c53-6f2c-4a78-8062-6c66af5038c7"}], "reason": "Replace all materials"}]}}
+
+--- msg=6e3099b5-1c92-44fd part=2 bizType=biz-side-manage-case-generated len=290
+{"bizType": "biz-side-manage-case-generated", "params": {"id": "755680059688649166", "jsonArtifactId": "755680140227675018", "scenarioId": "0fb54cb6-768a-4ccd-8e8b-ea7800429c41", "subjectId": "755678979576512722", "scriptName": "高压下的合规坚守：超授信发货审批博弈", "difficulty": 2, "status": "completed"}}
+
+--- msg=5a2cef97-854c-46ab part=2 bizType=biz-side-manage-case-generated len=298
+{"bizType": "biz-side-manage-case-generated", "params": {"id": "755680546295857440", "jsonArtifactId": "755680620261573256", "scenarioId": "e16ebbdd-de18-40e1-9e44-7f5be10b393a", "subjectId": "755678979576512722", "scriptName": "高压催单下的精准录入：特殊包装与地址核对的“生死线”", "difficulty": 1, "status": "completed"}}
+
+--- msg=5a2cef97-854c-46ab part=5 bizType=biz-side-manage-case-generated len=289
+{"bizType": "biz-side-manage-case-generated", "params": {"id": "755680885422112980", "jsonArtifactId": "755680951964746260", "scenarioId": "96553e74-f443-47b8-9cb3-9c6df30a1099", "subjectId": "755678979576512722", "scriptName": "非质量退货的运费博弈与流程合规引导", "difficulty": 2, "status": "completed"}}
+
+--- msg=5a2cef97-854c-46ab part=8 bizType=biz-side-manage-case-generated len=295
+{"bizType": "biz-side-manage-case-generated", "params": {"id": "755681248283099988", "jsonArtifactId": "755681319951172322", "scenarioId": "f7333a6c-388f-4845-af4d-aae42db4307c", "subjectId": "755678979576512722", "scriptName": "物流成本与时效的博弈：说服急躁业务接受经济方案", "difficulty": 2, "status": "completed"}}
+
+--- msg=5a2cef97-854c-46ab part=11 bizType=biz-side-manage-case-generated len=291
+{"bizType": "biz-side-manage-case-generated", "params": {"id": "755681638231736980", "jsonArtifactId": "755681727667716515", "scenarioId": "4c0cef91-7036-46ad-9008-a7f7d10856b3", "subjectId": "755678979576512722", "scriptName": "极限施压下的多仓库存调度与替代方案博弈", "difficulty": 3, "status": "completed"}}
+
+--- msg=06dc53ba-71c9-464a part=0 bizType=biz-side-manage-save-success len=142
+{"bizType": "biz-side-manage-save-success", "params": {"id": "755678979576512722", "version": 1, "ex_id": "0e65872c96244107990190fd910f3baf"}}
+

@@ -1,0 +1,885 @@
+app:
+  description: 大贤者-AI实战训练场
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: 自由演练助手
+  use_icon_as_answer_icon: false
+dependencies: []
+kind: app
+version: 0.5.0
+workflow:
+  conversation_variables: []
+  environment_variables:
+  - description: ''
+    id: 4ec7ff98-f336-4981-865a-14efc62ccfbc
+    name: TOOL_BASE_URL
+    selector:
+    - env
+    - TOOL_BASE_URL
+    value: http://10.100.26.23:8082
+    value_type: string
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 500
+        batch_count_limit: 50
+        file_size_limit: 1500
+        image_file_size_limit: 100
+        video_file_size_limit: 1000
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInLoop: false
+        sourceType: start
+        targetType: agent
+      id: 1789716125307-source-1789716292926-target
+      source: '1789716125307'
+      sourceHandle: source
+      target: '1789716292926'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: agent
+        targetType: answer
+      id: 1789716292926-source-1789716687128-target
+      source: '1789716292926'
+      sourceHandle: source
+      target: '1789716687128'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        selected: false
+        title: 用户输入
+        type: start
+        variables:
+        - default: ''
+          hint: ''
+          label: artifact_summary
+          max_length: 48000
+          options: []
+          placeholder: ''
+          required: false
+          type: paragraph
+          variable: artifact_summary
+        - default: ''
+          hint: ''
+          label: theme_status
+          max_length: 256
+          options: []
+          placeholder: ''
+          required: false
+          type: text-input
+          variable: theme_status
+        - default: ''
+          hint: ''
+          label: material_summary
+          max_length: 48000
+          options: []
+          placeholder: ''
+          required: false
+          type: paragraph
+          variable: material_summary
+        - default: ''
+          hint: ''
+          label: session_id
+          max_length: 256
+          options: []
+          placeholder: ''
+          required: false
+          type: text-input
+          variable: session_id
+        - default: ''
+          hint: ''
+          label: trace_id
+          max_length: 256
+          options: []
+          placeholder: ''
+          required: false
+          type: text-input
+          variable: trace_id
+      height: 212
+      id: '1789716125307'
+      position:
+        x: 80
+        y: 282
+      positionAbsolute:
+        x: 80
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        agent_parameters:
+          instruction:
+            type: constant
+            value: "# 角色\n你是 无所不知的大贤者，收到命运的指引来到杰克公司，成为杰克「AI实战训练场」的实战演练项目设计助手。你协助企业培训管理者，通过对话完成一套训练主题的设计：从业务背景梳理、场景单元设计、客户画像构建、冰山能力建模到评估标准制定，最终产出一套结构化、可直接发布的训练项目。\n\
+              \n# 输入变量\n- theme_status：主题当前状态。new=新会话无主题；draft=已有草稿；published=已发布。\n\
+              - artifact_summary：当前主题产物的结构摘要。若非空，说明主题已有内容，可能包含：场景名列表、画像类型、维度名与权重、案例生成情况。为空表示暂无产物。\n\
+              - material_summary：用户已上传材料的解析摘要，可能为空。\n\n# 阶段判断规则（优先级从高到低）\n1. 若 theme_status=new\
+              \ 且 artifact_summary 为空 → 处于【背景了解】或【方向确认】。\n2. 若 theme_status=new 但\
+              \ artifact_summary 非空 → 状态异常，以 artifact_summary 为准，视为已有草稿。\n3. 若 theme_status=draft：\n\
+              \   - artifact_summary 无场景 → 处于【场景规划】或【生成主题】。\n   - artifact_summary\
+              \ 有场景无案例 → 处于【案例生成】。\n   - artifact_summary 有场景有案例 → 处于【收尾】。\n4. 若 theme_status=published：\n\
+              \   - 用户提出修改 → 更新模式，generate_theme 时 keepExisting=true。\n   - 用户仅查看\
+              \ → 进入【收尾】提示。\n\n# 阶段流程\n1.【背景了解】新会话：开场问候后询问三件事——所属行业与业务模式、主要训练对象、本次培训核心目标。若\
+              \ material_summary 非空，先给出材料摘要（核心目标/关键知识点/建议场景数量 5-7 个），再确认目标。一次提问不超过\
+              \ 3 个。\n\n2.【方向确认→自动建题】仅当 theme_status=new 且用户给出明确方向（主题方向 + 至少一个训练目标，或材料解析已明确方向）时，立即调用\
+              \ create_topic 创建草稿主题，无需用户确认。主题名要专业凝练，格式如“XX销售话术训练/XX职能实战演练”；描述一句话概括目标与人群。调用后告知“已为你创建草稿主题《XX》”，继续细化目标。\n\
+              \   - 若 theme_status 已是 draft 或 published，禁止再调用 create_topic，除非用户明确要求改名或改描述。\n\
+              \   - 同会话不重复建主题。\n\n3.【场景规划】生成前，先在聊天中给出场景规划方案，必须包含：\n   - markdown 表格：场景名称\
+              \ / 核心冲突 / 业务目标 / 难度星级\n   - 客户画像建议\n   - 评估维度草案\n   然后询问用户是否调整。\n \
+              \  - 用户明确同意（如“可以/开始生成/没问题/就按这个来”）后才进入生成。\n   - 用户提出修改意见时，先更新规划，再重新确认。\n\
+              \   - 用户说“行吧/先这样/你看着办”视为未明确同意，需再确认一次。\n\n4.【生成主题】调用 generate_theme 工具：\n\
+              \   - goal：核心目标一句话，由你从对话或材料中总结。\n   - audiences：人群数组，从对话或材料中提取。\n  \
+              \ - materialSummary：材料要点，无材料传空串。\n   - keepExisting：全新生成=false；更新模式下且只需局部调整=true。\n\
+              \   - 更新模式下，若用户有具体修改要求，把要求合并进 goal 或 materialSummary，并注明“本次为局部修改，要求：…”。\n\
+              \   调用后在聊天中说“正在生成训练主题配置，请稍候…”，并加引用块提示“> 正在生成…，请稍候”。工具返回只表示任务已受理，实际结果由右侧面板推送。收到受理确认后告知用户右侧面板将实时更新。\n\
+              \n5.【产品档案询问】生成完成后询问是否需要为特定产品/岗位建立产品档案，说明可让训练更真实，但可跳过。用户拒绝则进入案例环节。本期产品档案仅询问，不生成。\n\
+              \n6.【案例生成】建议逐场景或批量生成实战案例：\n   - 批量：scenarioIds 留空=全部场景。\n   - 逐场景：传具体\
+              \ id，如 scenarioIds=[\"sc-01\"]。\n   - difficulty：用户未指定时默认 0（按场景特点自定）；用户指定则传\
+              \ 1/2/3。\n   - 若某些场景已有案例，提示用户“以下场景已有案例，是否重新生成？”再决定是否纳入 scenarioIds。\n\
+              \   用户同意后调用 generate_cases，并告知“正在生成实战案例，右侧面板将逐个更新”。\n\n7.【收尾】全部完成后给出概览表格（场景名/案例名/难度），提示用户“若配置符合预期，可点击右侧面板的「确认」按钮保存，随后在主题详情页发布上线”。更新模式（published）则提示“确认后内容将更新为新版本”。\n\
+              \n# 工具使用规则\n- create_topic：仅 theme_status=new 且方向明确时调用；已有主题时禁止调用，除非用户明确要求改名/改描述。\n\
+              - update_artifact：仅用于结构性小改动，如材料可见性变更。场景/画像/维度的内容修改一律走 generate_theme（keepExisting=true）。禁止自己编\
+              \ JSON 补丁去改场景内容。\n- generate_theme / generate_cases：耗时任务。调用后禁止输出虚假结果，只说明已开始，真实进度由右侧面板呈现。\n\
+              - 同一时间只允许一个生成任务在跑。若 artifact_summary 显示生成可能仍在进行（用户刚触发过），提醒用户稍候，不要重复调用。\n\
+              - 工具参数文本用中文，简洁准确；audiences、scenarioIds 等数组按 schema 传 JSON 数组。\n- 工具调用失败：如实说明失败原因，建议重试或调整输入。禁止假装成功。同一工具连续失败\
+              \ 2 次后，停止重试并请用户检查输入。\n\n# 禁止行为\n- 禁止编造右侧面板未出现的内容。\n- 禁止在工具返回前宣称“已生成完成”。\n\
+              - 禁止在用户未明确同意时进入生成。\n- 禁止把 artifact_summary 之外的历史内容当成当前内容。\n- 禁止重复调用同一工具处理同一任务。\n\
+              - 禁止在更新模式下用 generate_theme 覆盖用户未要求修改的字段。\n\n# 对话风格\n- 专业、干练、温和。多用 markdown\
+              \ 结构化输出（表格/列表/分级标题），关键信息加粗。\n- 每次生成类操作前给一句引用块提示“> 正在生成…，请稍候”。\n- 规划、概览类回复可用完整表格；其他过程性回复控制在\
+              \ 3 句以内。\n- 不确定用户意图时优先澄清而非猜测。\n- 用户提出 artifact_summary 之外的历史内容，以 artifact_summary\
+              \ 为准，没有就说没有。"
+          maximum_iterations:
+            type: constant
+            value: 20
+          model:
+            type: constant
+            value:
+              completion_params:
+                temperature: 0.3
+                top_p: 0.3
+              mode: chat
+              model: Qwen/Qwen3-30B-A3B-Instruct-2507
+              model_type: llm
+              provider: yangyaofei/vllm/vllm
+              type: model-selector
+          query:
+            type: constant
+            value: '{{#1789716125307.artifact_summary#}}{{#1789716125307.theme_status#}}{{#1789716125307.material_summary#}}{{#sys.query#}}'
+          tools:
+            type: constant
+            value:
+            - enabled: true
+              extra:
+                description: '创建或重命名训练主题草稿。
+
+                  【何时调用】① 当前没有主题（theme_status=new）且用户已给出明确方向（主题方向 + 至少一个训练目标），
+
+                  或材料摘要已足以判断方向 → 立即调用，无需征得用户同意；② 用户要求修改主题名称或描述时。
+
+                  【何时不要调用】已有主题、只是要调整场景/客户画像/冰山/评估维度内容时——改内容请用 generate_theme。
+
+                  【调用后】在回复中告知"已为你创建草稿主题《主题名》"，并继续细化目标。'
+              parameters:
+                description:
+                  auto: 1
+                  value: null
+                sessionId:
+                  auto: 0
+                  value:
+                    type: mixed
+                    value: '{{#1789716125307.session_id#}}'
+                topic:
+                  auto: 1
+                  value: null
+                traceId:
+                  auto: 0
+                  value:
+                    type: mixed
+                    value: '{{#1789716125307.trace_id#}}'
+              provider_name: aae352a0-222d-4cc5-91e3-8dd8113dbe8a
+              provider_show_name: create_topic
+              schemas:
+              - auto_generate: null
+                default: null
+                form: llm
+                human_description:
+                  en_US: ''
+                  ja_JP: ''
+                  pt_BR: ''
+                  zh_Hans: ''
+                label:
+                  en_US: traceId
+                  ja_JP: traceId
+                  pt_BR: traceId
+                  zh_Hans: traceId
+                llm_description: null
+                max: null
+                min: null
+                name: traceId
+                options: []
+                placeholder:
+                  en_US: ''
+                  ja_JP: ''
+                  pt_BR: ''
+                  zh_Hans: ''
+                precision: null
+                required: true
+                scope: null
+                template: null
+                type: string
+              - auto_generate: null
+                default: null
+                form: llm
+                human_description:
+                  en_US: ''
+                  ja_JP: ''
+                  pt_BR: ''
+                  zh_Hans: ''
+                label:
+                  en_US: sessionId
+                  ja_JP: sessionId
+                  pt_BR: sessionId
+                  zh_Hans: sessionId
+                llm_description: null
+                max: null
+                min: null
+                name: sessionId
+                options: []
+                placeholder:
+                  en_US: ''
+                  ja_JP: ''
+                  pt_BR: ''
+                  zh_Hans: ''
+                precision: null
+                required: true
+                scope: null
+                template: null
+                type: string
+              - auto_generate: null
+                default: null
+                form: llm
+                human_description:
+                  en_US: 主题名称，专业凝练，如"柔性智造销售话术训练"
+                  ja_JP: 主题名称，专业凝练，如"柔性智造销售话术训练"
+                  pt_BR: 主题名称，专业凝练，如"柔性智造销售话术训练"
+                  zh_Hans: 主题名称，专业凝练，如"柔性智造销售话术训练"
+                label:
+                  en_US: topic
+                  ja_JP: topic
+                  pt_BR: topic
+                  zh_Hans: topic
+                llm_description: 主题名称，专业凝练，如"柔性智造销售话术训练"
+                max: null
+                min: null
+                name: topic
+                options: []
+                placeholder:
+                  en_US: 主题名称，专业凝练，如"柔性智造销售话术训练"
+                  ja_JP: 主题名称，专业凝练，如"柔性智造销售话术训练"
+                  pt_BR: 主题名称，专业凝练，如"柔性智造销售话术训练"
+                  zh_Hans: 主题名称，专业凝练，如"柔性智造销售话术训练"
+                precision: null
+                required: true
+                scope: null
+                template: null
+                type: string
+              - auto_generate: null
+                default: null
+                form: llm
+                human_description:
+                  en_US: 主题描述一句话（目标+人群）
+                  ja_JP: 主题描述一句话（目标+人群）
+                  pt_BR: 主题描述一句话（目标+人群）
+                  zh_Hans: 主题描述一句话（目标+人群）
+                label:
+                  en_US: description
+                  ja_JP: description
+                  pt_BR: description
+                  zh_Hans: description
+                llm_description: 主题描述一句话（目标+人群）
+                max: null
+                min: null
+                name: description
+                options: []
+                placeholder:
+                  en_US: 主题描述一句话（目标+人群）
+                  ja_JP: 主题描述一句话（目标+人群）
+                  pt_BR: 主题描述一句话（目标+人群）
+                  zh_Hans: 主题描述一句话（目标+人群）
+                precision: null
+                required: false
+                scope: null
+                template: null
+                type: string
+              settings: {}
+              tool_description: 创建或重命名训练主题草稿（方向明确时自动调用，无需用户确认）
+              tool_label: create_topic
+              tool_name: create_topic
+              type: api
+            - enabled: true
+              extra:
+                description: '为场景单元生成实战案例（对练剧本）。
+
+                  【何时调用】主题配置已生成完成，且用户同意生成案例时。
+
+                  【用法】支持一次批量生成多个场景：scenarioIds 留空表示全部场景（推荐用法，不要逐个征询用户）。
+
+                  每完成一个场景会推送一次事件，右侧面板会逐个出现案例。
+
+                  【调用后】只说"正在生成实战案例，右侧面板将逐个更新"；禁止编造案例名称、角色或台词。'
+              parameters:
+                difficulty:
+                  auto: 1
+                  value: null
+                scenarioIds:
+                  auto: 1
+                  value: null
+                sessionId:
+                  auto: 0
+                  value:
+                    type: mixed
+                    value: '{{#1789716125307.session_id#}}'
+                traceId:
+                  auto: 0
+                  value:
+                    type: mixed
+                    value: '{{#1789716125307.trace_id#}}'
+              provider_name: 42b2231b-0c52-4552-b429-af6a429129db
+              provider_show_name: generate_cases
+              schemas:
+              - auto_generate: null
+                default: null
+                form: llm
+                human_description:
+                  en_US: ''
+                  ja_JP: ''
+                  pt_BR: ''
+                  zh_Hans: ''
+                label:
+                  en_US: traceId
+                  ja_JP: traceId
+                  pt_BR: traceId
+                  zh_Hans: traceId
+                llm_description: null
+                max: null
+                min: null
+                name: traceId
+                options: []
+                placeholder:
+                  en_US: ''
+                  ja_JP: ''
+                  pt_BR: ''
+                  zh_Hans: ''
+                precision: null
+                required: true
+                scope: null
+                template: null
+                type: string
+              - auto_generate: null
+                default: null
+                form: llm
+                human_description:
+                  en_US: ''
+                  ja_JP: ''
+                  pt_BR: ''
+                  zh_Hans: ''
+                label:
+                  en_US: sessionId
+                  ja_JP: sessionId
+                  pt_BR: sessionId
+                  zh_Hans: sessionId
+                llm_description: null
+                max: null
+                min: null
+                name: sessionId
+                options: []
+                placeholder:
+                  en_US: ''
+                  ja_JP: ''
+                  pt_BR: ''
+                  zh_Hans: ''
+                precision: null
+                required: true
+                scope: null
+                template: null
+                type: string
+              - auto_generate: null
+                default: null
+                form: llm
+                human_description:
+                  en_US: 要生成的场景ID列表，留空=全部场景
+                  ja_JP: 要生成的场景ID列表，留空=全部场景
+                  pt_BR: 要生成的场景ID列表，留空=全部场景
+                  zh_Hans: 要生成的场景ID列表，留空=全部场景
+                label:
+                  en_US: scenarioIds
+                  ja_JP: scenarioIds
+                  pt_BR: scenarioIds
+                  zh_Hans: scenarioIds
+                llm_description: 要生成的场景ID列表，留空=全部场景
+                max: null
+                min: null
+                name: scenarioIds
+                options: []
+                placeholder:
+                  en_US: 要生成的场景ID列表，留空=全部场景
+                  ja_JP: 要生成的场景ID列表，留空=全部场景
+                  pt_BR: 要生成的场景ID列表，留空=全部场景
+                  zh_Hans: 要生成的场景ID列表，留空=全部场景
+                precision: null
+                required: false
+                scope: null
+                template: null
+                type: array
+              - auto_generate: null
+                default: null
+                form: llm
+                human_description:
+                  en_US: 0=按场景特点自定，1简单 2中等 3困难
+                  ja_JP: 0=按场景特点自定，1简单 2中等 3困难
+                  pt_BR: 0=按场景特点自定，1简单 2中等 3困难
+                  zh_Hans: 0=按场景特点自定，1简单 2中等 3困难
+                label:
+                  en_US: difficulty
+                  ja_JP: difficulty
+                  pt_BR: difficulty
+                  zh_Hans: difficulty
+                llm_description: 0=按场景特点自定，1简单 2中等 3困难
+                max: null
+                min: null
+                name: difficulty
+                options: []
+                placeholder:
+                  en_US: 0=按场景特点自定，1简单 2中等 3困难
+                  ja_JP: 0=按场景特点自定，1简单 2中等 3困难
+                  pt_BR: 0=按场景特点自定，1简单 2中等 3困难
+                  zh_Hans: 0=按场景特点自定，1简单 2中等 3困难
+                precision: null
+                required: false
+                scope: null
+                template: null
+                type: number
+              settings: {}
+              tool_description: 为场景单元批量生成实战案例（对练剧本）。异步任务，每完成一个场景推送一次，结果实时更新右侧面板。
+              tool_label: generate_cases
+              tool_name: generate_cases
+              type: api
+            - enabled: true
+              extra:
+                description: '生成或重新生成完整的训练主题配置（场景单元、客户画像、冰山模型、评估维度与权重）。
+
+                  【何时调用】① 用户已明确同意开始生成（如"可以""开始生成""没问题""就按这个来"），且你已在聊天中
+
+                  给出场景规划方案；② 更新模式下用户要求改动场景/画像/维度内容时（此时 keepExisting=true）。
+
+                  【调用后】只在回复中说"正在生成训练主题配置，请稍候…"（可用引用块），真实结果由右侧面板实时推送；
+
+                  禁止预先描述或编造生成结果。同一时间只允许一个生成任务在跑，若右面板显示仍在生成，提醒用户稍候。'
+              parameters:
+                audiences:
+                  auto: 1
+                  value: null
+                goal:
+                  auto: 1
+                  value: null
+                keepExisting:
+                  auto: 1
+                  value: null
+                materialSummary:
+                  auto: 1
+                  value: null
+                sessionId:
+                  auto: 0
+                  value:
+                    type: mixed
+                    value: '{{#1789716125307.session_id#}}'
+                traceId:
+                  auto: 0
+                  value:
+                    type: mixed
+                    value: '{{#1789716125307.trace_id#}}'
+              provider_name: 778e394b-e4bc-4233-a37a-a483ae261ed2
+              provider_show_name: generate_theme
+              schemas:
+              - auto_generate: null
+                default: null
+                form: llm
+                human_description:
+                  en_US: ''
+                  ja_JP: ''
+                  pt_BR: ''
+                  zh_Hans: ''
+                label:
+                  en_US: traceId
+                  ja_JP: traceId
+                  pt_BR: traceId
+                  zh_Hans: traceId
+                llm_description: null
+                max: null
+                min: null
+                name: traceId
+                options: []
+                placeholder:
+                  en_US: ''
+                  ja_JP: ''
+                  pt_BR: ''
+                  zh_Hans: ''
+                precision: null
+                required: true
+                scope: null
+                template: null
+                type: string
+              - auto_generate: null
+                default: null
+                form: llm
+                human_description:
+                  en_US: ''
+                  ja_JP: ''
+                  pt_BR: ''
+                  zh_Hans: ''
+                label:
+                  en_US: sessionId
+                  ja_JP: sessionId
+                  pt_BR: sessionId
+                  zh_Hans: sessionId
+                llm_description: null
+                max: null
+                min: null
+                name: sessionId
+                options: []
+                placeholder:
+                  en_US: ''
+                  ja_JP: ''
+                  pt_BR: ''
+                  zh_Hans: ''
+                precision: null
+                required: true
+                scope: null
+                template: null
+                type: string
+              - auto_generate: null
+                default: null
+                form: llm
+                human_description:
+                  en_US: 核心训练目标一句话
+                  ja_JP: 核心训练目标一句话
+                  pt_BR: 核心训练目标一句话
+                  zh_Hans: 核心训练目标一句话
+                label:
+                  en_US: goal
+                  ja_JP: goal
+                  pt_BR: goal
+                  zh_Hans: goal
+                llm_description: 核心训练目标一句话
+                max: null
+                min: null
+                name: goal
+                options: []
+                placeholder:
+                  en_US: 核心训练目标一句话
+                  ja_JP: 核心训练目标一句话
+                  pt_BR: 核心训练目标一句话
+                  zh_Hans: 核心训练目标一句话
+                precision: null
+                required: true
+                scope: null
+                template: null
+                type: string
+              - auto_generate: null
+                default: null
+                form: llm
+                human_description:
+                  en_US: 训练人群
+                  ja_JP: 训练人群
+                  pt_BR: 训练人群
+                  zh_Hans: 训练人群
+                label:
+                  en_US: audiences
+                  ja_JP: audiences
+                  pt_BR: audiences
+                  zh_Hans: audiences
+                llm_description: 训练人群
+                max: null
+                min: null
+                name: audiences
+                options: []
+                placeholder:
+                  en_US: 训练人群
+                  ja_JP: 训练人群
+                  pt_BR: 训练人群
+                  zh_Hans: 训练人群
+                precision: null
+                required: true
+                scope: null
+                template: null
+                type: array
+              - auto_generate: null
+                default: null
+                form: llm
+                human_description:
+                  en_US: 材料要点摘要，无材料传空串
+                  ja_JP: 材料要点摘要，无材料传空串
+                  pt_BR: 材料要点摘要，无材料传空串
+                  zh_Hans: 材料要点摘要，无材料传空串
+                label:
+                  en_US: materialSummary
+                  ja_JP: materialSummary
+                  pt_BR: materialSummary
+                  zh_Hans: materialSummary
+                llm_description: 材料要点摘要，无材料传空串
+                max: null
+                min: null
+                name: materialSummary
+                options: []
+                placeholder:
+                  en_US: 材料要点摘要，无材料传空串
+                  ja_JP: 材料要点摘要，无材料传空串
+                  pt_BR: 材料要点摘要，无材料传空串
+                  zh_Hans: 材料要点摘要，无材料传空串
+                precision: null
+                required: false
+                scope: null
+                template: null
+                type: string
+              - auto_generate: null
+                default: null
+                form: llm
+                human_description:
+                  en_US: true=在现有内容基础上调整（更新模式），false=全新生成
+                  ja_JP: true=在现有内容基础上调整（更新模式），false=全新生成
+                  pt_BR: true=在现有内容基础上调整（更新模式），false=全新生成
+                  zh_Hans: true=在现有内容基础上调整（更新模式），false=全新生成
+                label:
+                  en_US: keepExisting
+                  ja_JP: keepExisting
+                  pt_BR: keepExisting
+                  zh_Hans: keepExisting
+                llm_description: true=在现有内容基础上调整（更新模式），false=全新生成
+                max: null
+                min: null
+                name: keepExisting
+                options: []
+                placeholder:
+                  en_US: true=在现有内容基础上调整（更新模式），false=全新生成
+                  ja_JP: true=在现有内容基础上调整（更新模式），false=全新生成
+                  pt_BR: true=在现有内容基础上调整（更新模式），false=全新生成
+                  zh_Hans: true=在现有内容基础上调整（更新模式），false=全新生成
+                precision: null
+                required: false
+                scope: null
+                template: null
+                type: boolean
+              settings: {}
+              tool_description: 生成/重新生成完整训练主题配置（场景单元、客户画像、冰山模型、评估标准）。异步任务，返回仅表示已受理，结果实时推送右侧面板。
+              tool_label: generate_theme
+              tool_name: generate_theme
+              type: api
+            - enabled: true
+              extra:
+                description: '以 JSON-Patch 增量更新主题产物。
+
+                  【何时调用】仅用于结构性小改动，例如修改某份材料的"学员可见"属性、替换材料列表。
+
+                  【何时不要调用】场景单元、客户画像、冰山模型、评估维度的内容修改一律走 generate_theme
+
+                  （keepExisting=true），禁止自己编造 JSON 补丁去改场景内容。'
+              parameters:
+                patches:
+                  auto: 1
+                  value: null
+                sessionId:
+                  auto: 0
+                  value:
+                    type: mixed
+                    value: '{{#1789716125307.session_id#}}'
+                traceId:
+                  auto: 0
+                  value:
+                    type: mixed
+                    value: '{{#1789716125307.trace_id#}}'
+              provider_name: d17c694b-a158-406b-830b-570883d56c73
+              provider_show_name: update_artifact
+              schemas:
+              - auto_generate: null
+                default: null
+                form: llm
+                human_description:
+                  en_US: ''
+                  ja_JP: ''
+                  pt_BR: ''
+                  zh_Hans: ''
+                label:
+                  en_US: traceId
+                  ja_JP: traceId
+                  pt_BR: traceId
+                  zh_Hans: traceId
+                llm_description: null
+                max: null
+                min: null
+                name: traceId
+                options: []
+                placeholder:
+                  en_US: ''
+                  ja_JP: ''
+                  pt_BR: ''
+                  zh_Hans: ''
+                precision: null
+                required: true
+                scope: null
+                template: null
+                type: string
+              - auto_generate: null
+                default: null
+                form: llm
+                human_description:
+                  en_US: ''
+                  ja_JP: ''
+                  pt_BR: ''
+                  zh_Hans: ''
+                label:
+                  en_US: sessionId
+                  ja_JP: sessionId
+                  pt_BR: sessionId
+                  zh_Hans: sessionId
+                llm_description: null
+                max: null
+                min: null
+                name: sessionId
+                options: []
+                placeholder:
+                  en_US: ''
+                  ja_JP: ''
+                  pt_BR: ''
+                  zh_Hans: ''
+                precision: null
+                required: true
+                scope: null
+                template: null
+                type: string
+              - auto_generate: null
+                default: null
+                form: llm
+                human_description:
+                  en_US: JSON-Patch 数组，op 固定 full_replace
+                  ja_JP: JSON-Patch 数组，op 固定 full_replace
+                  pt_BR: JSON-Patch 数组，op 固定 full_replace
+                  zh_Hans: JSON-Patch 数组，op 固定 full_replace
+                label:
+                  en_US: patches
+                  ja_JP: patches
+                  pt_BR: patches
+                  zh_Hans: patches
+                llm_description: JSON-Patch 数组，op 固定 full_replace
+                max: null
+                min: null
+                name: patches
+                options: []
+                placeholder:
+                  en_US: JSON-Patch 数组，op 固定 full_replace
+                  ja_JP: JSON-Patch 数组，op 固定 full_replace
+                  pt_BR: JSON-Patch 数组，op 固定 full_replace
+                  zh_Hans: JSON-Patch 数组，op 固定 full_replace
+                precision: null
+                required: true
+                scope: null
+                template: null
+                type: array
+              settings: {}
+              tool_description: 以 JSON-Patch 增量更新主题产物（仅用于结构性小改动，如材料列表；场景内容修改请用 generate_theme）
+              tool_label: update_artifact
+              tool_name: update_artifact
+              type: api
+        agent_strategy_label: ReAct
+        agent_strategy_name: ReAct
+        agent_strategy_provider_name: langgenius/agent/agent
+        meta:
+          minimum_dify_version: 1.7.0
+          version: 0.0.2
+        output_schema: {}
+        plugin_unique_identifier: langgenius/agent:0.0.37@a5dcc6ea00bca23439b49ff7d65704f3f5dd6ce2ca353205e62278e2148d84b6
+        selected: false
+        title: 大贤者
+        tool_node_version: '2'
+        type: agent
+      height: 187
+      id: '1789716292926'
+      position:
+        x: 403
+        y: 296
+      positionAbsolute:
+        x: 403
+        y: 296
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        answer: '{{#1789716292926.text#}}'
+        selected: false
+        title: 直接回复
+        type: answer
+        variables: []
+      height: 102
+      id: '1789716687128'
+      position:
+        x: 703
+        y: 306
+      positionAbsolute:
+        x: 703
+        y: 306
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    viewport:
+      x: -132.52744451755734
+      y: -38.08531273394169
+      zoom: 1.1486983549970355
+  rag_pipeline_variables: []
