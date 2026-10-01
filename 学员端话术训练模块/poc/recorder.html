@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>语气PoC 采音器</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; font-family:"Microsoft YaHei",sans-serif; }
+  body { background:#101418; color:#e8e8e8; min-height:100vh; display:flex; flex-direction:column; align-items:center; padding:24px; }
+  h1 { font-size:20px; margin-bottom:6px; }
+  .sub { color:#9aa4b0; font-size:13px; margin-bottom:20px; text-align:center; line-height:1.6; }
+  .card { background:#1a2028; border:1px solid #2a3340; border-radius:12px; padding:20px; width:min(680px,94vw); }
+  .row { display:flex; gap:10px; align-items:center; margin-bottom:14px; flex-wrap:wrap; }
+  label { font-size:14px; color:#c0c8d0; }
+  select, input[type=text] { background:#0d1116; color:#e8e8e8; border:1px solid #3a4450; border-radius:8px; padding:8px 12px; font-size:14px; }
+  input[type=text] { flex:1; min-width:200px; }
+  .rec { width:72px; height:72px; border-radius:50%; background:#e5484d; border:none; color:#fff; font-size:14px; cursor:pointer; box-shadow:0 4px 16px rgba(229,72,77,.4); }
+  .rec.recording { animation:pulse 1.2s infinite; }
+  @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.08)} }
+  .timer { font-size:26px; font-variant-numeric:tabular-nums; color:#4a9eff; min-width:90px; }
+  .hint { font-size:12px; color:#7a8490; margin-top:4px; }
+  table { width:100%; border-collapse:collapse; margin-top:14px; font-size:13px; }
+  th, td { text-align:left; padding:8px 6px; border-bottom:1px solid #2a3340; }
+  th { color:#9aa4b0; font-weight:normal; }
+  td a { color:#4a9eff; }
+  .badge { display:inline-block; padding:1px 8px; border-radius:10px; font-size:12px; }
+  .b-ok { background:#1d3a2a; color:#4ade80; } .b-bad { background:#3a1d24; color:#f87171; } .b-mid { background:#3a2f1d; color:#facc15; }
+  button.del { background:none; border:1px solid #3a4450; color:#9aa4b0; border-radius:6px; padding:2px 8px; cursor:pointer; font-size:12px; }
+  .guide { background:#141a21; border-left:3px solid #4a9eff; padding:12px 16px; border-radius:0 8px 8px 0; font-size:13px; line-height:1.9; color:#c0c8d0; width:min(680px,94vw); margin-bottom:16px; }
+  .guide b { color:#e8e8e8; }
+  .count { margin-top:10px; font-size:13px; color:#9aa4b0; }
+</style>
+</head>
+<body>
+<h1>语气 PoC 采音器</h1>
+<div class="sub">浏览器直录 WAV（16kHz 单声道，与训练页录音同规格）<br>文件自动保存到浏览器默认下载目录，采完把整个下载目录给到 PoC 流程</div>
+
+<div class="guide">
+  <b>采集目标</b>：三种说话状态，各 <b>7~10 条</b>，每条 15~40 秒：
+  <br>① <b>热情</b>（label=好）：想象热情的销售开场——语调上扬、带笑意、主动积极、有感染力
+  <br>② <b>念稿</b>（label=差）：机械照读一段话术——无起伏、无感情、平铺直叙
+  <br>③ <b>紧张</b>（label=差）：语速偏快、声音发紧、有迟疑和停顿
+  <br><b>内容</b>：就用真实话术（如介绍 AI 缝纫机、回应客户质疑），三种状态说类似内容，只变"怎么说"
+</div>
+
+<div class="card">
+  <div class="row">
+    <label>状态</label>
+    <select id="state">
+      <option value="好">热情（好）</option>
+      <option value="差">念稿（差）</option>
+      <option value="差">紧张（差）</option>
+    </select>
+    <label>内容关键词（可选，进CSV备注）</label>
+    <input type="text" id="note" placeholder="如：开场介绍 / 价格异议">
+  </div>
+  <div class="row" style="justify-content:center; gap:24px;">
+    <div class="timer" id="timer">00:00</div>
+    <button class="rec" id="recBtn">录音</button>
+    <div style="font-size:12px;color:#7a8490;max-width:180px">点击开始，再点停止；<br>限 60 秒自动停</div>
+  </div>
+  <table id="list">
+    <thead><tr><th>文件名</th><th>label</th><th>备注</th><th>时长</th><th>试听</th><th></th></tr></thead>
+    <tbody></tbody>
+  </table>
+  <div class="count" id="count"></div>
+</div>
+
+<div class="card" style="margin-top:16px">
+  <div class="row" style="justify-content:space-between">
+    <label>采集完成后：把下载目录里的 wav 集中放到一个文件夹（如 D:\audio\poc\），点击生成样本清单</label>
+    <button id="genBtn" style="background:#4a9eff;color:#fff;border:none;border-radius:8px;padding:8px 18px;font-size:14px;cursor:pointer">生成 samples.csv</button>
+  </div>
+  <div class="hint">生成的 CSV 与 PoC 脚本 --csv 模式格式一致（id,file,text,label），text 列留空由你或转写补充——语气评分只以录音为准，文本仅参考，可留空</div>
+</div>
+
+<script>
+const stateSel = document.getElementById('state'), noteInp = document.getElementById('note'),
+      recBtn = document.getElementById('recBtn'), timerEl = document.getElementById('timer'),
+      tbody = document.querySelector('#list tbody'), countEl = document.getElementById('count');
+let mediaStream, audioCtx, processor, source, chunks = [], recording = false, startTime, tick = null, seq = 0;
+const records = JSON.parse(localStorage.getItem('poc_records')||'[]');
+
+function render() {
+  tbody.innerHTML = records.map((r,i)=>`<tr>
+    <td>${r.file}</td><td><span class="badge ${r.label==='好'?'b-ok':'b-bad'}">${r.label==='好'?'热情':'差'}</span></td>
+    <td>${r.note||''}</td><td>${r.dur}s</td>
+    <td><a href="${r.url}" download="${r.file}">下载</a></td>
+    <td><button class="del" onclick="del(${i})">删</button></td></tr>`).join('');
+  countEl.textContent = `共 ${records.length} 条（热情 ${records.filter(r=>r.label==='好').length} / 差 ${records.filter(r=>r.label==='差').length}）`;
+  localStorage.setItem('poc_records', JSON.stringify(records));
+}
+window.del = i => { records.splice(i,1); render(); };
+
+function pad(n){return String(n).padStart(2,'0')}
+function stop() {
+  recording = false; clearInterval(tick);
+  recBtn.classList.remove('recording'); recBtn.textContent = '录音';
+  if (processor) processor.disconnect(); if (source) source.disconnect();
+  mediaStream.getTracks().forEach(t=>t.stop());
+  const rate = audioCtx.sampleRate;
+  // PCM → WAV (16bit 单声道)——注：采样率用浏览器实际值(44.1k/48k)，PoC 脚本按文件直传，无需 16k
+  const pcm = chunks.flat(); const buf = new ArrayBuffer(44 + pcm.length*2); const v = new DataView(buf);
+  const ws = (o,s)=>{for(let i=0;i<s.length;i++)v.setUint8(o+i,s.charCodeAt(i))};
+  ws(0,'RIFF'); v.setUint32(4,36+pcm.length*2,true); ws(8,'WAVE'); ws(12,'fmt ');
+  v.setUint32(16,16,true); v.setUint16(20,1,true); v.setUint16(22,1,true);
+  v.setUint32(24,rate,true); v.setUint32(28,rate*2,true); v.setUint16(32,2,true); v.setUint16(34,16,true);
+  ws(36,'data'); v.setUint32(40,pcm.length*2,true);
+  let o=44; for(const s of pcm){ const cl=Math.max(-1,Math.min(1,s)); v.setInt16(o, cl<0?cl*0x8000:cl*0x7FFF, true); o+=2; }
+  const dur = ((Date.now()-startTime)/1000).toFixed(1);
+  const blob = new Blob([buf],{type:'audio/wav'});
+  const url = URL.createObjectURL(blob);
+  seq++;
+  const file = `poc_${stateSel.value==='好'?'hot':'flat'}_${pad(seq)}.wav`;
+  // 自动触发下载（浏览器可能弹权限询问，允许即可）
+  const a = document.createElement('a'); a.href=url; a.download=file; a.click();
+  records.push({file, label: stateSel.value, note: noteInp.value, dur, url});
+  render();
+}
+
+recBtn.onclick = async () => {
+  if (recording) { stop(); return; }
+  mediaStream = await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:false, noiseSuppression:true}});
+  audioCtx = new AudioContext(); source = audioCtx.createMediaStreamSource(mediaStream);
+  processor = audioCtx.createScriptProcessor(4096,1,1);
+  chunks = [];
+  processor.onaudioprocess = e => { chunks.push(new Float32Array(e.inputBuffer.getChannelData(0))); };
+  source.connect(processor); processor.connect(audioCtx.destination);
+  recording = true; startTime = Date.now();
+  recBtn.classList.add('recording'); recBtn.textContent = '停止';
+  tick = setInterval(()=>{ const s=Math.floor((Date.now()-startTime)/1000);
+    timerEl.textContent = `${pad(Math.floor(s/60))}:${pad(s%60)}`;
+    if (s>=60) stop(); }, 200);
+};
+
+document.getElementById('genBtn').onclick = () => {
+  const rows = records.map((r,i)=>`ext_${pad(i+1)},D:\\audio\\poc\\${r.file},,${r.label}`).join('\n');
+  const csv = 'id,file,text,label\n' + rows + '\n';
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob(['\ufeff'+csv],{type:'text/csv'}));
+  a.download = 'samples.csv'; a.click();
+};
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+﻿sample_id,file,text,aspect,label,run,score,reason
+db_46,D:\audio\asr\46.wav,听起来确实不错但我觉得其他品牌也有类似配置你们怎么证明自己更值得选,热情,,1,,ERROR: 404 Client Error: Not Found for url: https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions (attempt 2)
+db_46,D:\audio\asr\46.wav,听起来确实不错但我觉得其他品牌也有类似配置你们怎么证明自己更值得选,热情,,2,,ERROR: 404 Client Error: Not Found for url: https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions (attempt 2)
+db_46,D:\audio\asr\46.wav,听起来确实不错但我觉得其他品牌也有类似配置你们怎么证明自己更值得选,亲和,,1,,ERROR: 404 Client Error: Not Found for url: https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions (attempt 2)
+db_46,D:\audio\asr\46.wav,听起来确实不错但我觉得其他品牌也有类似配置你们怎么证明自己更值得选,亲和,,2,,ERROR: 404 Client Error: Not Found for url: https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions (attempt 2)
+db_46,D:\audio\asr\46.wav,听起来确实不错但我觉得其他品牌也有类似配置你们怎么证明自己更值得选,自信,,1,,ERROR: 404 Client Error: Not Found for url: https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions (attempt 2)
+db_46,D:\audio\asr\46.wav,听起来确实不错但我觉得其他品牌也有类似配置你们怎么证明自己更值得选,自信,,2,,ERROR: 404 Client Error: Not Found for url: https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions (attempt 2)
+db_66,D:\audio\asr\66.wav,听起来确实不错但我觉得其他品牌也有类似配置你们怎么证明自己更值得选,热情,,1,,ERROR: 404 Client Error: Not Found for url: https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions (attempt 2)
+db_66,D:\audio\asr\66.wav,听起来确实不错但我觉得其他品牌也有类似配置你们怎么证明自己更值得选,热情,,2,,ERROR: 404 Client Error: Not Found for url: https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions (attempt 2)
+db_66,D:\audio\asr\66.wav,听起来确实不错但我觉得其他品牌也有类似配置你们怎么证明自己更值得选,亲和,,1,,ERROR: 404 Client Error: Not Found for url: https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions (attempt 2)
+db_66,D:\audio\asr\66.wav,听起来确实不错但我觉得其他品牌也有类似配置你们怎么证明自己更值得选,亲和,,2,,ERROR: 404 Client Error: Not Found for url: https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions (attempt 2)
+db_66,D:\audio\asr\66.wav,听起来确实不错但我觉得其他品牌也有类似配置你们怎么证明自己更值得选,自信,,1,,ERROR: 404 Client Error: Not Found for url: https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions (attempt 2)
