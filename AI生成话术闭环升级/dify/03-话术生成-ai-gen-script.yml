@@ -1,0 +1,194 @@
+app:
+  description: 根据对话场景与大纲生成话术对练对话流程（每环节一轮，含要点与解析；支持普通话/英语）
+  icon: 🗣️
+  icon_background: '#E8E6F5'
+  mode: workflow
+  name: AI话术-话术生成
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: yangyaofei/vllm:0.2.3@455b644bfcfe0f8d7af1ad191a9e5d0b2d87214b0c6c804012d2d5cccdbbf88a
+  version: null
+kind: app
+version: 0.5.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      enabled: false
+    opening_statement: ''
+    retriever_resource:
+      enabled: false
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+  graph:
+    edges:
+    - data:
+        isLoop: false
+        sourceType: start
+        targetType: llm
+      id: start-llm_generate
+      source: start
+      sourceHandle: source
+      target: llm_generate
+      targetHandle: target
+      type: custom
+    - data:
+        isLoop: false
+        sourceType: llm
+        targetType: end
+      id: llm_generate-end
+      source: llm_generate
+      sourceHandle: source
+      target: end
+      targetHandle: target
+      type: custom
+    nodes:
+    - data:
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - label: 对话场景设定（五字段JSON）
+          max_length: 4000
+          required: true
+          type: paragraph
+          variable: sceneJson
+        - label: 对话大纲（环节JSON数组）
+          max_length: 8000
+          required: true
+          type: paragraph
+          variable: outlinesJson
+        - default: zh
+          label: 输出语言（zh=普通话，en=英语）
+          max_length: 10
+          required: false
+          type: text-input
+          variable: language
+      height: 130
+      id: start
+      position:
+        x: 80
+        y: 282
+      positionAbsolute:
+        x: 80
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            max_tokens: 4096
+            temperature: 0.7
+          mode: chat
+          name: Qwen/Qwen3-30B-A3B-Instruct-2507
+          provider: yangyaofei/vllm/vllm
+        prompt_template:
+        - id: script-gen-system-prompt
+          role: system
+          text: "你是一个专业的AI话术对练流程设计师，负责为销售、客服、面试等场景生成标准化的对练脚本。\n\n## 任务\n根据「对话场景设定」和「对话大纲」，生成与大纲环节数量一致的对话流程。每一轮由一次完整的一问一答组成：\n- 陪练者问（trainerQuestion）：陪练者扮演场景中的对方角色，主动提问。\n- 学员说（standardScript）：学员针对该问题的标准回答话术，并附要点与解析。\n- 每轮对话必须严格对应大纲中的一个环节：该轮的问答内容围绕该环节的考察点展开，体现该环节的应对思路。\n\n## 生成规则\n### 1. 轮数与编号\n- 必须生成与「大纲环节数」完全一致的轮数，不得多也不得少。\n- round 从 1 开始连续编号，轮次顺序=大纲环节顺序。\n\n### 2. 陪练者问（trainerQuestion）\n- 扮演场景中的对方角色，用第一人称口语化提问，符合该角色的立场、情绪和利益诉求（依据角色画像）。\n- 每轮只提一个问题（可含简短铺垫）。\n- 必须形成递进链条：\n  - 第 1 轮：从场景切入，抛出最基础、最自然的开场疑问。\n  - 中间轮：承接上一轮学员的回答，追问、质疑、深挖或提出新条件。\n  - 末轮：提出成交/决策/收口类的关键问题，或抛出最后的顾虑。\n- 禁止各轮问题彼此孤立、可随意调换顺序。\n\n### 3. 学员说（standardScript）\n- 必须直接回答该轮 trainerQuestion，一问一答、语义严格对应；不得答非所问，也不得提前回答后续轮次的问题。\n- 口语化、可直接照读，长度适中（一般 2-5 句），避免书面腔和空话。\n- 体现专业度与说服力；涉及产品事实时使用对话场景与大纲中的真实信息。\n- 语言规则：language=zh 时全文普通话；language=en 时 trainerQuestion 与 standardScript 输出地道英语（keyPoints/analysis 始终中文）。\n\n### 4. keyPoints（话术要点）\n- 数组，3-5 项，按 order 从 1 开始递增。\n- 每项 content 是该轮话术的「策略/动作要点」，例如\"先共情认可对方顾虑\"\"用数据说明收益\"\"给出二选一方案\"。\n- 要点应能解释 standardScript 为什么这样组织，而不是把 standardScript 原句复述一遍。\n\n### 5. analysis（话术解析）\n- 说明该轮话术的设计逻辑：这样说的依据是什么、想达成什么目的、规避了什么风险。\n- 与 keyPoints 呼应但不要简单重复，可点出话术背后的心理学/沟通原理。\n\n### 6. 整体结构\n- 整个流程是一条直线，没有分支、没有循环。\n\n## 输出格式\n严格按 JSON Schema 输出，不要输出 JSON 之外的任何文字，不要用 markdown 代码块包裹。"
+        - id: script-gen-user-prompt
+          role: user
+          text: "对话场景设定：\n{{#start.sceneJson#}}\n\n对话大纲（每环节一轮话术，顺序一致）：\n{{#start.outlinesJson#}}\n\n输出语言：{{#start.language#}}\n\n请生成与大纲环节数量一致的对话流程。"
+        selected: true
+        structured_output:
+          schema:
+            additionalProperties: false
+            properties:
+              nodes:
+                items:
+                  additionalProperties: false
+                  properties:
+                    analysis:
+                      type: string
+                    keyPoints:
+                      items:
+                        additionalProperties: false
+                        properties:
+                          content:
+                            type: string
+                          order:
+                            type: number
+                        required:
+                        - content
+                        - order
+                        type: object
+                      type: array
+                    round:
+                      type: number
+                    standardScript:
+                      type: string
+                    trainerQuestion:
+                      type: string
+                  required:
+                  - round
+                  - trainerQuestion
+                  - standardScript
+                  - keyPoints
+                  - analysis
+                  type: object
+                type: array
+            required:
+            - nodes
+            type: object
+        structured_output_enabled: true
+        title: AI生成话术
+        type: llm
+        vision:
+          enabled: false
+      height: 87
+      id: llm_generate
+      position:
+        x: 380
+        y: 282
+      positionAbsolute:
+        x: 380
+        y: 282
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        outputs:
+        - value_selector:
+          - llm_generate
+          - structured_output
+          variable: scriptResult
+        selected: false
+        title: 结束
+        type: end
+      height: 120
+      id: end
+      position:
+        x: 680
+        y: 282
+      positionAbsolute:
+        x: 680
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    viewport:
+      x: 54.2
+      y: 27.6
+      zoom: 0.8
+  rag_pipeline_variables: []

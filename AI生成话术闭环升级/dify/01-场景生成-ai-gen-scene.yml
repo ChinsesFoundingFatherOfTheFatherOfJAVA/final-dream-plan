@@ -1,0 +1,175 @@
+app:
+  description: 根据话术需求描述和参考素材，生成AI话术对练的对话场景设定（五字段）
+  icon: 🎭
+  icon_background: '#E8E6F5'
+  mode: workflow
+  name: AI话术-场景生成
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: yangyaofei/vllm:0.2.3@455b644bfcfe0f8d7af1ad191a9e5d0b2d87214b0c6c804012d2d5cccdbbf88a
+  version: null
+kind: app
+version: 0.5.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      enabled: false
+    opening_statement: ''
+    retriever_resource:
+      enabled: false
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+  graph:
+    edges:
+    - data:
+        isLoop: false
+        sourceType: start
+        targetType: llm
+      id: start-llm_generate
+      source: start
+      sourceHandle: source
+      target: llm_generate
+      targetHandle: target
+      type: custom
+    - data:
+        isLoop: false
+        sourceType: llm
+        targetType: end
+      id: llm_generate-end
+      source: llm_generate
+      sourceHandle: source
+      target: end
+      targetHandle: target
+      type: custom
+    nodes:
+    - data:
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - label: 话术需求描述
+          max_length: 2000
+          required: true
+          type: paragraph
+          variable: description
+        - default: trainer
+          label: 对话开启者（student=学员先说，trainer=陪练者先说）
+          max_length: 20
+          required: false
+          type: text-input
+          variable: firstSpeaker
+        - label: 参考素材文本（可能截断）
+          max_length: 60000
+          required: false
+          type: paragraph
+          variable: materialsText
+      height: 160
+      id: start
+      position:
+        x: 80
+        y: 282
+      positionAbsolute:
+        x: 80
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            max_tokens: 2048
+            temperature: 0.7
+          mode: chat
+          name: Qwen/Qwen3-30B-A3B-Instruct-2507
+          provider: yangyaofei/vllm/vllm
+        prompt_template:
+        - id: scene-gen-system-prompt
+          role: system
+          text: "你是一位资深的销售/沟通培训设计师，负责为AI话术对练生成对话场景设定。\n\n## 任务\n根据用户的「话术需求描述」和「参考素材」，提炼出一段双人对话训练所需的场景设定，包含五个字段。\n\n## 生成规则\n### 1. scene（对话场景）\n- 2~3 句话交代：具体场合、两人身份关系、本次对话的起因。\n- 场景必须具体可演绎（有地点、有身份、有契机），禁止泛泛的\"销售场景\"。\n- 优先从参考素材中提取真实的产品名、业务背景，使场景贴合企业实际。\n\n### 2. trainerRole（陪练角色）与 studentRole（学员角色）\n- 一句话身份定义（≤20字），如\"服装加工厂采购负责人刘总\"。\n- 陪练角色=对话中对方（客户/面试官/投诉者）；学员角色=受训方（销售/客服/候选人）。\n\n### 3. trainerProfile（角色画像）\n- 3~5 句：业务背景、核心关切、决策习惯、可能的情绪与顾虑。\n- 关切点应能从参考素材中的产品特性合理推导（如素材强调\"跳针率下降97%\"，则画像关注良率与停机成本）。\n\n### 4. goal（对话目标）\n- 一句话说明学员在对话中要达成什么（介绍什么、化解什么、推进到哪一步）。\n\n### 5. 素材使用纪律\n- 参考素材可能不完整（已截断），仅作事实来源，不得虚构素材中没有的数据。\n- 素材中的产品名、型号、参数必须原样使用，禁止改写。\n\n## 输出格式\n严格按 JSON Schema 输出，不要输出 JSON 之外的任何文字：\n{\"scene\": \"\", \"trainerRole\": \"\", \"trainerProfile\": \"\", \"studentRole\": \"\", \"goal\": \"\"}"
+        - id: scene-gen-user-prompt
+          role: user
+          text: "话术需求描述：{{#start.description#}}\n\n对话开启者：{{#start.firstSpeaker#}}\n\n参考素材（可能截断）：\n{{#start.materialsText#}}\n\n请生成对话场景设定。"
+        selected: true
+        structured_output:
+          schema:
+            additionalProperties: false
+            properties:
+              scene:
+                type: string
+              trainerRole:
+                type: string
+              trainerProfile:
+                type: string
+              studentRole:
+                type: string
+              goal:
+                type: string
+            required:
+            - scene
+            - trainerRole
+            - trainerProfile
+            - studentRole
+            - goal
+            type: object
+        structured_output_enabled: true
+        title: AI生成对话场景
+        type: llm
+        vision:
+          enabled: false
+      height: 87
+      id: llm_generate
+      position:
+        x: 380
+        y: 282
+      positionAbsolute:
+        x: 380
+        y: 282
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        outputs:
+        - value_selector:
+          - llm_generate
+          - structured_output
+          variable: sceneResult
+        selected: false
+        title: 结束
+        type: end
+      height: 120
+      id: end
+      position:
+        x: 680
+        y: 282
+      positionAbsolute:
+        x: 680
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    viewport:
+      x: 54.2
+      y: 27.6
+      zoom: 0.8
+  rag_pipeline_variables: []

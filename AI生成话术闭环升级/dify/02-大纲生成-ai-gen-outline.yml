@@ -1,0 +1,171 @@
+app:
+  description: 根据对话场景设定生成5个递进的对话环节大纲（环节名/考察点/应对思路）
+  icon: 📋
+  icon_background: '#E8E6F5'
+  mode: workflow
+  name: AI话术-大纲生成
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: yangyaofei/vllm:0.2.3@455b644bfcfe0f8d7af1ad191a9e5d0b2d87214b0c6c804012d2d5cccdbbf88a
+  version: null
+kind: app
+version: 0.5.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      enabled: false
+    opening_statement: ''
+    retriever_resource:
+      enabled: false
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+  graph:
+    edges:
+    - data:
+        isLoop: false
+        sourceType: start
+        targetType: llm
+      id: start-llm_generate
+      source: start
+      sourceHandle: source
+      target: llm_generate
+      targetHandle: target
+      type: custom
+    - data:
+        isLoop: false
+        sourceType: llm
+        targetType: end
+      id: llm_generate-end
+      source: llm_generate
+      sourceHandle: source
+      target: end
+      targetHandle: target
+      type: custom
+    nodes:
+    - data:
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - label: 对话场景设定（五字段JSON）
+          max_length: 4000
+          required: true
+          type: paragraph
+          variable: sceneJson
+        - label: 参考素材文本（可能截断）
+          max_length: 60000
+          required: false
+          type: paragraph
+          variable: materialsText
+      height: 130
+      id: start
+      position:
+        x: 80
+        y: 282
+      positionAbsolute:
+        x: 80
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            max_tokens: 3072
+            temperature: 0.7
+          mode: chat
+          name: Qwen/Qwen3-30B-A3B-Instruct-2507
+          provider: yangyaofei/vllm/vllm
+        prompt_template:
+        - id: outline-gen-system-prompt
+          role: system
+          text: "你是一位沟通训练课程设计师，负责为AI话术对练设计对话大纲。\n\n## 任务\n根据「对话场景设定」，设计 5 个递进的对话环节，每个环节是一次完整的攻防回合主题。\n\n## 生成规则\n### 1. 环节数量\n- 默认 5 个环节。数量固定，不得增减。\n\n### 2. name（环节名，≤20字）\n- 动宾短语概括该环节主题，如\"需求确认与场景切入\"、\"异议处理与合作推进\"。\n- 五个环节必须形成递进链条：开场切入 → 核心内容展开（1~2环节）→ 优势/价值论证 → 异议处理与收口。\n- 禁止各环节主题彼此孤立、可随意调换顺序。\n\n### 3. assessmentPoints（考察点）\n- 该环节要检验学员哪些能力：应识别什么、应表达什么、应规避什么。\n- 2~4 句，具体到行为层面（\"先用数据回应质疑，再给出承诺\"），不写空泛的\"沟通能力\"。\n\n### 4. strategy（应对思路）\n- 学员在该环节的应对方略：先做什么、后做什么、用什么支撑。\n- 2~4 句，与考察点一一呼应。\n\n### 5. 素材使用纪律\n- 环节内容须贴合场景中的产品/业务（从参考素材取事实）。\n- 素材可能截断，不得虚构数据。\n\n## 输出格式\n严格按 JSON Schema 输出，不要输出 JSON 之外的任何文字：\n{\"outlines\": [{\"name\": \"\", \"assessmentPoints\": \"\", \"strategy\": \"\"}]}"
+        - id: outline-gen-user-prompt
+          role: user
+          text: "对话场景设定：\n{{#start.sceneJson#}}\n\n参考素材（可能截断）：\n{{#start.materialsText#}}\n\n请生成5个递进的对话环节大纲。"
+        selected: true
+        structured_output:
+          schema:
+            additionalProperties: false
+            properties:
+              outlines:
+                items:
+                  additionalProperties: false
+                  properties:
+                    name:
+                      type: string
+                    assessmentPoints:
+                      type: string
+                    strategy:
+                      type: string
+                  required:
+                  - name
+                  - assessmentPoints
+                  - strategy
+                  type: object
+                type: array
+            required:
+            - outlines
+            type: object
+        structured_output_enabled: true
+        title: AI生成对话大纲
+        type: llm
+        vision:
+          enabled: false
+      height: 87
+      id: llm_generate
+      position:
+        x: 380
+        y: 282
+      positionAbsolute:
+        x: 380
+        y: 282
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        outputs:
+        - value_selector:
+          - llm_generate
+          - structured_output
+          variable: outlineResult
+        selected: false
+        title: 结束
+        type: end
+      height: 120
+      id: end
+      position:
+        x: 680
+        y: 282
+      positionAbsolute:
+        x: 680
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    viewport:
+      x: 54.2
+      y: 27.6
+      zoom: 0.8
+  rag_pipeline_variables: []

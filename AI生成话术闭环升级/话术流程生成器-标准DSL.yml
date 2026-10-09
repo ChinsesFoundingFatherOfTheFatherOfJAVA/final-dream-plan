@@ -1,0 +1,356 @@
+app:
+  description: 根据对话场景和轮次生成AI话术对练的对话流程节点
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: workflow
+  name: 话术流程生成器
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: yangyaofei/vllm:0.2.3@455b644bfcfe0f8d7af1ad191a9e5d0b2d87214b0c6c804012d2d5cccdbbf88a
+    version: null
+kind: app
+version: 0.5.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 500
+        batch_count_limit: 50
+        file_size_limit: 1500
+        image_file_size_limit: 100
+        video_file_size_limit: 1000
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: false
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isLoop: false
+        sourceType: start
+        targetType: llm
+      id: start-llm_generate
+      source: start
+      sourceHandle: source
+      target: llm_generate
+      targetHandle: target
+      type: custom
+    - data:
+        isLoop: false
+        sourceType: llm
+        targetType: code
+      id: llm_generate-parse_json
+      source: llm_generate
+      sourceHandle: source
+      target: parse_json
+      targetHandle: target
+      type: custom
+    - data:
+        isLoop: false
+        sourceType: code
+        targetType: end
+      id: parse_json-end
+      source: parse_json
+      sourceHandle: source
+      target: end
+      targetHandle: target
+      type: custom
+    nodes:
+    - data:
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - label: 对话场景
+          max_length: 2000
+          required: true
+          type: paragraph
+          variable: description
+        - label: 对话轮次
+          required: true
+          type: number
+          variable: rounds
+        - default: trainer
+          label: 先说话的一方（trainer=陪练者先说，student=学员先说）
+          max_length: 20
+          required: false
+          type: text-input
+          variable: first_speaker
+      height: 160
+      id: start
+      position:
+        x: 80
+        y: 282
+      positionAbsolute:
+        x: 80
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            max_tokens: 4096
+            temperature: 0.7
+          mode: chat
+          name: Qwen/Qwen3-30B-A3B-Instruct-2507
+          provider: yangyaofei/vllm/vllm
+        prompt_template:
+        - id: 16169697-ef65-4698-98f7-b9a51787a554
+          role: system
+          text: "你是一个专业的AI话术对练流程设计师，负责为销售、客服、面试等场景生成标准化的对练脚本。\n\n## 任务\n根据用户提供的「对话场景」和「对话轮次」，生成指定轮数的对话流程。每一轮由一次完整的一问一答组成：\n\
+            - 陪练者问（trainerQuestion）：陪练者扮演场景中的对方角色（如客户、面试官、投诉者等），主动提问。\n- 学员说（standardScript）：学员（接受训练的一方）针对该问题的标准回答话术，并附要点与解析。\n\
+            \n## 生成规则\n\n### 1. 轮数与编号\n- 必须生成与「对话轮次」数量完全一致的轮数，不得多也不得少。\n- round 从\
+            \ 1 开始连续编号，不允许跳号或重复。\n\n### 2. 陪练者问（trainerQuestion）\n- 扮演场景中的对方角色，用第一人称口语化提问，符合该角色的立场、情绪和利益诉求。\n\
+            - 每轮只提一个问题（可含简短铺垫），不要一次抛出多个问题。\n- 必须形成递进链条：\n  - 第 1 轮：从场景切入，抛出最基础、最自然的开场疑问。\n\
+            \  - 中间轮：承接上一轮学员的回答，追问、质疑、深挖或提出新条件，把话题推向更深一层。\n  - 末轮：提出成交/决策/收口类的关键问题，或抛出最后的顾虑。\n\
+            - 禁止各轮问题彼此孤立、可随意调换顺序。\n\n### 3. 学员说（standardScript）\n- 必须直接回答该轮 trainerQuestion，做到一问一答、语义严格对应；不得答非所问，也不得提前回答后续轮次的问题。\n\
+            - 口语化、可直接照读，长度适中（一般 2-5 句），避免书面腔和空话。\n- 体现专业度与说服力，符合该场景下优秀从业者的真实表达习惯。\n\
+            \n### 4. keyPoints（话术要点）\n- 数组，3-5 项，按 order 从 1 开始递增。\n- 每项 content 是该轮话术的「策略/动作要点」，例如“先共情认可对方顾虑”“用数据说明收益”“给出二选一方案”。\n\
+            - 要点应能解释 standardScript 为什么这样组织，而不是把 standardScript 原句复述一遍。\n\n### 5.\
+            \ analysis（话术解析）\n- 说明该轮话术的设计逻辑：这样说的依据是什么、想达成什么目的、规避了什么风险。\n- 与 keyPoints\
+            \ 呼应但不要简单重复，可点出话术背后的心理学/沟通原理。\n\n### 6. 整体结构\n- 整个流程是一条直线，没有分支、没有循环。\n\
+            - 输出语言与「对话场景」保持一致（中文场景输出中文）。\n\n## 输出格式\n严格按以下 JSON Schema 输出，不要输出 JSON\
+            \ 之外的任何文字，不要用 markdown 代码块包裹：\n\n{\n  \"nodes\": [\n    {\n      \"round\"\
+            : 1,\n      \"trainerQuestion\": \"陪练者的话术内容（问句）\",\n      \"standardScript\"\
+            : \"学员的标准话术内容\",\n      \"keyPoints\": [\n        { \"content\": \"要点内容\"\
+            , \"order\": 1 }\n      ],\n      \"analysis\": \"对学员话术的解析说明\"\n    }\n\
+            \  ]\n}"
+        - id: 99de8f90-de35-4e5a-9284-857b5fef1ea6
+          role: user
+          text: '对话场景：{{#start.description#}}
+
+            对话轮次：{{#start.rounds#}}
+
+
+            请生成{{#start.rounds#}}轮对话流程，每轮包含陪练者问与学员说。
+
+            '
+        selected: true
+        structured_output:
+          schema:
+            additionalProperties: false
+            properties:
+              nodes:
+                items:
+                  additionalProperties: false
+                  properties:
+                    analysis:
+                      type: string
+                    keyPoints:
+                      items:
+                        additionalProperties: false
+                        properties:
+                          content:
+                            type: string
+                          order:
+                            type: number
+                        required:
+                        - content
+                        - order
+                        type: object
+                      type: array
+                    round:
+                      type: number
+                    standardScript:
+                      type: string
+                    trainerQuestion:
+                      type: string
+                  required:
+                  - round
+                  - trainerQuestion
+                  - standardScript
+                  - keyPoints
+                  - analysis
+                  type: object
+                type: array
+            required:
+            - nodes
+            type: object
+        structured_output_enabled: true
+        title: AI生成话术
+        type: llm
+        vision:
+          enabled: false
+      height: 87
+      id: llm_generate
+      position:
+        x: 380
+        y: 282
+      positionAbsolute:
+        x: 380
+        y: 282
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        code: "import json\n\n# 节点类型：1=开始, 2=陪练者问学员(大节点), 3=学员问陪练者(大节点), 4=结束\nNODE_START\
+          \ = 1\nNODE_END = 4\n# 每个大节点的垂直间距（与前端画布 BIG_NODE_STEP 保持一致）\nBIG_NODE_STEP\
+          \ = 260\nBASE_X = 300\nBASE_Y = 100\n\n\ndef resolve_round_node(first_speaker:\
+          \ str):\n    \"\"\"先说话的一方决定大节点类型：student=学员先说(3)，其余=陪练者先说(2)\"\"\"\n   \
+          \ speaker = (first_speaker or \"\").strip().lower()\n    if speaker in (\"\
+          student\", \"学员\", \"学员先说\", \"3\"):\n        return 3, \"学员问陪练者说\"\n  \
+          \  return 2, \"陪练者问学员说\"\n\n\ndef main(llm_output: dict, description: str,\
+          \ rounds: int, first_speaker: str = \"\") -> dict:\n    try:\n        #\
+          \ 结构化输出已经是 dict，直接取 nodes 数组\n        if isinstance(llm_output, dict):\n\
+          \            nodes_data = llm_output.get(\"nodes\", [])\n        else:\n\
+          \            # 兼容异常情况：如果传进来是字符串\n            nodes_data = json.loads(llm_output).get(\"\
+          nodes\", [])\n\n        if not isinstance(nodes_data, list):\n         \
+          \   raise ValueError(\"nodes 不是数组\")\n\n        # 只取前 rounds 轮，保证生成轮数与入参一致\n\
+          \        if rounds:\n            nodes_data = nodes_data[:int(rounds)]\n\
+          \n        round_node_type, round_node_name = resolve_round_node(first_speaker)\n\
+          \n        all_nodes = []\n        all_edges = []\n\n        # 开始节点\n   \
+          \     all_nodes.append({\n            \"nodeType\": NODE_START,\n      \
+          \      \"nodeName\": \"开始\",\n            \"positionX\": BASE_X,\n     \
+          \       \"positionY\": BASE_Y\n        })\n\n        # 每一轮一个大节点：同时包含「陪练者问」与「学员说」两部分\n\
+          \        for i, node_data in enumerate(nodes_data):\n            key_points\
+          \ = []\n            for j, kp in enumerate(node_data.get(\"keyPoints\")\
+          \ or []):\n                key_points.append({\n                    \"id\"\
+          : \"kp-%d-%d\" % (i, j),\n                    \"content\": kp.get(\"content\"\
+          , \"\"),\n                    \"order\": kp.get(\"order\", j + 1)\n    \
+          \            })\n\n            all_nodes.append({\n                \"nodeType\"\
+          : round_node_type,\n                \"nodeName\": round_node_name,\n   \
+          \             \"trainerQuestion\": node_data.get(\"trainerQuestion\", \"\
+          \"),\n                \"standardScript\": node_data.get(\"standardScript\"\
+          , \"\"),\n                \"keyPoints\": key_points,\n                \"\
+          analysis\": node_data.get(\"analysis\", \"\"),\n                \"positionX\"\
+          : BASE_X,\n                \"positionY\": BASE_Y + (i + 1) * BIG_NODE_STEP\n\
+          \            })\n\n            # 连线：0=开始，1..n=各轮大节点，n+1=结束\n           \
+          \ all_edges.append({\n                \"source\": i,\n                \"\
+          target\": i + 1,\n                \"weight\": 1\n            })\n\n    \
+          \    # 结束节点\n        end_index = len(all_nodes)\n        all_nodes.append({\n\
+          \            \"nodeType\": NODE_END,\n            \"nodeName\": \"结束\",\n\
+          \            \"positionX\": BASE_X,\n            \"positionY\": BASE_Y +\
+          \ (len(nodes_data) + 1) * BIG_NODE_STEP\n        })\n        if end_index\
+          \ > 0:\n            all_edges.append({\n                \"source\": end_index\
+          \ - 1,\n                \"target\": end_index,\n                \"weight\"\
+          : 1\n            })\n\n        return {\n            \"nodes\": json.dumps(all_nodes,\
+          \ ensure_ascii=False),\n            \"edges\": json.dumps(all_edges, ensure_ascii=False),\n\
+          \            \"success\": True,\n            \"message\": \"\"\n       \
+          \ }\n    except Exception as e:\n        return {\n            \"nodes\"\
+          : \"[]\",\n            \"edges\": \"[]\",\n            \"success\": False,\n\
+          \            \"message\": str(e)\n        }\n"
+        code_language: python3
+        outputs:
+          edges:
+            type: string
+          message:
+            type: string
+          nodes:
+            type: string
+          success:
+            type: boolean
+        selected: false
+        title: 解析话术数据
+        type: code
+        variables:
+        - value_selector:
+          - llm_generate
+          - structured_output
+          value_type: object
+          variable: llm_output
+        - value_selector:
+          - start
+          - description
+          variable: description
+        - value_selector:
+          - start
+          - rounds
+          variable: rounds
+        - value_selector:
+          - start
+          - first_speaker
+          variable: first_speaker
+      height: 51
+      id: parse_json
+      position:
+        x: 680
+        y: 282
+      positionAbsolute:
+        x: 680
+        y: 282
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        outputs:
+        - value_selector:
+          - parse_json
+          - nodes
+          variable: nodes
+        - value_selector:
+          - parse_json
+          - edges
+          variable: edges
+        - value_selector:
+          - parse_json
+          - success
+          variable: success
+        - value_selector:
+          - parse_json
+          - message
+          variable: message
+        selected: false
+        title: 结束
+        type: end
+      height: 167
+      id: end
+      position:
+        x: 980
+        y: 282
+      positionAbsolute:
+        x: 980
+        y: 282
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    viewport:
+      x: 54.20000000000016
+      y: 27.599999999999966
+      zoom: 0.8
+  rag_pipeline_variables: []

@@ -193,3 +193,33 @@ client().uploadFile(request);            // 注意：throws Throwable，需捕�
 ### 遗留（部署侧，联调前）
 
 DDL 执行、OSS 桶生命周期规则、环境变量（含 `MEDIA_ASR_VOCABULARY_ID=vocab-kng-2ca5d66301134ad9b280837fbe5f4b5f`）——见上文联调清单；端到端联调用例四条待真实环境跑通。
+
+### E2E 联调执行记录（2026-10-08，本地全链路实测）
+
+**用例1 转码全链路 ✅**：上传 603MB/72 分片（59.4s）→ merge 响应 mediaMeta 回填（772s/1920x1080/h264）→ 发布 status=1 → 转码 job **流复制 17.5s**（vs 重编码 295s，快 17 倍）→ status=2 已发布 → play 接口返回 m3u8 → 78 ts 分片 + 24.7MB wav 落盘（wav>20MB 实证 FP-05-1 multipart 必要性）。
+
+**用例2 字幕全链路 ✅**（历经三轮真实缺陷修复后通过）：multipart 上传 OSS 成功 → paraformer-v2 转写 93 句（热词 vocabulary_id 已随请求提交）→ 翻译降级逐条逻辑实际触发并成功 → 四语言 SRT 落盘、subtitlesFlag=true → 抽屉接口可读。
+E2E 暴露并修复的三个新缺陷（均非 05 正文范围，基线实现/联调环境问题）：
+1. **fetch 轮询 NPE**（"headers cannot be null"）：`TranscriptionQueryParam` 手动 builder 缺 model 字段，必须用官方 `FromTranscriptionParam(param, taskId)` 派生——已修 BailianAsrEngine。
+2. **翻译 URL 域名笔误**：基线实现写成 maas.qianwenaiapi.com 且缺 `/chat/completions` 后缀（后被平台切换顺带覆盖）——已配置化。
+3. **Boot4 RestTemplate 对 JsonNode 反序列化报 Type definition error**：改为收 String 手动 readTree——已修 QwenTranslateEngine。
+
+**用例3 失败路径 ✅（顺带验证）**：hidden 列缺失导致的首轮转码失败 → 失败 tab 可见失败原因 → 【重试】接口重置 job → 17s 后转码成功置已发布；字幕 job 两次 stage 断点重试（asr 修复后从 translate 续跑）均符合设计。
+
+**用例4 热词效果 ✅（额度恢复后完成）**：用户在千问AI平台控制台调整额度设置后（paraformer-v2 免费额度 36K 秒/94% 剩余），regenerate 全量重跑通过——zh.srt **"商机"×2、"上机"×0**（PoC-2 抽听发现的误识模式已被热词纠正），四语言各 93 条、零空译文。
+
+**平台切换后的真实缺陷修复（追加两轮，均 qwen 输出形态问题）**：
+4. **模型逐条返回对象数组** `[{"id":1,"text":"译文"}]`：`toList` 的 `asText()` 对 ObjectNode 返回空串——en 33 条/vi 24 条/ha 18 条空译文的根因；修复为兼容字符串/对象条目（对象取 text 字段，缺 text 取首个非空字符串字段）。
+5. **模型逐条返回裸文本**（"呃…"语气词条目实测）：单条解析失败时整段内容视为译文（单条语义下模型任何非空输出即译文）；同时批量结果含空条目视为失败触发逐条降级、单条解析出空串触发重试不静默落盘。
+
+**最终状态（2026-10-08 E2E 全绿）**：转码（流复制 17.5s）+ 字幕管线（ASR 93 句 + 四语言 93 条完整）+ 失败重试 + 热词全部验证通过；媒体模块单测 30/30。
+
+**联调环境补账**：`kng_courseware.hidden` 列（课件 05 增补A 的 DDL 也未执行过）已补——**提示：各模块增量 DDL 均需在目标库核对**；Nacos 本机启动（Derby 锁清理）；StaffManagement 需先起（发布链路 Dubbo 依赖）。
+
+### 平台切换（2026-10-08，百炼欠费 → 千问AI平台）
+
+- 域名 `maas.qianwenaiapi.com`（两平台**账号/热词数据共享**，已实测热词表可查）。
+- 配置化：`media.asr.base-url`（覆盖 DashScope SDK 全局 `Constants.baseHttpApiUrl`）、`media.translate.base-url`（代码自动补 `/chat/completions`，兼容两种写法）；SpeechTraining `speech.tone.base-url` 同步修复后缀拼接。
+- 日志/异常文案：全部"百炼"→"千问AI平台"（BailianAsrEngine 类名保留，避免大范围重命名）。
+- **当前阻塞**：新平台同账号免费额度已耗尽（`AllocationQuota.FreeTierOnly` 403）——ASR/翻译调用被平台拒绝，**需用户在控制台充值或关闭"仅用免费额度"模式后**，重跑 regenerate 即可完成用例4（含"商机"热词效果抽听）。代码链路本身已验证畅通（域名/鉴权/热词/降级逐条全部按预期工作）。
+- TTS（CosyVoice websocket）在新平台的可用性待额度恢复后验证（SpeechTraining `SpeechSynthesizer` 走 SDK 默认域名，如需切换另有 `Constants.baseWebsocketApiUrl`，暂未改）。

@@ -20,6 +20,7 @@
 | `sm.auth.default-password` / `sm.auth.admin-initial-password` | StaffManagement | 全员默认口令（风险 R-5） |
 | `dify.agents.*.api-key`（4 个 app key） | SpeechTraining | Dify 智能体 |
 | `dashscope.api-key` / `speech.tone.api-key` | SpeechTraining / AtualCombatTraining | 百炼（同一把 key，两处重复） |
+| `media.asr.api-key` / `media.translate.api-key` / `media.oss.access-key-id/-secret` | OnlineClassroom | 百炼 key（与 SpeechTraining 同一把，第三处重复）+ OSS AK/SK（gulimall-fangyuan 桶）；2026-10-08 本地开发期由环境变量占位改为明文（用户拍板），属新增迁移项 |
 | `speech.asr.doubao.app-key / access-key` | SpeechTraining | 豆包 SAUC |
 | `spring.data.redis`（无密码，仅内网） | StaffManagement | 迁配置中心时一并收口 |
 
