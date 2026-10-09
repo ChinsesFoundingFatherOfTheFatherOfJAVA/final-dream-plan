@@ -1,0 +1,328 @@
+app:
+  name: "话术训练报告评分智能体"
+  description: "根据逐轮对话、各轮要点说明和项目评分维度，一次性输出全部维度的得分、总评、做得好的点、待改进建议，以及逐轮改进建议，用于生成训练报告"
+  mode: workflow
+  icon: "📊"
+  icon_background: "#E4FBCC"
+  use_icon_as_answer_icon: false
+
+dependencies:
+  - current_identifier: null
+    type: marketplace
+    value:
+      marketplace_plugin_unique_identifier: yangyaofei/vllm:0.2.3@455b644bfcfe0f8d7af1ad191a9e5d0b2d87214b0c6c804012d2d5cccdbbf88a
+      version: null
+
+kind: app
+version: 0.5.0
+
+workflow:
+  conversation_variables: []
+  environment_variables: []
+
+  features:
+    file_upload:
+      image:
+        enabled: false
+    opening_statement: ""
+    retriever_resource:
+      enabled: false
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ""
+      voice: ""
+
+  graph:
+    nodes:
+      - data:
+          title: "开始"
+          type: start
+          variables:
+            - variable: "rounds"
+              label: "逐轮对话(JSON数组)"
+              type: paragraph
+              required: true
+              max_length: 20000
+            - variable: "dimensions"
+              label: "评分维度及权重(JSON数组)"
+              type: paragraph
+              required: true
+              max_length: 5000
+            - variable: "forbidden_words_result"
+              label: "违禁词判定结果(后端已判定)"
+              type: paragraph
+              required: true
+              max_length: 2000
+        height: 182
+        id: start
+        position:
+          x: 80
+          y: 282
+        positionAbsolute:
+          x: 80
+          y: 282
+        sourcePosition: right
+        targetPosition: left
+        type: custom
+        width: 244
+
+      - data:
+          title: "AI报告评分"
+          type: llm
+          model:
+            provider: "yangyaofei/vllm/vllm"
+            name: "Qwen/Qwen3-30B-A3B-Instruct-2507"
+            mode: chat
+            completion_params:
+              temperature: 0.2
+              max_tokens: 4096
+          prompt_template:
+            - role: system
+              text: |
+                你是专业的话术训练评分系统。你将收到：学员一次话术训练的逐轮对话（含每轮标准话术与要点）、项目启用的评分维度（名称/权重/评分规则，其中部分维度的规则里已带后端判定分数）、以及后端已判定的违禁词事实。
+
+                你的任务：对每个评分维度输出评分与点评，并对每轮对话输出改进建议。
+
+                评分分级锚点（除有特别规则外均按此打分）：
+                - 100分：完全达到该维度的理想标准，无可挑剔
+                - 80分：整体良好，存在极轻微的改进空间
+                - 60分：基本合格，存在明显但可改正的问题
+                - 40分：不合格，问题明显，需针对性练习
+                - 0分：完全未体现该维度要求
+                中间分值（如55、90）用于处于两档之间的表现。
+
+                各维度点评要求：
+                1. comment：一句话总评，客观描述该维度表现（参考风格如"表达极其流畅自然，无任何影响交流的迟疑或冗余。"）
+                2. good_points：做得好的点，数组，每条尽量引用学员原文（如：回应简洁明快 "还没吃饭呢"）；没有则输出空数组
+                3. improvements：待改进点与建议，数组，每条格式为"问题指出：…。原文示例：\"…\"。改进后的表述建议：…"；没有则输出空数组
+                4. 话术一致性维度：以每轮 hit_points（逐轮评分器判定的实际命中要点）为事实依据评分，不得自行重判要点覆盖情况；
+                   命中率高（hit_points 接近 key_points）且表述贴合标准话术得高分；多个轮次 hit_points 为空或偏少应明显降档并在评语中引用。
+                   若该维度 rule 文本含"逐字一致性是本维度主要评分依据"，则还需对比 student_answer 与 standard_script 的措辞吻合程度（逐字模式，v1.2）；
+                   无此标注时按要点覆盖模式评（keypoints 模式）
+                5. **后端已定分的维度（不区分维度名称）**：若某维度的 rule 文本里带有"（后端已判定：… 该维度得分为 N 分，必须采用该分数，你只需据此写评语）"，
+                   则该维度的 score **必须原样填 N**，不得自行改判；你只负责按该事实写 comment / good_points / improvements。
+                   这类维度由后端的客观规则算分（当前有：语速=各轮 字数/时长 折算的公式，违禁词=词表命中次数扣分；未踩中时的 comment 形如
+                   "您在演练中没有踩中任何违禁词，很不错，继续保持！"）。**认的是 rule 里的这段标注，不是维度名**——维度被改名或新建都一样适用。
+                6. **带"语音表现参考"标注的维度（不区分维度名称，v1.3 新增）**：若某维度的 rule 里带有"（语音表现参考——…）"，
+                   说明该维度要综合文字内容与语音数据（每轮语速、停顿次数与时长）评分：文字仍是主要依据，语音数据用于佐证与调节分档
+                   （如"表达流利"维度：多轮出现长停顿应在评语中指出并酌情降档；语速平稳、无停顿可支持高分）。
+                   注意：语音数据是参考输入不是公式——不要机械地按"语速多少必须扣多少分"打分，也不要在评语里罗列数字本身，而是把它翻译成
+                   对学员可感知的表现描述（如"第二段回答有明显迟疑"而非"停顿2.3秒"）。
+                   没有"语音表现参考"标注时，按文字正常评，**不得虚构语音表现**（纯文字作答的会话不会有此标注）。
+
+                round_suggestions 要求：
+                - 对每轮学员回答给出一条改进建议
+                - 格式："当前回应…，原文表述：\"…\"，建议表述可调整为：\"…\"，…"（参考：当前回应仅给出基础回答，未主动延伸对话，原文表述："还没吃饭呢"，建议表述可调整为："还没吃饭呢，正准备去找点东西吃，您今天吃过了吗？"，带动对话继续推进）
+                - 若该轮回答已足够好，建议为"本回答表现优秀，无需改进"类表述
+
+                输出格式（严格 JSON，不要输出 markdown 代码块标记或其他任何文字）：
+                {
+                  "dimensions": [
+                    {
+                      "name": "维度名称（与输入完全一致）",
+                      "score": 100,
+                      "comment": "一句话总评",
+                      "good_points": ["…"],
+                      "improvements": ["…"]
+                    }
+                  ],
+                  "round_suggestions": [
+                    {
+                      "seq": 1,
+                      "suggestion": "该轮改进建议"
+                    }
+                  ]
+                }
+
+                注意：
+                - dimensions 必须覆盖输入的全部维度，name 与输入逐字一致，不得增删改维度
+                - **不得为"后端已定分"的维度另打分**：这类维度的 score 只能是 rule 里标注的那个数字
+                - 输入里没有出现的维度，不要出现在输出的 dimensions 中（本次未参与评分的语音维度根本不会作为输入下发）
+                - score 为 0-100 的整数
+                - round_suggestions 的 seq 与输入 rounds 中的 seq 一一对应
+                - 只输出 JSON，不要输出 markdown 代码块标记或其他文字
+            - role: user
+              text: |
+                逐轮对话：
+                {{#start.rounds#}}
+
+                评分维度及权重：
+                {{#start.dimensions#}}
+
+                违禁词判定结果（后端已判定，必须采用）：
+                {{#start.forbidden_words_result#}}
+
+                请按要求输出评分 JSON。
+          context:
+            enabled: false
+            variable_selector: []
+          vision:
+            enabled: false
+        height: 98
+        id: llm_report
+        position:
+          x: 380
+          y: 282
+        positionAbsolute:
+          x: 380
+          y: 282
+        sourcePosition: right
+        targetPosition: left
+        type: custom
+        width: 244
+
+      - data:
+          title: "解析评分结果"
+          type: code
+          code_language: python3
+          code: |
+            import json
+
+            def main(llm_output: str) -> dict:
+                try:
+                    cleaned = llm_output.strip()
+                    # 剥离 markdown 代码块围栏
+                    if cleaned.startswith("```"):
+                        cleaned = cleaned.split("\n", 1)[1]
+                    if cleaned.endswith("```"):
+                        cleaned = cleaned.rsplit("```", 1)[0]
+                    # 容错：截取第一个 { 到最后一个 } 之间的内容
+                    start_idx = cleaned.find("{")
+                    end_idx = cleaned.rfind("}")
+                    if start_idx >= 0 and end_idx > start_idx:
+                        cleaned = cleaned[start_idx:end_idx + 1]
+                    cleaned = cleaned.strip()
+
+                    result = json.loads(cleaned)
+
+                    dimensions = result.get("dimensions", [])
+                    round_suggestions = result.get("round_suggestions", [])
+
+                    # 字段兜底校验
+                    normalized = []
+                    for d in dimensions:
+                        normalized.append({
+                            "name": d.get("name", ""),
+                            "score": d.get("score", 0),
+                            "comment": d.get("comment", ""),
+                            "good_points": d.get("good_points", []),
+                            "improvements": d.get("improvements", [])
+                        })
+                    suggestions = []
+                    for r in round_suggestions:
+                        suggestions.append({
+                            "seq": r.get("seq", 0),
+                            "suggestion": r.get("suggestion", "")
+                        })
+
+                    return {
+                        "dimensions": json.dumps(normalized, ensure_ascii=False),
+                        "round_suggestions": json.dumps(suggestions, ensure_ascii=False),
+                        "dimension_count": len(normalized),
+                        "success": True
+                    }
+                except Exception as e:
+                    return {
+                        "dimensions": "[]",
+                        "round_suggestions": "[]",
+                        "dimension_count": 0,
+                        "success": False,
+                        "error_message": f"报告评分解析失败: {str(e)}"
+                    }
+          variables:
+            - variable: "llm_output"
+              value_selector: ["llm_report", "text"]
+          outputs:
+            dimensions:
+              type: string
+            round_suggestions:
+              type: string
+            dimension_count:
+              type: number
+            success:
+              type: string
+            error_message:
+              type: string
+        height: 54
+        id: parse_report
+        position:
+          x: 680
+          y: 282
+        positionAbsolute:
+          x: 680
+          y: 282
+        sourcePosition: right
+        targetPosition: left
+        type: custom
+        width: 244
+
+      - data:
+          title: "结束"
+          type: end
+          outputs:
+            - variable: "dimensions"
+              value_selector: ["parse_report", "dimensions"]
+            - variable: "round_suggestions"
+              value_selector: ["parse_report", "round_suggestions"]
+            - variable: "dimension_count"
+              value_selector: ["parse_report", "dimension_count"]
+            - variable: "success"
+              value_selector: ["parse_report", "success"]
+            - variable: "error_message"
+              value_selector: ["parse_report", "error_message"]
+        height: 90
+        id: end
+        position:
+          x: 980
+          y: 282
+        positionAbsolute:
+          x: 980
+          y: 282
+        sourcePosition: right
+        targetPosition: left
+        type: custom
+        width: 244
+
+    edges:
+      - source: start
+        target: llm_report
+        sourceHandle: source
+        targetHandle: target
+        id: start-llm_report
+        type: custom
+        data:
+          sourceType: start
+          targetType: llm
+          isLoop: false
+      - source: llm_report
+        target: parse_report
+        sourceHandle: source
+        targetHandle: target
+        id: llm_report-parse_report
+        type: custom
+        data:
+          sourceType: llm
+          targetType: code
+          isLoop: false
+      - source: parse_report
+        target: end
+        sourceHandle: source
+        targetHandle: target
+        id: parse_report-end
+        type: custom
+        data:
+          sourceType: code
+          targetType: end
+          isLoop: false
+
+    viewport:
+      x: 0
+      y: 0
+      zoom: 0.8

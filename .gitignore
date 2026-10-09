@@ -1,5 +1,7 @@
 # Mimosa / 工具链 hook 状态
 .mimosa/
+.trash/
+**/*poc*/
 
 # 系统文件
 .DS_Store
