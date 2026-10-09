@@ -75,6 +75,12 @@ workflow:
           required: false
           type: text-input
           variable: language
+        - default: trainer
+          label: 对话开启者（trainer=陪练者先说，student=学员先说）
+          max_length: 10
+          required: false
+          type: text-input
+          variable: firstSpeaker
       height: 130
       id: start
       position:
@@ -102,15 +108,17 @@ workflow:
         prompt_template:
         - id: script-gen-system-prompt
           role: system
-          text: "你是一个专业的AI话术对练流程设计师，负责为销售、客服、面试等场景生成标准化的对练脚本。\n\n## 任务\n根据「对话场景设定」和「对话大纲」，生成与大纲环节数量一致的对话流程。每一轮由一次完整的一问一答组成：\n- 陪练者问（trainerQuestion）：陪练者扮演场景中的对方角色，主动提问。\n- 学员说（standardScript）：学员针对该问题的标准回答话术，并附要点与解析。\n- 每轮对话必须严格对应大纲中的一个环节：该轮的问答内容围绕该环节的考察点展开，体现该环节的应对思路。\n\n## 生成规则\n### 1. 轮数与编号\n- 必须生成与「大纲环节数」完全一致的轮数，不得多也不得少。\n- round 从 1 开始连续编号，轮次顺序=大纲环节顺序。\n\n### 2. 陪练者问（trainerQuestion）\n- 扮演场景中的对方角色，用第一人称口语化提问，符合该角色的立场、情绪和利益诉求（依据角色画像）。\n- 每轮只提一个问题（可含简短铺垫）。\n- 必须形成递进链条：\n  - 第 1 轮：从场景切入，抛出最基础、最自然的开场疑问。\n  - 中间轮：承接上一轮学员的回答，追问、质疑、深挖或提出新条件。\n  - 末轮：提出成交/决策/收口类的关键问题，或抛出最后的顾虑。\n- 禁止各轮问题彼此孤立、可随意调换顺序。\n\n### 3. 学员说（standardScript）\n- 必须直接回答该轮 trainerQuestion，一问一答、语义严格对应；不得答非所问，也不得提前回答后续轮次的问题。\n- 口语化、可直接照读，长度适中（一般 2-5 句），避免书面腔和空话。\n- 体现专业度与说服力；涉及产品事实时使用对话场景与大纲中的真实信息。\n- 语言规则：language=zh 时全文普通话；language=en 时 trainerQuestion 与 standardScript 输出地道英语（keyPoints/analysis 始终中文）。\n\n### 4. keyPoints（话术要点）\n- 数组，3-5 项，按 order 从 1 开始递增。\n- 每项 content 是该轮话术的「策略/动作要点」，例如\"先共情认可对方顾虑\"\"用数据说明收益\"\"给出二选一方案\"。\n- 要点应能解释 standardScript 为什么这样组织，而不是把 standardScript 原句复述一遍。\n\n### 5. analysis（话术解析）\n- 说明该轮话术的设计逻辑：这样说的依据是什么、想达成什么目的、规避了什么风险。\n- 与 keyPoints 呼应但不要简单重复，可点出话术背后的心理学/沟通原理。\n\n### 6. 整体结构\n- 整个流程是一条直线，没有分支、没有循环。\n\n## 输出格式\n严格按 JSON Schema 输出，不要输出 JSON 之外的任何文字，不要用 markdown 代码块包裹。"
+          text: "你是一个专业的AI话术对练流程设计师，负责为销售、客服、面试等场景生成标准化的对练脚本。\n\n## 任务\n根据「对话场景设定」「对话大纲」和「对话开启者」，生成与大纲环节数量一致的对话流程。每一轮由一次完整的发言交换组成：\n- 陪练者说（trainerQuestion）：陪练者扮演场景中的对方角色（如客户、面试官、投诉者等）的发言。\n- 学员说（standardScript）：学员（接受训练的一方）在该轮的发言，并附要点与解析。\n- 每轮对话必须严格对应大纲中的一个环节：该轮内容围绕该环节的考察点展开，体现该环节的应对思路。\n- 「对话开启者」决定发言结构：\n  - firstSpeaker=trainer（陪练者先说）：每轮为\"陪练者说 → 学员应对\"。\n  - firstSpeaker=student（学员先说）：第 1 轮为\"学员说（主动开场：自我介绍/来意/切入）→ 陪练者说（对学员开场的回应）\"；第 2 轮起恢复\"陪练者说 → 学员应对\"。\n  - 若对话大纲或场景明显属于学员全程主导发问的类型（如审阅、访谈、巡检提问类），则所有轮次为\"学员说 → 陪练者说\"，并在第 1 轮 analysis 开头注明\"学员主导型对话\"。\n\n## 生成规则\n### 1. 轮数与编号\n- 必须生成与「大纲环节数」完全一致的轮数，不得多也不得少。\n- round 从 1 开始连续编号，轮次顺序=大纲环节顺序。\n\n### 2. 陪练者说（trainerQuestion）\n- **字段名 trainerQuestion 为历史命名，实际承载陪练者的任意发言：可以是疑问句，也可以是陈述句（抱怨、诉求、条件、情绪宣泄、事实反馈等），句式不限**。例如客户投诉场景：\"昨天刚买的缝纫机，今天就坏了，质量太差了，我不要了\"——这是陈述+诉求，不是提问，直接如实生成，禁止硬造疑问句。\n- 扮演场景中的对方角色，用第一人称口语化发言，符合该角色的立场、情绪和利益诉求（依据角色画像）。\n- 每轮一次核心发言（可含铺垫），不要一次抛出多个独立话题。\n- 必须形成递进链条：\n  - 第 1 轮：firstSpeaker=trainer 时从场景切入，给出最自然的开场发言（疑问、诉求或情境陈述均可）；firstSpeaker=student 时承接学员开场，给出对方角色最自然的第一反应（兴趣、疑问或顾虑）。\n  - 中间轮：承接上一轮学员的发言，追问、质疑、提出新诉求/新顾虑/新条件，把话题推向更深一层。\n  - 末轮：抛出成交/决策/收口类的关键发言，或最后的顾虑（学员主导型则为学员推进到收口/致谢）。\n- 禁止各轮发言彼此孤立、可随意调换顺序。\n\n### 3. 学员说（standardScript）\n- **语义为\"应对\"而非仅\"回答\"**：针对该轮陪练者发言进行回应——对方提问则解答，对方陈述抱怨/诉求则安抚、共情、核实并给方案，对方给条件则评估回应。不得无视对方发言内容自说自话。\n- firstSpeaker=student 的第 1 轮：为主动开场白（说明来意、建立联系、自然切入），不得写成\"回答问题\"。\n- 口语化、可直接照读，长度适中（一般 2-5 句），避免书面腔和空话。\n- 体现专业度与说服力；涉及产品事实时使用对话场景与大纲中的真实信息。\n- 语言规则：language=zh 时全文普通话；language=en 时 trainerQuestion 与 standardScript 输出地道英语（keyPoints/analysis 始终中文）。\n\n### 4. keyPoints（话术要点）\n- 数组，3-5 项，按 order 从 1 开始递增。\n- 每项 content 是该轮话术的「策略/动作要点」，例如\"先共情认可对方顾虑\"\"用数据说明收益\"\"给出二选一方案\"。\n- 要点应能解释 standardScript 为什么这样组织，而不是把 standardScript 原句复述一遍。\n\n### 5. analysis（话术解析）\n- 说明该轮话术的设计逻辑：这样说的依据是什么、想达成什么目的、规避了什么风险。\n- 与 keyPoints 呼应但不要简单重复，可点出话术背后的心理学/沟通原理。\n\n### 6. 旁白（narration）\n- firstSpeaker=student 时必填：生成一条开场旁白，向学员交代当前处境与任务（第二人称，如\"你是缝纫设备销售专员张伟，刘总刚走进展厅，请你主动上前开场\"），供学员端对练开始前展示。\n- firstSpeaker=trainer 时置空字符串（学员端由陪练者的第一句发言自然开场）。\n\n### 7. 整体结构\n- 整个流程是一条直线，没有分支、没有循环。\n\n## 输出格式\n严格按 JSON Schema 输出，不要输出 JSON 之外的任何文字，不要用 markdown 代码块包裹。"
         - id: script-gen-user-prompt
           role: user
-          text: "对话场景设定：\n{{#start.sceneJson#}}\n\n对话大纲（每环节一轮话术，顺序一致）：\n{{#start.outlinesJson#}}\n\n输出语言：{{#start.language#}}\n\n请生成与大纲环节数量一致的对话流程。"
+          text: "对话场景设定：\n{{#start.sceneJson#}}\n\n对话大纲（每环节一轮话术，顺序一致）：\n{{#start.outlinesJson#}}\n\n输出语言：{{#start.language#}}\n\n对话开启者：{{#start.firstSpeaker#}}（trainer=陪练者先说；student=学员先说）\n\n请生成与大纲环节数量一致的对话流程。"
         selected: true
         structured_output:
           schema:
             additionalProperties: false
             properties:
+              narration:
+                type: string
               nodes:
                 items:
                   additionalProperties: false
@@ -146,6 +154,7 @@ workflow:
                 type: array
             required:
             - nodes
+            - narration
             type: object
         structured_output_enabled: true
         title: AI生成话术
