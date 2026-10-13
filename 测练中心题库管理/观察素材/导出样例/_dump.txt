@@ -1,0 +1,282 @@
+[p] 【单选题】
+[p] 1、Máy may 1 kim  là loại máy may công nghiệp sử dụng yếu tố nào để tạo
+[p] A、Hai sợi chỉ: chỉ kim và chỉ ổ (chỉ suốt) 
+[p] B、Hai sợi chỉ: chỉ kim và chỉ móc 
+[p] C、Một sợi chỉ trên 
+[p] D、Ba sợi chỉ đan xen nhau 
+[p] 【正确答案】A
+[p] 【难易度】易
+[p] 【考核点】Yếu tố tạo mũi may của máy may 1 kim
+[p] 【试题解析】Máy may 1 kim công nghiệp sử dụng 2 sợi chỉ gồm kim và ổ chao để
+[p] 2、Đường may thắt nút được tạo thành do sự đan lồng và thắt khóa của ha
+[p] A、Chỉ trên và chỉ trên 
+[p] B、Chỉ trên (chỉ kim) và chỉ dưới (chỉ suốt) 
+[p] C、Chỉ dưới và chỉ dưới 
+[p] D、Chỉ trên và lõi suốt xoay 
+[p] 【正确答案】B
+[p] 【难易度】易
+[p] 【考核点】Hai thành phần tạo thành đường may thắt nút
+[p] 【试题解析】Đường may thắt nút được đan bện và khóa chặt giữa chỉ trên (chỉ 
+[p] 3、Trong chu trình 6 bước hình thành mũi may thắt nút, bước thứ 3 là gì
+[p] A、Kim máy mang chỉ trên đâm xuyên xuống qua lớp vải 
+[p] B、Kim máy rút lên tạo thành vòng chỉ (vòng lặp chỉ / loop) 
+[p] C、Mỏ ổ chao móc vào bắt lấy vòng chỉ 
+[p] D、Cần giật chỉ đi lên siết chặt chỉ trên 
+[p] 【正确答案】C
+[p] 【难易度】易
+[p] 【考核点】Quy trình hình thành đường may thắt nút
+[p] 【试题解析】6 bước hình thành mũi may thắt nút: 1. Kim đâm xuyên vải → 2. Ki
+[p] 4、Model JK-8720 thuộc phân loại máy may 1 kim nào?
+[p] A、Máy may 1 kim liền trục (Direct-drive tích hợp) 
+[p] B、Máy may 1 kim cơ thông thường (mô tơ rời / mô tơ treo dưới bàn) 
+[p] C、Máy may 1 kim điện tử mô tơ bước 
+[p] D、Máy may 1 kim điện tử cơ cấu đẩy vải điện tử 
+[p] 【正确答案】B
+[p] 【难易度】易
+[p] 【考核点】Phân loại máy của model JK-8720
+[p] 【试题解析】JK-8720 là dòng máy may 1 kim cơ thông thường sử dụng mô tơ treo
+[p] 5、Khẩu hiệu (SLOGAN) của dòng máy may không đứt chỉ A4C là gì?
+[p] A、Ngày may trăm mẫu không cần đổi máy 
+[p] B、Mỗi ngày chỉ xỏ chỉ một lần 
+[p] C、10 năm không rò rỉ dầu, trục kim không kẹt chết 
+[p] D、Máy may điện tử biết nói 
+[p] 【正确答案】B
+[p] 【难易度】易
+[p] 【考核点】Slogan của dòng máy may A4C không đứt chỉ
+[p] 【试题解析】Slogan của A4C là 'Mỗi ngày chỉ xỏ chỉ một lần / One day one thr
+[p] 6、Tên gọi tiếng Anh đầy đủ của hệ thống NTB trên máy A4C là gì?
+[p] A、No Thread Breakage 
+[p] B、New Technology Base 
+[p] C、Needle Thread Balance 
+[p] D、Nine-brain Technology Board 
+[p] 【正确答案】A
+[p] 【难易度】易
+[p] 【考核点】Tên tiếng Anh đầy đủ của hệ thống NTB trên A4C
+[p] 【试题解析】NTB viết tắt từ 'NO THREAD BREAKAGE' (Hệ thống chống đứt chỉ), l
+[p] 7、Hai công nghệ cốt lõi của máy may A4C là gì?
+[p] A、Chip AI 9 Bộ Não Bạch Tuộc và Động cơ Kép KingKong mạnh mẽ 
+[p] B、Chip AI 9 Bộ Não Bạch Tuộc và Công nghệ đường dẫn chỉ 0 độ 
+[p] C、Động cơ Kép KingKong mạnh mẽ và Công nghệ nhận diện độ dày mỏng 
+[p] D、Công nghệ đường dẫn chỉ 0 độ và Công nghệ không dầu 
+[p] 【正确答案】B
+[p] 【难易度】易
+[p] 【考核点】Hai công nghệ cốt lõi của A4C
+[p] 【试题解析】Hai công nghệ then chốt của A4C là Chip AI Cửu Não Bạch Tuộc và 
+[p] 8、Trong quy tắc đặt tên của máy A4C, ký tự đặc tính "H" thể hiện điều 
+[p] A、Ổ chao nội địa (中 Quốc) 
+[p] B、May chất liệu dày (Heavy-duty) 
+[p] C、Ổ lớn (Large hook) 
+[p] D、Cự ly mũi may (bước chỉ) 7mm 
+[p] 【正确答案】B
+[p] 【难易度】中
+[p] 【考核点】Quy tắc ký hiệu mã model A4C
+[p] 【试题解析】Quy tắc ký hiệu dòng A4C: C = Ổ chao nội địa 中 Quốc; H = Chuyên 
+[p] 9、Tên đầy đủ của hệ thống cốt lõi trên dòng máy AMH2 (Vua phản ứng nha
+[p] A、Hệ thống chống đứt chỉ NTB 
+[p] B、Công nghệ cấp vải AMH 1.0 
+[p] C、Hệ thống tự thích ứng chất liệu vải A.M.H 2 
+[p] D、Hệ thống chip AI 9 Não Bạch Tuộc 
+[p] 【正确答案】C
+[p] 【难易度】易
+[p] 【考核点】Tên hệ thống cốt lõi của Khoái Phản Vương 2
+[p] 【试题解析】AMH2 (model A5E-B) được trang bị Hệ thống thích ứng vải A.M.H 2 
+[p] 10、Mô-men xoắn tổng hợp của động cơ kép Kingkong trên máy AMH2 đạt mức
+[p] A、5.0 Nm 
+[p] B、8.5 Nm 
+[p] C、11.3 Nm 
+[p] D、15.0 Nm 
+[p] 【正确答案】C
+[p] 【难易度】中
+[p] 【考核点】Mô-men xoắn của động cơ kép trên AMH2
+[p] 【试题解析】Động cơ kép KingKong có mô-men xoắn tổng hợp lên tới 11.3 Nm, mậ
+[p] 11、Quy mô tập dữ liệu mô hình hóa  của chip AI lõi kép 9 Não Bạch Tuộc
+[p] A、200.000 máy 
+[p] B、2.000.000 máy 
+[p] C、22.000.000 máy (22 triệu máy) 
+[p] D、220.000.000 máy (220 triệu máy) 
+[p] 【正确答案】C
+[p] 【难易度】易
+[p] 【考核点】Quy mô dữ liệu mô hình chip AI lõi kép
+[p] 【试题解析】Chip AI lõi kép 9 Não Bạch Tuộc trên AMH2 tích lũy cơ sở dữ liệu
+[p] 12、Trong bảng kiểm thử hiệu năng, bài test may lại mũi tăng cường (may
+[p] A、16 lớp 
+[p] B、18 lớp 
+[p] C、20 lớp 
+[p] D、22 lớp 
+[p] 【正确答案】C
+[p] 【难易度】中
+[p] 【考核点】Khả năng may lại mũi không gãy kim của AMH2
+[p] 【试题解析】AMH2 có khả năng may lại mũi tăng cường xuyên qua tới 20 lớp vải
+[p] 13、Định vị thị trường của dòng máy may liền trục F6 là gì?
+[p] A、Thị trường cao cấp nội địa 
+[p] B、Thị trường phân khúc phổ thông / giá rẻ tại hải ngoại (xuất khẩu) 
+[p] C、Chuyên dụng cho sản xuất đơn hàng nhỏ phản ứng nhanh 
+[p] D、Thị trường chuyên dụng may chất liệu dày 
+[p] 【正确答案】B
+[p] 【难易度】易
+[p] 【考核点】Định vị thị trường của máy F6
+[p] 【试题解析】F6 là phiên bản nâng cấp kế thừa từ F5, tối ưu hóa hệ thống điều
+[p] 14、Điểm khác biệt lớn nhất giữa model A2C so với F6 là gì?
+[p] A、Không gian thao tác (khoang máy) rộng hơn 
+[p] B、Được tích hợp thêm tính năng cắt chỉ tự động (Auto Trimmer) 
+[p] C、Tốc độ may tối đa cao hơn 
+[p] D、Hỗ trợ điều khiển bằng mô tơ bước 
+[p] 【正确答案】B
+[p] 【难易度】中
+[p] 【考核点】Sự khác biệt cốt lõi giữa A2C và F6
+[p] 【试题解析】A2C nâng cấp từ A2B, điểm khác biệt then chốt so với F6 là có th
+[p] 15、Ưu điểm nổi bật nhất của dòng máy may cơ cấu đẩy vải bằng kim là gì
+[p] A、Khả năng may vải cực dày khỏe, tốc độ may siêu nhanh 
+[p] B、Hạn chế lệch lớp vải (so le mép), giảm dấu răng cưa trên mặt vải, đư
+[p] C、Phù hợp nhất cho chất liệu da siêu dày 
+[p] D、Tự động thay lõi suốt 
+[p] 【正确答案】B
+[p] 【难易度】易
+[p] 【考核点】Ưu điểm của máy may đẩy vải bằng kim
+[p] 【试题解析】Máy may đẩy kim đưa vải đồng bộ qua chuyển động lắc của trụ kim 
+[p] 16、Dòng máy may có dao xén mép model 5559C thuộc phân khúc nào?
+[p] A、Máy liền trục thông thường (Direct-drive) 
+[p] B、Máy điện tử tự động (Computerized sewing machine) 
+[p] C、Máy 1 kim cơ thông thường 
+[p] D、Máy may mũi móc xích (Chainstitch) 
+[p] 【正确答案】B
+[p] 【难易度】易
+[p] 【考核点】Phân loại dòng máy dao xén 5559C
+[p] 【试题解析】5559C là dòng máy may điện tử tích hợp dao xén mép tự động, tron
+[p] 17、Điểm nào sau đây KHÔNG PHẢI là ưu thế của dòng máy may 1 kim mũi mó
+[p] A、Độ đàn hồi đường may cao, thích ứng tối ưu cho vải dệt kim, thun co 
+[p] B、Năng suất may cao, không lãng phí thời gian dừng máy để thay chỉ suố
+[p] C、Khả năng may dày cực mạnh, chuyên may da siêu dày 
+[p] D、Độ thông thoáng khí tốt do cấu trúc đường chỉ tương đối tơi xốp 
+[p] 【正确答案】C
+[p] 【难易度】中
+[p] 【考核点】Đặc tính của máy may mũi móc xích
+[p] 【试题解析】4 ưu điểm lớn của máy may móc xích gồm: Độ đàn hồi co giãn cực t
+[p] 18、Ba cơ cấu cốt lõi nhất hình thành nên đường may của máy may 1 kim l
+[p] A、Cơ cấu truyền động, cơ cấu chân vịt (ép vải), cơ cấu cắt chỉ 
+[p] B、Cơ cấu đâm kim (xuyên chỉ), cơ cấu móc chỉ (ổ chao), cơ cấu giật chỉ
+[p] C、Cơ cấu đẩy vải (răng cưa), cơ cấu bôi trơn, cơ cấu chân vịt 
+[p] D、Cơ cấu đâm kim, cơ cấu đẩy vải, cơ cấu cắt chỉ 
+[p] 【正确答案】B
+[p] 【难易度】易
+[p] 【考核点】Ba cơ cấu tạo mũi cốt lõi của máy may 1 kim
+[p] 【试题解析】Ba cơ cấu tạo mũi cốt lõi nhất gồm: Cơ cấu kim đâm xuyên (đưa ch
+[p] 19、Đặc điểm nhận diện và công dụng chính của máy may 2 kim là gì?
+[p] A、Dùng 1 kim nhưng may cực nhanh tạo thành 2 đường chỉ song song 
+[p] B、Hai kim hoạt động đồng bộ cùng lúc, một lần may tạo ra hai đường may
+[p] C、Có thể đồng thời dùng 3 màu chỉ may khác nhau 
+[p] D、Có khả năng tự động chuyển đổi linh hoạt giữa chế độ may 1 kim và 2 
+[p] 【正确答案】B
+[p] 【难易度】易
+[p] 【考核点】Đặc điểm cơ bản của máy may 2 kim
+[p] 【试题解析】Máy may 2 kim điều khiển hai kim vận hành đồng thời, may một đườ
+[p] 20、Đối với vải dệt thoi, phát biểu nào sau đây là chính xác?
+[p] A、Cấu trúc xốp mềm, có độ co giãn và đàn hồi rất lớn 
+[p] B、Cấu trúc sợi đan ổn định, bề mặt vải phẳng phiu, khó biến dạng xô lệ
+[p] C、Được dệt từ một sợi chỉ uốn lượn liên tục thành các vòng lặp (vòng đ
+[p] D、Chủ yếu dùng để may trang phục lót và quần áo thể thao co giãn 
+[p] 【正确答案】B
+[p] 【难易度】中
+[p] 【考核点】Đặc tính của vải dệt thoi
+[p] 【试题解析】Vải dệt thoi được đan vuông góc 90 độ từ hai hệ sợi dọc và sợi n
+[p] 【多选题】
+[p] 1、Thông số kỹ thuật cơ bản của dòng máy may A4C bao gồm những tiêu chí
+[p] A、Tốc độ may tối đa: 5000 vòng/phút (rpm) 
+[p] B、Cự ly mũi may (bước chỉ) tối đa: 5 mm 
+[p] C、Độ nâng chân vịt: 13 mm (nâng chân vịt tự động) 
+[p] D、Chủng loại kim tiêu chuẩn: DB×1 cỡ 14# 
+[p] E、Không gian thao tác mặt máy: 305 × 130 mm 
+[p] 【正确答案】ABD
+[p] 【难易度】易
+[p] 【考核点】Thông số kỹ thuật của máy may A4C
+[p] 【试题解析】Thông số chuẩn A4C: Tốc độ max 5000 rpm, bước chỉ 5 mm, độ nâng 
+[p] 2、Máy A4C giúp giảm tổng tỷ lệ đứt chỉ 80%, giải quyết triệt để vấn đề
+[p] A、Vượt qua ngã tư cạp vải Jean 10 lớp kẹp thêm miếng nhôm 
+[p] B、May ngã tư cạp vải Jean dày 14 lớp 
+[p] C、May vải lưới đánh cá (vải mắt lưới) 
+[p] D、May vải lụa tơ tằm siêu mỏng 
+[p] E、May vật liệu da tự nhiên 
+[p] 【正确答案】ABC
+[p] 【难易度】易
+[p] 【考核点】Các kịch bản vải khó cực hạn máy A4C xử lý triệt để
+[p] 【试题解析】A4C giải quyết 3 tình huống may cực hạn 易 đứt chỉ nhất: ① 10 lớp
+[p] 3、Hai công nghệ cốt lõi của máy may AMH2 bao gồm những công nghệ nào?
+[p] A、Chip AI lõi kép 9 Não Bạch Tuộc 
+[p] B、Động cơ kép Kingkong mạnh mẽ 
+[p] C、Công nghệ đường dẫn chỉ 0 độ 
+[p] D、Công nghệ buồng dầu kín / không dầu 
+[p] E、Cơ cấu cắt chỉ mô tơ bước một kéo hai 
+[p] 【正确答案】AB
+[p] 【难易度】易
+[p] 【考核点】Hai công nghệ cốt lõi trên AMH2
+[p] 【试题解析】Hai trụ cột công nghệ của AMH2 gồm: Chip AI lõi kép 9 Não Bạch T
+[p] 4、Công nghệ chống bỏ mũi (nhảy mũi) trên dòng máy AMH2 sở hữu những ưu
+[p] A、Giảm thiểu tối đa sự rung lắc của kim máy nhờ thiết kế tối ưu hóa cụ
+[p] B、Chuyển đổi linh hoạt kích cỡ kim từ 14# xuống 9# mà không cần căn ch
+[p] C、Tỷ lệ bỏ mũi (nhảy mũi) giảm tới 97% 
+[p] D、Tỷ lệ đứt chỉ may giảm thêm 28% 
+[p] E、Trang bị cụm đồng tiền điện tử tự động căn chỉnh sức căng chỉ 
+[p] 【正确答案】ABCD
+[p] 【难易度】中
+[p] 【考核点】Đặc tính công nghệ chống bỏ mũi trên AMH2
+[p] 【试题解析】Công nghệ chống bỏ mũi của AMH2 tối ưu hóa kết cấu ổ chao để ổn 
+[p] 5、Ưu thế nổi bật của máy may 1 kim mũi móc xích (Series 8558G / 8560G)
+[p] A、Độ co giãn đàn hồi cao, tương thích hoàn hảo với vải dệt kim và vải 
+[p] B、Hiệu suất sản xuất vượt trội, không tốn thời gian dừng máy thay chỉ 
+[p] C、Đường may cực kỳ bền chặt, mũi móc xích kép (mũi may dạng 401) chống
+[p] D、Đường may có độ thông thoáng khí cao, rất thích hợp may trang phục t
+[p] E、Hỗ trợ cả hai dòng máy: bản điện tử tự động và bản liền trục bán tự 
+[p] 【正确答案】ABCD
+[p] 【难易度】易
+[p] 【考核点】Ưu điểm của dòng máy may móc xích 8558G/8560G
+[p] 【试题解析】Máy móc xích có 4 điểm mạnh nổi bật: Độ đàn hồi lý tưởng, năng s
+[p] 6、Các cơ cấu nền tảng cấu thành nên máy may 1 kim bao gồm những cơ cấu
+[p] A、Cơ cấu đâm kim (xuyên chỉ) 
+[p] B、Cơ cấu bắt chỉ / móc chỉ (ổ chao) 
+[p] C、Cơ cấu cần giật chỉ 
+[p] D、Cơ cấu đưa vải (đẩy vải) 
+[p] E、Cơ cấu ép vải (chân vịt) 
+[p] 【正确答案】ABCDE
+[p] 【难易度】易
+[p] 【考核点】Các cơ cấu nền tảng cấu thành máy may 1 kim
+[p] 【试题解析】Máy may 1 kim tiêu chuẩn gồm 7 cơ cấu nền tảng: Cơ cấu truyền độ
+[p] 7、Theo bảng kiểm chuẩn hiệu năng , máy AMH2 vượt trội hơn các đối thủ 
+[p] A、Độ dày may lại mũi liên tục không gãy kim đạt tới 20 lớp 
+[p] B、Độ dày khởi may đầu mũi không trượt đẩy đạt tới 11 lớp 
+[p] C、Mật độ chỉ dày đặc không phồng rối chỉ đạt tới 16 lớp 
+[p] D、Tỷ lệ lệch mép vải (so le mép) siêu thấp, chỉ 0.2% 
+[p] E、Tỷ lệ nhăn dúm đường may chỉ 1.5% 
+[p] 【正确答案】ABCDE
+[p] 【难易度】中
+[p] 【考核点】Chỉ số hiệu năng kiểm chuẩn của AMH2
+[p] 【试题解析】Dữ liệu kiểm chuẩn thực nghiệm xác nhận AMH2 dẫn đầu toàn diện t
+[p] 8、Những dòng máy nào dưới đây thuộc phân khúc máy may 1 kim cao cấp đa
+[p] A、AI10 
+[p] B、A5E-B 
+[p] C、Máy đưa vải bằng kim A6F-E-Q 
+[p] D、Máy may có dao xén vải 5559C-W 
+[p] E、F6 
+[p] 【正确答案】ACD
+[p] 【难易度】易
+[p] 【考核点】Các dòng máy may 1 kim thuộc phân khúc cao cấp của Jack
+[p] 【试题解析】Các model cao cấp hiện nay gồm: AI10, A6F-E-Q (kèm bản có rulo t
+[p] 9、Liên quan đến bộ thiết bị chống tổ chim/chống vón cục chỉ đầu may (A
+[p] A、Sử dụng kết cấu dao kép dẫn động bằng mô tơ bước (kết hợp cắt chỉ và
+[p] B、Bắt buộc lắp kèm bộ thiết bị hút thổi khí nén chuyên dụng 
+[p] C、Thể tích kích thước của bộ hút khí nén là 33.5 × 12.6 × 30 cm 
+[p] D、Bộ hút khí nén được cố định chắc chắn vào cạnh bên trái của bàn máy 
+[p] E、Cơ chế chống vón tổ chim có thể hoạt động độc lập hoàn toàn mà không
+[p] 【正确答案】ABCD
+[p] 【难易度】中
+[p] 【考核点】Bộ phận chống tổ chim trên A5E-B-NX
+[p] 【试题解析】Dòng A5E-B-NX ứng dụng cơ cấu dao đôi dẫn động mô tơ bước, đòi h
+[p] 10、Các ứng dụng sản xuất điển hình của máy may 2 kim bao gồm những côn
+[p] A、May sườn, đường sườn trong (đũng đùi) và tra cạp quần Jean / Denim 
+[p] B、May diễu gia cố trên quần áo bảo hộ lao động, đồng phục chuyên dụng 
+[p] C、May đường chỉ đôi trang trí trên túi xách, ba lô, đồ da, vỏ đệm bọc 
+[p] D、Diễu nách áo sơ mi, may dải gia cố tăng cường cạp trong của quần âu 
+[p] E、May chốt chặn miệng túi lông vũ sau khi thổi lông 
+[p] 【正确答案】ABCD
+[p] 【难易度】易
+[p] 【考核点】Ứng dụng gia công của máy may 2 kim
+[p] 【试题解析】Máy may 2 kim ứng dụng may các đường mí song song chịu lực hoặc 

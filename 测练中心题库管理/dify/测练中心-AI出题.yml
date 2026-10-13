@@ -1,0 +1,288 @@
+app:
+  description: 根据素材文本与题型数量生成试题草稿（单选/多选/判断/填空/问答，不含组合题）
+  icon: 🤖
+  icon_background: '#E4FBCC'
+  mode: workflow
+  name: 测练中心-AI出题
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: yangyaofei/vllm:0.2.3@455b644bfcfe0f8d7af1ad191a9e5d0b2d87214b0c6c804012d2d5cccdbbf88a
+    version: null
+kind: app
+version: 0.5.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 500
+        batch_count_limit: 50
+        file_size_limit: 1500
+        image_file_size_limit: 100
+        video_file_size_limit: 1000
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: false
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isLoop: false
+        sourceType: start
+        targetType: llm
+      id: start-llm_generate
+      source: start
+      sourceHandle: source
+      target: llm_generate
+      targetHandle: target
+      type: custom
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: end
+      id: llm_generate-source-end-target
+      source: llm_generate
+      sourceHandle: source
+      target: end
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - label: 素材文本
+          max_length: 20000
+          required: true
+          type: paragraph
+          variable: material_text
+        - label: 单选题数量
+          max: 35
+          min: 0
+          required: true
+          type: number
+          variable: single
+        - label: 多选题数量
+          max: 35
+          min: 0
+          required: true
+          type: number
+          variable: multi
+        - label: 判断题数量
+          max: 35
+          min: 0
+          required: true
+          type: number
+          variable: judge
+        - label: 填空题数量
+          max: 35
+          min: 0
+          required: true
+          type: number
+          variable: fill
+        - label: 问答题数量
+          max: 35
+          min: 0
+          required: true
+          type: number
+          variable: answer
+      height: 239
+      id: start
+      position:
+        x: 0
+        y: 0
+      positionAbsolute:
+        x: 0
+        y: 0
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            max_tokens: 8192
+            temperature: 0.7
+          mode: chat
+          name: Qwen/Qwen3-30B-A3B-Instruct-2507
+          provider: yangyaofei/vllm/vllm
+        prompt_template:
+        - id: aa9645fb-b703-45cc-8f60-18c3cc6064dc
+          role: system
+          text: "你是企业培训题库的出题专家。你的唯一任务：严格依据用户提供的【素材文本】出题，不得编造、不得引入素材之外的知识。\n\n【核心原则】\n\
+            1. 所有题干、选项、答案、解析必须能在【素材文本】中找到直接依据。\n2. 若素材不足以支撑某题，则不出该题，不得推测或补充外部知识。\n\
+            3. 仅输出合法 JSON，不要任何解释文字，不要 markdown 代码块围栏。\n4. 不生成组合题（type=5），只生成 type\
+            \ 为 0/1/2/3/4 的题目。\n\n【题型编码 type】\n0=单选，1=多选，2=判断，3=填空，4=问答。\n\n【各题型要求】\n\
+            - 单选（type=0）：\n  options 至少 4 个，选项之间互斥；\n  answer 为单个大写字母，如 \"A\"；\n \
+            \ keywords 可为空数组或 1 个关键词。\n\n- 多选（type=1）：\n  options 至少 4 个；\n  answer\
+            \ 为多个大写字母按升序拼接，如 \"ACD\"，不得有重复字母；\n  正确答案数量至少 2 个。\n\n- 判断（type=2）：\n\
+            \  options 固定为 [\"正确\",\"错误\"]；\n  answer 只能是 \"正确\" 或 \"错误\"。\n\n- 填空（type=3）：\n\
+            \  options 为空数组 []；\n  题干中用 _(1)_ _(2)_ 依次标记空格，编号必须从 1 连续递增；\n  answer\
+            \ 为按空顺序、用换行符 \"\\n\" 分隔的答案文本，数量必须与空格数一致。\n\n- 问答（type=4）：\n  options 为空数组\
+            \ []；\n  answer 为参考答案文本；\n  keywords 为 1~5 个关键词，每个含 keyword 和 scoreRatio，scoreRatio\
+            \ 合计必须为 100。\n\n【统一字段】\n- type：整数，0/1/2/3/4。\n- levelType：整数，0=易 1=中 2=难，按题目难度自评。\n\
+            - stem：题干文本，可含基础 HTML（如 <p>）。\n- options：字符串数组，按题型要求填写，判断/填空/问答按上述规则处理。\n\
+            - answer：按题型要求填写。\n- keywords：数组，元素为 {\"keyword\":\"\",\"scoreRatio\"\
+            :100}；单选、多选、判断、填空可为空数组，问答必须 1~5 个且合计 100。\n- analysis：试题解析，必须说明依据【素材文本】的哪部分内容。\n\
+            \n【输出结构】\n{ \"questions\": [ { \"type\": 0, \"levelType\": 1, \"stem\"\
+            : \"\", \"options\": [\"\",\"\"], \"answer\": \"A\", \"keywords\": [{\"\
+            keyword\":\"\",\"scoreRatio\":100}], \"analysis\": \"\" } ] }\n\n【自检清单（输出前逐条核对）】\n\
+            1. 每道题的答案是否都能在素材中找到依据？\n2. type 与 options/answer 的格式是否匹配？\n3. 填空的 _(n)_\
+            \ 编号是否连续、answer 行数是否与空格数一致？\n4. 多选 answer 是否升序、无重复、至少 2 个？\n5. 问答 keywords\
+            \ 是否 1~5 个且 scoreRatio 合计 100？\n6. 输出是否为纯 JSON，无任何多余文字或代码块围栏？\n"
+        - id: c3b0ff97-37a4-411d-bf5f-ea1d0e551d27
+          role: user
+          text: '素材文本：
+
+            {{#start.material_text#}}
+
+
+            请按以下数量出题（总题数 = 各题型之和，若某题型为 0 则不生成该题型）：
+
+            单选 {{#start.single#}} 题
+
+            多选 {{#start.multi#}} 题
+
+            判断 {{#start.judge#}} 题
+
+            填空 {{#start.fill#}} 题
+
+            问答 {{#start.answer#}} 题
+
+            '
+        selected: false
+        structured_output:
+          schema:
+            additionalProperties: false
+            properties:
+              questions:
+                items:
+                  additionalProperties: false
+                  properties:
+                    analysis:
+                      type: string
+                    answer:
+                      type: string
+                    keywords:
+                      items:
+                        additionalProperties: false
+                        properties:
+                          keyword:
+                            type: string
+                          scoreRatio:
+                            type: number
+                        required:
+                        - keyword
+                        - scoreRatio
+                        type: object
+                      type: array
+                    levelType:
+                      type: number
+                    options:
+                      items:
+                        type: string
+                      type: array
+                    stem:
+                      type: string
+                    type:
+                      type: number
+                  required:
+                  - type
+                  - levelType
+                  - stem
+                  - options
+                  - answer
+                  - keywords
+                  - analysis
+                  type: object
+                type: array
+            required:
+            - questions
+            type: object
+        structured_output_enabled: true
+        title: AI出题
+        type: llm
+        vision:
+          enabled: false
+      height: 88
+      id: llm_generate
+      position:
+        x: 391.7457464740643
+        y: 47.63983943926468
+      positionAbsolute:
+        x: 391.7457464740643
+        y: 47.63983943926468
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        outputs:
+        - value_selector:
+          - llm_generate
+          - structured_output
+          - questions
+          value_type: object
+          variable: questions
+        selected: true
+        title: 结束
+        type: end
+      height: 88
+      id: end
+      position:
+        x: 798.413209881156
+        y: 75
+      positionAbsolute:
+        x: 798.413209881156
+        y: 75
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    viewport:
+      x: 79.12677124211086
+      y: 166.85512242058115
+      zoom: 0.8040888484979245
+  rag_pipeline_variables: []
