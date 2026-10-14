@@ -83,6 +83,7 @@ CREATE TABLE IF NOT EXISTS `exam_paper_question` (
   `paper_id` varchar(32) NOT NULL,
   `ques_id` varchar(32) NOT NULL COMMENT '关联 exam_question.id（同源，不复制）',
   `score` decimal(5,2) NOT NULL DEFAULT 0 COMMENT '此题分值',
+  `sub_scores` mediumtext COMMENT '组合题各小题分值 JSON：[{score,missScore,missScoreType}]（与子题同序；非组合题为空）',
   `miss_score` decimal(5,2) NOT NULL DEFAULT 0 COMMENT '多选漏选得分',
   `miss_score_type` tinyint NOT NULL DEFAULT 0 COMMENT '0不漏选得分 1统一得 2按漏选数量均分',
   `section_index` tinyint NOT NULL DEFAULT 0 COMMENT '大题=题型值（0单选..5组合），中文编号前端算',
