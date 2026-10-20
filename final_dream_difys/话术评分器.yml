@@ -1,0 +1,314 @@
+app:
+  description: 根据标准话术、要点和流转条件，评估学员的回答是否命中要点（学员端消息流转判定用；微调版：hit_points 要求与输入要点逐字一致）
+  icon: 🤖
+  icon_background: '#E4FBCC'
+  mode: workflow
+  name: 话术评分器
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: yangyaofei/vllm:0.2.3@455b644bfcfe0f8d7af1ad191a9e5d0b2d87214b0c6c804012d2d5cccdbbf88a
+    version: null
+kind: app
+version: 0.5.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 500
+        batch_count_limit: 50
+        file_size_limit: 1500
+        image_file_size_limit: 100
+        video_file_size_limit: 1000
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: false
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isLoop: false
+        sourceType: start
+        targetType: llm
+      id: start-llm_score
+      source: start
+      sourceHandle: source
+      target: llm_score
+      targetHandle: target
+      type: custom
+    - data:
+        isLoop: false
+        sourceType: llm
+        targetType: code
+      id: llm_score-parse_score
+      source: llm_score
+      sourceHandle: source
+      target: parse_score
+      targetHandle: target
+      type: custom
+    - data:
+        isLoop: false
+        sourceType: code
+        targetType: end
+      id: parse_score-end
+      source: parse_score
+      sourceHandle: source
+      target: end
+      targetHandle: target
+      type: custom
+    nodes:
+    - data:
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - label: 标准话术
+          max_length: 2000
+          required: true
+          type: paragraph
+          variable: standard_script
+        - label: 要点列表(JSON数组)
+          max_length: 2000
+          required: true
+          type: paragraph
+          variable: key_points
+        - label: 流转条件
+          max_length: 1000
+          required: true
+          type: paragraph
+          variable: pass_condition
+        - label: 学员输入
+          max_length: 2000
+          required: true
+          type: paragraph
+          variable: user_input
+      height: 186
+      id: start
+      position:
+        x: 80
+        y: 282
+      positionAbsolute:
+        x: 80
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            max_tokens: 2048
+            temperature: 0.3
+          mode: chat
+          name: Qwen/Qwen3-30B-A3B-Instruct-2507
+          provider: yangyaofei/vllm/vllm
+        prompt_template:
+        - id: b32912df-3449-4223-84c0-8b4041fbebd4
+          role: system
+          text: "你是一个专业的话术评分系统，负责学员和AI对练在销售、客服等场景下的话术训练过程中根据标准话术、要点和流转条件，评估学员的回答。\n\
+            \n评估要点：\n1. 语义命中：学员回答只要在语义上明确表述了某要点内容本身（包括同义表述、口语化表述），即视为命中该要点，不要求字面一致\n\
+            2. 排除隐含命中：学员回答仅隐含与要点相关的需求、情绪或联想（如只说\"好饿\"表达饥饿感）而未明确表述要点内容时，不算命中。例如要点为\"\
+            吃饭\"：\"好饿\"不算命中；\"还没吃饭呢，正准备去吃饭\"、\"还没吃，等会儿去吃\"算命中\n3. 命中判定只针对要点列表中列出的要点，不要自行引申新要点\n\
+            \n\n输出格式（JSON）：\n{\n  \"hit_points\": [\"要点1\", \"要点2\"],\n  \"hit_count\"\
+            : 2,\n  \"total_count\": 5,\n  \"comment\": \"评语\",\n  \"passed\": true\n\
+            }\n\n注意（重要）：\n- hit_points: 命中的要点列表，每一条必须与输入要点列表中的内容【逐字一致、原样复制】，不得改写、缩写或增删字词\n\
+            - hit_count: hit_points 的条数\n- total_count: 输入要点列表的总条数\n- comment: 对学员回答的简短评语\n\
+            - passed: 按流转条件判断是否通过（命中任意N个要点或命中指定要点）\n- 只输出JSON，不要输出markdown代码块标记或其他文字\n"
+        - id: 9b1ed161-2252-4705-8bde-c76729753018
+          role: user
+          text: '标准话术：{{#start.standard_script#}}
+
+
+            要点：{{#start.key_points#}}
+
+
+            流转条件：{{#start.pass_condition#}}
+
+
+            学员回答：{{#start.user_input#}}
+
+
+            请评估学员的回答。
+
+            '
+        selected: true
+        structured_output:
+          schema:
+            additionalProperties: false
+            properties:
+              comment:
+                type: string
+              hit_count:
+                type: number
+              hit_points:
+                items:
+                  type: string
+                type: array
+              passed:
+                type: string
+              total_count:
+                type: number
+            required:
+            - hit_points
+            - hit_count
+            - total_count
+            - comment
+            - passed
+            type: object
+        structured_output_enabled: true
+        title: AI评分
+        type: llm
+        vision:
+          enabled: false
+      height: 87
+      id: llm_score
+      position:
+        x: 380
+        y: 282
+      positionAbsolute:
+        x: 380
+        y: 282
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        code: "import json\n\n\ndef main(llm_output) -> dict:\n    try:\n        #\
+          \ 结构化输出下 llm_output 已是 dict；兼容极端情况下传入字符串\n        if isinstance(llm_output,\
+          \ str):\n            cleaned = llm_output.strip()\n            if cleaned.startswith(\"\
+          ```\"):\n                cleaned = cleaned.split(\"\\n\", 1)[1]\n      \
+          \      if cleaned.endswith(\"```\"):\n                cleaned = cleaned.rsplit(\"\
+          ```\", 1)[0]\n            # 容错：截取第一个 { 到最后一个 } 之间的内容\n            start_idx\
+          \ = cleaned.find(\"{\")\n            end_idx = cleaned.rfind(\"}\")\n  \
+          \          if start_idx >= 0 and end_idx > start_idx:\n                cleaned\
+          \ = cleaned[start_idx:end_idx + 1]\n            result = json.loads(cleaned.strip())\n\
+          \        else:\n            result = llm_output or {}\n\n        return\
+          \ {\n            \"hit_points\": json.dumps(result.get(\"hit_points\", [])\
+          \ or [], ensure_ascii=False),\n            \"hit_count\": result.get(\"\
+          hit_count\", 0),\n            \"total_count\": result.get(\"total_count\"\
+          , 0),\n            \"comment\": result.get(\"comment\", \"\"),\n       \
+          \     \"passed\": result.get(\"passed\", False),\n            \"success\"\
+          : True\n        }\n    except Exception as e:\n        return {\n      \
+          \      \"hit_points\": \"[]\",\n            \"hit_count\": 0,\n        \
+          \    \"total_count\": 0,\n            \"comment\": f\"评分解析失败: {str(e)}\"\
+          ,\n            \"passed\": False,\n            \"success\": False\n    \
+          \    }"
+        code_language: python3
+        outputs:
+          comment:
+            type: string
+          hit_count:
+            type: number
+          hit_points:
+            type: string
+          passed:
+            type: boolean
+          success:
+            type: boolean
+          total_count:
+            type: number
+        selected: false
+        title: 解析评分结果
+        type: code
+        variables:
+        - value_selector:
+          - llm_score
+          - structured_output
+          value_type: object
+          variable: llm_output
+      height: 51
+      id: parse_score
+      position:
+        x: 680
+        y: 282
+      positionAbsolute:
+        x: 680
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        outputs:
+        - value_selector:
+          - parse_score
+          - hit_points
+          variable: hit_points
+        - value_selector:
+          - parse_score
+          - hit_count
+          variable: hit_count
+        - value_selector:
+          - parse_score
+          - total_count
+          variable: total_count
+        - value_selector:
+          - parse_score
+          - comment
+          variable: comment
+        - value_selector:
+          - parse_score
+          - passed
+          variable: passed
+        selected: false
+        title: 结束
+        type: end
+      height: 193
+      id: end
+      position:
+        x: 980
+        y: 282
+      positionAbsolute:
+        x: 980
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    viewport:
+      x: -244
+      y: 97
+      zoom: 0.8
+  rag_pipeline_variables: []

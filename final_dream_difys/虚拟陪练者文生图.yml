@@ -1,0 +1,466 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: workflow
+  name: 虚拟陪练者文生图
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: yangyaofei/vllm:0.2.3@455b644bfcfe0f8d7af1ad191a9e5d0b2d87214b0c6c804012d2d5cccdbbf88a
+    version: null
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: wwwzhouhui/qwen_text2image:0.0.4@518a208a5765f83053eee75d1afb3ac05ef6a3e9adbcc57c3cc3a04f1f166369
+    version: null
+kind: app
+version: 0.5.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 500
+        batch_count_limit: 50
+        file_size_limit: 1500
+        image_file_size_limit: 100
+        video_file_size_limit: 1000
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInLoop: false
+        sourceType: tool
+        targetType: code
+      id: 1789517055648-source-1789517223952-target
+      source: '1789517055648'
+      sourceHandle: source
+      target: '1789517223952'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: end
+      id: 1789517223952-source-1789458272845-target
+      source: '1789517223952'
+      sourceHandle: source
+      target: '1789458272845'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: start
+        targetType: llm
+      id: 1789457689822-source-1789979684853-target
+      source: '1789457689822'
+      sourceHandle: source
+      target: '1789979684853'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: tool
+      id: 1789979684853-source-1789517055648-target
+      source: '1789979684853'
+      sourceHandle: source
+      target: '1789517055648'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        selected: false
+        title: 用户输入
+        type: start
+        variables:
+        - default: ''
+          hint: ''
+          label: prompt
+          max_length: 200
+          options: []
+          placeholder: ''
+          required: true
+          type: text-input
+          variable: prompt
+      height: 108
+      id: '1789457689822'
+      position:
+        x: -483.90296268172943
+        y: 23.47549581665504
+      positionAbsolute:
+        x: -483.90296268172943
+        y: 23.47549581665504
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        outputs:
+        - value_selector:
+          - '1789517223952'
+          - image_url
+          value_type: string
+          variable: image_url
+        selected: false
+        title: 输出
+        type: end
+      height: 88
+      id: '1789458272845'
+      position:
+        x: 882.2191389441358
+        y: 50.30720700517391
+      positionAbsolute:
+        x: 882.2191389441358
+        y: 50.30720700517391
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        is_team_authorization: true
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: The text prompt to generate image from. Describe what you want
+              to see in the image in detail. For example "A golden cat sitting on
+              a red sofa in a cozy living room".
+            ja_JP: The text prompt to generate image from. Describe what you want
+              to see in the image in detail. For example "A golden cat sitting on
+              a red sofa in a cozy living room".
+            pt_BR: The text prompt to generate image from. Describe what you want
+              to see in the image in detail. For example "A golden cat sitting on
+              a red sofa in a cozy living room".
+            zh_Hans: 用于生成图像的文本提示。详细描述您希望在图像中看到的内容。例如"一只金色的猫坐在舒适客厅的红色沙发上"。
+          label:
+            en_US: Prompt
+            ja_JP: Prompt
+            pt_BR: Prompt
+            zh_Hans: 提示词
+          llm_description: Text prompt that describes the desired image content in
+            detail. The more specific and descriptive, the better the generated image
+            quality.
+          max: null
+          min: null
+          name: prompt
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: Qwen/Qwen-Image-2512
+          form: form
+          human_description:
+            en_US: The AI model to use for image generation. Qwen-Image is the default
+              and recommended model.
+            ja_JP: The AI model to use for image generation. Qwen-Image is the default
+              and recommended model.
+            pt_BR: The AI model to use for image generation. Qwen-Image is the default
+              and recommended model.
+            zh_Hans: 用于图像生成的 AI 模型。Qwen-Image 是默认和推荐的模型。
+          label:
+            en_US: Model
+            ja_JP: Model
+            pt_BR: Model
+            zh_Hans: 模型
+          llm_description: ''
+          max: null
+          min: null
+          name: model
+          options:
+          - icon: ''
+            label:
+              en_US: Qwen-Image-2512 (Recommended)
+              ja_JP: Qwen-Image-2512 (Recommended)
+              pt_BR: Qwen-Image-2512 (Recommended)
+              zh_Hans: Qwen-Image-2512 (推荐)
+            value: Qwen/Qwen-Image-2512
+          - icon: ''
+            label:
+              en_US: Qwen-Image
+              ja_JP: Qwen-Image
+              pt_BR: Qwen-Image
+              zh_Hans: Qwen-Image
+            value: Qwen/Qwen-Image
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: select
+        - auto_generate: null
+          default: null
+          form: form
+          human_description:
+            en_US: size of the output image. Default is 1024x1024.
+            ja_JP: size of the output image. Default is 1024x1024.
+            pt_BR: size of the output image. Default is 1024x1024.
+            zh_Hans: 图像的目标尺寸，默认为 1024x1024
+          label:
+            en_US: Image Size
+            ja_JP: Image Size
+            pt_BR: Image Size
+            zh_Hans: 图像尺寸
+          llm_description: ''
+          max: null
+          min: null
+          name: size
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        params:
+          model: ''
+          prompt: ''
+          size: ''
+        plugin_id: wwwzhouhui/qwen_text2image
+        plugin_unique_identifier: wwwzhouhui/qwen_text2image:0.0.4@518a208a5765f83053eee75d1afb3ac05ef6a3e9adbcc57c3cc3a04f1f166369
+        provider_icon: /console/api/workspaces/current/plugin/icon?tenant_id=3e3a234d-8322-48a6-86ba-dcaf4f4466d0&filename=2130b1e14f1dcfb74d7ba415b0a9c7c1d7b9223ec0feaaac6ff32ecc06bfe1ac.svg
+        provider_id: wwwzhouhui/qwen_text2image/modelscope
+        provider_name: wwwzhouhui/qwen_text2image/modelscope
+        provider_type: builtin
+        selected: false
+        title: 文生图
+        tool_configurations:
+          model:
+            type: constant
+            value: Qwen/Qwen-Image
+          size:
+            type: mixed
+            value: ''
+        tool_description: 使用 ModelScope Qwen-Image AI 模型从文本提示生成高质量图像。支持各种图像风格和详细描述。
+        tool_label: 文生图
+        tool_name: text2image
+        tool_node_version: '2'
+        tool_parameters:
+          prompt:
+            type: mixed
+            value: '{{#1789979684853.structured_output.prompt#}}'
+        type: tool
+      height: 113
+      id: '1789517055648'
+      position:
+        x: 216.44153580335808
+        y: 44.47549581665504
+      positionAbsolute:
+        x: 216.44153580335808
+        y: 44.47549581665504
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        code: "import json\n\ndef main(files:list):\n    return {\"image_url\":files[0].get(\"\
+          url\",\"\")}\n"
+        code_language: python3
+        outputs:
+          image_url:
+            children: null
+            type: string
+        selected: false
+        title: 代码执行
+        type: code
+        variables:
+        - value_selector:
+          - '1789517055648'
+          - files
+          value_type: array[file]
+          variable: files
+      height: 51
+      id: '1789517223952'
+      position:
+        x: 571.847211218934
+        y: 50.30720700517391
+      positionAbsolute:
+        x: 571.847211218934
+        y: 50.30720700517391
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            temperature: 0.3
+          mode: chat
+          name: Qwen/Qwen3-30B-A3B-Instruct-2507
+          provider: yangyaofei/vllm/vllm
+        prompt_template:
+        - id: c20c328b-80aa-4806-b6c7-b656bf166473
+          role: system
+          text: '你是一个专业的文生图提示词优化助手。你的唯一任务是把用户给的原始图片描述，改写成一段高质量、写实风格的英文提示词，供下游文生图模型使用。你不生成图片，只输出优化后的提示词。
+
+
+            【优化规则】
+
+
+            1. 写实优先
+
+            - 必须把整体风格锚定为 photorealistic、hyperrealistic 或 documentary photography。
+
+            - 主动补充真实感细节：真实皮肤纹理、毛孔、自然光影、镜头与焦段信息（如 85mm portrait lens、shallow depth
+            of field）、光线条件（如 soft natural window light、golden hour）。
+
+            - 禁止引入插画、动漫、3D render、painting、cartoon 等非写实风格词，除非用户明确要求。
+
+
+            2. 数量约束
+
+            - 如果用户没有明确说明要生成几张，你必须在提示词中补充：single image, one person only。
+
+            - 如果用户明确指定了数量（如“两张”“a set of 4”），则尊重用户数量，但仍需说明每张图的构图关系。
+
+
+            3. 人脸完整性约束
+
+            - 如果用户没有特别说明，必须在提示词中强制加入：full human face fully visible、complete facial
+            features、both eyes clearly shown、face not cropped、no occlusion of the
+            face。
+
+            - 禁止出现脸部被遮挡、裁切、背对镜头、戴口罩/面罩等描述，除非用户明确要求。
+
+            - 如果用户描述的场景天然容易导致脸部不完整（如背影、低头、侧脸），你要在保留用户意图的前提下，尽量调整描述让脸部完整可见，且人物脸部需要处于画面正中心偏上的位置；若无法兼顾，优先满足人脸完整性。
+
+
+            4. 结构要求
+
+            - 输出必须是一段连贯的英文提示词，按以下顺序组织：主体与动作 → 外貌与服装细节 → 环境与背景 → 光线与氛围 → 镜头与画质 → 数量与脸部完整性约束。
+
+            - 长度控制在 60–120 个英文单词之间，信息密度高，不堆砌无意义形容词。
+
+
+            5. 输出格式
+
+            - 只输出优化后的英文提示词本身。
+
+            - 不要解释、不要加标题、不要用 Markdown 代码块包裹。
+
+            - 不要输出中文，除非用户原始描述中包含必须保留的中文专有名词。
+
+
+            【示例】
+
+
+            用户输入：一个女孩在咖啡馆看书
+
+
+            你的输出：A young woman sitting by the window in a cozy cafe, reading a hardcover
+            book, wearing a cream knit sweater, natural makeup, realistic skin texture
+            with visible pores, warm ambient light mixed with soft daylight from the
+            window, coffee cup and wooden table in the foreground, shot on 85mm portrait
+            lens, shallow depth of field, photorealistic documentary photography,
+            single image, one person only, full human face fully visible, complete
+            facial features, both eyes clearly shown, face not cropped, no occlusion
+            of the face.'
+        - id: cfa6c4f7-abec-409a-85ac-96cf5b3b08e2
+          role: user
+          text: 用户的提示词：{{#1789457689822.prompt#}}
+        selected: false
+        structured_output:
+          schema:
+            additionalProperties: false
+            properties:
+              prompt:
+                description: 经优化后的文生图提示词
+                enum:
+                - Ayoungwomansittingbythewindowinacozycafe
+                - readingahardcoverbook
+                - wearingacreamknitsweater
+                - naturalmakeup
+                - realisticskintexturewithvisiblepores
+                - warmambientlightmixedwithsoftdaylightfromthewindow
+                - coffeecupandwoodentableintheforeground
+                - shoton85mmportraitlens
+                - shallowdepthoffield
+                - photorealisticdocumentaryphotography
+                - singleimage
+                - onepersononly
+                - fullhumanfacefullyvisible
+                - completefacialfeatures
+                - botheyesclearlyshown
+                - facenotcropped
+                - noocclusionoftheface.
+                type: string
+            required:
+            - prompt
+            type: object
+        structured_output_enabled: true
+        title: LLM
+        type: llm
+        vision:
+          enabled: false
+      height: 87
+      id: '1789979684853'
+      position:
+        x: -133.70226974956844
+        y: 50.30720700517391
+      positionAbsolute:
+        x: -133.70226974956844
+        y: 50.30720700517391
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    viewport:
+      x: 394.75134805007315
+      y: 241.1603545582463
+      zoom: 0.901250462610831
+  rag_pipeline_variables: []

@@ -1,0 +1,776 @@
+app:
+  description: AI实战训练场·训练主题配置生成（场景/画像/冰山/评估标准）
+  icon: 🤖
+  icon_background: '#6B5CE7'
+  mode: workflow
+  name: 主题生成-theme-gen
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: yangyaofei/vllm:0.2.3@455b644bfcfe0f8d7af1ad191a9e5d0b2d87214b0c6c804012d2d5cccdbbf88a
+    version: null
+kind: app
+version: 0.5.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 500
+        batch_count_limit: 50
+        file_size_limit: 1500
+        image_file_size_limit: 100
+        video_file_size_limit: 1000
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: false
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        sourceType: code
+        targetType: end
+      id: e7
+      selected: false
+      source: code_merge
+      sourceHandle: source
+      target: end
+      targetHandle: target
+      type: custom
+    - data:
+        isInLoop: false
+        sourceType: start
+        targetType: llm
+      id: start-source-1789698132412-target
+      selected: false
+      source: start
+      sourceHandle: source
+      target: '1789698132412'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: code
+      id: 1789698132412-source-code_scenes-target
+      selected: false
+      source: '1789698132412'
+      sourceHandle: source
+      target: code_scenes
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: llm
+      id: code_scenes-source-1789698435427-target
+      source: code_scenes
+      sourceHandle: source
+      target: '1789698435427'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: code
+      id: 1789698435427-source-code_profiles-target
+      source: '1789698435427'
+      sourceHandle: source
+      target: code_profiles
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: llm
+      id: code_profiles-source-1789698610515-target
+      source: code_profiles
+      sourceHandle: source
+      target: '1789698610515'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: code
+      id: 1789698610515-source-code_merge-target
+      source: '1789698610515'
+      sourceHandle: source
+      target: code_merge
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        selected: false
+        title: 开始
+        type: start
+        variables:
+        - label: 核心训练目标
+          max_length: 2000
+          required: true
+          type: paragraph
+          variable: goal
+        - label: 训练人群(JSON数组字符串)
+          max_length: 500
+          required: true
+          type: paragraph
+          variable: audiences
+        - label: 材料摘要
+          max_length: 20000
+          required: false
+          type: paragraph
+          variable: material_summary
+        - label: 保留现有内容调整
+          max_length: 10
+          required: false
+          type: text-input
+          variable: keep_existing
+        - label: 现有场景名列表(JSON数组)
+          max_length: 3000
+          required: false
+          type: paragraph
+          variable: existing_scenes
+          更新模式): null
+      height: 212
+      id: start
+      position:
+        x: 73.62051894479075
+        y: 4.3306187614582825
+      positionAbsolute:
+        x: 73.62051894479075
+        y: 4.3306187614582825
+      selected: false
+      type: custom
+      width: 242
+    - data:
+        code: "import json\n\ndef _load(t):\n    \"\"\"兼容 str / dict / list：str 就\
+          \ json.loads，其他原样返回；字符串结果递归剥壳\"\"\"\n    v = t\n    for _ in range(5):\n\
+          \        if isinstance(v, str):\n            v = json.loads(v.strip())\n\
+          \        else:\n            break\n    return v\n\ndef main(arg0) -> dict:\n\
+          \    j = _load(arg0)\n    scenes = j[\"scenes\"] if isinstance(j, dict)\
+          \ else j\n    if not isinstance(scenes, list):\n        raise ValueError(f\"\
+          scenes is not a list: {type(scenes).__name__}\")\n    names = [s[\"name\"\
+          ] for s in scenes]\n    return {\n        \"scenes_json\": json.dumps(scenes,\
+          \ ensure_ascii=False),\n        \"scene_names\": json.dumps(names, ensure_ascii=False),\n\
+          \        \"scene_count\": len(scenes),\n    }"
+        code_language: python3
+        outputs:
+          scene_count:
+            type: number
+          scene_names:
+            type: string
+          scenes_json:
+            type: string
+        selected: false
+        title: 解析场景JSON
+        type: code
+        variables:
+        - value_selector:
+          - '1789698132412'
+          - structured_output
+          value_type: object
+          variable: arg0
+      height: 51
+      id: code_scenes
+      position:
+        x: 684
+        y: 80
+      positionAbsolute:
+        x: 684
+        y: 80
+      selected: false
+      type: custom
+      width: 242
+    - data:
+        code: "import json\n\ndef _load(t):\n    v = t\n    for _ in range(5):\n \
+          \       if isinstance(v, str):\n            v = json.loads(v.strip())\n\
+          \        else:\n            break\n    return v\n\ndef main(arg0) -> dict:\n\
+          \    j = _load(arg0)\n    if not isinstance(j, dict):\n        raise ValueError(f\"\
+          expected dict, got {type(j).__name__}\")\n    for k in (\"profiles\", \"\
+          iceberg\"):\n        if k not in j:\n            raise ValueError(f\"missing\
+          \ key: {k}\")\n    return {\n        \"profiles_json\": json.dumps(j[\"\
+          profiles\"], ensure_ascii=False),\n        \"iceberg_json\": json.dumps(j[\"\
+          iceberg\"], ensure_ascii=False),\n    }"
+        code_language: python3
+        outputs:
+          iceberg_json:
+            type: string
+          profiles_json:
+            type: string
+        selected: false
+        title: 解析画像冰山JSON
+        type: code
+        variables:
+        - value_selector:
+          - '1789698435427'
+          - structured_output
+          value_type: object
+          variable: arg0
+      height: 51
+      id: code_profiles
+      position:
+        x: 1368
+        y: 80
+      positionAbsolute:
+        x: 1368
+        y: 80
+      selected: false
+      type: custom
+      width: 242
+    - data:
+        code: "import json\n\ndef _load(t):\n    \"\"\"兼容 str / dict / list：str 才\
+          \ json.loads，其他原样返回\"\"\"\n    v = t\n    for _ in range(5):\n        if\
+          \ isinstance(v, str):\n            v = json.loads(v.strip())\n        else:\n\
+          \            break\n    return v\n\ndef _as_list(v, key=None):\n    if isinstance(v,\
+          \ dict):\n        if key and key in v:\n            v = v[key]\n       \
+          \ elif len(v) == 1:\n            v = next(iter(v.values()))\n        else:\n\
+          \            raise ValueError(f\"expected list, got dict keys={list(v.keys())}\"\
+          )\n    if not isinstance(v, list):\n        raise ValueError(f\"expected\
+          \ list, got {type(v).__name__}\")\n    return v\n\ndef _parse_materials(s):\n\
+          \    \"\"\"材料摘要：空/纯文本/JSON数组字符串 → 统一为 list\"\"\"\n    if not s:\n      \
+          \  return []\n    if isinstance(s, list):\n        return s\n    if isinstance(s,\
+          \ str):\n        t = s.strip()\n        if t.startswith(\"[\"):\n      \
+          \      try:\n                v = json.loads(t)\n                if isinstance(v,\
+          \ list):\n                    return v\n            except json.JSONDecodeError:\n\
+          \                pass\n        return [{\"summary\": s}]\n    return []\n\
+          \ndef main(scenes_s, profiles_s, iceberg_s, criteria_s, materials_s):\n\
+          \    scenes = _as_list(_load(scenes_s), \"scenes\")\n    crit = _load(criteria_s)\n\
+          \    profiles = _as_list(_load(profiles_s), \"profiles\")\n    iceberg =\
+          \ _load(iceberg_s)\n    if isinstance(iceberg, dict) and \"iceberg\" in\
+          \ iceberg and len(iceberg) == 1:\n        iceberg = iceberg[\"iceberg\"\
+          ]\n\n    for k in (\"sceneWeights\", \"dimensions\", \"defaultDimensionWeights\"\
+          , \"passScore\"):\n        if k not in crit:\n            raise ValueError(f\"\
+          criteria missing key: {k}\")\n\n    sw = {x[\"sceneId\"]: x[\"weights\"\
+          ] for x in crit[\"sceneWeights\"]}\n    dim_ids = [d[\"id\"] for d in crit[\"\
+          dimensions\"]]\n\n    scenarios = []\n    for s in scenes:\n        if not\
+          \ isinstance(s, dict):\n            raise ValueError(f\"scene item is not\
+          \ dict: {s!r}\")\n        w = sw.get(s[\"id\"], crit[\"defaultDimensionWeights\"\
+          ])\n        if not isinstance(w, list):\n            raise ValueError(f\"\
+          scene {s.get('id')} weights not list: {w!r}\")\n        assert abs(sum(x[\"\
+          weight\"] for x in w) - 100) < 0.01, f\"scene {s['id']} weights != 100\"\
+          \n        for x in w:\n            if not isinstance(x, dict) or \"dimensionId\"\
+          \ not in x:\n                raise ValueError(f\"bad weight item: {x!r}\"\
+          )\n            assert x[\"dimensionId\"] in dim_ids, f\"bad dim ref {x['dimensionId']}\"\
+          \n        scenarios.append({\n            \"id\": s[\"id\"], \"name\": s[\"\
+          name\"], \"audiences\": s[\"audiences\"],\n            \"businessGoal\"\
+          : s[\"businessGoal\"], \"behaviorGoals\": s[\"behaviorGoals\"],\n      \
+          \      \"relatedIcebergElements\": {},\n            \"businessImpact\":\
+          \ s[\"businessImpact\"], \"failureCost\": s[\"failureCost\"],\n        \
+          \    \"coreConflict\": s[\"coreConflict\"], \"failureReasons\": s[\"failureReasons\"\
+          ],\n            \"difficulties\": s[\"difficulties\"],\n            \"constraints\"\
+          : {\"forbidBehaviors\": s[\"forbidBehaviors\"], \"maxTime\": s[\"maxTime\"\
+          ]},\n            \"relatedKnowledgeIds\": [], \"relatedScriptIds\": [],\
+          \ \"relatedProductProfileArtifactIds\": [],\n            \"caseArtifactIds\"\
+          : [], \"cases\": [],\n            \"dimensionWeights\": w\n        })\n\n\
+          \    materials = _parse_materials(materials_s)\n\n    artifact = {\n   \
+          \     \"materials\": materials, \"scenarios\": scenarios,\n        \"customerProfiles\"\
+          : profiles, \"icebergModel\": iceberg,\n        \"evaluationCriteria\":\
+          \ {\n            \"passScore\": crit[\"passScore\"],\n            \"dimensions\"\
+          : crit[\"dimensions\"],\n            \"defaultDimensionWeights\": crit[\"\
+          defaultDimensionWeights\"],\n        },\n        \"professionalKnowledge\"\
+          : None, \"productProfiles\": [], \"version\": \"v1\"\n    }\n    return\
+          \ {\"artifact_json\": json.dumps(artifact, ensure_ascii=False)}"
+        code_language: python3
+        outputs:
+          artifact_json:
+            type: string
+        selected: false
+        title: 聚合校验输出
+        type: code
+        variables:
+        - value_selector:
+          - code_scenes
+          - scenes_json
+          variable: scenes_s
+        - value_selector:
+          - code_profiles
+          - profiles_json
+          variable: profiles_s
+        - value_selector:
+          - code_profiles
+          - iceberg_json
+          variable: iceberg_s
+        - value_selector:
+          - '1789698610515'
+          - structured_output
+          value_type: object
+          variable: criteria_s
+        - value_selector:
+          - start
+          - material_summary
+          variable: materials_s
+      height: 51
+      id: code_merge
+      position:
+        x: 2052
+        y: 80
+      positionAbsolute:
+        x: 2052
+        y: 80
+      selected: false
+      type: custom
+      width: 242
+    - data:
+        outputs:
+        - value_selector:
+          - code_merge
+          - artifact_json
+          variable: artifact_json
+        selected: false
+        title: 结束
+        type: end
+      height: 88
+      id: end
+      position:
+        x: 2394
+        y: 62
+      positionAbsolute:
+        x: 2394
+        y: 62
+      selected: false
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            temperature: 0.4
+          mode: chat
+          name: Qwen/Qwen3-30B-A3B-Instruct-2507
+          provider: yangyaofei/vllm/vllm
+        prompt_template:
+        - id: e04533c2-f958-4b0c-8e06-c2db75addc5c
+          role: system
+          text: "你是一位有 15 年以上经验的企业培训设计专家，长期服务于销售、客服、管理、合规等岗位的能力培养项目。你擅长从业务目标反推岗位任务，从岗位任务识别关键行为，从关键行为设计情景冲突。你熟悉行为锚定等级评价法（BARS）、胜任力冰山模型、ADDIE、SAM\
+            \ 等培训设计方法，能把抽象能力要求转化为可观察、可衡量、可复盘的训练单元。你尤其擅长设计高难度冲突场景与合规红线场景，能在不违背真实业务逻辑的前提下，制造有效张力。你坚持：无量化不写代价，无行为不写目标，无冲突不写场景，无红线不写禁止。请基于给定输入，设计一套可落地的训练场景单元。\n\
+            \n## 输入\n核心目标：{{#start.goal#}}\n训练人群：{{#start.audiences#}}\n材料摘要：{{#start.material_summary#}}\n\
+            是否保留现有场景：{{#start.keep_existing#}}\n现有场景：{{#start.existing_scenes#}}\n\
+            \n## 设计原则\n1. 场景必须贴合材料与真实业务语境，禁止空话、套话、编造材料外事实。\n2. 场景数量 4~6 个；材料丰富时可 7\
+            \ 个。\n3. 场景按业务全流程递进：基础规范 → 标准执行 → 异常处理 → 高难度冲突。\n4. 每个场景必须与核心目标、训练人群、材料摘要显式相关。\n\
+            5. 行为目标必须可观察、可衡量，尽量包含：动作 + 对象 + 标准 + 时限/数量。\n6. 核心冲突必须是“A 的合理诉求 vs B 的现实约束”，双方都有合理性，不是单方面刁难。\n\
+            7. 失败原因必须是具体行为，用“×”开头，禁止写“沟通不畅”这类抽象词。\n8. 禁止行为必须是合规红线，用“禁止…”开头。\n9. 量化处必须给量化：金额、时长、层级、人数、比例等。\n\
+            10. 只输出 JSON，不要输出任何解释、标题、markdown 代码块。\n\n## 更新模式规则\n- 若 是否保留现有场景 为 true：\n\
+            \  - 保留现有场景的名称与大体结构。\n  - 只按新目标优化各场景字段内容。\n  - 若新目标要求增删场景，可增删，但需保持总数 4~7\
+            \ 个。\n  - 新增场景 id 顺延；删除场景后 id 不重排，保持稳定。\n- 若 是否保留现有场景 为 false：\n  - 忽略现有场景，重新设计。\n\
+            \n## 每个场景字段要求\n- id：格式 \"sc-\" + 两位序号，如 sc-01、sc-02。\n- name：\"A：B\"格式，A\
+            \ 为业务环节，B 为具体冲突/任务，20 字内。\n- audiences：适用人群，从训练人群派生，数组。\n- businessGoal：业务目标，一句话，动词开头。\n\
+            - behaviorGoals：行为目标 3~4 条，可观察可衡量。\n- businessImpact：业务影响，一句话写实。\n- failureCost：失败代价，一句话写实，尽量量化。\n\
+            - coreConflict：核心冲突，\"A 的诉求 vs B 的约束\"式张力描述。\n- failureReasons：常见失败模式\
+            \ 2~3 条，\"×\"级具体行为。\n- difficulties：困难挑战 2~3 条。\n- forbidBehaviors：禁止行为\
+            \ 2~3 条，\"禁止…\"开头，合规红线。\n- maxTime：时长 10~30 分钟，整数。\n- dimensionIds：留空数组，等待第三步填写。\n\
+            \n## 输出格式\n{\"scenes\":[{\"id\":\"sc-01\",\"name\":\"…\",\"audiences\"\
+            :[\"…\"],\"businessGoal\":\"…\",\"behaviorGoals\":[\"…\"],\"businessImpact\"\
+            :\"…\",\"failureCost\":\"…\",\"coreConflict\":\"…\",\"failureReasons\"\
+            :[\"…\"],\"difficulties\":[\"…\"],\"forbidBehaviors\":[\"…\"],\"maxTime\"\
+            :15,\"dimensionIds\":[]}]}\n\n## 输出前自检：\n1. 场景数是否在 4~7 个？\n2. 是否覆盖基础规范到高难度冲突？\n\
+            3. 每个 behaviorGoals 是否可观察可衡量？\n4. 每个 coreConflict 是否双方都有合理性？\n5. 每个 forbidBehaviors\
+            \ 是否是合规红线？"
+        selected: false
+        structured_output:
+          schema:
+            additionalProperties: false
+            properties:
+              scenes:
+                items:
+                  additionalProperties: false
+                  properties:
+                    audiences:
+                      items:
+                        type: string
+                      type: array
+                    behaviorGoals:
+                      items:
+                        type: string
+                      type: array
+                    businessGoal:
+                      type: string
+                    businessImpact:
+                      type: string
+                    coreConflict:
+                      type: string
+                    difficulties:
+                      items:
+                        type: string
+                      type: array
+                    dimensionIds:
+                      items:
+                        type: string
+                      type: array
+                    failureCost:
+                      type: string
+                    failureReasons:
+                      items:
+                        type: string
+                      type: array
+                    forbidBehaviors:
+                      items:
+                        type: string
+                      type: array
+                    id:
+                      type: string
+                    maxTime:
+                      type: number
+                    name:
+                      type: string
+                  required:
+                  - id
+                  - name
+                  - audiences
+                  - businessGoal
+                  - behaviorGoals
+                  - businessImpact
+                  - failureCost
+                  - coreConflict
+                  - failureReasons
+                  - difficulties
+                  - forbidBehaviors
+                  - maxTime
+                  - dimensionIds
+                  type: object
+                type: array
+            required:
+            - scenes
+            type: object
+        structured_output_enabled: true
+        title: ①生成场景列表
+        type: llm
+        vision:
+          enabled: false
+      height: 87
+      id: '1789698132412'
+      position:
+        x: 345.28199529999154
+        y: 62
+      positionAbsolute:
+        x: 345.28199529999154
+        y: 62
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            temperature: 0.4
+          mode: chat
+          name: Qwen/Qwen3-30B-A3B-Instruct-2507
+          provider: yangyaofei/vllm/vllm
+        prompt_template:
+        - id: 7cb506bc-42ea-489c-a6fe-ec460d83ccef
+          role: system
+          text: "你是人才测评专家，擅长从业务场景中提炼客户画像，并用麦克利兰冰山能力模型拆解岗位所需能力。你的工作方法是：从场景冲突反推对话对象特征，从行为目标与材料知识推导可见能力与隐藏素质。你坚持：画像必须能对应到具体场景，能力必须能追溯到行为目标或材料知识，禁止虚构无关内容。你只输出\
+            \ JSON，不输出解释、标题或 markdown 代码块。\n\n## 输入\n核心目标：{{#start.goal#}}\n训练人群：{{#start.audiences#}}\n\
+            场景列表（包含字段）：{{#code_scenes.scenes_json#}}\n材料摘要：{{#start.material_summary#}}\n\
+            \n## 任务A：客户画像（2~3 个）\n从场景冲突中提炼学员在演练中会面对的真实对话对象画像。\n\n每个画像字段：\n- id：\"\
+            cp-\" + 两位序号，如 cp-01\n- type：画像名，7 字内，如“价格敏感型采购经理”\n- description：身份处境，一句话\n\
+            - personalities：性格标签 3 个\n- decisionFactors：决策关注点 3 条\n- communicationStyle：沟通风格，需包含语速、表达习惯、施压方式\n\
+            - painPoints：常见痛点 3 条\n- relatedSceneIds：关联场景 id 数组，至少 1 个\n\n规则：\n1.\
+            \ 画像必须与场景核心冲突一一呼应。\n2. 每个高冲突场景至少被一个画像覆盖。\n3. 画像与冰山各层必须给出内容：素材不足时，从场景的coreConflict、behaviorGoals\
+            \ 与训练目标合理推断；仅禁止编造具体公司名、人名与金额数字，不允许留空数组。\n4. 画像之间要有区分度，禁止三个画像只是换词。\n\n\
+            ## 任务B：冰山模型（主题级，合并所有场景所需能力）\n从场景行为目标与材料知识推导该训练主题所需能力。\n\n- visible.knowledge：知识点\
+            \ 6~10 条，格式\"名称: 一句话掌握标准\"\n  - 掌握标准需包含可验证动作，如“能说出…”“能区分…”“能按…步骤列出…”\n\
+            - visible.skills：技能 6~10 条，格式同上\n  - 技能需可观察，如“能在 3 分钟内完成…”“能在客户异议后 2 句话内回应…”\n\
+            - hidden.roles：角色定位 4~8 条短语\n- hidden.selfConcept：自我概念 4~8 条短语\n- hidden.personalities：特质\
+            \ 4~8 条短语\n- hidden.motives：动机 4~8 条短语\n\n规则：\n1. 所有能力必须从场景行为目标或材料摘要推导，不得虚构无关能力。\n\
+            2. hidden 四类之间不得同义反复，每条应能对应到具体场景行为。\n3. 若材料不足以支撑某条能力，宁可不写，也不要编造。\n\n##\
+            \ 输出（仅输出 JSON）\n{\"profiles\":[{\"id\":\"cp-01\",\"type\":\"…\",\"description\"\
+            :\"…\",\"personalities\":[\"…\"],\"decisionFactors\":[\"…\"],\"communicationStyle\"\
+            :\"…\",\"painPoints\":[\"…\"],\"relatedSceneIds\":[\"sc-01\"]}],\"iceberg\"\
+            :{\"visible\":{\"knowledge\":[\"…\"],\"skills\":[\"…\"]},\"hidden\":{\"\
+            roles\":[\"…\"],\"selfConcept\":[\"…\"],\"personalities\":[\"…\"],\"motives\"\
+            :[\"…\"]}}}"
+        selected: false
+        structured_output:
+          schema:
+            additionalProperties: false
+            properties:
+              iceberg:
+                additionalProperties: false
+                properties:
+                  hidden:
+                    additionalProperties: false
+                    properties:
+                      motives:
+                        items:
+                          type: string
+                        type: array
+                      personalities:
+                        items:
+                          type: string
+                        type: array
+                      roles:
+                        items:
+                          type: string
+                        type: array
+                      selfConcept:
+                        items:
+                          type: string
+                        type: array
+                    required:
+                    - roles
+                    - selfConcept
+                    - personalities
+                    - motives
+                    type: object
+                  visible:
+                    additionalProperties: false
+                    properties:
+                      knowledge:
+                        items:
+                          type: string
+                        type: array
+                      skills:
+                        items:
+                          type: string
+                        type: array
+                    required:
+                    - knowledge
+                    - skills
+                    type: object
+                required:
+                - visible
+                - hidden
+                type: object
+              profiles:
+                items:
+                  additionalProperties: false
+                  properties:
+                    communicationStyle:
+                      type: string
+                    decisionFactors:
+                      items:
+                        type: string
+                      type: array
+                    description:
+                      type: string
+                    id:
+                      type: string
+                    painPoints:
+                      items:
+                        type: string
+                      type: array
+                    personalities:
+                      items:
+                        type: string
+                      type: array
+                    relatedSceneIds:
+                      items:
+                        type: string
+                      type: array
+                    type:
+                      type: string
+                  required:
+                  - id
+                  - type
+                  - description
+                  - personalities
+                  - decisionFactors
+                  - communicationStyle
+                  - painPoints
+                  - relatedSceneIds
+                  type: object
+                type: array
+            required:
+            - profiles
+            - iceberg
+            type: object
+        structured_output_enabled: true
+        title: ②生成画像与冰山模型
+        type: llm
+        vision:
+          enabled: false
+      height: 87
+      id: '1789698435427'
+      position:
+        x: 1026
+        y: 62
+      positionAbsolute:
+        x: 1026
+        y: 62
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            temperature: 0.4
+          mode: chat
+          name: Qwen/Qwen3-30B-A3B-Instruct-2507
+          provider: yangyaofei/vllm/vllm
+        prompt_template:
+        - id: ddf23a8e-7ef7-4c59-82ab-453d284fe829
+          role: system
+          text: "你是培训评估体系设计专家，擅长把情景模拟场景转化为可判定的评估维度与评分标准。你的工作方法是：从场景的 businessGoal、behaviorGoals、coreConflict、forbidBehaviors\
+            \ 中提取可观察行为，从客户画像的 communicationStyle、painPoints、decisionFactors 中提取差异化挑战，再据此设计评估维度与三档评分标准。你坚持：维度必须能从对话表现判定，评分标准必须可判可区分，权重必须严格合计为\
+            \ 100，禁止空话套话。你只输出 JSON，不输出解释、标题或 markdown 代码块。\n\n## 输入\n核心目标：{{#start.goal#}}\n\
+            场景列表（含字段）：{{#code_scenes.scenes_json#}}\n客户画像：{{#code_profiles.profiles_json#}}\n\
+            \n## 任务：设计评估标准\n\n### 1. 全局评估维度（3~5 个）\n跨场景通用能力，每个维度字段：\n- id：\"dim-\"\
+            \ + 两位序号，如 dim-01\n- name：6 字内\n- description：考察点一句话，需说明判定依据\n- criteria：三档评分标准，严格格式：\n\
+            \  \"优秀(90-100分)：…；良好(70-89分)：…；需改进(<70分)：…\"\n  - 每档一句具体行为描述，必须包含可观察信号\n\
+            \  - 三档必须可判可区分，禁止同义改写\n  - 尽量含量化阈值：时长、次数、层级、话术轮次等\n- relatedSceneIds：关联场景\
+            \ id 数组，至少 1 个\n- alignedForbidBehaviors：该维度对应的禁止行为，至少 1 条\n\n规则：\n1.\
+            \ 维度必须能从对话表现判定，不考书面知识、不考记忆性内容。\n2. 维度必须与场景的 forbidBehaviors、businessGoal\
+            \ 呼应。\n3. 维度设计需参考客户画像的 communicationStyle、painPoints、decisionFactors，确保能区分不同画像带来的挑战。\n\
+            4. 禁止维度之间同义反复。\n\n### 2. defaultDimensionWeights\n- 默认权重组合，覆盖全部全局维度。\n\
+            - 权重为 5 的整数倍，合计严格 = 100。\n- 输出前自检合计。\n\n### 3. 每个场景的 dimensionWeights\n\
+            - 从全局维度中选 2~4 个最相关的。\n- 权重为 5 的整数倍，每场景合计严格 = 100。\n- 输出前逐个自检合计。\n- 若某场景只选\
+            \ 2 个维度，需确保权重分配能体现主次，如 60/40、70/30。\n\n### 4. passScore\n- 通过分数线固定为 70。\n\
+            \n## 输出（仅输出 JSON）\n{\"passScore\":70,\"dimensions\":[{\"id\":\"dim-01\"\
+            ,\"name\":\"…\",\"description\":\"…\",\"criteria\":\"优秀(90-100分)：…；良好(70-89分)：…；需改进(<70分)：…\"\
+            ,\"relatedSceneIds\":[\"sc-01\"],\"alignedForbidBehaviors\":[\"…\"]}],\"\
+            defaultDimensionWeights\":[{\"dimensionId\":\"dim-01\",\"weight\":30}],\"\
+            sceneWeights\":[{\"sceneId\":\"sc-01\",\"weights\":[{\"dimensionId\":\"\
+            dim-01\",\"weight\":40}]}]}"
+        selected: true
+        structured_output:
+          schema:
+            additionalProperties: false
+            properties:
+              defaultDimensionWeights:
+                items:
+                  additionalProperties: false
+                  properties:
+                    dimensionId:
+                      type: string
+                    weight:
+                      type: number
+                  required:
+                  - dimensionId
+                  - weight
+                  type: object
+                type: array
+              dimensions:
+                items:
+                  additionalProperties: false
+                  properties:
+                    alignedForbidBehaviors:
+                      items:
+                        type: string
+                      type: array
+                    criteria:
+                      type: string
+                    description:
+                      type: string
+                    id:
+                      type: string
+                    name:
+                      type: string
+                    relatedSceneIds:
+                      items:
+                        type: string
+                      type: array
+                  required:
+                  - id
+                  - name
+                  - description
+                  - criteria
+                  - relatedSceneIds
+                  - alignedForbidBehaviors
+                  type: object
+                type: array
+              passScore:
+                type: number
+              sceneWeights:
+                items:
+                  additionalProperties: false
+                  properties:
+                    sceneId:
+                      type: string
+                    weights:
+                      items:
+                        additionalProperties: false
+                        properties:
+                          dimensionId:
+                            type: string
+                          weight:
+                            type: number
+                        required:
+                        - dimensionId
+                        - weight
+                        type: object
+                      type: array
+                  required:
+                  - sceneId
+                  - weights
+                  type: object
+                type: array
+            required:
+            - passScore
+            - dimensions
+            - defaultDimensionWeights
+            - sceneWeights
+            type: object
+        structured_output_enabled: true
+        title: ③生成评估维度与权重
+        type: llm
+        vision:
+          enabled: false
+      height: 87
+      id: '1789698610515'
+      position:
+        x: 1710
+        y: 62
+      positionAbsolute:
+        x: 1710
+        y: 62
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    viewport:
+      x: -300.5203737163199
+      y: 302.0722806082082
+      zoom: 0.8040888484979245
+  rag_pipeline_variables: []
