@@ -14,8 +14,8 @@
 
 | 配置项 | 所在工程 | 说明 |
 |---|---|---|
-| `spring.datasource.password`（root/***REMOVED***） | SpeechTraining / OnlineClassroom / AtualCombatTraining / StaffManagement(sm.mysql.password) | 共享库 final_dream；顺带评估业务库独立账号（总纲 §11.5） |
-| `sm.oracle.password`（***REMOVED***） | StaffManagement | Oracle 只读视图 |
+| `spring.datasource.password`（root/<已脱敏>） | SpeechTraining / OnlineClassroom / AtualCombatTraining / StaffManagement(sm.mysql.password) | 共享库 final_dream；顺带评估业务库独立账号（总纲 §11.5） |
+| `sm.oracle.password`（<已脱敏>） | StaffManagement | Oracle 只读视图 |
 | `sm.auth.jwt-secret` / `speech.auth.jwt-secret` / `kng.auth.jwt-secret` / `gateway.auth.jwt-secret` | 四工程 + gateway | 同一把 HS256 密钥；统一用环境变量 `SPEECH_AUTH_JWT_SECRET` 占位已就位 |
 | `sm.auth.default-password` / `sm.auth.admin-initial-password` | StaffManagement | 全员默认口令（风险 R-5） |
 | `dify.agents.*.api-key`（4 个 app key） | SpeechTraining | Dify 智能体 |
