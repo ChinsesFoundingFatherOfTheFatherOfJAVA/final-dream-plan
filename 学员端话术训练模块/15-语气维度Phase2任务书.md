@@ -102,7 +102,7 @@ speech.tone.concurrency=3
 ## 5. 验收标准
 
 1. Given 管理员建维度"语气热情"（定分=音频模型评语气，角度=热情，依据=看语音，权重 10）When 语音项目报告生成 Then 该维度有后端定分（rule 带已判定标注）、评语为模板文案、总分计入；
-2. Given 同项目学员全程文字作答 When 报告生成 Then 语气维度 score=null + 未参与原因（权重照占分母，11 号任务书口径）；
+2. Given 同项目学员全程文字作答 When 报告生成 Then 语气维度 score=null + 未参与原因，且该维度不进入总分分子和分母（E-06 口径）；
 3. Given 百炼不可达 When 报告生成 Then 报告正常、语气维度 null + 原因（**不许出现编造分数**）；
 4. Given 管理端编辑回显 When 重开编辑页 Then 角度输入框回显正确；
 5. 回归闸口：后端 `mvn -o test` 全绿（62 基线+新增）；前端 `npx vue-tsc --noEmit`/`npm test`/`npx vite build` 三绿。
