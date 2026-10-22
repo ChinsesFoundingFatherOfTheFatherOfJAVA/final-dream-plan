@@ -11,7 +11,7 @@ app:
   description: AI实战训练场·自由演练设计助手（对话编排）
   icon: 🤖
   icon_background: '#6B5CE7'
-  mode: agent-chat
+  mode: advanced-chat
   name: 自由演练设计助手-side_free
 kind: app
 version: 0.1.5

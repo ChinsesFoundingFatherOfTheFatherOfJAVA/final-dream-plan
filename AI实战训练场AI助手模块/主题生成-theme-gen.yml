@@ -170,7 +170,6 @@ workflow:
           required: false
           type: paragraph
           variable: existing_scenes
-          更新模式): null
       height: 212
       id: start
       position:

@@ -268,7 +268,7 @@ workflow:
 
 ## Java 侧对接要点
 
-1. `POST /v1/workflows/run`：`{inputs:{goal, audiences:"[\"订单运营专员\"]", material_summary, keep_existing:"true|false", existing_scenes:"[\"场景A\",\"场景B\"]"}, response_mode:"blocking"}`；Java 超时设 300s。
+1. `POST /v1/workflows/run`：`{inputs:{goal, audiences:"[\"订单运营专员\"]", material_summary, keep_existing:"true|false", existing_scenes:"[\"场景A\",\"场景B\"]"}, response_mode:"streaming"}`；Java 逐行消费 SSE，并用看门狗关闭长流。
 2. 响应取 `data.outputs.artifact_json`（字符串再 parse）。
 3. **Java 二次校验**（不可省，Dify 内校验可能被绕过）：ArtifactSchemaValidator 按接口文档 §3.5 规则校验；`relatedIcebergElements` 由 Java 回填——用场景 businessGoal/behaviorGoals 与冰山 knowledge/skills 做关键词匹配（简单包含匹配即可，匹配不上的留空数组，不阻塞）。
 4. 失败重试：校验失败把错误信息拼进 `material_summary` 尾部（`【上次输出校验失败：{errors}，请修正】`）重跑 1 次。

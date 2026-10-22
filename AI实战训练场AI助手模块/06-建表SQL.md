@@ -174,5 +174,7 @@ CREATE TABLE IF NOT EXISTS act_ai_call_log (
 -- ALTER TABLE act_ai_material MODIFY COLUMN theme_id VARCHAR(32) DEFAULT NULL COMMENT 'null until theme created';
 -- （逐列/索引判断存在才执行；实际执行语句见 db/06-ai-assistant-schema.sql）
 
+> 说明：以上注释块是历史草案，最终可执行 DDL 已合并到 `AtualCombatTraining/db/06-ai-assistant-schema.sql`，以该文件为准。
+
 -- 说明：act_theme.customer_profile_count 已存在（占位字段），本期改为真实值来源：
 --   确认落库后 = act_customer_profile count(theme_id, current_version_no)
