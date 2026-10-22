@@ -124,7 +124,7 @@ workflow:
             ## 输入
             核心目标：{{#start.goal#}}
             训练人群：{{#start.audiences#}}
-            场景列表：{{#code_scenes.scene_names#}}
+场景列表（含字段）：{{#code_scenes.scenes_json#}}
             材料摘要：{{#start.material_summary#}}
 
             ## 任务A：客户画像（2~3 个）
