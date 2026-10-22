@@ -68,9 +68,11 @@
 
 同时把 任务B 各层的条数要求（knowledge/skills 6~10、hidden 四层 4~8）在输出前自检里再强调一遍。
 
-### 3.3 【把口头要求变成硬约束】给 schema 加 `minItems`
+### 3.3 【本轮不采纳 DSL minItems，改由 Java 硬校验】
 
-在②段的 `structured_output.schema` 里加下限，模型就无法用空数组"交差"：
+当前 `主题生成-theme-gen.yml` 仍只保留 `type/required`，不在 Dify schema 中增加 `minItems`；
+非空和条数下限由后端 `ArtifactSchemaValidator` 执行硬校验（profiles 2~3、knowledge/skills ≥6、
+hidden 四层 ≥4）。下面仅保留为未来可选方案，若后续决定重新导入 DSL 再启用：
 
 ```json
 {
