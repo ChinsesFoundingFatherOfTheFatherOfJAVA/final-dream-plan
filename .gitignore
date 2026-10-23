@@ -6,3 +6,15 @@
 # 系统文件
 .DS_Store
 Thumbs.db
+
+# IDE
+.idea/
+测练中心考试管理/观察素材/抓包/js/
+测练中心考试管理/观察素材/抓包/filter-drawers-capture.json
+测练中心考试管理/观察素材/抓包/interaction-read-capture.json
+测练中心考试管理/观察素材/抓包/live-capture.json
+测练中心考试管理/观察素材/抓包/position-drawer-capture.json
+测练中心考试管理/观察素材/抓包/publish-20261015.har
+测练中心考试管理/观察素材/抓包/write-probes.json
+t.json
+svc.java
