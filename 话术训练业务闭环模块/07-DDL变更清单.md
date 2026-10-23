@@ -49,24 +49,14 @@ DROP TABLE project_student;
 
 ---
 
-## ② 权限点数据（组织架构模块权限表插入）
+## ② 权限点数据（无需变更）
 
-### 为什么
-E1 决策：AI话术训练管理端 = 单权限点 `sparring:manage`，挂进组织架构模块的权限树（菜单级），角色管理勾选即时生效。
+### 结论
+2026-10-21 以代码为准：AI话术训练管理端**不新增权限点**，复用 StaffManagement `DataInitializer` 已种子的 `act:speech` / `act:template` / `act:training`；`AccessControlServiceImpl.ACT_PERMISSIONS` 命中任一即放行。原 `sparring:manage` 方案作废。
 
-### 变更语句（按组织架构模块 07-DDL 的权限表结构执行，表名以其最终实现为准）
+### 变更语句
+无。若早期环境已执行过 `sparring:manage` 插入，可按下式回滚：
 
-```sql
--- ⚠️ 表名/列名以组织架构模块已执行的 DDL 为准，执行前先 SHOW CREATE TABLE 核对
-INSERT INTO sys_permission (code, name, parent_code, sort_order, enabled)
-SELECT 'sparring:manage', 'AI话术训练管理', 'sparring', 10, 1
-FROM DUAL WHERE NOT EXISTS (SELECT 1 FROM sys_permission WHERE code='sparring:manage');
-```
-
-- 若组织架构模块尚有"AI对练"父级菜单概念，parent_code 对应调整；执行前与该模块 DDL 清单核对表结构与父节点 code。
-- **依赖**：组织架构模块的 sys_* 表先建好。该模块截至 2026-09-24 处于文档交付状态（编码进度待确认）——若未上线，此项**推迟执行**，SpeechTraining 的权限校验在 dev profile 下放行（02 §3.2 mock 回落），不阻塞其余功能。
-
-### 回滚
 ```sql
 DELETE FROM sys_permission WHERE code='sparring:manage';
 ```
