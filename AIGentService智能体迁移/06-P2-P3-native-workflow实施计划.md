@@ -6,8 +6,8 @@
 > 目标：先完成 P2 主题/案例生成，再完成 P3 的五个文本 workflow；文生图保留 Dify fallback，
 > 直到确认可用的图片生成 API 契约。
 
-> **实施进度（2026-10-23）**：P2 与 P3 五个文本 workflow 已完成；真实主题/案例/
-> 场景/大纲/话术/评分 smoke 通过。`avatar-gen` 按计划保留 Dify fallback。
+> **实施进度（2026-10-23）**：P2 与 P3 六个 workflow 已完成；真实主题/案例/
+> 场景/大纲/话术/评分/文生图 smoke 通过。Dify 仅保留 fallback。
 
 ## 1. 范围与边界
 
