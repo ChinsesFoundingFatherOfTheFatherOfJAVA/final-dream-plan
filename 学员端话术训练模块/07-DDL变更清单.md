@@ -79,8 +79,7 @@ FROM scoring_dimension WHERE metric_config IS NOT NULL;
 
 - 其余 10 行维度 `evidence_type` 取默认 `1`、`metric_config` 为 `NULL`，即"AI 评分、凭文字"，与改造前行为一致。
 - 管理端 `GET /admin/projects/{id}` 详情接口回读已带 `evidenceType` / `metricKey` / `metricConfig`，编辑页回显正确。
-- 报告侧实测（报告 id=5，纯文字轮次）：`语速适中` 出 `score=null` 且明细写明"本次为文字作答，语音类维度不参与评分"，
-  总分权重按参与维度归一；`违禁词` 由后端定分并用模板评语。
+- 报告侧当时实测（报告 id=5，纯文字轮次）：`语速适中` 出 `score=null`。该结果已过时。2026-10-26 起 `speech_speed` 无语音轮记 0 分并占权重。
 
 ---
 

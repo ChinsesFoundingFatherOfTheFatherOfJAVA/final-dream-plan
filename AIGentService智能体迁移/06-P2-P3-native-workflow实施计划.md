@@ -6,8 +6,7 @@
 > 目标：先完成 P2 主题/案例生成，再完成 P3 的五个文本 workflow；文生图保留 Dify fallback，
 > 直到确认可用的图片生成 API 契约。
 
-> **实施进度（2026-10-23）**：P2 与 P3 六个 workflow 已完成；真实主题/案例/
-> 场景/大纲/话术/评分/文生图 smoke 通过。Dify 仅保留 fallback。
+> **实施进度（2026-10-27）**：P2、P3 与考试 `exam-gen` 已接入。Dify 仅手动回退。
 
 ## 1. 范围与边界
 
@@ -193,6 +192,6 @@ agent.avatar-gen.provider=${AGENT_AVATAR_GEN_PROVIDER:dify}
 - AIGentService、AtualCombatTraining、SpeechTraining 全量测试通过；
 - theme-gen 流式节点事件顺序与 Dify 当前消费逻辑一致；
 - case-gen / 三组话术 / 两个评分任务 outputs 字段名不变；
-- provider 默认 dify，现有线上行为不改变；
+- 2026-10-27 起 provider 默认 native；改回 dify 并重启消费端才是降级。
 - native 失败可读且不自动重试 Dify；
 - `avatar-gen` 明确记录为 Dify fallback。

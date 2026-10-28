@@ -120,20 +120,22 @@ CREATE TABLE IF NOT EXISTS act_case_script (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='roleplay case scripts (confirmed from artifact)';
 
 -- ---------------------------------------------------------------------
--- 7. 编译产物表 act_drill_script（发布初始化产物；学员端二期消费）
+-- 7. 编译产物表 act_drill_script（发布初始化产物；每个案例一行）
 -- ---------------------------------------------------------------------
+-- 2026-10-27 二次更正：不新增 script_kind。线上两份正文产生在案例生成，本地生成只有一份 JSON，
+-- 发布时原样写入 compiled_payload。既有库不用 ALTER。
 CREATE TABLE IF NOT EXISTS act_drill_script (
   id                VARCHAR(32)  NOT NULL,
   theme_id          VARCHAR(32)  NOT NULL,
   version_no        INT          NOT NULL,
   case_script_id    VARCHAR(32)  NOT NULL,
   scenario_unit_id  VARCHAR(32)  NOT NULL,
-  compiled_payload  JSON         NOT NULL COMMENT 'self-contained drill script: actor setup + opening + scene + dimension refs',
+  compiled_payload  JSON         NOT NULL COMMENT 'confirmed case JSON, stored as-is at publish',
   compiled_at       DATETIME              DEFAULT NULL,
   PRIMARY KEY (id),
   KEY idx_act_drill_theme_version (theme_id, version_no),
   KEY idx_act_drill_case (case_script_id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='compiled drill scripts (publish init product)';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='drill script snapshot, one row per confirmed case';
 
 -- ---------------------------------------------------------------------
 -- 8. Dify 调用审计表 act_ai_call_log

@@ -65,7 +65,7 @@ speech.tone.concurrency=3
 ## 2. 前端（EditProject.vue 评分维度区块）
 
 1. "定分方式"下拉新增 **「音频模型评语气」**（value 对应 metricKey=tone）。
-2. 选中时旁侧显示 **「评什么角度」输入框**（v-model metricAspect，placeholder "热情"，maxlength 6，2 字起校验）；原有 evidenceType 双下拉不变（语气维度应选"看语音"=2，**不做强制联动**，由管理员自选，03 契约如此）。
+2. 选中时旁侧显示 **「评什么角度」输入框**（v-model metricAspect，placeholder "热情"，maxlength 6，2 字起校验）。评分依据不提供下拉，切到语气时直接显示并提交「看语音」。
 3. 提交：`metricKey:"tone", metricAspect:"热情"`；回显：从 `metric_config.params.aspect` 反解进输入框。
 4. 12 号文档的 params 输入框互斥逻辑扩展：tone 时显示 aspect 输入框而非 bestMin/bestMax。
 
