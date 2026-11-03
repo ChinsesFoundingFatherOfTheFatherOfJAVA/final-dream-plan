@@ -1,0 +1,64 @@
+{
+  "dbId": "e6af4576-8983-4a3b-a36b-85e12957a2d7",
+  "id": "aae50372-1cc8-41e0-9fb5-43cc4f303998",
+  "sessionId": "25a1b1c6-ec52-4032-a1d2-6ee2770aa5d3",
+  "role": "user",
+  "content": [
+    {
+      "data": {
+        "type": "action",
+        "params": {
+          "ex_id": "4926ae57fd804adcb55b48ad14950548",
+          "dedu_type": 3,
+          "actor_role": {
+            "actor_name": "王总",
+            "actor_identity": "",
+            "actor_background": "王总是客户方生产总监，此前没有直接合作。他刚结束生产例会，时间紧张，对新技术持谨慎态度，最关心方案能否稳定落地以及投入产出。",
+            "actor_personalities": [
+              "严谨",
+              "专业"
+            ]
+          },
+          "study_mode": 1,
+          "teach_mode": 0,
+          "scenario_id": "47c7e48e6d47405ea33737a862a95198",
+          "dialog_modes": [
+            "voice",
+            "text"
+          ],
+          "face_precheck": 0,
+          "conversation_id": "25a1b1c6-ec52-4032-a1d2-6ee2770aa5d3",
+          "dedu_difficulty": 2,
+          "productProfiles": [
+            {
+              "id": "760371825306976539",
+              "version": 1
+            }
+          ],
+          "customer_profile_id": "cp_001_uuid_uuid_uuid_uuid00000001",
+          "subject_artifact_id": "760369727747293822",
+          "subject_artifact_version": 1,
+          "scenario_custom_background": "发生时间：今天下午，客户即将召开生产会；沟通地点：客户办公室；现场情况：客户会议刚结束，只有我和王总在场；事情起因：客户之前经历过一次失败的数字化改造，希望了解杰克方案有何不同。"
+        },
+        "actionName": "common-session-start"
+      },
+      "type": "data"
+    }
+  ],
+  "extendedData": null,
+  "createdAt": "2026-10-29 11:01:17",
+  "updatedAt": "2026-10-29 11:01:17",
+  "sender": {
+    "id": "fca2c7ad-f5bb-4f62-85cc-d591d1a5f1ea",
+    "name": "管理员",
+    "avatar": ""
+  },
+  "userId": "fca2c7ad-f5bb-4f62-85cc-d591d1a5f1ea",
+  "traceId": "7a2a9acd37334e3c9510a38ca0ccb24d",
+  "taskId": null,
+  "taskState": null,
+  "isException": false,
+  "parentId": "",
+  "pId": "",
+  "branchId": ""
+}

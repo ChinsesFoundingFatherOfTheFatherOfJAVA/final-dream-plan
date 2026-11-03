@@ -1,0 +1,98 @@
+{
+  "capturedAt": "2026-10-29T09:08:43.449Z",
+  "url": "https://train.chinajack.com/drillmate/admin/theme/1301e70a-a977-4bbf-bc73-93b3bc7eae41?ex_id=4fa7a1e92ac94429ad9cfaba38b0e45b",
+  "text": "杰克新销售成套方案演练（复制） 以上内容均由 AI 生成，仅供参考借鉴 杰克新销售成套方案演练（复制） 项目结构将在这里实时更新 确认 大纲 一、培训材料 二、产品档案 档案 成套智联2.0智能化平台 三、场景单元 场景 1 · 初次拜访：破冰与价值初探 案例 15分钟破冰：化解“旧伤”疑虑，建立初步信任 场景 2 · 深度沟通：应对交付与数据质疑 案例 破局信任危机：应对交付质疑与数据真实性挑战 场景 3 · 方案呈现：AI数字成套价值量化 案例 高层价值突围：从“技术溢价”到“财务收益”的生死转换 四、AI角色类型 五、冰山模型 六、评估标准 一、培训材料 1 份 编辑 PDF 杰克股份成套智联解决方案.pdf PDF · 5 MB 学员可见 提示：标记为「学员可见」的材料将在对话过程中作为参考资料提供给学员。建议公开学员需要的知识文档，保留内部培训指南为「仅内部」。",
+  "controls": [
+    {
+      "tag": "TEXTAREA",
+      "text": "输入你的问题",
+      "disabled": false,
+      "className": "chatInput__oY28m"
+    },
+    {
+      "tag": "BUTTON",
+      "text": "",
+      "disabled": false,
+      "className": "ant-dropdown-trigger toolBtn__lydph"
+    },
+    {
+      "tag": "BUTTON",
+      "text": "",
+      "disabled": true,
+      "className": "toolBtn__lydph"
+    },
+    {
+      "tag": "BUTTON",
+      "text": "",
+      "disabled": false,
+      "className": "sendBtn__l7biy"
+    },
+    {
+      "tag": "BUTTON",
+      "text": "确认",
+      "disabled": false,
+      "className": "confirmBtn__su8EC"
+    },
+    {
+      "tag": "BUTTON",
+      "text": "",
+      "disabled": false,
+      "className": "fold__AJdGA"
+    },
+    {
+      "tag": "BUTTON",
+      "text": "",
+      "disabled": false,
+      "className": "caret__FUVph caretOpen__aaSXB"
+    },
+    {
+      "tag": "BUTTON",
+      "text": "",
+      "disabled": false,
+      "className": "caret__FUVph caretOpen__aaSXB"
+    },
+    {
+      "tag": "BUTTON",
+      "text": "",
+      "disabled": false,
+      "className": "caret__FUVph caretOpen__aaSXB"
+    },
+    {
+      "tag": "BUTTON",
+      "text": "",
+      "disabled": false,
+      "className": "caret__FUVph caretOpen__aaSXB"
+    },
+    {
+      "tag": "BUTTON",
+      "text": "",
+      "disabled": false,
+      "className": "caret__FUVph caretOpen__aaSXB"
+    },
+    {
+      "tag": "BUTTON",
+      "text": "编辑",
+      "disabled": false,
+      "className": "modBtn__-yQB9"
+    },
+    {
+      "tag": "INPUT",
+      "text": "on",
+      "disabled": false,
+      "className": "visibilityInput__G7K64"
+    },
+    {
+      "tag": "BUTTON",
+      "text": "",
+      "disabled": false,
+      "className": "iconBtn__Mn7mR"
+    },
+    {
+      "tag": "BUTTON",
+      "text": "",
+      "disabled": false,
+      "className": "iconBtn__Mn7mR"
+    }
+  ],
+  "snapshot": "[p1 \"杰克新销售成套方案演练（复制）\" | space \"final-dream-drillmate-contract\"(15): 3 managed, 0 untracked — p1* \"杰克新销售成套方案演练（复制）\", p2 \"AI实战训练场 · 对练\", p3 \"AI实战训练场 - 杰克数字人陪练\"]\nroot\n  text \"杰克新销售成套方案演练（复制）\"\n  container\n    container\n      container \"加载中\"\n      container\n        container\n          textbox [ref=158, loc=css:textarea[placeholder=\"输入你的问题\"]]\n            text \"输入你的问题\"\n          container\n            button \"上传资料\" [ref=159, loc=css:button[aria-label=\"上传资料\"]]\n              svg_root \"上传\"\n            container\n              button \"语音输入\" [ref=160, loc=css:button[aria-label=\"语音输入\"]]\n                svg_root \"语音输入\"\n              button \"停止\" [ref=161, loc=css:button[aria-label=\"停止\"]]\n                svg_root\n        text \"以上内容均由 AI 生成，仅供参考借鉴\"\n    container\n      container\n        container\n          text \"杰克新销售成套方案演练（复制）\"\n          text \"项目结构将在这里实时更新\"\n        button [ref=162]\n          svg_root\n          text \"确认\"\n      container\n        container\n          container\n            text \"大纲\"\n            button [ref=163]\n              svg_root\n          container\n            text \"一、培训材料\"\n            container\n              button [ref=164]\n                svg_root\n              text \"二、产品档案\"\n            container\n              text \"档案\"\n              text \"成套智联2.0智能化平台\"\n            container\n              button [ref=165]\n                svg_root\n              text \"三、场景单元\"\n            container\n              button [ref=166]\n                svg_root\n              text \"场景 1 · 初次拜访：破冰与价值初探\"\n            container\n              text \"案例\"\n              text \"15分钟破冰：化解“旧伤”疑虑，建立初步信任\"\n            container\n              button [ref=167]\n                svg_root\n              text \"场景 2 · 深度沟通：应对交付与数据质疑\"\n            container\n              text \"案例\"\n              text \"破局信任危机：应对交付质疑与数据真实性挑战\"\n            container\n              button [ref=168]\n                svg_root\n              text \"场景 3 · 方案呈现：AI数字成套价值量化\"\n            container\n              text \"案例\"\n              text \"高层价值突围：从“技术溢价”到“财务收益”的生死转换\"\n            text \"四、AI角色类型\"\n            text \"五、冰山模型\"\n            text \"六、评估标准\"\n        container\n          container\n            text \"一、培训材料\"\n            text \"1 份\"\n            button [ref=169]\n              svg_root\n              text \"编辑\"\n          container\n            container\n              text \"PDF\"\n              container\n                text \"杰克股份成套智联解决方案.pdf\"\n                text \"PDF · 5 MB\"\n              container\n                container\n                  checkbox [ref=170]\n                  text \"学员可见\"\n                button \"预览\" [ref=171, loc=css:button[aria-label=\"预览\"]]\n                  svg_root\n                button \"删除\" [ref=172, loc=css:button[aria-label=\"删除\"]]\n                  svg_root\n            text \"提示：标记为「学员可见」的材料将在对话过程中作为参考资料提供给学员。建议公开学员需要的知识文档，保留内部培训指南为「仅内部」。\"\n"
+}

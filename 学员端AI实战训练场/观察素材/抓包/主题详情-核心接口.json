@@ -1,0 +1,263 @@
+{
+  "capturedAt": "2026-10-29T01:44:13.148Z",
+  "pageUrl": "https://train.chinajack.com/sparring/#/web/drillmate/detail/4926ae57fd804adcb55b48ad14950548",
+  "captures": [
+    {
+      "requestId": "BE240A50946677FD4AE64DC559E32681",
+      "url": "https://api-phx-ali.yunxuetang.cn/sparring/freeprac/members/attend/4926ae57fd804adcb55b48ad14950548",
+      "method": "OPTIONS",
+      "postData": null,
+      "status": 200,
+      "mimeType": "text/plain",
+      "requestHeaders": {
+        "Accept": "*/*",
+        "Access-Control-Request-Headers": "access-key,pv,source,token,x-yxt-product,yxt-orgdomain,yxtspanid,yxttraceid",
+        "Access-Control-Request-Method": "POST",
+        "Origin": "https://train.chinajack.com",
+        "Sec-Fetch-Mode": "cors",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36"
+      },
+      "responseBody": "[capture unavailable: No resource with given identifier found]"
+    },
+    {
+      "requestId": "64A350B0BF95BCA161FD7E34A76E0CAA",
+      "url": "https://api-phx-ali.yunxuetang.cn/sparring/freeprac/members/attend/pauseAttendScenes/4926ae57fd804adcb55b48ad14950548",
+      "method": "OPTIONS",
+      "postData": null,
+      "status": 200,
+      "mimeType": "text/plain",
+      "requestHeaders": {
+        "Accept": "*/*",
+        "Access-Control-Request-Headers": "access-key,content-type,pv,source,token,x-yxt-product,yxt-orgdomain,yxtspanid,yxttraceid",
+        "Access-Control-Request-Method": "GET",
+        "Origin": "https://train.chinajack.com",
+        "Sec-Fetch-Mode": "cors",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36"
+      },
+      "responseBody": "[capture unavailable: No resource with given identifier found]"
+    },
+    {
+      "requestId": "C1D6C792C174497AF2D63E3851E5699C",
+      "url": "https://api-phx-ali.yunxuetang.cn/sparring/freeprac/mgr/configs/query",
+      "method": "OPTIONS",
+      "postData": null,
+      "status": 200,
+      "mimeType": "text/plain",
+      "requestHeaders": {
+        "Accept": "*/*",
+        "Access-Control-Request-Headers": "access-key,content-type,pv,source,token,x-yxt-product,yxt-orgdomain,yxtspanid,yxttraceid",
+        "Access-Control-Request-Method": "POST",
+        "Origin": "https://train.chinajack.com",
+        "Sec-Fetch-Mode": "cors",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36"
+      },
+      "responseBody": "[capture unavailable: No resource with given identifier found]"
+    },
+    {
+      "requestId": "24CE30E5AB0E5B1C7F62DBCA51233148",
+      "url": "https://api-phx-ali.yunxuetang.cn/sparring/freeprac/study-records/list",
+      "method": "OPTIONS",
+      "postData": null,
+      "status": 200,
+      "mimeType": "text/plain",
+      "requestHeaders": {
+        "Accept": "*/*",
+        "Access-Control-Request-Headers": "access-key,content-type,pv,source,token,x-yxt-product,yxt-orgdomain,yxtspanid,yxttraceid",
+        "Access-Control-Request-Method": "POST",
+        "Origin": "https://train.chinajack.com",
+        "Sec-Fetch-Mode": "cors",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36"
+      },
+      "responseBody": "[capture unavailable: No resource with given identifier found]"
+    },
+    {
+      "requestId": "48576.828",
+      "url": "https://api-phx-ali.yunxuetang.cn/sparring/freeprac/members/attend/4926ae57fd804adcb55b48ad14950548",
+      "method": "POST",
+      "postData": null,
+      "status": 200,
+      "mimeType": "application/json",
+      "requestHeaders": {
+        "YxtSpanId": "12aa8df011e9d874",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "https://train.chinajack.com/",
+        "pv": "v2",
+        "Yxt-OrgDomain": "train.chinajack.com",
+        "sec-ch-ua": "\"Not:A-Brand\";v=\"8\", \"Chromium\";v=\"156\", \"Google Chrome\";v=\"156\"",
+        "Access-Key": "undefined",
+        "x-yxt-product": "xxv2",
+        "sec-ch-ua-mobile": "?0",
+        "YxtTraceId": "5.984354a0-d966-41db-80c6-09befd7749ad.fca2c7ad-f5bb-4f62-85cc-d591d1a5f1ea.1793238249006.35238042",
+        "source": "501",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+        "Accept": "application/json, text/plain, */*",
+        "token": "[redacted]"
+      },
+      "responseBody": "{\"evaluationCriteria\":{\"passScore\":70,\"dimensions\":[{\"id\":\"d1a2b3c4-d5e6-f789-0abc-def123456789\",\"name\":\"需求挖掘与倾听\",\"weight\":null,\"description\":\"评估学员是否能够通过有效提问和倾听，准确识别客户的核心痛点和需求。\",\"criteria\":\"优秀（90-100分）：能运用SPIN等技巧提出5个以上高质量开放式问题，准确捕捉客户隐含需求，并引导客户深入表达；良好（70-89分）：能提出3-5个相关问题，基本了解客户表面需求，但挖掘深度不足；需改进（<70分）：提问封闭或无关，未能识别客户核心痛点，单向灌输多于倾听。\"},{\"id\":\"e2f3a4b5-c6d7-e8f9-0abc-def123456789\",\"name\":\"价值主张传递\",\"weight\":null,\"description\":\"评估学员是否能清晰、准确地传达杰克成套智联的核心价值，并与客户需求关联。\",\"criteria\":\"优秀（90-100分）：能结合客户具体场景，准确引用核心数据（如节省70%人力），逻辑清晰地阐述价值，客户表示认可；良好（70-89分）：能说出核心价值点，但与客户场景关联度一般，表达略显生硬；需改进（<70分）：价值传递空泛，堆砌术语，客户无法理解或觉得与己无关。\"},{\"id\":\"f3a4b5c6-d7e8-f901-2abc-def123456789\",\"name\":\"信任建立与亲和力\",\"weight\":null,\"description\":\"评估学员是否能在短时间内建立专业形象，赢得客户初步信任。\",\"criteria\":\"优秀（90-100分）：沟通自然流畅，展现出极强的专业自信和亲和力，客户愿意主动分享信息；良好（70-89分）：态度端正，基本礼貌到位，但互动略显拘谨，信任感建立较慢；需改进（<70分）：表现紧张或傲慢，未能建立基本信任，客户表现出防备或反感。\"},{\"id\":\"a4b5c6d7-e8f9-0123-4abc-def123456789\",\"name\":\"异议处理与逻辑论证\",\"weight\":null,\"description\":\"评估学员面对客户质疑时，能否运用案例、数据和技术逻辑进行有效回应。\",\"criteria\":\"优秀（90-100分）：能精准识别异议根源，引用具体案例（如江苏伍佳）和技术原理（如软硬件直采）有力反驳，消除客户顾虑；良好（70-89分）：能回应异议，但论据不够充分或逻辑稍显混乱，客户仍有部分疑虑；需改进（<70分）：回避问题或回答错误，未能解决客户疑虑，甚至加剧不信任。\"},{\"id\":\"b5c6d7e8-f901-2345-6abc-def123456789\",\"name\":\"商业价值量化呈现\",\"weight\":null,\"description\":\"评估学员是否能将技术优势转化为清晰的财务收益或商业价值，打动高层决策者。\",\"criteria\":\"优秀（90-100分）：能准确引用量化数据（如ROI、库存降低比例），并用高层易懂的语言阐述战略价值，客户表现出浓厚兴趣；良好（70-89分）：能提到一些数据，但未能深入关联财务收益，表达不够精炼；需改进（<70分）：陷入技术细节，无法提供清晰的商业价值论证，客户觉得‘听不懂’或‘没价值’。\"},{\"id\":\"c6d7e8f9-0123-4567-8abc-def123456789\",\"name\":\"推进下一步行动\",\"weight\":null,\"description\":\"评估学员是否能在沟通结束时，成功引导客户达成明确的下一步共识。\",\"criteria\":\"优秀（90-100分）：能自然过渡到下一步行动（如预约演示、参观工厂），并获得客户明确承诺；良好（70-89分）：提出了下一步建议，但客户态度模糊，未形成强共识；需改进（<70分）：未提出明确的下一步行动，或被客户直接拒绝，沟通无果而终。\"}]},\"activities\":[{\"projectId\":\"4926ae57fd804adcb55b48ad14950548\",\"id\":\"47c7e48e6d47405ea33737a862a95198\",\"activityTargetId\":null,\"name\":\"初次拜访：破冰与价值初探\",\"maxDuration\":900,\"tags\":[\"0-6个月销售\",\"新入职销售\"],\"studyStatus\":20,\"passed\":0,\"maxScore\":0.00,\"conversationId\":\"4de4da73-ce69-4321-94f1-0315ee2a6d0d\",\"desc\":\"\",\"pracCount\":1,\"recordId\":null,\"projectArtifactId\":\"68f7f103720148a78dbdf8338406df7c\",\"projectTargetId\":\"760369727747293822\",\"projectArtifactVersion\":1,\"scriptArtifactId\":null,\"structuredScriptArtifactId\":null,\"reportArtifactId\":null},{\"projectId\":\"4926ae57fd804adcb55b48ad14950548\",\"id\":\"e62d02482a7a406e8601eb61dedb13a0\",\"activityTargetId\":null,\"name\":\"深度沟通：应对交付与数据质疑\",\"maxDuration\":1200,\"tags\":[\"0-6个月销售\",\"新入职销售\"],\"studyStatus\":null,\"passed\":null,\"maxScore\":null,\"conversationId\":null,\"desc\":\"\",\"pracCount\":0,\"recordId\":null,\"projectArtifactId\":\"68f7f103720148a78dbdf8338406df7c\",\"projectTargetId\":\"760369727747293822\",\"projectArtifactVersion\":1,\"scriptArtifactId\":null,\"structuredScriptArtifactId\":null,\"reportArtifactId\":null},{\"projectId\":\"4926ae57fd804adcb55b48ad14950548\",\"id\":\"ded3aeda76c64b8ea271630c570c9a67\",\"activityTargetId\":null,\"name\":\"方案呈现：AI数字成套价值量化\",\"maxDuration\":1500,\"tags\":[\"0-6个月销售\",\"新入职销售\"],\"studyStatus\":null,\"passed\":null,\"maxScore\":null,\"conversationId\":null,\"desc\":\"\",\"pracCount\":0,\"recordId\":null,\"projectArtifactId\":\"68f7f103720148a78dbdf8338406df7c\",\"projectTargetId\":\"760369727747293822\",\"projectArtifactVersion\":1,\"scriptArtifactId\":null,\"structuredScriptArtifactId\":null,\"reportArtifactId\":null}],\"icebergModel\":{\"visible\":{\"knowledge\":[\"杰克科技品牌与行业地位: 了解杰克科技在全球服装智造领域的领军地位、30年行业聚焦及股票代码\",\"成套智联1.0与2.0核心功能: 掌握1.0数字化套件（设备集成、数据驱动）与2.0智能化平台（数据、物联、智能、开发能力）的区别与联系\",\"AI数字成套核心价值点: 熟记用人少（节省70%）、省面料（3.3%）、无裁片库存、按需生产等核心价值\",\"标杆案例细节（江苏伍佳）: 了解江苏伍佳科技的背景、痛点、解决方案及带来的订单增长300%等具体成果\",\"数据精准性与实时性技术原理: 理解软硬件一体化直采、高速扫码技术（5500-6500件/小时）如何保证数据质量\",\"专项交付组机制: 知道杰克如何通过大客户专项交付组保障项目成功交付\"],\"skills\":[\"结构化提问技巧: 能够运用SPIN等模型挖掘客户痛点\",\"价值主张清晰表达: 能够将技术语言转化为客户听得懂的商业价值\",\"倾听与需求捕捉: 能够从客户话语中识别核心关切点\",\"异议处理技巧: 能够妥善应对客户对交付、数据、价格的质疑\",\"案例故事化讲述: 能够生动地引用标杆案例增强说服力\",\"数据可视化呈现: 能够清晰展示量化价值数据\",\"高层对话技巧: 能够与决策层进行高效、战略层面的沟通\"]},\"hidden\":{\"roles\":[\"专业顾问\",\"行业专家\",\"问题解决者\",\"可信赖伙伴\",\"商业顾问\",\"价值创造者\"],\"selfConcept\":[\"自信专业\",\"客户第一\",\"坚韧不拔\",\"专业可靠\",\"战略思维\",\"结果导向\"],\"personalities\":[\"积极主动\",\"亲和力强\",\"沉稳冷静\",\"逻辑严密\",\"自信果断\",\"洞察力强\"],\"motives\":[\"建立信任\",\"达成合作意向\",\"消除顾虑\",\"建立长期合作\",\"促成签约\",\"实现双赢\"]}},\"projectInfo\":{\"projectId\":\"4926ae57fd804adcb55b48ad14950548\",\"projectName\":\"杰克新销售成套方案演练\",\"projectDesc\":\"基于杰克股份成套智联解决方案，为新入职销售设计实战演练项目\",\"projectStatus\":10,\"projectOpenMode\":1,\"activityCount\":3,\"studyStatus\":10,\"passed\":0,\"studyMode\":null,\"completeActivityCount\":1,\"passedActivityCount\":0,\"targetVersion\":1,\"projectArtifactId\":\"68f7f103720148a78dbdf8338406df7c\",\"projectTargetId\":\"760369727747293822\",\"createTime\":null,\"startAt\":\"0999-12-31 23:30:59\",\"endAt\":\"9999-12-31 00:00:00\",\"lastActiveAt\":null,\"allowGuest\":0,\"guestInfoCollectFields\":{\"required\":[\"fullname\",\"mobile\"],\"optional\":[]},\"languages\":[\"zh_cn\"]},\"fileInfos\":[{\"id\":\"20abe947-4876-4e54-b294-afe91ced8649\",\"name\":\"杰克股份成套智联解决方案.pdf\",\"fileType\":\"pdf\",\"fileSize\":5,\"fileSizeUnit\":\"M\",\"visibility\":1,\"fileServId\":\"gpb\",\"fileSource\":1,\"targetId\":\"\"}],\"trainStrategy\":{\"responseMode\":1,\"dailyTrain\":{\"enabled\":true,\"realtimeCommentEnabled\":true,\"coachDemoEnabled\":false},\"examMode\":{\"enabled\":false,\"faceRecognitionEnabled\":false,\"facePreCheckEnabled\":true,\"faceContinuousCheckEnabled\":true,\"faceMatchLimit\":80,\"screenSwitchDetectionEnabled\":false,\"maxScreenSwitchCount\":0},\"minTrainCountToUnlockExam\":null,\"maxExamCount\":null,\"practiceTypes\":[1,2,3],\"difficulty\":2,\"allowCustomDifficulty\":true,\"dialogModes\":[\"voice\",\"text\"]},\"productProfiles\":[{\"artifactId\":\"760371825306976539\",\"artifactVersion\":1,\"profileName\":\"成套智联2.0智能化平台\",\"category\":\"服装智能制造软硬件一体化解决方案\",\"descr\":\"杰克科技推出的智能化生产运营平台，通过数据、物联、智能及开发能力，助力服装企业实现AI柔性快反与数智化升级。\"}]}"
+    },
+    {
+      "requestId": "48576.829",
+      "url": "https://api-phx-ali.yunxuetang.cn/sparring/freeprac/members/attend/pauseAttendScenes/4926ae57fd804adcb55b48ad14950548",
+      "method": "GET",
+      "postData": null,
+      "status": 200,
+      "mimeType": "application/json",
+      "requestHeaders": {
+        "YxtSpanId": "5f4ed94e50ab8a18",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "https://train.chinajack.com/",
+        "pv": "v2",
+        "Yxt-OrgDomain": "train.chinajack.com",
+        "sec-ch-ua": "\"Not:A-Brand\";v=\"8\", \"Chromium\";v=\"156\", \"Google Chrome\";v=\"156\"",
+        "Access-Key": "undefined",
+        "x-yxt-product": "xxv2",
+        "sec-ch-ua-mobile": "?0",
+        "YxtTraceId": "5.984354a0-d966-41db-80c6-09befd7749ad.fca2c7ad-f5bb-4f62-85cc-d591d1a5f1ea.1793238249007.27656999",
+        "source": "501",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+        "Accept": "application/json, text/plain, */*",
+        "Content-Type": "application/json;charset=UTF-8",
+        "token": "[redacted]"
+      },
+      "responseBody": "[]"
+    },
+    {
+      "requestId": "48576.830",
+      "url": "https://api-phx-ali.yunxuetang.cn/sparring/freeprac/mgr/configs/query",
+      "method": "POST",
+      "postData": "{\"cfgCodes\":[\"points-rule\"]}",
+      "status": 200,
+      "mimeType": "application/json",
+      "requestHeaders": {
+        "YxtSpanId": "cb685b7f1d4c80a4",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "https://train.chinajack.com/",
+        "pv": "v2",
+        "Yxt-OrgDomain": "train.chinajack.com",
+        "sec-ch-ua": "\"Not:A-Brand\";v=\"8\", \"Chromium\";v=\"156\", \"Google Chrome\";v=\"156\"",
+        "Access-Key": "undefined",
+        "x-yxt-product": "xxv2",
+        "sec-ch-ua-mobile": "?0",
+        "YxtTraceId": "5.984354a0-d966-41db-80c6-09befd7749ad.fca2c7ad-f5bb-4f62-85cc-d591d1a5f1ea.1793238249007.65841658",
+        "source": "501",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+        "Accept": "application/json, text/plain, */*",
+        "Content-Type": "application/json;charset=UTF-8",
+        "token": "[redacted]"
+      },
+      "responseBody": "[{\"cfgCode\":\"points-rule\",\"value\":{\"practice\":{\"firstPass\":100,\"dailyFirst\":20,\"excellent\":{\"score\":95,\"points\":200},\"continuous\":{\"days\":3,\"points\":30},\"difficulties\":[{\"mode\":\"standard\",\"easy\":30,\"medium\":50,\"difficult\":80},{\"mode\":\"random\",\"easy\":30,\"medium\":50,\"difficult\":80},{\"mode\":\"custom\",\"easy\":30,\"medium\":50,\"difficult\":80}]},\"competition\":{\"win\":50,\"fail\":-20,\"tie\":0,\"promote\":200}}}]"
+    },
+    {
+      "requestId": "48576.831",
+      "url": "https://api-phx-ali.yunxuetang.cn/sparring/freeprac/study-records/list",
+      "method": "POST",
+      "postData": "{}",
+      "status": 200,
+      "mimeType": "application/json",
+      "requestHeaders": {
+        "YxtSpanId": "9a557b28b7bcccf3",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "https://train.chinajack.com/",
+        "pv": "v2",
+        "Yxt-OrgDomain": "train.chinajack.com",
+        "sec-ch-ua": "\"Not:A-Brand\";v=\"8\", \"Chromium\";v=\"156\", \"Google Chrome\";v=\"156\"",
+        "Access-Key": "undefined",
+        "x-yxt-product": "xxv2",
+        "sec-ch-ua-mobile": "?0",
+        "YxtTraceId": "5.984354a0-d966-41db-80c6-09befd7749ad.fca2c7ad-f5bb-4f62-85cc-d591d1a5f1ea.1793238249008.32399772",
+        "source": "501",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+        "Accept": "application/json, text/plain, */*",
+        "Content-Type": "application/json;charset=UTF-8",
+        "token": "[redacted]"
+      },
+      "responseBody": "[{\"projectId\":\"4926ae57fd804adcb55b48ad14950548\",\"activityId\":\"47c7e48e6d47405ea33737a862a95198\",\"recordId\":\"f4e53fdc-11c4-4388-b224-3b3150bc6380\",\"memberId\":\"fca2c7ad-f5bb-4f62-85cc-d591d1a5f1ea\",\"conversationId\":\"4de4da73-ce69-4321-94f1-0315ee2a6d0d\",\"activityTargetId\":\"4bebfb14-1704-481c-920e-c13b05cb9b49\",\"reportArtifactId\":\"770165792020959352\",\"projectArtifactId\":\"68f7f103720148a78dbdf8338406df7c\",\"startAt\":\"2026-10-27 11:47:36\",\"endAt\":\"2026-10-27 14:03:27\",\"studyType\":1,\"difficulty\":1,\"studyStatus\":20,\"passed\":1,\"faceRecognitionEnabled\":null,\"score\":0.00,\"duration\":85,\"updateTime\":null,\"studyMode\":null,\"activityName\":\"初次拜访：破冰与价值初探\",\"activityTags\":[\"0-6个月销售\",\"新入职销售\"],\"projectName\":\"杰克新销售成套方案演练\"}]"
+    },
+    {
+      "requestId": "7485ABB2E54E51542EB6F4A6AE8739D5",
+      "url": "https://api-phx-ali.yunxuetang.cn/sparring/freeprac/members/getDefaultRoleInfo",
+      "method": "OPTIONS",
+      "postData": null,
+      "status": 200,
+      "mimeType": "text/plain",
+      "requestHeaders": {
+        "Accept": "*/*",
+        "Access-Control-Request-Headers": "access-key,content-type,pv,source,token,x-yxt-product,yxt-orgdomain,yxtspanid,yxttraceid",
+        "Access-Control-Request-Method": "GET",
+        "Origin": "https://train.chinajack.com",
+        "Sec-Fetch-Mode": "cors",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36"
+      },
+      "responseBody": "[capture unavailable: No resource with given identifier found]"
+    },
+    {
+      "requestId": "48576.844",
+      "url": "https://api-phx-ali.yunxuetang.cn/sparring/freeprac/members/getDefaultRoleInfo",
+      "method": "GET",
+      "postData": null,
+      "status": 200,
+      "mimeType": "application/json",
+      "requestHeaders": {
+        "YxtSpanId": "b60809c7f3fa10ea",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "https://train.chinajack.com/",
+        "pv": "v2",
+        "Yxt-OrgDomain": "train.chinajack.com",
+        "sec-ch-ua": "\"Not:A-Brand\";v=\"8\", \"Chromium\";v=\"156\", \"Google Chrome\";v=\"156\"",
+        "Access-Key": "undefined",
+        "x-yxt-product": "xxv2",
+        "sec-ch-ua-mobile": "?0",
+        "YxtTraceId": "5.984354a0-d966-41db-80c6-09befd7749ad.fca2c7ad-f5bb-4f62-85cc-d591d1a5f1ea.1793238249295.87784492",
+        "source": "501",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+        "Accept": "application/json, text/plain, */*",
+        "Content-Type": "application/json;charset=UTF-8",
+        "token": "[redacted]"
+      },
+      "responseBody": "[\"客户\",\"同事\",\"上级\",\"下属\",\"合作伙伴\",\"其他\"]"
+    },
+    {
+      "requestId": "48576.845",
+      "url": "https://api-phx-ali.yunxuetang.cn/sparring/freeprac/members/getDefaultPersonalities",
+      "method": "GET",
+      "postData": null,
+      "status": 200,
+      "mimeType": "application/json",
+      "requestHeaders": {
+        "YxtSpanId": "6fbce75c3325eb4a",
+        "sec-ch-ua-platform": "\"Windows\"",
+        "Referer": "https://train.chinajack.com/",
+        "pv": "v2",
+        "Yxt-OrgDomain": "train.chinajack.com",
+        "sec-ch-ua": "\"Not:A-Brand\";v=\"8\", \"Chromium\";v=\"156\", \"Google Chrome\";v=\"156\"",
+        "Access-Key": "undefined",
+        "x-yxt-product": "xxv2",
+        "sec-ch-ua-mobile": "?0",
+        "YxtTraceId": "5.984354a0-d966-41db-80c6-09befd7749ad.fca2c7ad-f5bb-4f62-85cc-d591d1a5f1ea.1793238249296.57936328",
+        "source": "501",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+        "Accept": "application/json, text/plain, */*",
+        "Content-Type": "application/json;charset=UTF-8",
+        "token": "[redacted]"
+      },
+      "responseBody": "{\"personalities\":[\"严谨\",\"强势\",\"犹豫\",\"友好\",\"专业\",\"挑剔\",\"急躁\",\"理性\",\"感性\",\"保守\"],\"roleTypes\":[]}"
+    },
+    {
+      "requestId": "A4399B68A8119CFAF8272F989CA256A9",
+      "url": "https://api-phx-ali.yunxuetang.cn/sparring/freeprac/members/getDefaultPersonalities",
+      "method": "OPTIONS",
+      "postData": null,
+      "status": 200,
+      "mimeType": "text/plain",
+      "requestHeaders": {
+        "Accept": "*/*",
+        "Access-Control-Request-Headers": "access-key,content-type,pv,source,token,x-yxt-product,yxt-orgdomain,yxtspanid,yxttraceid",
+        "Access-Control-Request-Method": "GET",
+        "Origin": "https://train.chinajack.com",
+        "Sec-Fetch-Mode": "cors",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36"
+      },
+      "responseBody": "[capture unavailable: No resource with given identifier found]"
+    }
+  ]
+}

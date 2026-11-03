@@ -1,0 +1,12 @@
+{
+  "capturedAt": "2026-10-29T03:11:29.184Z",
+  "url": "https://api-phx-ali.yunxuetang.cn/xuiappserver/api/message/session/25a1b1c6-ec52-4032-a1d2-6ee2770aa5d3?limit=1000",
+  "ok": false,
+  "status": 401,
+  "statusText": "",
+  "headers": {
+    "content-type": "application/json",
+    "date": "Thu, 29 Oct 2026 03:11:29 GMT"
+  },
+  "body": "{\"error\": {\"code\": 2001008,\"globalCode\": \"J60W-MBBYX\",\"key\": \"global.not.authorized\",\"message\": \"未授权。\",\"traceId\": \"c594a017-86d8-4f05-9c96-30351c90b049\"}}"
+}

@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://final-dream.local/schemas/drill-report-v1.schema.json",
+  "title": "DrillReportV1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "targetReached",
+    "targetReason",
+    "overallComment",
+    "dimensions",
+    "improvementSuggestions",
+    "keyDialogues",
+    "recommendations"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "drill-report-v1" },
+    "targetReached": { "type": "boolean" },
+    "targetReason": { "type": "string", "minLength": 1 },
+    "overallComment": { "type": "string", "minLength": 1 },
+    "dimensions": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "name", "score", "weight", "evidence", "strength", "improvement", "reason"],
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "name": { "type": "string", "minLength": 1 },
+          "score": { "type": "number", "minimum": 0, "maximum": 100 },
+          "weight": { "type": "number", "minimum": 0, "maximum": 100 },
+          "evidence": { "type": "array", "items": { "type": "string" } },
+          "strength": { "type": "string" },
+          "improvement": { "type": "string" },
+          "reason": { "type": "string" }
+        }
+      }
+    },
+    "improvementSuggestions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["title", "detail"],
+        "properties": {
+          "title": { "type": "string", "minLength": 1 },
+          "detail": { "type": "string", "minLength": 1 },
+          "sampleReply": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "keyDialogues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["type", "quote", "comment"],
+        "properties": {
+          "type": { "enum": ["excellent", "attention", "rewrite"] },
+          "quote": { "type": "string", "minLength": 1 },
+          "comment": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "recommendations": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    }
+  }
+}

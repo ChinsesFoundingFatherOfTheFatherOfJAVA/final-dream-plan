@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://final-dream.local/schemas/product-profile-v1.schema.json",
+  "title": "ProductProfileV1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["profileKey", "profileName", "source"],
+  "properties": {
+    "profileKey": {
+      "type": "string",
+      "pattern": "^pp_[A-Za-z0-9_-]{8,48}$"
+    },
+    "profileName": { "type": "string", "minLength": 1, "maxLength": 100 },
+    "category": { "type": ["string", "null"], "maxLength": 200 },
+    "description": { "type": ["string", "null"], "maxLength": 2000 },
+    "customFields": {
+      "type": "array",
+      "maxItems": 30,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["key", "value", "sortOrder"],
+        "properties": {
+          "key": { "type": "string", "minLength": 1, "maxLength": 30 },
+          "value": { "type": "string", "maxLength": 1000 },
+          "sortOrder": { "type": "integer", "minimum": 1 }
+        }
+      }
+    },
+    "detailMarkdown": { "type": ["string", "null"], "maxLength": 50000 },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type"],
+      "properties": {
+        "type": { "enum": ["manual", "ai_generated", "imported"] },
+        "materialIds": {
+          "type": "array",
+          "maxItems": 20,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "generatedBy": { "type": ["string", "null"] },
+        "generatedAt": { "type": ["string", "null"] }
+      }
+    }
+  }
+}

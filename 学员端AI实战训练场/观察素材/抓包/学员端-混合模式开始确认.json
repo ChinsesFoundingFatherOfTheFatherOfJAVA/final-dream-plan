@@ -1,0 +1,100 @@
+{
+  "capturedAt": "2026-10-29T07:47:57.363Z",
+  "text": "2 3 我的陪练 首页 话术目录 课程中心 AI对练 AI实战训练场 陪练看板 更多 7 员 工作台 AI实战训练场 主题详情 训考一体 ★ ★ ★ 中等 杰克新销售成套方案演练（复制） 基于杰克股份成套智联解决方案，为新入职销售设计实战演练项目 训练场景 3 个 | 已通过 0 个 | 进度 0 % 全部场景单元 共 3 个 · 点击场景可查看训练准备信息 01 初次拜访：破冰与价值初探 未开始 适用人群：0-6个月销售 / 新入职销售 开始练习 02 深度沟通：应对交付与数据质疑 未开始 适用人群：0-6个月销售 / 新入职销售 开始练习 03 方案呈现：AI数字成套价值量化 未开始 适用人群：0-6个月销售 / 新入职销售 开始练习 评估标准 通过分数：70 分 完成场景练习后，系统将从 6 个维度进行综合评估。 需求挖掘与倾听 价值主张传递 信任建立与亲和力 异议处理与逻辑论证 商业价值量化呈现 推进下一步行动 学习资料 杰克股份成套智联解决方案.pdf PDF · 5M 产品档案 📦 成套智联2.0智能化平台 杰克科技推出的智能化生产运营平台，通过数据、物联、智能及开发能力，助力服装企业实现AI柔性快反与数智化升级。 服装智能制造软硬件一体化解决方案 初次拜访：破冰与价值初探 限时 15 分钟 日常训练 教练点评 对话中 AI 实时分析你的回答，在表现突出、应对欠佳或触犯禁忌等关键时刻即时表扬或纠偏 不计入成绩，可随时退出 通关考核 未解锁 完成 1 次训练后解锁考核 开始训练 考核未解锁",
+  "dialogs": [
+    "初次拜访：破冰与价值初探 限时 15 分钟 日常训练 教练点评 对话中 AI 实时分析你的回答，在表现突出、应对欠佳或触犯禁忌等关键时刻即时表扬或纠偏 不计入成绩，可随时退出 通关考核 未解锁 完成 1 次训练后解锁考核 开始训练 考核未解锁"
+  ],
+  "controls": [
+    {
+      "tag": "SPAN",
+      "type": null,
+      "role": "button",
+      "text": "更多",
+      "checked": null,
+      "disabled": false,
+      "className": "yxtbiz-nav-top-stu__menu-name hover-primary-6-i yxtf-dropdown-selfdefine"
+    },
+    {
+      "tag": "DIV",
+      "type": null,
+      "role": "button",
+      "text": "员",
+      "checked": null,
+      "disabled": false,
+      "className": "yxtf-portrait hand yxtbiz-nav-top-stu__my-avatar yxt-portrait--small yxtf-dropdown-selfdefine"
+    },
+    {
+      "tag": "SPAN",
+      "type": null,
+      "role": "button",
+      "text": "工作台",
+      "checked": null,
+      "disabled": false,
+      "className": "hover-primary-6-i color-gray-9 yxtf-dropdown-selfdefine"
+    },
+    {
+      "tag": "BUTTON",
+      "type": "button",
+      "role": null,
+      "text": "AI实战训练场",
+      "checked": null,
+      "disabled": false,
+      "className": "dm-breadcrumb__home cursor-pointer border-0 bg-transparent p-0 text-[13px] text-[#8c8c8c] outline-none focus:outline-none hover:text-[color:var(--color-primary-6,#436bff)]"
+    },
+    {
+      "tag": "BUTTON",
+      "type": null,
+      "role": null,
+      "text": "开始练习",
+      "checked": null,
+      "disabled": false,
+      "className": "dm-scene-btn h-[32px] px-[16px] rounded-[6px] border-none bg-[color:var(--color-primary-6,#436bff)] text-white text-[13px] font-[500] cursor-pointer flex-shrink-0"
+    },
+    {
+      "tag": "BUTTON",
+      "type": null,
+      "role": null,
+      "text": "开始练习",
+      "checked": null,
+      "disabled": false,
+      "className": "dm-scene-btn h-[32px] px-[16px] rounded-[6px] border-none bg-[color:var(--color-primary-6,#436bff)] text-white text-[13px] font-[500] cursor-pointer flex-shrink-0"
+    },
+    {
+      "tag": "BUTTON",
+      "type": null,
+      "role": null,
+      "text": "开始练习",
+      "checked": null,
+      "disabled": false,
+      "className": "dm-scene-btn h-[32px] px-[16px] rounded-[6px] border-none bg-[color:var(--color-primary-6,#436bff)] text-white text-[13px] font-[500] cursor-pointer flex-shrink-0"
+    },
+    {
+      "tag": "BUTTON",
+      "type": "button",
+      "role": null,
+      "text": "",
+      "checked": null,
+      "disabled": false,
+      "className": "yxt-dialog__headerbtn"
+    },
+    {
+      "tag": "BUTTON",
+      "type": "button",
+      "role": null,
+      "text": "开始训练",
+      "checked": null,
+      "disabled": false,
+      "className": "yxt-button flex-1 dm-check-btn yxt-button--primary"
+    },
+    {
+      "tag": "BUTTON",
+      "type": "button",
+      "role": null,
+      "text": "考核未解锁",
+      "checked": null,
+      "disabled": true,
+      "className": "yxt-button flex-1 dm-check-btn dm-check-btn--exam yxt-button--default is-disabled"
+    }
+  ],
+  "snapshot": "[p3 \"AI实战训练场 - 杰克数字人陪练\" | space \"final-dream-drillmate-contract\"(15): 3 managed, 0 untracked — p1 \"训练主题 - 杰克数字人陪练\", p2 \"AI实战训练场 · 对练\", p3* \"AI实战训练场 - 杰克数字人陪练\"]\nroot\n  container [ref=16]\n    container\n      container\n        anchor [ref=17, loc=href:/#/studyindex?norequest=1, url=https://train.chinajack.com/#/studyindex?norequest=1]\n        container\n          anchor [ref=18, loc=href:/study/#/userhome, url=https://train.chinajack.com/study/#/userhome]\n            text \"我的陪练\"\n          anchor [ref=19, loc=href:/main/#/index, url=https://train.chinajack.com/main/#/index]\n            text \"首页\"\n          anchor [ref=20, url=https://train.chinajack.com/kng/#/list?catalogId=&cid=984354a0-d966-41db-80c6-09befd7749ad&order=0&sort=0&type=]\n            text \"话术目录\"\n          anchor [ref=21, url=https://train.chinajack.com/kng/#/list?catalogId=3c112c9a-eaaa-4b16-b247-e8c2458de6df&cid=984354a0-d966-41db-80c6-09befd7749ad&order=0&sort=0&type=]\n            text \"课程中心\"\n          anchor [ref=22, loc=href:/sparring/#/web, url=https://train.chinajack.com/sparring/#/web]\n            text \"AI对练\"\n          anchor [ref=23, loc=href:/sparring/#/web/drillmate, url=https://train.chinajack.com/sparring/#/web/drillmate]\n            text \"AI实战训练场\"\n          anchor [ref=24, url=https://alidocs.dingtalk.com/i/nodes/lyQod3RxJKvNkZKAcorL2ZvaVkb4Mw9r?corpId=dingb832549ed9dd356e&utm_medium=im_card&iframeQuery=utm_medium%3Dim_card%26utm_source%3Dim&utm_scene=person_space&utm_source=im]\n            text \"陪练看板\"\n          button [ref=25]\n            text \"更多\"\n            svg_root\n        container\n          container [ref=26]\n            image\n          svg_root [ref=27]\n          container [ref=28]\n            text \"7\"\n            svg_root\n          button [ref=29]\n            text \"员\"\n          button [ref=30]\n            svg_root\n            text \"工作台\"\n      container\n        container\n          button [ref=31]\n            text \"AI实战训练场\"\n          svg_root\n          text \"主题详情\"\n        container\n          container\n            text \"训考一体\"\n            container\n              container\n                text \"★\"\n                text \"★\"\n                text \"★\"\n              text \"中等\"\n          heading\n            text \"杰克新销售成套方案演练（复制）\"\n          paragraph\n            text \"基于杰克股份成套智联解决方案，为新入职销售设计实战演练项目\"\n          container\n            container\n              text \"训练场景\"\n              text \"3\"\n              text \"个\"\n            text \"|\"\n            container\n              text \"已通过\"\n              text \"0\"\n              text \"个\"\n            text \"|\"\n            container\n              text \"进度\"\n              text \"0\"\n              text \"%\"\n        container\n          container\n            container\n              heading\n                svg_root\n                text \"全部场景单元\"\n              text \"共 3 个 · 点击场景可查看训练准备信息\"\n            container\n              container\n                text \"01\"\n                container\n                  container\n                    heading\n                      text \"初次拜访：破冰与价值初探\"\n                    container\n                      svg_root\n                      text \"未开始\"\n                  text \"适用人群：0-6个月销售 / 新入职销售\"\n                button [ref=32]\n                  text \"开始练习\"\n              container\n                text \"02\"\n                container\n                  container\n                    heading\n                      text \"深度沟通：应对交付与数据质疑\"\n                    container\n                      svg_root\n                      text \"未开始\"\n                  text \"适用人群：0-6个月销售 / 新入职销售\"\n                button [ref=33]\n                  text \"开始练习\"\n              container\n                text \"03\"\n                container\n                  container\n                    heading\n                      text \"方案呈现：AI数字成套价值量化\"\n                    container\n                      svg_root\n                      text \"未开始\"\n                  text \"适用人群：0-6个月销售 / 新入职销售\"\n                button [ref=34]\n                  text \"开始练习\"\n          container\n            container\n              container\n                svg_root\n                text \"评估标准\"\n              container\n                text \"通过分数：\"\n                text \"70\"\n                text \"分\"\n              text \"完成场景练习后，系统将从 6 个维度进行综合评估。\"\n              container\n                text \"需求挖掘与倾听\"\n                text \"价值主张传递\"\n                text \"信任建立与亲和力\"\n                text \"异议处理与逻辑论证\"\n                text \"商业价值量化呈现\"\n                text \"推进下一步行动\"\n            heading\n              svg_root\n              text \"学习资料\"\n  dialog \"dialog\"\n    container\n      svg_root\n      text \"初次拜访：破冰与价值初探\"\n      text \"限时 15 分钟\"\n    button \"Close\" [ref=42]\n      svg_root\n    container\n      container\n        text \"日常训练\"\n        container\n          container\n            svg_root\n            container\n              text \"教练点评\"\n              text \"对话中 AI 实时分析你的回答，在表现突出、应对欠佳或触犯禁忌等关键时刻即时表扬或纠偏\"\n          container\n            svg_root\n            text \"不计入成绩，可随时退出\"\n      container\n        container\n          text \"通关考核\"\n          container\n            svg_root\n            text \"未解锁\"\n        text \"完成 1 次训练后解锁考核\"\n    container\n      button [ref=43]\n        text \"开始训练\"\n      button [ref=44]\n        text \"考核未解锁\"\n  container [ref=41]\n"
+}

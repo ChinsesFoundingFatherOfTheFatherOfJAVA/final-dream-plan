@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://final-dream.local/schemas/drill-chat-event-v1.schema.json",
+  "title": "DrillChatEventV1",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["event"],
+  "properties": {
+    "event": {
+      "enum": [
+        "turn_start",
+        "coach_start",
+        "coach_delta",
+        "coach_end",
+        "assistant_start",
+        "assistant_delta",
+        "assistant_end",
+        "progress",
+        "message_end",
+        "error"
+      ]
+    },
+    "messageId": { "type": "string" },
+    "turnNo": { "type": "integer", "minimum": 1 },
+    "delta": { "type": "string" },
+    "text": { "type": "string" },
+    "targetProgress": { "type": "integer", "minimum": 0, "maximum": 100 },
+    "deltaReason": { "type": "string" },
+    "behaviorHits": { "type": "array", "items": { "type": "string" } },
+    "conversation_id": { "type": "string" },
+    "task_id": { "type": "string" },
+    "message_id": { "type": "string" },
+    "ttsConfig": { "type": "object" },
+    "code": { "type": "string" },
+    "message": { "type": "string" },
+    "retryable": { "type": "boolean" }
+  }
+}

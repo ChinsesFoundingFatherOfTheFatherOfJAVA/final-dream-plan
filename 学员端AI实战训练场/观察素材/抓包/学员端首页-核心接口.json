@@ -1,0 +1,48 @@
+{
+  "capturedAt": "2026-10-29T02:14:14.137Z",
+  "pageUrl": "https://train.chinajack.com/sparring/#/web/drillmate",
+  "captures": [
+    {
+      "url": "https://api-phx-ali.yunxuetang.cn/sparring/user/base-info",
+      "method": "GET",
+      "postData": null,
+      "status": 200,
+      "responseBody": "{\"userId\":\"fca2c7ad-f5bb-4f62-85cc-d591d1a5f1ea\",\"username\":\"admin\",\"fullname\":\"管理员\",\"imgUrl\":\"\",\"deptId\":\"4645fe57-e539-4131-8bab-32e18d810d7c\",\"deptName\":\"杰克科技股份\",\"positionNames\":[]}"
+    },
+    {
+      "url": "https://api-phx-ali.yunxuetang.cn/sparring/freeprac/members/statistics",
+      "method": "POST",
+      "postData": null,
+      "status": 200,
+      "responseBody": "{\"totalHours\":0.02,\"deduCount\":1,\"projectCount\":2,\"honorScore\":20,\"averageScore\":0.00,\"rankName\":\"青铜\",\"rankIcon\":\"https://stc.yxt.com/ufd/2338a3/sparring/h5/img/duanwei/2.png\",\"rankColor\":\"#824D1C\"}"
+    },
+    {
+      "url": "https://api-phx-ali.yunxuetang.cn/sparring/freeprac/members/attend/projects",
+      "method": "POST",
+      "postData": "{}",
+      "status": 200,
+      "responseBody": "[{\"projectId\":\"4926ae57fd804adcb55b48ad14950548\",\"projectName\":\"杰克新销售成套方案演练\",\"projectDesc\":\"基于杰克股份成套智联解决方案，为新入职销售设计实战演练项目\",\"projectStatus\":10,\"projectOpenMode\":1,\"activityCount\":3,\"studyStatus\":10,\"passed\":0,\"studyMode\":1,\"completeActivityCount\":1,\"passedActivityCount\":0,\"targetVersion\":null,\"projectArtifactId\":\"68f7f103720148a78dbdf8338406df7c\",\"projectTargetId\":null,\"createTime\":\"2026-10-27 11:40:56\",\"startAt\":null,\"endAt\":null,\"lastActiveAt\":\"2026-10-27 11:47:37\",\"allowGuest\":null,\"guestInfoCollectFields\":null,\"languages\":null},{\"projectId\":\"0a7ebcf29b0c41aaa61a295b933bbcd9\",\"projectName\":\"柔性智造销售话术训练\",\"projectDesc\":\"基于六大场景知识库，训练销售精准讲解方案价值并应对客户质疑\",\"projectStatus\":10,\"projectOpenMode\":1,\"activityCount\":5,\"studyStatus\":1,\"passed\":0,\"studyMode\":1,\"completeActivityCount\":0,\"passedActivityCount\":0,\"targetVersion\":null,\"projectArtifactId\":\"41bd5f11dba2464c8ae6fc1e638c824d\",\"projectTargetId\":null,\"createTime\":\"2026-09-16 10:31:29\",\"startAt\":null,\"endAt\":null,\"lastActiveAt\":\"0999-12-31 23:30:59\",\"allowGuest\":null,\"guestInfoCollectFields\":null,\"languages\":null}]"
+    },
+    {
+      "url": "https://api-phx-ali.yunxuetang.cn/sparring/freeprac/members/can/attend/projects?limit=6&offset=0",
+      "method": "POST",
+      "postData": null,
+      "status": 200,
+      "responseBody": "{\"datas\":[],\"paging\":{\"limit\":6,\"offset\":0,\"pages\":0,\"count\":0}}"
+    },
+    {
+      "url": "https://api-phx-ali.yunxuetang.cn/sparring/freeprac/study-records/list",
+      "method": "POST",
+      "postData": "{}",
+      "status": 200,
+      "responseBody": "[{\"projectId\":\"4926ae57fd804adcb55b48ad14950548\",\"activityId\":\"47c7e48e6d47405ea33737a862a95198\",\"recordId\":\"f4e53fdc-11c4-4388-b224-3b3150bc6380\",\"memberId\":\"fca2c7ad-f5bb-4f62-85cc-d591d1a5f1ea\",\"conversationId\":\"4de4da73-ce69-4321-94f1-0315ee2a6d0d\",\"activityTargetId\":\"4bebfb14-1704-481c-920e-c13b05cb9b49\",\"reportArtifactId\":\"770165792020959352\",\"projectArtifactId\":\"68f7f103720148a78dbdf8338406df7c\",\"startAt\":\"2026-10-27 11:47:36\",\"endAt\":\"2026-10-27 14:03:27\",\"studyType\":1,\"difficulty\":1,\"studyStatus\":20,\"passed\":1,\"faceRecognitionEnabled\":null,\"score\":0.00,\"duration\":85,\"updateTime\":null,\"studyMode\":null,\"activityName\":\"初次拜访：破冰与价值初探\",\"activityTags\":[\"0-6个月销售\",\"新入职销售\"],\"projectName\":\"杰克新销售成套方案演练\"}]"
+    },
+    {
+      "url": "https://api-phx-ali.yunxuetang.cn/sparring/freeprac/mgr/ranks",
+      "method": "GET",
+      "postData": null,
+      "status": 200,
+      "responseBody": "[{\"rankId\":\"5409f1b9-de01-400a-8dc9-f7398c62f557\",\"rankName\":\"青铜\",\"descr\":\"\",\"lowestScore\":0,\"highestScore\":499,\"icon\":\"https://stc.yxt.com/ufd/2338a3/sparring/h5/img/duanwei/2.png\",\"color\":\"#824D1C\",\"preset\":1},{\"rankId\":\"c49676a5-fec0-4e5c-8dbb-b8f4ee08db82\",\"rankName\":\"白银\",\"descr\":\"\",\"lowestScore\":500,\"highestScore\":999,\"icon\":\"https://stc.yxt.com/ufd/2338a3/sparring/h5/img/duanwei/1.png\",\"color\":\"#62676B\",\"preset\":1},{\"rankId\":\"1a80c15a-00d3-4546-b962-f196d658457e\",\"rankName\":\"黄金\",\"descr\":\"\",\"lowestScore\":1000,\"highestScore\":1799,\"icon\":\"https://stc.yxt.com/ufd/2338a3/sparring/h5/img/duanwei/6.png\",\"color\":\"#AC6B09\",\"preset\":1},{\"rankId\":\"ff6128f9-b1ff-4121-848b-1f6788adf99d\",\"rankName\":\"铂金\",\"descr\":\"\",\"lowestScore\":1800,\"highestScore\":2499,\"icon\":\"https://stc.yxt.com/ufd/2338a3/sparring/h5/img/duanwei/9.png\",\"color\":\"#0D72B6\",\"preset\":1},{\"rankId\":\"79a4a7ba-b770-43d5-bca6-38b1ce650b59\",\"rankName\":\"钻石\",\"descr\":\"\",\"lowestScore\":2500,\"highestScore\":3499,\"icon\":\"https://stc.yxt.com/ufd/2338a3/sparring/h5/img/duanwei/11.png\",\"color\":\"#8C3DB8\",\"preset\":1},{\"rankId\":\"7bcbd185-b549-410d-a9d9-29129aac447f\",\"rankName\":\"星耀\",\"descr\":\"\",\"lowestScore\":3500,\"highestScore\":4999,\"icon\":\"https://stc.yxt.com/ufd/2338a3/sparring/h5/img/duanwei/14.png\",\"color\":\"#C55D08\",\"preset\":1},{\"rankId\":\"91618bcd-d9ae-4cdb-aa9a-ca6447184734\",\"rankName\":\"王者\",\"descr\":\"\",\"lowestScore\":5000,\"highestScore\":2147483647,\"icon\":\"https://stc.yxt.com/ufd/2338a3/sparring/h5/img/duanwei/18.png\",\"color\":\"#AB1A1D\",\"preset\":1}]"
+    }
+  ]
+}

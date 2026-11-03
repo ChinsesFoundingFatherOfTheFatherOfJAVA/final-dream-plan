@@ -1,0 +1,15 @@
+{
+  "url": "https://train.chinajack.com/drillmate/drill/25a1b1c6-ec52-4032-a1d2-6ee2770aa5d3?ex_id=4926ae57fd804adcb55b48ad14950548",
+  "title": "AI实战训练场 · 对练",
+  "text": "正在生成训练报告 AI 正在分析对话表现、能力维度和改进建议 时间超限，未达成目标 未通过原因 本次练习已达到场景设定的 15 分钟时间上限，仍未完成目标，练习已自动结束。 查看报告",
+  "interactive": [
+    {
+      "tag": "BUTTON",
+      "role": null,
+      "type": null,
+      "text": "查看报告",
+      "disabled": false,
+      "className": ""
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "capturedAt": "2026-10-29T07:57:52.761Z",
+  "url": "https://train.chinajack.com/sparring/#/web/drillmate/detail/4fa7a1e92ac94429ad9cfaba38b0e45b",
+  "text": "2 3 我的陪练 首页 话术目录 课程中心 AI对练 AI实战训练场 陪练看板 更多 7 员 工作台 AI实战训练场 主题详情 训考一体 ★ ★ ★ 中等 杰克新销售成套方案演练（复制） 基于杰克股份成套智联解决方案，为新入职销售设计实战演练项目 训练场景 3 个 | 已通过 0 个 | 进度 0 % 全部场景单元 共 3 个 · 点击场景可查看训练准备信息 01 初次拜访：破冰与价值初探 进行中 适用人群：0-6个月销售 / 新入职销售 练习 1 次 最高分 86.3 开始练习 02 深度沟通：应对交付与数据质疑 未开始 适用人群：0-6个月销售 / 新入职销售 开始练习 03 方案呈现：AI数字成套价值量化 未开始 适用人群：0-6个月销售 / 新入职销售 开始练习 评估标准 通过分数：70 分 完成场景练习后，系统将从 6 个维度进行综合评估。 需求挖掘与倾听 价值主张传递 信任建立与亲和力 异议处理与逻辑论证 商业价值量化呈现 推进下一步行动 学习资料 杰克股份成套智联解决方案.pdf PDF · 5M 产品档案 📦 成套智联2.0智能化平台 杰克科技推出的智能化生产运营平台，通过数据、物联、智能及开发能力，助力服装企业实现AI柔性快反与数智化升级。 服装智能制造软硬件一体化解决方案 我的训练记录 1 次 初次拜访：破冰与价值初探 今天 15:50 86.3 分 未通过 查看全部",
+  "controls": [
+    {
+      "text": "更多",
+      "disabled": false
+    },
+    {
+      "text": "员",
+      "disabled": false
+    },
+    {
+      "text": "工作台",
+      "disabled": false
+    },
+    {
+      "text": "AI实战训练场",
+      "disabled": false
+    },
+    {
+      "text": "开始练习",
+      "disabled": false
+    },
+    {
+      "text": "开始练习",
+      "disabled": false
+    },
+    {
+      "text": "开始练习",
+      "disabled": false
+    }
+  ],
+  "snapshot": "[p3 \"AI实战训练场 - 杰克数字人陪练\" | space \"final-dream-drillmate-contract\"(15): 3 managed, 0 untracked — p1 \"训练主题 - 杰克数字人陪练\", p2 \"AI实战训练场 · 对练\", p3* \"AI实战训练场 - 杰克数字人陪练\"]\nroot\n  container\n    svg_root\n    svg_root\n    svg_root\n    svg_root\n  svg_root \"2 3\"\n    text \"2\"\n    text \"3\"\n  container [ref=59]\n    table\n      table_row\n        table_cell\n    container\n      container\n        anchor [ref=60, loc=href:/#/studyindex?norequest=1, url=https://train.chinajack.com/#/studyindex?norequest=1]\n        container\n          anchor [ref=61, loc=href:/study/#/userhome, url=https://train.chinajack.com/study/#/userhome]\n            text \"我的陪练\"\n          anchor [ref=62, loc=href:/main/#/index, url=https://train.chinajack.com/main/#/index]\n            text \"首页\"\n          anchor [ref=63, url=https://train.chinajack.com/kng/#/list?catalogId=&cid=984354a0-d966-41db-80c6-09befd7749ad&order=0&sort=0&type=]\n            text \"话术目录\"\n          anchor [ref=64, url=https://train.chinajack.com/kng/#/list?catalogId=3c112c9a-eaaa-4b16-b247-e8c2458de6df&cid=984354a0-d966-41db-80c6-09befd7749ad&order=0&sort=0&type=]\n            text \"课程中心\"\n          anchor [ref=65, loc=href:/sparring/#/web, url=https://train.chinajack.com/sparring/#/web]\n            text \"AI对练\"\n          anchor [ref=66, loc=href:/sparring/#/web/drillmate, url=https://train.chinajack.com/sparring/#/web/drillmate]\n            text \"AI实战训练场\"\n          anchor [ref=67, url=https://alidocs.dingtalk.com/i/nodes/lyQod3RxJKvNkZKAcorL2ZvaVkb4Mw9r?corpId=dingb832549ed9dd356e&utm_medium=im_card&iframeQuery=utm_medium%3Dim_card%26utm_source%3Dim&utm_scene=person_space&utm_source=im]\n            text \"陪练看板\"\n          button [ref=68]\n            text \"更多\"\n            svg_root\n        container\n          container [ref=69]\n            image\n          svg_root [ref=70]\n          container [ref=71]\n            text \"7\"\n            svg_root\n          button [ref=72]\n            text \"员\"\n          button [ref=73]\n            svg_root\n            text \"工作台\"\n      container\n        container\n          button [ref=74]\n            text \"AI实战训练场\"\n          svg_root\n          text \"主题详情\"\n        container\n          container\n            text \"训考一体\"\n            container\n              container\n                text \"★\"\n                text \"★\"\n                text \"★\"\n              text \"中等\"\n          heading\n            text \"杰克新销售成套方案演练（复制）\"\n          paragraph\n            text \"基于杰克股份成套智联解决方案，为新入职销售设计实战演练项目\"\n          container\n            container\n              text \"训练场景\"\n              text \"3\"\n              text \"个\"\n            text \"|\"\n            container\n              text \"已通过\"\n              text \"0\"\n              text \"个\"\n            text \"|\"\n            container\n              text \"进度\"\n              text \"0\"\n              text \"%\"\n        container\n          container\n            container\n              heading\n                svg_root\n                text \"全部场景单元\"\n              text \"共 3 个 · 点击场景可查看训练准备信息\"\n            container\n              container\n                text \"01\"\n                container\n                  container\n                    heading\n                      text \"初次拜访：破冰与价值初探\"\n                    container\n                      svg_root\n                      text \"进行中\"\n                  container\n                    text \"适用人群：0-6个月销售 / 新入职销售\"\n                    text \"练习 1 次\"\n                container\n                  container\n                    text \"最高分\"\n                    text \"86.3\"\n                  button [ref=75]\n                    text \"开始练习\"\n              container\n                text \"02\"\n                container\n                  container\n                    heading\n                      text \"深度沟通：应对交付与数据质疑\"\n                    container\n                      svg_root\n                      text \"未开始\"\n                  text \"适用人群：0-6个月销售 / 新入职销售\"\n                button [ref=76]\n                  text \"开始练习\"\n              container\n                text \"03\"\n                container\n                  container\n                    heading\n                      text \"方案呈现：AI数字成套价值量化\"\n                    container\n                      svg_root\n                      text \"未开始\"\n                  text \"适用人群：0-6个月销售 / 新入职销售\"\n                button [ref=77]\n                  text \"开始练习\"\n          container\n            container\n              container\n                svg_root\n                text \"评估标准\"\n              container\n                text \"通过分数：\"\n                text \"70\"\n                text \"分\"\n              text \"完成场景练习后，系统将从 6 个维度进行综合评估。\"\n              container\n                text \"需求挖掘与倾听\"\n                text \"价值主张传递\"\n                text \"信任建立与亲和力\"\n                text \"异议处理与逻辑论证\"\n                text \"商业价值量化呈现\"\n                text \"推进下一步行动\"\n            container\n              heading\n                svg_root\n                text \"学习资料\"\n              container\n                svg_root\n                text \"杰克股份成套智联解决方案.pdf\"\n                text \"PDF · 5M\"\n            container\n              heading\n                svg_root\n                text \"产品档案\"\n              container\n                text \"📦\"\n                text \"成套智联2.0智能化平台\"\n                text \"杰克科技推出的智能化生产运营平台，通过数据、物联、智能及开发能力，助力服装企业实现AI柔性快反与数智化升级。\"\n                text \"服装智能制造软硬件一体化解决方案\"\n            container\n              heading\n                svg_root\n                text \"我的训练记录\"\n              text \"1 次\"\n              container\n                text \"初次拜访：破冰与价值初探\"\n                text \"今天 15:50\"\n                text \"86.3 分\"\n                text \"未通过\"\n              container\n                text \"查看全部\"\n                svg_root\n    table\n      table_row\n        table_cell\n"
+}

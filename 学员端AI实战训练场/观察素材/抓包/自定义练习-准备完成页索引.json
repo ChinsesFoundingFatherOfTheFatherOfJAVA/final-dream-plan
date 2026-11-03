@@ -1,0 +1,79 @@
+{
+  "url": "https://train.chinajack.com/drillmate/drill/25a1b1c6-ec52-4032-a1d2-6ee2770aa5d3?ex_id=4926ae57fd804adcb55b48ad14950548",
+  "title": "AI实战训练场 · 对练",
+  "text": "练习准备 初次拜访：破冰与价值初探 · 杰克新销售成套方案演练 练习目标 在首次拜访中建立信任，清晰传达杰克成套智联的核心价值，激发客户进一步沟通的意愿。 沟通指南 1 运用SPIN提问法挖掘客户当前生产痛点 2 准确介绍杰克科技行业地位及成套智联1.0/2.0的核心差异 3 结合客户品类（如衬衫、T恤）简述AI数字成套的降本增效价值 4 成功预约下一次深入方案演示或工厂参观 业务背景 你是一名杰克科技的新入职销售顾问，正在拜访一家中型服装制造企业的生产总监王总。这是你与王总的第一次正式见面。王总刚结束一场紧张的生产例会，时间非常紧迫，只给了你15分钟。此前，该工厂曾接触过其他数字化改造方案，但因落地效果不佳、数据不准、操作复杂等原因而失败，导致王总对新技术持高度怀疑和谨慎态度。你的核心任务是在这极短的时间内，通过专业的提问和精准的价值传递，化解王总的防备心理，建立初步信任，并成功预约下一次深入方案演示或工厂参观的机会。你需要避免陷入技术术语的堆砌，而是聚焦于王总关心的“稳定落地”和“投入产出”，利用SPIN提问法挖掘其当前生产中的具体痛点，并结合杰克成套智联的核心价值（如节省人力、减少面料浪费等）进行针对性回应。 你的角色 销 销售顾问 杰克科技销售顾问 · 25-35岁 你是一名经过专业培训的销售顾问，熟悉杰克科技的品牌地位、成套智联1.0/2.0的核心功能及AI数字成套的价值点。你深知初次拜访的重要性，但也面临着客户时间紧、防备心强的巨大压力。你需要展现出专业、自信且亲和的形象，通过结构化提问和价值主张的清晰表达，赢得客户的初步认可。 AI演员角色 王总 某中型服装厂生产总监 · 40-50岁 王总是客户方生产总监，此前没有直接合作。他刚结束生产例会，时间紧张，对新技术持谨慎态度，最关心方案能否稳定落地以及投入产出。 语言简练，喜欢直接询问数据和结果，反感绕弯子。语气平淡但带有压迫感，会不断通过追问来测试销售的专业度。 评估标准 综合得分由以下各维度得分逐项加权求和 40% 需求挖掘与倾听 评估学员是否能够通过有效提问和倾听，准确识别客户的核心痛点和需求。 30% 价值主张传递 评估学员是否能清晰、准确地传达杰克成套智联的核心价值，并与客户需求关联。 30% 信任建立与亲和力 评估学员是否能在短时间内建立专业形象，赢得客户初步信任。 预计用时 15 分钟 开始练习",
+  "resources": [
+    {
+      "name": "https://api-phx-ali.yunxuetang.cn/udp/users/locale",
+      "initiatorType": "xmlhttprequest",
+      "duration": 90,
+      "transferSize": 0
+    },
+    {
+      "name": "https://api-phx-ali.yunxuetang.cn/udp/users/detail",
+      "initiatorType": "xmlhttprequest",
+      "duration": 117,
+      "transferSize": 0
+    },
+    {
+      "name": "https://api-phx-ali.yunxuetang.cn/xuiappserver/api/session-v2",
+      "initiatorType": "xmlhttprequest",
+      "duration": 61,
+      "transferSize": 0
+    },
+    {
+      "name": "https://api-phx-ali.yunxuetang.cn/xuiappserver/api/agent-v2/code/side_free_user",
+      "initiatorType": "xmlhttprequest",
+      "duration": 58,
+      "transferSize": 0
+    },
+    {
+      "name": "https://api-phx-ali.yunxuetang.cn/sparring/freeprac/members/attend/4926ae57fd804adcb55b48ad14950548",
+      "initiatorType": "xmlhttprequest",
+      "duration": 121,
+      "transferSize": 0
+    },
+    {
+      "name": "https://api-phx-ali.yunxuetang.cn/xuiappserver/api/message/session/25a1b1c6-ec52-4032-a1d2-6ee2770aa5d3?limit=1000",
+      "initiatorType": "xmlhttprequest",
+      "duration": 287,
+      "transferSize": 0
+    },
+    {
+      "name": "https://api-phx-ali.yunxuetang.cn/sparring/freeprac/members/attend/4926ae57fd804adcb55b48ad14950548",
+      "initiatorType": "xmlhttprequest",
+      "duration": 111,
+      "transferSize": 0
+    },
+    {
+      "name": "https://api-phx-ali.yunxuetang.cn/apm-pxy/api/public/ingestion",
+      "initiatorType": "fetch",
+      "duration": 108,
+      "transferSize": 0
+    },
+    {
+      "name": "https://api-phx-ali.yunxuetang.cn/apm-pxy/api/public/ingestion",
+      "initiatorType": "fetch",
+      "duration": 143,
+      "transferSize": 0
+    },
+    {
+      "name": "https://api-phx-ali.yunxuetang.cn/apm-pxy/api/public/ingestion",
+      "initiatorType": "fetch",
+      "duration": 359,
+      "transferSize": 0
+    },
+    {
+      "name": "https://api-phx-ali.yunxuetang.cn/apm-pxy/api/public/ingestion",
+      "initiatorType": "fetch",
+      "duration": 198,
+      "transferSize": 0
+    },
+    {
+      "name": "https://api-phx-ali.yunxuetang.cn/apm-pxy/api/public/ingestion",
+      "initiatorType": "fetch",
+      "duration": 253,
+      "transferSize": 0
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "capturedAt": "2026-10-29T08:11:51.678Z",
+  "url": "https://train.chinajack.com/drillmate/drill/8cad79a4-c6c6-45b5-8d94-6509822ddeac?ex_id=4fa7a1e92ac94429ad9cfaba38b0e45b",
+  "text": "练习准备 初次拜访：破冰与价值初探 · 杰克新销售成套方案演练（复制） 练习目标 在首次拜访中建立信任，清晰传达杰克成套智联的核心价值，激发客户进一步沟通的意愿。 沟通指南 1 运用SPIN提问法挖掘客户当前生产痛点 2 准确介绍杰克科技行业地位及成套智联1.0/2.0的核心差异 3 结合客户品类（如衬衫、T恤）简述AI数字成套的降本增效价值 4 成功预约下一次深入方案演示或工厂参观 业务背景 你是一名杰克科技的新入职销售（0-6个月经验）。今天是你第一次拜访一家中型服装厂的生产总监王总。王总以务实、谨慎著称，且之前接触过类似的数字化方案但效果不佳，因此对新技术持有明显的抵触和观望态度。你只有15分钟的交流时间，目标是打破僵局，建立初步信任，并激发他对杰克成套智联价值的兴趣，从而预约下一次深入演示。 你的角色 杰 杰克科技销售代表 新入职销售（0-6个月经验） · 25-30岁 你刚加入杰克科技不久，充满热情但经验尚浅。你深知杰克成套智联的价值，但面对像王总这样务实且有顾虑的客户，你感到些许压力。你的任务是证明自己的专业度，并为团队赢得下一个机会。 AI演员角色 王总 企业中层管理者，技术出身，注重实际产出和成本控制 · 40-45岁 王总所在的工厂主要生产中高档衬衫和T恤。两年前，他曾引入过一家知名公司的数字化方案，但因数据不准、系统不稳定、员工抵触等原因，最终沦为摆设，还浪费了不少人力去维护。这件事让他对“智能化”产生了深深的疑虑。最近，老板要求他再次考察降本增效的方案，他内心矛盾：既希望找到真正有效的工具，又害怕重蹈覆辙。 语速中等偏快，喜欢用短句，注重事实和数据，偶尔会打断冗长的解释 评估标准 综合得分由以下各维度得分逐项加权求和 40% 需求挖掘与倾听 评估学员是否能够通过有效提问和倾听，准确识别客户的核心痛点和需求。 30% 价值主张传递 评估学员是否能清晰、准确地传达杰克成套智联的核心价值，并与客户需求关联。 30% 信任建立与亲和力 评估学员是否能在短时间内建立专业形象，赢得客户初步信任。 预计用时 15 分钟 开始练习 本次练习有时间限制 请确认后再开始 限时 15 分钟 点击确认开始后将立即开始倒计时，到时自动结束并生成报告。 请确保有足够时间，保持良好状态以便更好地进行练习。 本次练习需达成练习目标，且综合得分达到最低通过分数 70 分。 再看看 确认开始",
+  "controls": [
+    {
+      "text": "",
+      "disabled": false,
+      "className": ""
+    },
+    {
+      "text": "开始练习",
+      "disabled": false,
+      "className": ""
+    },
+    {
+      "text": "再看看",
+      "disabled": false,
+      "className": ""
+    },
+    {
+      "text": "确认开始",
+      "disabled": false,
+      "className": ""
+    }
+  ],
+  "snapshot": "[p3 \"AI实战训练场 · 对练\" | space \"final-dream-drillmate-contract\"(15): 3 managed, 0 untracked — p1 \"训练主题 - 杰克数字人陪练\", p2 \"AI实战训练场 · 对练\", p3* \"AI实战训练场 · 对练\"]\nroot\n  container [ref=88]\n    container\n      button [ref=89]\n        svg_root\n      container\n        text \"练习准备\"\n        container\n          text \"初次拜访：破冰与价值初探\"\n          text \"· 杰克新销售成套方案演练（复制）\"\n    container\n      container\n        heading\n          svg_root\n          text \"练习目标\"\n        paragraph\n          text \"在首次拜访中建立信任，清晰传达杰克成套智联的核心价值，激发客户进一步沟通的意愿。\"\n      container\n        heading\n          svg_root\n          text \"沟通指南\"\n        container\n          container\n            text \"1\"\n            text \"运用SPIN提问法挖掘客户当前生产痛点\"\n          container\n            text \"2\"\n            text \"准确介绍杰克科技行业地位及成套智联1.0/2.0的核心差异\"\n          container\n            text \"3\"\n            text \"结合客户品类（如衬衫、T恤）简述AI数字成套的降本增效价值\"\n          container\n            text \"4\"\n            text \"成功预约下一次深入方案演示或工厂参观\"\n      container\n        heading\n          svg_root\n          text \"业务背景\"\n        paragraph\n          text \"你是一名杰克科技的新入职销售（0-6个月经验）。今天是你第一次拜访一家中型服装厂的生产总监王总。王总以务实、谨慎著称，且之前接触过类似的�...\"\n      container\n        container\n          heading\n            svg_root\n            text \"你的角色\"\n          container\n            text \"杰\"\n            container\n              text \"杰克科技销售代表\"\n              text \"新入职销售（0-6个月经验） · 25-30岁\"\n        container\n          heading\n            svg_root\n            text \"AI演员角色\"\n          container\n            image\n            container\n              text \"王总\"\n              text \"企业中层管理者，技术出身，注重实际产出和成本控制 · 40-45岁\"\n  container\n    container\n      svg_root\n      text \"预计用时\"\n      text \"15\"\n      text \"分钟\"\n    button [ref=90]\n      text \"开始练习\"\n  container\n    container\n      svg_root\n      text \"本次练习有时间限制\"\n      text \"请确认后再开始\"\n    container\n      text \"限时\"\n      text \"15\"\n      text \"分钟\"\n    container\n      text \"点击确认开始后将立即开始倒计时，到时自动结束并生成报告。\"\n      text \"请确保有足够时间，保持良好状态以便更好地进行练习。\"\n      container\n        text \"本次练习需达成练习目标，且综合得分达到最低通过分数 70 分\"\n        text \"。\"\n    container\n      button [ref=91]\n        text \"再看看\"\n      button [ref=92]\n        text \"确认开始\"\n"
+}

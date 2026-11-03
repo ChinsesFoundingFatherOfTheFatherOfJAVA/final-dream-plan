@@ -1,0 +1,86 @@
+{
+  "capturedAt": "2026-10-29T07:45:48.703Z",
+  "url": "https://train.chinajack.com/sparring/#/web/drillmate",
+  "title": "AI实战训练场 - 杰克数字人陪练",
+  "text": "2 3 我的陪练 首页 话术目录 课程中心 AI对练 AI实战训练场 陪练看板 更多 6 员 工作台 员 管理员 青铜 杰克科技股份 0.86 h 累计学时 4 次 练习次数 3 个 参与主题 220 分 总荣誉分 竞技场 PK 对战 荣誉榜 查看排名 练习历程 历史记录 我的训练主题 3 个 杰克新销售成套方案演练（复制） 进行中 3 个场景 · 已通过 0 个 进度 0% 杰克新销售成套方案演练 进行中 3 个场景 · 已通过 0 个 进度 0% 柔性智造销售话术训练 进行中 5 个场景 · 已通过 0 个 进度 0% 更多学习机会 可加入或申请新的训练主题 暂无可加入的主题 最近练习 查看全部 初次拜访：破冰与价值初探 已通过 主题：杰克新销售成套方案演练 77.5 分 今天 12:14 深度沟通：应对交付与数据质疑 未通过 主题：杰克新销售成套方案演练 35 分 今天 11:47 初次拜访：破冰与价值初探 已通过 主题：杰克新销售成套方案演练 88.7 分 今天 11:38 初次拜访：破冰与价值初探 未通过 主题：杰克新销售成套方案演练 0 分 1天前",
+  "controls": [
+    {
+      "tag": "A",
+      "text": "",
+      "href": "/#/studyindex?norequest=1",
+      "disabled": false,
+      "className": "init-a-style yxtbiz-nav-top-stu__logo hand"
+    },
+    {
+      "tag": "A",
+      "text": "我的陪练",
+      "href": "/study/#/userhome",
+      "disabled": false,
+      "className": "init-a-style yxtbiz-nav-top-stu__menu-name yxtbiz-nav-top-stu__menu-name"
+    },
+    {
+      "tag": "A",
+      "text": "首页",
+      "href": "/main/#/index",
+      "disabled": false,
+      "className": "init-a-style yxtbiz-nav-top-stu__menu-name yxtbiz-nav-top-stu__menu-name yxtbiz-nav-top-stu__menu-name--more"
+    },
+    {
+      "tag": "A",
+      "text": "话术目录",
+      "href": "https://train.chinajack.com/kng/#/list?catalogId=&cid=984354a0-d966-41db-80c6-09befd7749ad&order=0&sort=0&type=",
+      "disabled": false,
+      "className": "init-a-style yxtbiz-nav-top-stu__menu-name yxtbiz-nav-top-stu__menu-name"
+    },
+    {
+      "tag": "A",
+      "text": "课程中心",
+      "href": "https://train.chinajack.com/kng/#/list?catalogId=3c112c9a-eaaa-4b16-b247-e8c2458de6df&cid=984354a0-d966-41db-80c6-09befd7749ad&order=0&sort=0&type=",
+      "disabled": false,
+      "className": "init-a-style yxtbiz-nav-top-stu__menu-name yxtbiz-nav-top-stu__menu-name"
+    },
+    {
+      "tag": "A",
+      "text": "AI对练",
+      "href": "/sparring/#/web",
+      "disabled": false,
+      "className": "init-a-style yxtbiz-nav-top-stu__menu-name yxtbiz-nav-top-stu__menu-name"
+    },
+    {
+      "tag": "A",
+      "text": "AI实战训练场",
+      "href": "/sparring/#/web/drillmate",
+      "disabled": false,
+      "className": "init-a-style yxtbiz-nav-top-stu__menu-name yxtbiz-nav-top-stu__menu-name"
+    },
+    {
+      "tag": "A",
+      "text": "陪练看板",
+      "href": "https://alidocs.dingtalk.com/i/nodes/lyQod3RxJKvNkZKAcorL2ZvaVkb4Mw9r?corpId=dingb832549ed9dd356e&utm_medium=im_card&iframeQuery=utm_medium%3Dim_card%26utm_source%3Dim&utm_scene=person_space&utm_source=im",
+      "disabled": false,
+      "className": "init-a-style yxtbiz-nav-top-stu__menu-name yxtbiz-nav-top-stu__menu-name"
+    },
+    {
+      "tag": "SPAN",
+      "text": "更多",
+      "href": null,
+      "disabled": false,
+      "className": "yxtbiz-nav-top-stu__menu-name hover-primary-6-i yxtf-dropdown-selfdefine"
+    },
+    {
+      "tag": "DIV",
+      "text": "员",
+      "href": null,
+      "disabled": false,
+      "className": "yxtf-portrait hand yxtbiz-nav-top-stu__my-avatar yxt-portrait--small yxtf-dropdown-selfdefine"
+    },
+    {
+      "tag": "SPAN",
+      "text": "工作台",
+      "href": null,
+      "disabled": false,
+      "className": "hover-primary-6-i color-gray-9 yxtf-dropdown-selfdefine"
+    }
+  ],
+  "snapshot": "[p3 \"AI实战训练场 - 杰克数字人陪练\" | space \"final-dream-drillmate-contract\"(15): 3 managed, 0 untracked — p1 \"训练主题 - 杰克数字人陪练\", p2 \"AI实战训练场 · 对练\", p3* \"AI实战训练场 - 杰克数字人陪练\"]\nroot\n  container\n    svg_root\n    svg_root\n    svg_root\n    svg_root\n    svg_root\n  svg_root \"2 3\"\n    text \"2\"\n    text \"3\"\n  container [ref=1]\n    table\n      table_row\n        table_cell\n    container\n      container\n        anchor [ref=2, loc=href:/#/studyindex?norequest=1, url=https://train.chinajack.com/#/studyindex?norequest=1]\n        container\n          anchor [ref=3, loc=href:/study/#/userhome, url=https://train.chinajack.com/study/#/userhome]\n            text \"我的陪练\"\n          anchor [ref=4, loc=href:/main/#/index, url=https://train.chinajack.com/main/#/index]\n            text \"首页\"\n          anchor [ref=5, url=https://train.chinajack.com/kng/#/list?catalogId=&cid=984354a0-d966-41db-80c6-09befd7749ad&order=0&sort=0&type=]\n            text \"话术目录\"\n          anchor [ref=6, url=https://train.chinajack.com/kng/#/list?catalogId=3c112c9a-eaaa-4b16-b247-e8c2458de6df&cid=984354a0-d966-41db-80c6-09befd7749ad&order=0&sort=0&type=]\n            text \"课程中心\"\n          anchor [ref=7, loc=href:/sparring/#/web, url=https://train.chinajack.com/sparring/#/web]\n            text \"AI对练\"\n          anchor [ref=8, loc=href:/sparring/#/web/drillmate, url=https://train.chinajack.com/sparring/#/web/drillmate]\n            text \"AI实战训练场\"\n          anchor [ref=9, url=https://alidocs.dingtalk.com/i/nodes/lyQod3RxJKvNkZKAcorL2ZvaVkb4Mw9r?corpId=dingb832549ed9dd356e&utm_medium=im_card&iframeQuery=utm_medium%3Dim_card%26utm_source%3Dim&utm_scene=person_space&utm_source=im]\n            text \"陪练看板\"\n          button [ref=10]\n            text \"更多\"\n            svg_root\n        container\n          container [ref=11]\n            image\n          svg_root [ref=12]\n          container [ref=13]\n            text \"6\"\n            svg_root\n          button [ref=14]\n            text \"员\"\n          button [ref=15]\n            svg_root\n            text \"工作台\"\n      container\n        container\n          container\n            text \"员\"\n            text \"管理员\"\n            container\n              image\n              text \"青铜\"\n            text \"杰克科技股份\"\n          container\n            container\n              container\n                text \"0.86\"\n                text \"h\"\n              text \"累计学时\"\n            container\n              container\n                text \"4\"\n                text \"次\"\n              text \"练习次数\"\n            container\n              container\n                text \"3\"\n                text \"个\"\n              text \"参与主题\"\n            container\n              container\n                text \"220\"\n                text \"分\"\n              text \"总荣誉分\"\n        container\n          container\n            container\n              image\n              container\n                text \"竞技场\"\n                text \"PK 对战\"\n            container\n              image\n              container\n                text \"荣誉榜\"\n                text \"查看排名\"\n            container\n              image\n              container\n                text \"练习历程\"\n                text \"历史记录\"\n          container\n            container\n              text \"我的训练主题\"\n              text \"3 个\"\n            container\n              container\n                container\n                  text \"杰克新销售成套方案演练（复制）\"\n                  text \"进行中\"\n                text \"3 个场景 · 已通过 0 个\"\n                text \"进度 0%\"\n              container\n                container\n                  text \"杰克新销售成套方案演练\"\n                  text \"进行中\"\n                text \"3 个场景 · 已通过 0 个\"\n                text \"进度 0%\"\n              container\n                container\n                  text \"柔性智造销售话术训练\"\n                  text \"进行中\"\n                text \"5 个场景 · 已通过 0 个\"\n                text \"进度 0%\"\n          container\n            text \"更多学习机会\"\n            text \"可加入或申请新的训练主题\"\n            table\n              table_row\n                table_cell\n            svg_root\n            text \"暂无可加入的主题\"\n            table\n              table_row\n                table_cell\n        container\n          container\n            text \"最近练习\"\n            container\n              text \"查看全部\"\n              svg_root\n          container\n            container\n              container\n                text \"初次拜访：破冰与价值初探\"\n                text \"已通过\"\n              text \"主题：杰克新销售成套方案演练\"\n              container\n                text \"77.5 分\"\n                text \"今天 12:14\"\n            container\n              container\n                text \"深度沟通：应对交付与数据质疑\"\n                text \"未通过\"\n              text \"主题：杰克新销售成套方案演练\"\n              container\n                text \"35 分\"\n                text \"今天 11:47\"\n            container\n              container\n                text \"初次拜访：破冰与价值初探\"\n                text \"已通过\"\n              text \"主题：杰克新销售成套方案演练\"\n              container\n                text \"88.7 分\"\n                text \"今天 11:38\"\n            container\n              container\n                text \"初次拜访：破冰与价值初探\"\n                text \"未通过\"\n              text \"主题：杰克新销售成套方案演练\"\n              container\n                text \"0 分\"\n                text \"1天前\"\n    table\n      table_row\n        table_cell\n"
+}

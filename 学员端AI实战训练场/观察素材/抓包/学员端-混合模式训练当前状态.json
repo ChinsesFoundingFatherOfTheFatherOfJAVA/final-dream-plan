@@ -1,0 +1,71 @@
+{
+  "capturedAt": "2026-10-29T08:26:32.138Z",
+  "url": "https://train.chinajack.com/drillmate/drill/8cad79a4-c6c6-45b5-8d94-6509822ddeac?ex_id=4fa7a1e92ac94429ad9cfaba38b0e45b",
+  "text": "02:21 95% 混合 （抬头看了一眼手表，语气平淡略带疏离）“你好，请进。我只有15分钟，后面还有个生产会。之前也有几家做过类似方案的来聊过，说实话，效果都不理想。你简单说说，杰克有什么不一样的？” 王总您好，您刚才提到之前方案不理想，最核心是数据不准、现场不愿用，还是落地后没人持续维护？ 杰 你说的这三个问题，全中。两年前上的那套系统，裁片扫码经常错，计件工资算出来工人天天找我闹，最后系统直接没人碰了，白扔了几十万。 明白。您更想先解决停机返工工时，还是面料浪费？这两块现在有量化数据吗？ 杰 我们现在面料浪费率大概在5%左右，返工工时每个月差不多要占总工时的8%。但说实话，这些数字都是车间报上来的，准不准我心里也没底。你们的系统真能把这些数算准？ 按一条线测算，如果返工和面料浪费各降10%，一年能释放多少工时和材料成本？我们先做两周数据验证，不达标不扩展。 杰 两周验证？这个说法倒是有点意思，不像之前那些一上来就让我签全年合同的。那你先说说，这个10%的降幅是怎么算出来的？还有，这两周里你们怎么保证采上来的数据是准的？ 杰克从缝制设备起家，优势是设备端直采和数据闭环。江苏伍佳也是先单线验证、指标达标再复制。 杰 江苏伍佳？我听说过，他们也是做中高档衬衫的对吧？那你具体说说，他们当时验证的时候，数据准确率最后做到了多少？还有，最后实际降本的效果，有没有具体的数？ 我建议周五带技术同事现场看一条线，用您的真实报表做投入产出测算；数字对不上就不推进。您下午三点方便吗？ 杰 行，周五下午三点可以。你到时候把技术同事带上，最好能把伍佳当时的验证报告也带来，我要看看他们当时的原始数据。对了，别带一堆宣传册，我只看实际跑出来的数。 理解。那我把裁片追踪也纳入试点：每片编码、工位流转和计件记录都可核验。先解决这两项，您看周五还是下周一方便？ 杰 就按刚才说的周五下午三点，不用改时间。裁片追踪这块你到时候重点说说，我们现在车间裁片堆得乱七八糟，找一片要半天，工人计件全靠手工记，错漏特别多。你周五来的时候，最好能针对这个问题给我个具体的落地思路。 内容由AI生成 背景介绍 初次拜访：破冰与价值初探 角色介绍 你的角色 杰 杰克科技销售代表（新入职销售（0-6个月经验）） AI扮演角色 王总（企业中层管理者，技术出身，注重实际产出和成本控制） 40-45岁，务实、谨慎、直接、略带防备，王总所在的工厂主要生产中高档衬衫和T恤。两年前，他曾引入过一家知名公司的数字化方案，但因数据不准、系统不稳定、员工抵触等原因，最终沦为摆设，还浪费了不少人力去维护。这件事让他对“智能化”产生了深深的疑虑。最近，老板要求他再次考察降本增效的方案，他内心矛盾：既希望找到真正有效的工具，又害怕重蹈覆辙。 业务背景 你是一名杰克科技的新入职销售（0-6个月经验）。今天是你第一次拜访一家中型服装厂的生产总监王总。王总以务实、谨慎著称，且之前接触过类似的数字化方案但效果不佳，因此对新技术持有明显的抵触和观望态度。你只有15分钟的交流时间，目标是打破僵局，建立初步信任，并激发他对杰克成套智联价值的兴趣，从而预约下一次深入演示。 对话目标 在首次拜访中建立信任，清晰传达杰克成套智联的核心价值，激发客户进一步沟通的意愿。 沟通指南 1 运用SPIN提问法挖掘客户当前生产痛点 2 准确介绍杰克科技行业地位及成套智联1.0/2.0的核心差异 3 结合客户品类（如衬衫、T恤）简述AI数字成套的降本增效价值 4 成功预约下一次深入方案演示或工厂参观 评估标准 综合得分由以下各维度得分逐项加权求和 需求挖掘与倾听 40% 价值主张传递 30% 信任建立与亲和力 30% 练习进度 对话轮次 6 轮 剩余时间 02:21/15:00 目标达成度 95%",
+  "controls": [
+    {
+      "tag": "BUTTON",
+      "text": "",
+      "ariaLabel": "退出练习",
+      "title": "退出练习",
+      "disabled": false
+    },
+    {
+      "tag": "BUTTON",
+      "text": "混合",
+      "ariaLabel": "录音识别语言：混合",
+      "title": "切换录音识别语言",
+      "disabled": false
+    },
+    {
+      "tag": "BUTTON",
+      "text": "",
+      "ariaLabel": "聊天记录",
+      "title": null,
+      "disabled": false
+    },
+    {
+      "tag": "BUTTON",
+      "text": "",
+      "ariaLabel": "场景介绍",
+      "title": null,
+      "disabled": false
+    },
+    {
+      "tag": "TEXTAREA",
+      "text": "输入你想说的内容",
+      "ariaLabel": null,
+      "title": null,
+      "disabled": false
+    },
+    {
+      "tag": "BUTTON",
+      "text": "",
+      "ariaLabel": "继续播报",
+      "title": "继续播报",
+      "disabled": true
+    },
+    {
+      "tag": "BUTTON",
+      "text": "",
+      "ariaLabel": "语音输入",
+      "title": "语音输入",
+      "disabled": false
+    },
+    {
+      "tag": "BUTTON",
+      "text": "",
+      "ariaLabel": "发送",
+      "title": "发送",
+      "disabled": true
+    },
+    {
+      "tag": "BUTTON",
+      "text": "",
+      "ariaLabel": "关闭",
+      "title": "关闭（全屏沉浸）",
+      "disabled": false
+    }
+  ],
+  "snapshot": "[p3 \"AI实战训练场 · 对练\" | space \"final-dream-drillmate-contract\"(15): 3 managed, 0 untracked — p1 \"训练主题 - 杰克数字人陪练\", p2 \"AI实战训练场 · 对练\", p3* \"AI实战训练场 · 对练\"]\nroot\n  container\n    container\n      image\n      button \"退出练习\" [ref=93, loc=css:button[aria-label=\"退出练习\"]]\n        svg_root\n      container\n        container\n          svg_root\n          text \"02:21\"\n        container\n          svg_root\n          text \"95\"\n          text \"%\"\n        button \"录音识别语言：混合\" [ref=94, loc=css:button[aria-label=\"录音识别语言：混合\"]]\n          svg_root\n          text \"混合\"\n          svg_root\n        button \"聊天记录\" [ref=95, loc=css:button[aria-label=\"聊天记录\"]]\n          svg_root\n          text \"聊天记录\"\n        button \"场景介绍\" [ref=96, loc=css:button[aria-label=\"场景介绍\"]]\n          svg_root\n          text \"场景介绍\"\n      image\n      container [ref=103]\n        container\n          text \"理解。那我把裁片追踪也纳入试点：每片编码、工位流转和计件记录都可核验。先解决这两项，您看周五还是下周一方便？\"\n          text \"杰\"\n        container\n          image\n          text \"就按刚才说的周五下午三点，不用改时间。裁片追踪这块你到时候重点说说，我们现在车间裁片堆得乱七八糟，找一片要半天，工人计件全靠手工记，�...\"\n    container\n      container\n        textbox [ref=97, loc=css:textarea[placeholder=\"输入你想说的内容\"]]\n          text \"输入你想说的内容\"\n        container\n          button \"继续播报\" [ref=98, loc=css:button[aria-label=\"继续播报\"]]\n            svg_root\n          container\n            button \"语音输入\" [ref=99, loc=css:button[aria-label=\"语音输入\"]]\n              svg_root\n            button \"发送\" [ref=100, loc=css:button[aria-label=\"发送\"]]\n              svg_root\n      text \"内容由AI生成\"\n  container\n    container\n      text \"背景介绍\"\n      button \"关闭\" [ref=101, loc=css:button[aria-label=\"关闭\"]]\n        svg_root\n    container [ref=102]\n      text \"初次拜访：破冰与价值初探\"\n      container\n        container\n          svg_root\n          text \"角色介绍\"\n        container\n          container\n            text \"你的角色\"\n            container\n              text \"杰\"\n              container\n                text \"杰克科技销售代表\"\n                text \"（新入职销售（0-6个月经验））\"\n          container\n            text \"AI扮演角色\"\n            container\n              image\n              container\n                text \"王总\"\n                text \"（企业中层管理者，技术出身，注重实际产出和成本控制）\"\n            paragraph\n              text \"40-45岁，务实、谨慎、直接、略带防备，王总所在的工厂主要生产中高档衬衫和T恤。两年前，他曾引入过一家知名公司的数字化方案，但因数据不准、�...\"\n      container\n        container\n          svg_root\n          text \"业务背景\"\n        paragraph\n          text \"你是一名杰克科技的新入职销售（0-6个月经验）。今天是你第一次拜访一家中型服装厂的生产总监王总。王总以务实、谨慎著称，且之前接触过类似的�...\"\n      container\n        svg_root\n        text \"对话目标\"\n"
+}

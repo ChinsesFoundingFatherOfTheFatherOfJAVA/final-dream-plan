@@ -1,0 +1,69 @@
+{
+  "capturedAt": "2026-10-29T09:01:58.932Z",
+  "clicked": 2,
+  "url": "https://train.chinajack.com/sparring/#/freeSimulate/image/4fa7a1e92ac94429ad9cfaba38b0e45b/fca2c7ad-f5bb-4f62-85cc-d591d1a5f1ea",
+  "text": "2 3 首页AI实战训练场岗位中心平台运营我的企业报表中心 绚星云学习 理员 管理员 工作台 AI实战训练场 训练主题 数据分析 素材库 设置 训练主题 / 训练详情 / 主题画像：杰克新销售成套方案演练（复制） 员 管理员 - 杰克科技股份 入职日期 - 训练主题 杰克新销售成套方案演练（复制） 主题核心数据 练习次数 2 次 累计时长 18分钟9秒 平均得分 87.05 通过率 0% 排名 第 1 / 1 名 百分位 前 100% 主题进度 场景通过 0 / 3 连续练习 1 天 本周练习 2 次 2 练习总次数 87.05 平均分 87.8 最高分 0% 通过率 18m9s 总练习时长 综合分析 对练记录 场景分布 对练得分走势 0 25 50 75 100 及格线 70 86.3 初次#1 87.8 初次#2 评估维度得分 需求挖掘与倾… 92 价值主张传递 78.5 信任建立与亲… 89 各维度得分与趋势 需求挖掘与倾听 92 价值主张传递 78.5 信任建立与亲和力 89 练习类型分布 案例学习 2次 (100%) 随机练习 0次 (0%) 自定义练习 0次 (0%) 每周练习量 0 W1 0 W2 0 W3 2 W4 场景通过率 0/3 已通过 平台操作 答疑助手",
+  "controls": [
+    {
+      "text": "工作台",
+      "disabled": false,
+      "className": "hover-primary-6-i color-gray-9 yxt-dropdown-selfdefine"
+    },
+    {
+      "text": "训练主题",
+      "disabled": false,
+      "className": ""
+    },
+    {
+      "text": "训练主题",
+      "disabled": false,
+      "className": "yxt-collapse-item__header is-active"
+    },
+    {
+      "text": "数据分析",
+      "disabled": false,
+      "className": ""
+    },
+    {
+      "text": "数据分析",
+      "disabled": false,
+      "className": "yxt-collapse-item__header"
+    },
+    {
+      "text": "素材库",
+      "disabled": false,
+      "className": ""
+    },
+    {
+      "text": "素材库",
+      "disabled": false,
+      "className": "yxt-collapse-item__header"
+    },
+    {
+      "text": "设置",
+      "disabled": false,
+      "className": ""
+    },
+    {
+      "text": "设置",
+      "disabled": false,
+      "className": "yxt-collapse-item__header"
+    },
+    {
+      "text": "综合分析",
+      "disabled": false,
+      "className": "pb-3 text-base font-medium border-b-2 transition-colors border-blue-600 text-blue-600"
+    },
+    {
+      "text": "对练记录",
+      "disabled": false,
+      "className": "pb-3 text-base font-medium border-b-2 transition-colors border-transparent text-slate-600 hover:text-blue-600"
+    },
+    {
+      "text": "场景分布",
+      "disabled": false,
+      "className": "pb-3 text-base font-medium border-b-2 transition-colors border-transparent text-slate-600 hover:text-blue-600"
+    }
+  ],
+  "snapshot": "[p1 \"训练主题 - 杰克数字人陪练\" | space \"final-dream-drillmate-contract\"(15): 3 managed, 0 untracked — p1* \"训练主题 - 杰克数字人陪练\", p2 \"AI实战训练场 · 对练\", p3 \"AI实战训练场 - 杰克数字人陪练\"]\nroot\n  container\n    container\n      container\n        container\n          container [ref=10]\n            text \"AI实战训练场\"\n          tablist\n            tab\n              button [ref=11]\n                svg_root\n                container [ref=12]\n                  anchor [ref=13, url=https://train.chinajack.com/sparring/#/freesimulate/topic]\n                    text \"训练主题\"\n            tab\n              button [ref=14]\n                svg_root\n                container [ref=15]\n                  text \"数据分析\"\n            tab\n              button [ref=16]\n                svg_root\n                container [ref=17]\n                  text \"素材库\"\n            tab\n              button [ref=18]\n                svg_root\n                container [ref=19]\n                  text \"设置\"\n        svg_root\n      container\n        container\n          container\n            container\n              text \"员\"\n              heading\n                text \"管理员\"\n              paragraph\n                text \"-\"\n                text \"杰克科技股份\"\n            container\n              container\n                text \"入职日期\"\n                text \"-\"\n              container\n                text \"训练主题\"\n                anchor [ref=90, url=https://train.chinajack.com/sparring/#/freeSimulate/theme/4fa7a1e92ac94429ad9cfaba38b0e45b]\n                  text \"杰克新销售成套方案演练（复制）\"\n          container\n            container\n              text \"主题核心数据\"\n              svg_root [ref=91]\n            container\n              container\n                text \"练习次数\"\n                svg_root [ref=92]\n              text \"2 次\"\n            container\n              container\n                text \"累计时长\"\n                svg_root [ref=93]\n              text \"18分钟9秒\"\n            container\n              container\n                text \"平均得分\"\n                svg_root [ref=94]\n              text \"87.05\"\n            container\n              container\n                text \"通过率\"\n                svg_root [ref=95]\n              text \"0%\"\n            container\n              container\n                text \"排名\"\n                svg_root [ref=96]\n              text \"第 1 / 1 名\"\n            container\n              container\n                text \"百分位\"\n                svg_root [ref=97]\n              text \"前 100%\"\n            container\n              text \"主题进度\"\n              container\n                container\n                  text \"场景通过\"\n                  svg_root [ref=98]\n                text \"0 / 3\"\n              container\n                container\n                  text \"连续练习\"\n                  svg_root [ref=99]\n                text \"1 天\"\n              container\n                container\n                  text \"本周练习\"\n                  svg_root [ref=100]\n                text \"2 次\"\n        container\n          container\n            container\n              text \"2\"\n              container\n                text \"练习总次数\"\n                svg_root [ref=101]\n            container\n              text \"87.05\"\n              container\n                text \"平均分\"\n                svg_root [ref=102]\n            container\n              text \"87.8\"\n              container\n                text \"最高分\"\n                svg_root [ref=103]\n            container\n              text \"0%\"\n              container\n                text \"通过率\"\n                svg_root [ref=104]\n            container\n              text \"18m9s\"\n              container\n                text \"总练习时长\"\n                svg_root [ref=105]\n          container\n            button [ref=106]\n              text \"综合分析\"\n            button [ref=107]\n              text \"对练记录\"\n            button [ref=108]\n              text \"场景分布\"\n          container\n            container\n              container\n                container\n                  text \"对练得分走势\"\n                  svg_root [ref=109]\n                svg_root \"0 25 50 75 100 及格线 70 86.3 初次#1 87.8 初次#2\"\n                  text \"0\"\n                  text \"25\"\n                  text \"50\"\n                  text \"75\"\n                  text \"100\"\n                  text \"及格线 70\"\n                  text \"86.3\"\n                  text \"初次#1\"\n                  text \"87.8\"\n                  text \"初次#2\"\n              container\n                container\n                  text \"评估维度得分\"\n                  svg_root [ref=110]\n                svg_root \"需求挖掘与倾… 92 价值主张传递 78.5 信任建立与亲… 89\"\n                  text \"需求挖掘与倾… 92\"\n                  text \"价值主张传递 78.5\"\n                  text \"信任建立与亲… 89\"\n            container\n              container\n                text \"各维度得分与趋势\"\n                svg_root [ref=111]\n              container\n                container\n                  text \"需求挖掘与倾听\"\n                  text \"92\"\n                container\n                  text \"价值主张传递\"\n                  text \"78.5\"\n                container\n                  text \"信任建立与亲和力\"\n                  text \"89\"\n            container\n              container\n                container\n                  text \"练习类型分布\"\n                  svg_root [ref=112]\n                container\n                  container\n                    text \"案例学习\"\n                    text \"2次 (100%)\"\n                  container\n                    text \"随机练习\"\n                    text \"0次 (0%)\"\n              container\n                container\n                  text \"每周练习量\"\n                  svg_root [ref=113]\n                container\n                  container\n                    text \"0\"\n                    text \"W1\"\n                  container\n                    text \"0\"\n                    text \"W2\"\n                  container\n                    text \"0\"\n                    text \"W3\"\n                  container\n                    text \"2\"\n                    text \"W4\"\n              container\n                container\n                  text \"场景通过率\"\n                  svg_root [ref=114]\n                container\n                  svg_root\n                  container\n                    text \"0/3\"\n                    text \"已通过\"\n    container\n      image\n      container\n        text \"平台操作\"\n        text \"答疑助手\"\n  iframe [ref=42]\n    root\n"
+}

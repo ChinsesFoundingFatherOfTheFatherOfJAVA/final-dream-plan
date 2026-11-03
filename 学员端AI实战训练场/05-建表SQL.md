@@ -1,0 +1,438 @@
+# AI实战训练场学员端与训考闭环建表 SQL
+
+> 版本：v1.1 ｜ 日期：2026-10-30
+> 数据库：MySQL 8 / `final_dream`
+> 原则：新增表使用 `CREATE TABLE IF NOT EXISTS`；现有表使用迁移器判断列后再 `ALTER`，禁止重复执行失败。
+
+## 1. 迁移顺序
+
+1. 增加主题版本指针。
+2. 建 `act_theme_settings`，把每个主题当前版本的设置迁入。
+3. 为内容版本补充发布元数据。
+4. 建产品档案、材料快照、参与关系、attempt、消息、报告和统计表。
+5. 回填 `published_version_no/working_version_no`。
+6. 停止旧代码“保存设置升版”和“创建主题即 v1”的写入路径。
+
+## 2. 主题与版本
+
+```sql
+-- MySQL 8 不支持 ADD COLUMN IF NOT EXISTS；由 SchemaMigrationRunner 判断。
+ALTER TABLE act_theme
+  ADD COLUMN working_version_no INT NULL COMMENT '0=hidden working before first publish; >0=current working/published base',
+  ADD COLUMN published_version_no INT NULL COMMENT 'published content version; null before first publish',
+  ADD COLUMN first_published_at DATETIME NULL,
+  ADD COLUMN content_hash VARCHAR(64) NULL COMMENT 'published content hash';
+
+ALTER TABLE act_theme_version
+  ADD COLUMN source_type VARCHAR(32) NOT NULL DEFAULT 'initial_publish'
+    COMMENT 'legacy_working/legacy_content/initial_publish/ai_confirm/manual_republish',
+  ADD COLUMN source_artifact_id VARCHAR(32) NULL,
+  ADD COLUMN source_artifact_version INT NULL,
+  ADD COLUMN content_hash VARCHAR(64) NULL,
+  ADD COLUMN published_at DATETIME NULL,
+  ADD COLUMN published_by VARCHAR(64) NULL;
+
+-- 旧字段仍然存在，但新代码不再用它们控制设置或产生版本。
+-- theme_name/theme_desc 在版本行仅作历史显示快照。
+```
+
+回填：
+
+```sql
+UPDATE act_theme t
+SET t.working_version_no = COALESCE(
+      t.working_version_no,
+      CASE WHEN t.status IN (3, 4, 5) THEN t.current_version_no ELSE 0 END
+    ),
+    t.published_version_no = CASE
+      WHEN t.status IN (3, 4, 5)
+        THEN COALESCE(t.published_version_no, t.current_version_no)
+      ELSE t.published_version_no
+    END,
+    t.first_published_at = CASE
+      WHEN t.status IN (3, 4, 5)
+        THEN COALESCE(t.first_published_at, t.updated_at)
+      ELSE t.first_published_at
+    END
+WHERE t.working_version_no IS NULL
+   OR (t.status IN (3, 4, 5) AND t.published_version_no IS NULL);
+```
+
+从未发布主题应把旧 `current_version_no` 的内容复制为隐藏 `v0`，再把 `working_version_no` 设为 0。迁移器必须同时复制场景和维度，保持 `sort_order` 对应；不得把旧草稿直接当作公开 `v1`。
+
+## 3. 全局设置
+
+```sql
+CREATE TABLE IF NOT EXISTS act_theme_settings (
+  theme_id                    VARCHAR(32) NOT NULL,
+  owner_user_id               VARCHAR(32) NULL,
+  plan_start_time             DATETIME NULL,
+  plan_end_time               DATETIME NULL,
+  total_drill_count           INT NOT NULL DEFAULT 0 COMMENT '0=unlimited',
+  per_scene_limit             INT NULL COMMENT 'null/0=unlimited',
+  join_mode                   TINYINT NOT NULL DEFAULT 1 COMMENT '1 assigned,2 assigned+public',
+  guest_access_enabled        TINYINT NOT NULL DEFAULT 0 COMMENT 'reserved',
+  training_mode_enabled       TINYINT NOT NULL DEFAULT 1,
+  assessment_mode_enabled     TINYINT NOT NULL DEFAULT 0,
+  ai_response_mode            TINYINT NOT NULL DEFAULT 1 COMMENT '1 expert,2 fast',
+  coach_review_enabled        TINYINT NOT NULL DEFAULT 1,
+  suggestion_enabled          TINYINT NOT NULL DEFAULT 0,
+  dialog_modes                VARCHAR(32) NOT NULL DEFAULT 'voice,text' COMMENT 'csv subset of voice,text',
+  practice_methods            VARCHAR(64) NOT NULL DEFAULT 'case,custom,random',
+  difficulty                  TINYINT NOT NULL DEFAULT 2,
+  allow_custom_difficulty     TINYINT NOT NULL DEFAULT 1,
+  face_check_before_enabled   TINYINT NOT NULL DEFAULT 0,
+  face_check_ongoing_enabled  TINYINT NOT NULL DEFAULT 0,
+  face_check_interval_seconds INT NOT NULL DEFAULT 300,
+  screen_switch_mode          VARCHAR(16) NOT NULL DEFAULT 'forbid' COMMENT 'forbid/allow',
+  screen_switch_limit         INT NOT NULL DEFAULT 0,
+  scene_pass_type             TINYINT NOT NULL DEFAULT 1 COMMENT '1 cumulative,2 consecutive',
+  scene_pass_count            INT NOT NULL DEFAULT 1,
+  min_train_count_to_unlock_exam INT NOT NULL DEFAULT 1,
+  max_exam_count              INT NOT NULL DEFAULT 0 COMMENT '0=unlimited',
+  created_at                  DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at                  DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (theme_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='theme-level global settings, independent from content versions';
+```
+
+从旧版本表回填：
+
+```sql
+INSERT INTO act_theme_settings (
+  theme_id, owner_user_id, plan_start_time, plan_end_time,
+  total_drill_count, per_scene_limit, join_mode, guest_access_enabled,
+  training_mode_enabled, assessment_mode_enabled, ai_response_mode,
+  coach_review_enabled, suggestion_enabled, dialog_modes, practice_methods, difficulty,
+  allow_custom_difficulty, face_check_before_enabled, face_check_ongoing_enabled,
+  screen_switch_mode, screen_switch_limit, scene_pass_type, scene_pass_count,
+  min_train_count_to_unlock_exam, max_exam_count
+)
+SELECT
+  t.id,
+  v.owner_user_id,
+  v.plan_start_time,
+  v.plan_end_time,
+  COALESCE(v.total_drill_count, 0),
+  v.per_scene_limit,
+  COALESCE(v.join_mode, 1),
+  COALESCE(v.guest_access_enabled, 0),
+  COALESCE(v.training_mode_enabled, 1),
+  COALESCE(v.assessment_mode_enabled, 0),
+  COALESCE(v.ai_response_mode, 1),
+  COALESCE(v.coach_review_enabled, 1),
+  COALESCE(v.suggestion_enabled, 0),
+  'voice,text',
+  COALESCE(v.practice_methods, 'case,custom,random'),
+  COALESCE(v.difficulty, 2),
+  COALESCE(v.allow_custom_difficulty, 1),
+  COALESCE(v.face_check_enabled, 0),
+  COALESCE(v.face_check_enabled, 0),
+  COALESCE(v.screen_switch_mode, 'forbid'),
+  COALESCE(v.screen_switch_limit, 0),
+  COALESCE(v.scene_pass_type, 1),
+  COALESCE(v.scene_pass_count, 1),
+  1,
+  0
+FROM act_theme t
+JOIN act_theme_version v
+  ON v.theme_id = t.id
+ AND v.version_no = t.current_version_no
+WHERE NOT EXISTS (
+  SELECT 1 FROM act_theme_settings s WHERE s.theme_id = t.id
+);
+```
+
+说明：旧表只有一个 `face_check_stage`，回填时同时置两个开关为其布尔值，部署后需管理员按主题校正。
+
+## 4. 产品档案
+
+```sql
+CREATE TABLE IF NOT EXISTS act_product_profile (
+  id                    VARCHAR(32) NOT NULL,
+  theme_id              VARCHAR(32) NOT NULL,
+  content_version_no    INT NOT NULL DEFAULT 0 COMMENT '0=working content, >0 published version',
+  profile_key           VARCHAR(64) NOT NULL COMMENT 'stable key inside artifact/version',
+  profile_name          VARCHAR(100) NOT NULL,
+  category              VARCHAR(200) NULL,
+  description           TEXT NULL,
+  detail_markdown       MEDIUMTEXT NULL,
+  custom_fields         JSON NULL,
+  source_artifact_id    VARCHAR(32) NULL,
+  source_artifact_version INT NULL,
+  sort_order            INT NOT NULL DEFAULT 1,
+  created_by            VARCHAR(64) NULL,
+  created_at            DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at            DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  UNIQUE KEY uk_product_profile_version_key (theme_id, content_version_no, profile_key),
+  KEY idx_product_profile_theme (theme_id, content_version_no)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='product profiles, working or published version snapshot';
+
+CREATE TABLE IF NOT EXISTS act_scenario_product_profile (
+  scenario_unit_id      VARCHAR(32) NOT NULL,
+  product_profile_id    VARCHAR(32) NOT NULL,
+  sort_order            INT NOT NULL DEFAULT 1,
+  PRIMARY KEY (scenario_unit_id, product_profile_id),
+  KEY idx_spp_profile (product_profile_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='scenario to product profile relation';
+```
+
+## 5. 材料快照
+
+```sql
+ALTER TABLE act_ai_material
+  ADD COLUMN source_type VARCHAR(32) NOT NULL DEFAULT 'act_local'
+    COMMENT 'act_local/online_classroom',
+  ADD COLUMN source_id VARCHAR(64) NULL COMMENT 'coursewareId for online classroom',
+  ADD COLUMN preview_status VARCHAR(24) NOT NULL DEFAULT 'not_needed'
+    COMMENT 'not_needed/pending/ready/text_only/failed',
+  ADD COLUMN preview_file_id VARCHAR(64) NULL,
+  ADD COLUMN preview_error VARCHAR(500) NULL;
+
+UPDATE act_ai_material
+SET source_type = CASE WHEN file_id LIKE 'kng\_%' THEN 'online_classroom' ELSE 'act_local' END,
+    source_id = CASE WHEN file_id LIKE 'kng\_%' THEN SUBSTRING(file_id, 5) ELSE NULL END
+WHERE source_type = 'act_local' AND file_id LIKE 'kng\_%';
+
+CREATE TABLE IF NOT EXISTS act_content_version_material (
+  id                    VARCHAR(32) NOT NULL,
+  theme_id              VARCHAR(32) NOT NULL,
+  content_version_no    INT NOT NULL,
+  material_id           VARCHAR(32) NOT NULL,
+  name                  VARCHAR(200) NOT NULL,
+  file_type             VARCHAR(16) NULL,
+  file_size             BIGINT NULL,
+  source_type           VARCHAR(32) NOT NULL,
+  source_id             VARCHAR(64) NULL,
+  preview_file_id       VARCHAR(64) NULL,
+  render_mode           VARCHAR(16) NOT NULL DEFAULT 'text' COMMENT 'pdf/text',
+  visibility            VARCHAR(16) NOT NULL DEFAULT 'student' COMMENT 'student/internal',
+  sort_order            INT NOT NULL DEFAULT 1,
+  created_at            DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  UNIQUE KEY uk_content_material (theme_id, content_version_no, material_id),
+  KEY idx_content_material_version (theme_id, content_version_no)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='published learning material snapshot';
+```
+
+## 6. 参与关系与学员统计
+
+```sql
+CREATE TABLE IF NOT EXISTS act_theme_participant (
+  id                    VARCHAR(32) NOT NULL,
+  theme_id              VARCHAR(32) NOT NULL,
+  user_id               VARCHAR(32) NOT NULL,
+  source                VARCHAR(16) NOT NULL COMMENT 'assigned/public',
+  status                VARCHAR(16) NOT NULL DEFAULT 'active' COMMENT 'active/removed',
+  extra_exam_attempt_count INT NOT NULL DEFAULT 0,
+  joined_at             DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  removed_at            DATETIME NULL,
+  updated_at            DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  UNIQUE KEY uk_theme_participant (theme_id, user_id),
+  KEY idx_participant_user (user_id, status),
+  KEY idx_participant_theme (theme_id, status)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='student participation in a theme';
+
+CREATE TABLE IF NOT EXISTS act_student_scenario_stat (
+  id                    VARCHAR(32) NOT NULL,
+  user_id               VARCHAR(32) NOT NULL,
+  theme_id              VARCHAR(32) NOT NULL,
+  scenario_id           VARCHAR(32) NOT NULL,
+  study_mode            TINYINT NOT NULL COMMENT '1 training,2 exam',
+  formal_count          INT NOT NULL DEFAULT 0,
+  completed_count       INT NOT NULL DEFAULT 0,
+  passed_count          INT NOT NULL DEFAULT 0,
+  consecutive_passed_count INT NOT NULL DEFAULT 0,
+  highest_score         DECIMAL(6,2) NULL,
+  latest_score          DECIMAL(6,2) NULL,
+  last_attempt_at       DATETIME NULL,
+  updated_at            DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  UNIQUE KEY uk_student_scenario_mode (user_id, theme_id, scenario_id, study_mode),
+  KEY idx_scene_stat_user_theme (user_id, theme_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='student scene counters and scoring summary';
+
+CREATE TABLE IF NOT EXISTS act_exam_quota_adjustment (
+  id                    VARCHAR(32) NOT NULL,
+  theme_id              VARCHAR(32) NOT NULL,
+  user_id               VARCHAR(32) NOT NULL,
+  delta                 INT NOT NULL,
+  reason                VARCHAR(200) NULL,
+  created_by            VARCHAR(64) NULL,
+  created_at            DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  KEY idx_exam_quota_user (theme_id, user_id, created_at)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='exam quota adjustments audit';
+```
+
+## 7. Attempt
+
+```sql
+CREATE TABLE IF NOT EXISTS act_practice_attempt (
+  id                    VARCHAR(40) NOT NULL,
+  theme_id              VARCHAR(32) NOT NULL,
+  scenario_id           VARCHAR(32) NOT NULL,
+  user_id               VARCHAR(32) NOT NULL,
+  study_mode            TINYINT NOT NULL,
+  practice_type         VARCHAR(16) NOT NULL,
+  status                VARCHAR(24) NOT NULL,
+  active_key            VARCHAR(100) NULL,
+  content_version_no    INT NOT NULL,
+  settings_snapshot_json JSON NOT NULL,
+  scenario_snapshot_json JSON NOT NULL,
+  script_snapshot_json  JSON NULL,
+  product_profiles_snapshot_json JSON NULL,
+  materials_snapshot_json JSON NULL,
+  custom_config_json    JSON NULL,
+  difficulty            TINYINT NULL,
+  agent_session_id      VARCHAR(64) NULL,
+  preparation_stage    VARCHAR(32) NULL,
+  preparation_percent  INT NOT NULL DEFAULT 0,
+  quota_deducted       TINYINT NOT NULL DEFAULT 0,
+  current_round         INT NOT NULL DEFAULT 0,
+  max_round             INT NOT NULL DEFAULT 50,
+  target_progress       INT NOT NULL DEFAULT 0,
+  max_duration_seconds  INT NOT NULL,
+  paused_duration_ms    BIGINT NOT NULL DEFAULT 0,
+  client_writer_id      VARCHAR(64) NULL,
+  created_at            DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  prepared_at           DATETIME NULL,
+  started_at            DATETIME NULL,
+  deadline_at           DATETIME NULL,
+  paused_at             DATETIME NULL,
+  ended_at              DATETIME NULL,
+  end_reason            VARCHAR(32) NULL,
+  timed_out             TINYINT NOT NULL DEFAULT 0,
+  error_code            VARCHAR(64) NULL,
+  error_message         VARCHAR(500) NULL,
+  updated_at            DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  UNIQUE KEY uk_attempt_active_key (active_key),
+  KEY idx_attempt_user_theme (user_id, theme_id, created_at),
+  KEY idx_attempt_status_deadline (status, deadline_at),
+  KEY idx_attempt_theme_scene (theme_id, scenario_id, user_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='one formal training or exam attempt';
+
+CREATE TABLE IF NOT EXISTS act_attempt_message (
+  id                    VARCHAR(48) NOT NULL,
+  attempt_id            VARCHAR(40) NOT NULL,
+  seq                   BIGINT NOT NULL,
+  role                  VARCHAR(16) NOT NULL COMMENT 'user/assistant/coach/system',
+  message_type          VARCHAR(24) NOT NULL COMMENT 'text/voice/event',
+  client_message_id     VARCHAR(64) NULL,
+  text_content          MEDIUMTEXT NULL,
+  data_json             JSON NULL,
+  tts_json              JSON NULL,
+  created_at            DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  UNIQUE KEY uk_attempt_seq (attempt_id, seq),
+  UNIQUE KEY uk_attempt_client_message (attempt_id, client_message_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='persisted drill conversation messages';
+
+CREATE TABLE IF NOT EXISTS act_attempt_event (
+  id                    BIGINT NOT NULL AUTO_INCREMENT,
+  attempt_id            VARCHAR(40) NOT NULL,
+  seq                   BIGINT NOT NULL,
+  event_type            VARCHAR(48) NOT NULL,
+  data_json             JSON NULL,
+  created_at            DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  UNIQUE KEY uk_attempt_event_seq (attempt_id, seq),
+  KEY idx_attempt_event_type (attempt_id, event_type)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='server events for reconnect and audit';
+```
+
+`active_key` 只在活动状态非空，例如 `themeId:userId`；结束后置 null。
+
+## 8. 报告
+
+```sql
+CREATE TABLE IF NOT EXISTS act_practice_report (
+  id                    VARCHAR(40) NOT NULL,
+  attempt_id            VARCHAR(40) NOT NULL,
+  theme_id              VARCHAR(32) NOT NULL,
+  scenario_id           VARCHAR(32) NOT NULL,
+  user_id               VARCHAR(32) NOT NULL,
+  study_mode            TINYINT NOT NULL,
+  practice_type         VARCHAR(16) NOT NULL,
+  passed                TINYINT NOT NULL DEFAULT 0,
+  target_reached        TINYINT NOT NULL DEFAULT 0,
+  target_reason         TEXT NULL,
+  timed_out             TINYINT NOT NULL DEFAULT 0,
+  end_reason            VARCHAR(32) NOT NULL,
+  total_score           DECIMAL(6,2) NOT NULL DEFAULT 0,
+  pass_score            INT NOT NULL DEFAULT 70,
+  duration_seconds      INT NOT NULL DEFAULT 0,
+  round_count           INT NOT NULL DEFAULT 0,
+  summary               TEXT NULL,
+  improvement_json      JSON NULL,
+  key_dialogues_json   JSON NULL,
+  recommendations_json JSON NULL,
+  transcript_json       JSON NULL,
+  raw_report_json       JSON NULL,
+  generated_at          DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  UNIQUE KEY uk_report_attempt (attempt_id),
+  KEY idx_report_user_time (user_id, generated_at),
+  KEY idx_report_theme_mode (theme_id, study_mode, generated_at)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='one final report per attempt';
+
+CREATE TABLE IF NOT EXISTS act_report_dimension (
+  id                    VARCHAR(40) NOT NULL,
+  report_id             VARCHAR(40) NOT NULL,
+  dimension_key         VARCHAR(64) NOT NULL,
+  dimension_name        VARCHAR(100) NOT NULL,
+  score                 DECIMAL(6,2) NOT NULL,
+  weight                DECIMAL(5,2) NOT NULL,
+  evidence_json         JSON NULL,
+  strength              TEXT NULL,
+  improvement           TEXT NULL,
+  reason                TEXT NULL,
+  sort_order            INT NOT NULL DEFAULT 1,
+  PRIMARY KEY (id),
+  KEY idx_report_dimension (report_id, sort_order)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='dimension score details';
+```
+
+## 9. 防作弊
+
+```sql
+CREATE TABLE IF NOT EXISTS act_anti_cheat_event (
+  id                    VARCHAR(40) NOT NULL,
+  attempt_id            VARCHAR(40) NOT NULL,
+  event_type            VARCHAR(32) NOT NULL COMMENT 'screen.hidden/face.pass/face.fail/camera.lost',
+  client_event_id       VARCHAR(64) NULL,
+  occurred_at           DATETIME NOT NULL,
+  evidence_id           VARCHAR(40) NULL,
+  data_json             JSON NULL,
+  created_at            DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  UNIQUE KEY uk_anti_cheat_client (attempt_id, client_event_id),
+  KEY idx_anti_cheat_attempt (attempt_id, occurred_at)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='screen switch and face event audit';
+
+CREATE TABLE IF NOT EXISTS act_face_evidence (
+  id                    VARCHAR(40) NOT NULL,
+  attempt_id            VARCHAR(40) NOT NULL,
+  stage                 VARCHAR(16) NOT NULL COMMENT 'precheck/ongoing',
+  storage_path          VARCHAR(500) NOT NULL,
+  provider_result_json  JSON NULL,
+  passed                TINYINT NOT NULL DEFAULT 0,
+  created_at            DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  delete_after          DATETIME NULL,
+  PRIMARY KEY (id),
+  KEY idx_face_attempt (attempt_id, created_at),
+  KEY idx_face_cleanup (delete_after)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='camera capture evidence; restricted access';
+```
+
+## 10. 索引与运行注意事项
+
+- 所有 JSON 列只在服务端解析，前端 DTO 使用普通对象。
+- `active_key` 唯一索引是活动 attempt 唯一的最终保证。
+- `act_attempt_message` 的 `client_message_id` 允许 null，但客户端发起的消息必须带值。
+- `act_attempt_event` 增长快，按 `created_at` 做归档任务。
+- 人脸图片保存到独立目录 `act-drill-evidence/`，禁止位于静态资源目录。
+- 发布迁移完成后删除或停止旧的 `current_version_no` 业务写入。

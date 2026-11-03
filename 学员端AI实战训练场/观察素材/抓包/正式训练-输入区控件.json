@@ -1,0 +1,577 @@
+{
+  "controls": [
+    {
+      "index": 0,
+      "tag": "BUTTON",
+      "text": "",
+      "placeholder": null,
+      "title": "退出练习",
+      "ariaLabel": "退出练习",
+      "type": null,
+      "className": "",
+      "disabled": false,
+      "rect": {
+        "x": 26,
+        "y": 26,
+        "width": 36,
+        "height": 36
+      },
+      "parent": {
+        "tag": "DIV",
+        "className": ""
+      },
+      "outerHTML": "<button title=\"退出练习\" aria-label=\"退出练习\" style=\"position: absolute; top: 14px; left: 14px; z-index: 3; width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, 0.16); background: rgba(10, 14, 26, 0.55); backdrop-filter: blur(10px); color: rgb(255, 255, 255); cursor: pointer; opacity: 1; display: flex; align-items: center; justify-content: center;\"><svg width=\"15\" height=\"15\" viewBox=\"0 0 16 16\" fill=\"none\"><path d=\"M10 3L5 8l5 5\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg></button>"
+    },
+    {
+      "index": 1,
+      "tag": "svg",
+      "text": "",
+      "placeholder": null,
+      "title": null,
+      "ariaLabel": null,
+      "type": null,
+      "className": "",
+      "disabled": false,
+      "rect": {
+        "x": 37,
+        "y": 37,
+        "width": 15,
+        "height": 15
+      },
+      "parent": {
+        "tag": "BUTTON",
+        "className": ""
+      },
+      "outerHTML": "<svg width=\"15\" height=\"15\" viewBox=\"0 0 16 16\" fill=\"none\"><path d=\"M10 3L5 8l5 5\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg>"
+    },
+    {
+      "index": 2,
+      "tag": "svg",
+      "text": "",
+      "placeholder": null,
+      "title": null,
+      "ariaLabel": null,
+      "type": null,
+      "className": "",
+      "disabled": false,
+      "rect": {
+        "x": 725,
+        "y": 35,
+        "width": 16,
+        "height": 16
+      },
+      "parent": {
+        "tag": "DIV",
+        "className": ""
+      },
+      "outerHTML": "<svg width=\"16\" height=\"16\" viewBox=\"0 0 20 20\" fill=\"none\"><circle cx=\"10\" cy=\"10\" r=\"7\" stroke=\"currentColor\" stroke-width=\"1.5\"></circle><path d=\"M10 7v3.5l2 1.3\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"></path></svg>"
+    },
+    {
+      "index": 3,
+      "tag": "svg",
+      "text": "",
+      "placeholder": null,
+      "title": null,
+      "ariaLabel": null,
+      "type": null,
+      "className": "",
+      "disabled": false,
+      "rect": {
+        "x": 814,
+        "y": 35,
+        "width": 16,
+        "height": 16
+      },
+      "parent": {
+        "tag": "DIV",
+        "className": ""
+      },
+      "outerHTML": "<svg width=\"16\" height=\"16\" viewBox=\"0 0 20 20\" fill=\"none\"><path d=\"M10 3a7 7 0 11-4.95 2.05\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"></path><path d=\"M5 2v3.2h3.2\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg>"
+    },
+    {
+      "index": 4,
+      "tag": "BUTTON",
+      "text": "混合",
+      "placeholder": null,
+      "title": "切换录音识别语言",
+      "ariaLabel": "录音识别语言：混合",
+      "type": "button",
+      "className": "",
+      "disabled": false,
+      "rect": {
+        "x": 876,
+        "y": 26,
+        "width": 88,
+        "height": 34
+      },
+      "parent": {
+        "tag": "DIV",
+        "className": ""
+      },
+      "outerHTML": "<button type=\"button\" title=\"切换录音识别语言\" aria-label=\"录音识别语言：混合\" style=\"display: inline-flex; align-items: center; gap: 5px; height: 34px; padding: 0px 12px; border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.16); background: rgba(10, 14, 26, 0.55); backdrop-filter: blur(10px); color: rgb(255, 255, 255); font-size: 13px; font-weight: 600; cursor: pointer; white-space: nowrap;\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 20 20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"10\" cy=\"10\" r=\"7.5\"></circle><path d=\"M2.5 10h15M10 2.5c2.2 2 3.3 4.7 3.3 7.5S12.2 15.5 10 17.5c-2.2-2-3.3-4.7-3.3-7.5S7.8 4.5 10 2.5z\"></path></svg>混合<svg width=\"10\" height=\"10\" viewBox=\"0 0 12 12\" fill=\"none\" style=\"transition: transform 0.15s; transf"
+    },
+    {
+      "index": 5,
+      "tag": "svg",
+      "text": "",
+      "placeholder": null,
+      "title": null,
+      "ariaLabel": null,
+      "type": null,
+      "className": "",
+      "disabled": false,
+      "rect": {
+        "x": 889,
+        "y": 35,
+        "width": 16,
+        "height": 16
+      },
+      "parent": {
+        "tag": "BUTTON",
+        "className": ""
+      },
+      "outerHTML": "<svg width=\"16\" height=\"16\" viewBox=\"0 0 20 20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"10\" cy=\"10\" r=\"7.5\"></circle><path d=\"M2.5 10h15M10 2.5c2.2 2 3.3 4.7 3.3 7.5S12.2 15.5 10 17.5c-2.2-2-3.3-4.7-3.3-7.5S7.8 4.5 10 2.5z\"></path></svg>"
+    },
+    {
+      "index": 6,
+      "tag": "svg",
+      "text": "",
+      "placeholder": null,
+      "title": null,
+      "ariaLabel": null,
+      "type": null,
+      "className": "",
+      "disabled": false,
+      "rect": {
+        "x": 941,
+        "y": 38,
+        "width": 10,
+        "height": 10
+      },
+      "parent": {
+        "tag": "BUTTON",
+        "className": ""
+      },
+      "outerHTML": "<svg width=\"10\" height=\"10\" viewBox=\"0 0 12 12\" fill=\"none\" style=\"transition: transform 0.15s; transform: none;\"><path d=\"M3 4.5L6 7.5l3-3\" stroke=\"currentColor\" stroke-width=\"1.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path></svg>"
+    },
+    {
+      "index": 7,
+      "tag": "BUTTON",
+      "text": "",
+      "placeholder": null,
+      "title": null,
+      "ariaLabel": "聊天记录",
+      "type": null,
+      "className": "pcStageTip",
+      "disabled": false,
+      "rect": {
+        "x": 972,
+        "y": 26,
+        "width": 34,
+        "height": 34
+      },
+      "parent": {
+        "tag": "DIV",
+        "className": ""
+      },
+      "outerHTML": "<button class=\"pcStageTip\" data-tip=\"聊天记录\" aria-label=\"聊天记录\" style=\"width: 34px; height: 34px; border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.14); background: rgba(10, 14, 26, 0.6); backdrop-filter: blur(10px); color: rgb(255, 255, 255); cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0px;\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 18 18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 4.5h12v7H8.5L5 14v-2.5H3z\"></path></svg></button>"
+    },
+    {
+      "index": 8,
+      "tag": "svg",
+      "text": "",
+      "placeholder": null,
+      "title": null,
+      "ariaLabel": null,
+      "type": null,
+      "className": "",
+      "disabled": false,
+      "rect": {
+        "x": 981,
+        "y": 35,
+        "width": 16,
+        "height": 16
+      },
+      "parent": {
+        "tag": "BUTTON",
+        "className": "pcStageTip"
+      },
+      "outerHTML": "<svg width=\"16\" height=\"16\" viewBox=\"0 0 18 18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.4\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 4.5h12v7H8.5L5 14v-2.5H3z\"></path></svg>"
+    },
+    {
+      "index": 9,
+      "tag": "BUTTON",
+      "text": "",
+      "placeholder": null,
+      "title": null,
+      "ariaLabel": "场景介绍",
+      "type": null,
+      "className": "pcStageTip",
+      "disabled": false,
+      "rect": {
+        "x": 1014,
+        "y": 26,
+        "width": 34,
+        "height": 34
+      },
+      "parent": {
+        "tag": "DIV",
+        "className": ""
+      },
+      "outerHTML": "<button class=\"pcStageTip\" data-tip=\"场景介绍\" aria-label=\"场景介绍\" style=\"width: 34px; height: 34px; border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.14); background: rgba(99, 102, 241, 0.6); backdrop-filter: blur(10px); color: rgb(255, 255, 255); cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0px;\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 18 18\" fill=\"none\"><circle cx=\"9\" cy=\"9\" r=\"7\" stroke=\"currentColor\" stroke-width=\"1.3\"></circle><path d=\"M9 8.2v4\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"></path><circle cx=\"9\" cy=\"5.6\" r=\"0.9\" fill=\"currentColor\"></circle></svg></button>"
+    },
+    {
+      "index": 10,
+      "tag": "svg",
+      "text": "",
+      "placeholder": null,
+      "title": null,
+      "ariaLabel": null,
+      "type": null,
+      "className": "",
+      "disabled": false,
+      "rect": {
+        "x": 1023,
+        "y": 35,
+        "width": 16,
+        "height": 16
+      },
+      "parent": {
+        "tag": "BUTTON",
+        "className": "pcStageTip"
+      },
+      "outerHTML": "<svg width=\"16\" height=\"16\" viewBox=\"0 0 18 18\" fill=\"none\"><circle cx=\"9\" cy=\"9\" r=\"7\" stroke=\"currentColor\" stroke-width=\"1.3\"></circle><path d=\"M9 8.2v4\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"></path><circle cx=\"9\" cy=\"5.6\" r=\"0.9\" fill=\"currentColor\"></circle></svg>"
+    },
+    {
+      "index": 11,
+      "tag": "TEXTAREA",
+      "text": "",
+      "placeholder": "输入你想说的内容",
+      "title": null,
+      "ariaLabel": null,
+      "type": null,
+      "className": "",
+      "disabled": false,
+      "rect": {
+        "x": 27,
+        "y": 608,
+        "width": 1020,
+        "height": 24
+      },
+      "parent": {
+        "tag": "DIV",
+        "className": ""
+      },
+      "outerHTML": "<textarea placeholder=\"输入你想说的内容\" rows=\"1\" style=\"width: 100%; min-height: 24px; max-height: 240px; resize: none; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; background: transparent; color: rgb(243, 244, 246); outline: none; padding: 0px 4px; font-size: 15px; line-height: 24px; font-family: inherit; overflow-y: auto; height: 24px;\"></textarea>"
+    },
+    {
+      "index": 12,
+      "tag": "BUTTON",
+      "text": "",
+      "placeholder": null,
+      "title": "继续播报",
+      "ariaLabel": "继续播报",
+      "type": null,
+      "className": "",
+      "disabled": true,
+      "rect": {
+        "x": 27,
+        "y": 640,
+        "width": 38,
+        "height": 38
+      },
+      "parent": {
+        "tag": "DIV",
+        "className": ""
+      },
+      "outerHTML": "<button title=\"继续播报\" aria-label=\"继续播报\" disabled=\"\" style=\"width: 38px; height: 38px; border-radius: 10px; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; background: rgba(255, 255, 255, 0.06); color: rgba(255, 255, 255, 0.4); cursor: not-allowed; display: flex; align-items: center; justify-content: center; flex-shrink: 0; padding: 0px;\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 20 20\" fill=\"currentColor\"><path d=\"M6 4.5v11l9-5.5-9-5.5z\"></path></svg></button>"
+    },
+    {
+      "index": 13,
+      "tag": "svg",
+      "text": "",
+      "placeholder": null,
+      "title": null,
+      "ariaLabel": null,
+      "type": null,
+      "className": "",
+      "disabled": false,
+      "rect": {
+        "x": 37,
+        "y": 650,
+        "width": 18,
+        "height": 18
+      },
+      "parent": {
+        "tag": "BUTTON",
+        "className": ""
+      },
+      "outerHTML": "<svg width=\"18\" height=\"18\" viewBox=\"0 0 20 20\" fill=\"currentColor\"><path d=\"M6 4.5v11l9-5.5-9-5.5z\"></path></svg>"
+    },
+    {
+      "index": 14,
+      "tag": "BUTTON",
+      "text": "",
+      "placeholder": null,
+      "title": "语音输入",
+      "ariaLabel": "语音输入",
+      "type": null,
+      "className": "",
+      "disabled": false,
+      "rect": {
+        "x": 954,
+        "y": 640,
+        "width": 38,
+        "height": 38
+      },
+      "parent": {
+        "tag": "DIV",
+        "className": ""
+      },
+      "outerHTML": "<button title=\"语音输入\" aria-label=\"语音输入\" style=\"width: 38px; height: 38px; border-radius: 10px; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; background: transparent; color: rgba(255, 255, 255, 0.65); cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; padding: 0px;\"><svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"9\" y=\"3\" width=\"6\" height=\"12\" rx=\"3\"></rect><path d=\"M5 11a7 7 0 0 0 14 0\"></path><line x1=\"12\" y1=\"18\" x2=\"12\" y2=\"22\"></line></svg></button>"
+    },
+    {
+      "index": 15,
+      "tag": "svg",
+      "text": "",
+      "placeholder": null,
+      "title": null,
+      "ariaLabel": null,
+      "type": null,
+      "className": "",
+      "disabled": false,
+      "rect": {
+        "x": 964,
+        "y": 650,
+        "width": 18,
+        "height": 18
+      },
+      "parent": {
+        "tag": "BUTTON",
+        "className": ""
+      },
+      "outerHTML": "<svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"9\" y=\"3\" width=\"6\" height=\"12\" rx=\"3\"></rect><path d=\"M5 11a7 7 0 0 0 14 0\"></path><line x1=\"12\" y1=\"18\" x2=\"12\" y2=\"22\"></line></svg>"
+    },
+    {
+      "index": 16,
+      "tag": "BUTTON",
+      "text": "",
+      "placeholder": null,
+      "title": "发送",
+      "ariaLabel": "发送",
+      "type": null,
+      "className": "",
+      "disabled": true,
+      "rect": {
+        "x": 1009,
+        "y": 640,
+        "width": 38,
+        "height": 38
+      },
+      "parent": {
+        "tag": "DIV",
+        "className": ""
+      },
+      "outerHTML": "<button disabled=\"\" title=\"发送\" aria-label=\"发送\" style=\"width: 38px; height: 38px; border-radius: 50%; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; background: rgba(255, 255, 255, 0.08); color: rgba(255, 255, 255, 0.3); cursor: not-allowed; display: flex; align-items: center; justify-content: center; flex-shrink: 0; padding: 0px;\"><svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 19V6\"></path><path d=\"M6 12l6-6 6 6\"></path></svg></button>"
+    },
+    {
+      "index": 17,
+      "tag": "svg",
+      "text": "",
+      "placeholder": null,
+      "title": null,
+      "ariaLabel": null,
+      "type": null,
+      "className": "",
+      "disabled": false,
+      "rect": {
+        "x": 1019,
+        "y": 650,
+        "width": 18,
+        "height": 18
+      },
+      "parent": {
+        "tag": "BUTTON",
+        "className": ""
+      },
+      "outerHTML": "<svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 19V6\"></path><path d=\"M6 12l6-6 6 6\"></path></svg>"
+    },
+    {
+      "index": 18,
+      "tag": "BUTTON",
+      "text": "",
+      "placeholder": null,
+      "title": "关闭（全屏沉浸）",
+      "ariaLabel": "关闭",
+      "type": null,
+      "className": "",
+      "disabled": false,
+      "rect": {
+        "x": 1467,
+        "y": 23,
+        "width": 28,
+        "height": 28
+      },
+      "parent": {
+        "tag": "DIV",
+        "className": ""
+      },
+      "outerHTML": "<button title=\"关闭（全屏沉浸）\" aria-label=\"关闭\" style=\"width: 28px; height: 28px; border-radius: 8px; border-width: medium; border-style: none; border-color: currentcolor; border-image: none; background: transparent; color: rgb(134, 144, 156); cursor: pointer; display: flex; align-items: center; justify-content: center;\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 16 16\" fill=\"none\"><path d=\"M4 4l8 8M12 4l-8 8\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"></path></svg></button>"
+    },
+    {
+      "index": 19,
+      "tag": "svg",
+      "text": "",
+      "placeholder": null,
+      "title": null,
+      "ariaLabel": null,
+      "type": null,
+      "className": "",
+      "disabled": false,
+      "rect": {
+        "x": 1474,
+        "y": 30,
+        "width": 14,
+        "height": 14
+      },
+      "parent": {
+        "tag": "BUTTON",
+        "className": ""
+      },
+      "outerHTML": "<svg width=\"14\" height=\"14\" viewBox=\"0 0 16 16\" fill=\"none\"><path d=\"M4 4l8 8M12 4l-8 8\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\"></path></svg>"
+    },
+    {
+      "index": 20,
+      "tag": "svg",
+      "text": "",
+      "placeholder": null,
+      "title": null,
+      "ariaLabel": null,
+      "type": null,
+      "className": "",
+      "disabled": false,
+      "rect": {
+        "x": 1094,
+        "y": 123,
+        "width": 12,
+        "height": 12
+      },
+      "parent": {
+        "tag": "SPAN",
+        "className": ""
+      },
+      "outerHTML": "<svg width=\"12\" height=\"12\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2\"></path><circle cx=\"12\" cy=\"7\" r=\"4\"></circle></svg>"
+    },
+    {
+      "index": 21,
+      "tag": "svg",
+      "text": "",
+      "placeholder": null,
+      "title": null,
+      "ariaLabel": null,
+      "type": null,
+      "className": "",
+      "disabled": false,
+      "rect": {
+        "x": 1094,
+        "y": 426,
+        "width": 12,
+        "height": 12
+      },
+      "parent": {
+        "tag": "SPAN",
+        "className": ""
+      },
+      "outerHTML": "<svg width=\"12\" height=\"12\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z\"></path><circle cx=\"12\" cy=\"10\" r=\"3\"></circle></svg>"
+    },
+    {
+      "index": 22,
+      "tag": "svg",
+      "text": "",
+      "placeholder": null,
+      "title": null,
+      "ariaLabel": null,
+      "type": null,
+      "className": "",
+      "disabled": false,
+      "rect": {
+        "x": 1094,
+        "y": 759,
+        "width": 12,
+        "height": 12
+      },
+      "parent": {
+        "tag": "SPAN",
+        "className": ""
+      },
+      "outerHTML": "<svg width=\"12\" height=\"12\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polygon points=\"13 2 3 14 12 14 11 22 21 10 12 10 13 2\"></polygon></svg>"
+    },
+    {
+      "index": 23,
+      "tag": "svg",
+      "text": "",
+      "placeholder": null,
+      "title": null,
+      "ariaLabel": null,
+      "type": null,
+      "className": "",
+      "disabled": false,
+      "rect": {
+        "x": 1094,
+        "y": 854,
+        "width": 12,
+        "height": 12
+      },
+      "parent": {
+        "tag": "SPAN",
+        "className": ""
+      },
+      "outerHTML": "<svg width=\"12\" height=\"12\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><polygon points=\"16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76\"></polygon></svg>"
+    },
+    {
+      "index": 24,
+      "tag": "svg",
+      "text": "",
+      "placeholder": null,
+      "title": null,
+      "ariaLabel": null,
+      "type": null,
+      "className": "",
+      "disabled": false,
+      "rect": {
+        "x": 1094,
+        "y": 1032,
+        "width": 12,
+        "height": 12
+      },
+      "parent": {
+        "tag": "SPAN",
+        "className": ""
+      },
+      "outerHTML": "<svg width=\"12\" height=\"12\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><line x1=\"18\" y1=\"20\" x2=\"18\" y2=\"10\"></line><line x1=\"12\" y1=\"20\" x2=\"12\" y2=\"4\"></line><line x1=\"6\" y1=\"20\" x2=\"6\" y2=\"14\"></line><line x1=\"2\" y1=\"20\" x2=\"22\" y2=\"20\"></line></svg>"
+    },
+    {
+      "index": 25,
+      "tag": "svg",
+      "text": "",
+      "placeholder": null,
+      "title": null,
+      "ariaLabel": null,
+      "type": null,
+      "className": "",
+      "disabled": false,
+      "rect": {
+        "x": 1094,
+        "y": 1215,
+        "width": 12,
+        "height": 12
+      },
+      "parent": {
+        "tag": "SPAN",
+        "className": ""
+      },
+      "outerHTML": "<svg width=\"12\" height=\"12\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"22 12 18 12 15 21 9 3 6 12 2 12\"></polyline></svg>"
+    }
+  ],
+  "snapshot": "[p1 \"AI实战训练场 · 对练\" | space \"final-dream-drillmate-student\"(11): 2 managed, 0 untracked — p1* \"AI实战训练场 · 对练\", p2 \"AI实战训练场 - 杰克数字人陪练\"]\nroot\n  container\n    container\n      image\n      button \"退出练习\" [ref=163, loc=css:button[aria-label=\"退出练习\"]]\n        svg_root\n      container\n        container\n          svg_root\n          text \"12:59\"\n        container\n          svg_root\n          text \"0\"\n          text \"%\"\n        button \"录音识别语言：混合\" [ref=164, loc=css:button[aria-label=\"录音识别语言：混合\"]]\n          svg_root\n          text \"混合\"\n          svg_root\n        button \"聊天记录\" [ref=165, loc=css:button[aria-label=\"聊天记录\"]]\n          svg_root\n          text \"聊天记录\"\n        button \"场景介绍\" [ref=166, loc=css:button[aria-label=\"场景介绍\"]]\n          svg_root\n          text \"场景介绍\"\n      image\n      container\n        text \"场景\"\n        text \"时间是下午三点，地点是王总略显杂乱但井然有序的办公室。空气中还残留着生产例会的紧张气息。王总坐在办公桌后，眉头微蹙，手指无意识地敲击�...\"\n      container\n        image\n        container\n          container\n            text \"（\"\n            text \"抬头看了一眼手表，语气平淡略带疏离\"\n            text \"）\"\n          text \"“你好，请进。我只有15分钟，后面还有个生产会。之前也有几家做过类似方案的来聊过，说实话，效果都不理想。你简单说说，杰克有什么不一样的？...\"\n    container\n      container\n        textbox [ref=167, loc=css:textarea[placeholder=\"输入你想说的内容\"]]\n          text \"输入你想说的内容\"\n        container\n          button \"继续播报\" [ref=168, loc=css:button[aria-label=\"继续播报\"]]\n            svg_root\n          container\n            button \"语音输入\" [ref=169, loc=css:button[aria-label=\"语音输入\"]]\n              svg_root\n            button \"发送\" [ref=170, loc=css:button[aria-label=\"发送\"]]\n              svg_root\n      text \"内容由AI生成\"\n  container\n    container\n      text \"背景介绍\"\n      button \"关闭\" [ref=171, loc=css:button[aria-label=\"关闭\"]]\n        svg_root\n    container [ref=172]\n      text \"初次拜访：破冰与价值初探\"\n      container\n        container\n          svg_root\n          text \"角色介绍\"\n        container\n          container\n            text \"你的角色\"\n            container\n              text \"销\"\n              container\n                text \"销售顾问\"\n                text \"（杰克科技销售顾问）\"\n          container\n            text \"AI扮演角色\"\n            container\n              image\n              container\n                text \"王总\"\n                text \"（某中型服装厂生产总监）\"\n            paragraph\n              text \"40-50岁，严谨、专业，王总是客户方生产总监，此前没有直接合作。他刚结束生产例会，时间紧张，对新技术持谨慎态度，最关心方案能否稳定落地以及...\"\n      container\n        container\n          svg_root\n          text \"业务背景\"\n        paragraph\n          text \"你是一名杰克科技的新入职销售顾问，正在拜访一家中型服装制造企业的生产总监王总。这是你与王总的第一次正式见面。王总刚结束一场紧张的生产�...\"\n"
+}

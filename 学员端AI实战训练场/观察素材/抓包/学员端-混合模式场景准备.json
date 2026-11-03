@@ -1,0 +1,116 @@
+{
+  "capturedAt": "2026-10-29T07:47:15.162Z",
+  "url": "https://train.chinajack.com/sparring/#/web/drillmate/detail/4fa7a1e92ac94429ad9cfaba38b0e45b",
+  "text": "2 3 我的陪练 首页 话术目录 课程中心 AI对练 AI实战训练场 陪练看板 更多 7 员 工作台 AI实战训练场 主题详情 训考一体 ★ ★ ★ 中等 杰克新销售成套方案演练（复制） 基于杰克股份成套智联解决方案，为新入职销售设计实战演练项目 训练场景 3 个 | 已通过 0 个 | 进度 0 % 全部场景单元 共 3 个 · 点击场景可查看训练准备信息 01 初次拜访：破冰与价值初探 未开始 适用人群：0-6个月销售 / 新入职销售 开始练习 02 深度沟通：应对交付与数据质疑 未开始 适用人群：0-6个月销售 / 新入职销售 开始练习 03 方案呈现：AI数字成套价值量化 未开始 适用人群：0-6个月销售 / 新入职销售 开始练习 评估标准 通过分数：70 分 完成场景练习后，系统将从 6 个维度进行综合评估。 需求挖掘与倾听 价值主张传递 信任建立与亲和力 异议处理与逻辑论证 商业价值量化呈现 推进下一步行动 学习资料 杰克股份成套智联解决方案.pdf PDF · 5M 产品档案 📦 成套智联2.0智能化平台 杰克科技推出的智能化生产运营平台，通过数据、物联、智能及开发能力，助力服装企业实现AI柔性快反与数智化升级。 服装智能制造软硬件一体化解决方案 初次拜访：破冰与价值初探 未开始 0-6个月销售 新入职销售 最高分数 - 实战案例 1 个 ★ ★ ★ 简单 开始练习 王 王总 企业中层管理者，技术出身，注重实际产出和成本控制 15分钟破冰：化解“旧伤”疑虑，建立初步信任 某中型服装厂生产总监，负责全厂生产运营。务实、谨慎，对数据敏感，经历过一次失败的数字化改造，因此对新技术持怀疑态度。 \"（抬头看了一眼手表，语气平淡略带疏离）“你好，请进。我只有15分钟，后面还有个生产会。之前也有几家做过类似方案的来聊过，说实话，效果都不理想。你简单说说，杰克有什么不一样的？”\" 涉及产品档案 成套智联2.0智能化平台 业务目标 在首次拜访中建立信任，清晰传达杰克成套智联的核心价值，激发客户进一步沟通的意愿。 业务影响 提升初次拜访转化率，为后续方案深入铺垫基础。 失败代价 客户失去兴趣，无法进入下一轮沟通，浪费销售资源。 核心冲突 客户对新技术持观望态度，且对销售专业度存疑，如何在短时间内建立信任并展示价值。 常见失败模式 ① 过度堆砌技术术语，客户听不懂 ② 未能关联客户具体痛点，价值传递空泛 ③ 缺乏互动，单向灌输导致客户反感 困难挑战 ① 客户时间紧张，只有15分钟交流时间 ② 客户之前接触过类似方案但效果不佳，有抵触情绪 禁止行为 ① 禁止直接报价 ② 禁止贬低竞争对手 评估标准 需求挖掘与倾听 40% 价值主张传递 30% 信任建立与亲和力 30% 限时 15 分钟 取消 随机练习 自定义练习",
+  "controls": [
+    {
+      "tag": "SPAN",
+      "type": null,
+      "role": "button",
+      "text": "更多",
+      "checked": null,
+      "disabled": false,
+      "className": "yxtbiz-nav-top-stu__menu-name hover-primary-6-i yxtf-dropdown-selfdefine"
+    },
+    {
+      "tag": "DIV",
+      "type": null,
+      "role": "button",
+      "text": "员",
+      "checked": null,
+      "disabled": false,
+      "className": "yxtf-portrait hand yxtbiz-nav-top-stu__my-avatar yxt-portrait--small yxtf-dropdown-selfdefine"
+    },
+    {
+      "tag": "SPAN",
+      "type": null,
+      "role": "button",
+      "text": "工作台",
+      "checked": null,
+      "disabled": false,
+      "className": "hover-primary-6-i color-gray-9 yxtf-dropdown-selfdefine"
+    },
+    {
+      "tag": "BUTTON",
+      "type": "button",
+      "role": null,
+      "text": "AI实战训练场",
+      "checked": null,
+      "disabled": false,
+      "className": "dm-breadcrumb__home cursor-pointer border-0 bg-transparent p-0 text-[13px] text-[#8c8c8c] outline-none focus:outline-none hover:text-[color:var(--color-primary-6,#436bff)]"
+    },
+    {
+      "tag": "BUTTON",
+      "type": null,
+      "role": null,
+      "text": "开始练习",
+      "checked": null,
+      "disabled": false,
+      "className": "dm-scene-btn h-[32px] px-[16px] rounded-[6px] border-none bg-[color:var(--color-primary-6,#436bff)] text-white text-[13px] font-[500] cursor-pointer flex-shrink-0"
+    },
+    {
+      "tag": "BUTTON",
+      "type": null,
+      "role": null,
+      "text": "开始练习",
+      "checked": null,
+      "disabled": false,
+      "className": "dm-scene-btn h-[32px] px-[16px] rounded-[6px] border-none bg-[color:var(--color-primary-6,#436bff)] text-white text-[13px] font-[500] cursor-pointer flex-shrink-0"
+    },
+    {
+      "tag": "BUTTON",
+      "type": null,
+      "role": null,
+      "text": "开始练习",
+      "checked": null,
+      "disabled": false,
+      "className": "dm-scene-btn h-[32px] px-[16px] rounded-[6px] border-none bg-[color:var(--color-primary-6,#436bff)] text-white text-[13px] font-[500] cursor-pointer flex-shrink-0"
+    },
+    {
+      "tag": "BUTTON",
+      "type": null,
+      "role": null,
+      "text": "",
+      "checked": null,
+      "disabled": false,
+      "className": "flex-shrink-0 w-[28px] h-[28px] ml-[12px] rounded-[6px] border-none bg-[#f5f5f5] text-[#8c8c8c] cursor-pointer flex items-center justify-center"
+    },
+    {
+      "tag": "BUTTON",
+      "type": null,
+      "role": null,
+      "text": "开始练习",
+      "checked": null,
+      "disabled": false,
+      "className": "dm-case-btn border-none rounded-[4px] px-[19px] py-[4px] text-[14px] leading-[22px] font-[400] text-white cursor-pointer"
+    },
+    {
+      "tag": "BUTTON",
+      "type": "button",
+      "role": null,
+      "text": "取消",
+      "checked": null,
+      "disabled": false,
+      "className": "yxt-button yxt-button--default"
+    },
+    {
+      "tag": "BUTTON",
+      "type": "button",
+      "role": null,
+      "text": "随机练习",
+      "checked": null,
+      "disabled": false,
+      "className": "yxt-button yxt-button--primary is-plain"
+    },
+    {
+      "tag": "BUTTON",
+      "type": "button",
+      "role": null,
+      "text": "自定义练习",
+      "checked": null,
+      "disabled": false,
+      "className": "yxt-button yxt-button--primary"
+    }
+  ],
+  "snapshot": "[p3 \"AI实战训练场 - 杰克数字人陪练\" | space \"final-dream-drillmate-contract\"(15): 3 managed, 0 untracked — p1 \"训练主题 - 杰克数字人陪练\", p2 \"AI实战训练场 · 对练\", p3* \"AI实战训练场 - 杰克数字人陪练\"]\nroot\n  container [ref=16]\n    container\n      container\n        anchor [ref=17, loc=href:/#/studyindex?norequest=1, url=https://train.chinajack.com/#/studyindex?norequest=1]\n        container\n          anchor [ref=18, loc=href:/study/#/userhome, url=https://train.chinajack.com/study/#/userhome]\n            text \"我的陪练\"\n          anchor [ref=19, loc=href:/main/#/index, url=https://train.chinajack.com/main/#/index]\n            text \"首页\"\n          anchor [ref=20, url=https://train.chinajack.com/kng/#/list?catalogId=&cid=984354a0-d966-41db-80c6-09befd7749ad&order=0&sort=0&type=]\n            text \"话术目录\"\n          anchor [ref=21, url=https://train.chinajack.com/kng/#/list?catalogId=3c112c9a-eaaa-4b16-b247-e8c2458de6df&cid=984354a0-d966-41db-80c6-09befd7749ad&order=0&sort=0&type=]\n            text \"课程中心\"\n          anchor [ref=22, loc=href:/sparring/#/web, url=https://train.chinajack.com/sparring/#/web]\n            text \"AI对练\"\n          anchor [ref=23, loc=href:/sparring/#/web/drillmate, url=https://train.chinajack.com/sparring/#/web/drillmate]\n            text \"AI实战训练场\"\n          anchor [ref=24, url=https://alidocs.dingtalk.com/i/nodes/lyQod3RxJKvNkZKAcorL2ZvaVkb4Mw9r?corpId=dingb832549ed9dd356e&utm_medium=im_card&iframeQuery=utm_medium%3Dim_card%26utm_source%3Dim&utm_scene=person_space&utm_source=im]\n            text \"陪练看板\"\n          button [ref=25]\n            text \"更多\"\n            svg_root\n        container\n          container [ref=26]\n            image\n          svg_root [ref=27]\n          container [ref=28]\n            text \"7\"\n            svg_root\n          button [ref=29]\n            text \"员\"\n          button [ref=30]\n            svg_root\n            text \"工作台\"\n      container\n        container\n          button [ref=31]\n            text \"AI实战训练场\"\n          svg_root\n          text \"主题详情\"\n        container\n          container\n            text \"训考一体\"\n            container\n              container\n                text \"★\"\n                text \"★\"\n                text \"★\"\n              text \"中等\"\n          heading\n            text \"杰克新销售成套方案演练（复制）\"\n          paragraph\n            text \"基于杰克股份成套智联解决方案，为新入职销售设计实战演练项目\"\n          container\n            container\n              text \"训练场景\"\n              text \"3\"\n              text \"个\"\n            text \"|\"\n            container\n              text \"已通过\"\n              text \"0\"\n              text \"个\"\n            text \"|\"\n            container\n              text \"进度\"\n              text \"0\"\n              text \"%\"\n        container\n          container\n            container\n              heading\n                svg_root\n                text \"全部场景单元\"\n              text \"共 3 个 · 点击场景可查看训练准备信息\"\n            container\n              container\n                text \"01\"\n                container\n                  container\n                    heading\n                      text \"初次拜访：破冰与价值初探\"\n                    container\n                      svg_root\n                      text \"未开始\"\n                  text \"适用人群：0-6个月销售 / 新入职销售\"\n                button [ref=32]\n                  text \"开始练习\"\n              container\n                text \"02\"\n                container\n                  container\n                    heading\n                      text \"深度沟通：应对交付与数据质疑\"\n                    container\n                      svg_root\n                      text \"未开始\"\n                  text \"适用人群：0-6个月销售 / 新入职销售\"\n                button [ref=33]\n                  text \"开始练习\"\n              container\n                text \"03\"\n                container\n                  container\n                    heading\n                      text \"方案呈现：AI数字成套价值量化\"\n                    container\n                      svg_root\n                      text \"未开始\"\n                  text \"适用人群：0-6个月销售 / 新入职销售\"\n                button [ref=34]\n                  text \"开始练习\"\n          container\n            container\n              container\n                svg_root\n                text \"评估标准\"\n              container\n                text \"通过分数：\"\n                text \"70\"\n                text \"分\"\n              text \"完成场景练习后，系统将从 6 个维度进行综合评估。\"\n              container\n                text \"需求挖掘与倾听\"\n                text \"价值主张传递\"\n                text \"信任建立与亲和力\"\n                text \"异议处理与逻辑论证\"\n                text \"商业价值量化呈现\"\n                text \"推进下一步行动\"\n            heading\n              svg_root\n              text \"学习资料\"\n  dialog \"dialog\"\n    container [ref=35]\n      container\n        container\n          container\n            text \"初次拜访：破冰与价值初探\"\n            container\n              svg_root\n              text \"未开始\"\n          container\n            text \"0-6个月销售\"\n            text \"新入职销售\"\n        container\n          container\n            text \"最高分数\"\n            text \"-\"\n          button [ref=36]\n            svg_root\n      container\n        container\n          container\n            svg_root\n            text \"实战案例\"\n            text \"1 个\"\n          container\n            container\n              container\n                container\n                  text \"★\"\n                  text \"★\"\n                  text \"★\"\n                text \"简单\"\n              button [ref=37]\n                text \"开始练习\"\n            container\n              text \"王\"\n              container\n                text \"王总\"\n                text \"企业中层管理者，技术出身，注重实际产出和成本控制\"\n            text \"15分钟破冰：化解“旧伤”疑虑，建立初步信任\"\n            text \"某中型服装厂生产总监，负责全厂生产运营。务实、谨慎，对数据敏感，经历过一次失败的数字化改造，因此对新技术持怀疑态度。\"\n            text \"\"（抬头看了一眼手表，语气平淡略带疏离）“你好，请进。我只有15分钟，后面还有个生产会。之前也有几家做过类似方案的来聊过，说实话，效果都�...\"\n        container\n          container\n            svg_root\n            text \"涉及产品档案\"\n          text \"成套智联2.0智能化平台\"\n        container\n          container\n            svg_root\n            text \"业务目标\"\n          text \"在首次拜访中建立信任，清晰传达杰克成套智联的核心价值，激发客户进一步沟通的意愿。\"\n    container\n      container\n        svg_root\n        text \"限时 15 分钟\"\n      container\n        button [ref=38]\n          text \"取消\"\n        button [ref=39]\n          svg_root\n          text \"随机练习\"\n        button [ref=40]\n          svg_root\n          text \"自定义练习\"\n  container [ref=41]\n"
+}

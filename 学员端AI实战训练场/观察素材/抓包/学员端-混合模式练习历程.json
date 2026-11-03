@@ -1,0 +1,83 @@
+{
+  "capturedAt": "2026-10-29T09:00:55.878Z",
+  "url": "https://train.chinajack.com/sparring/#/web/drillmate/history",
+  "text": "2 3 我的陪练 首页 话术目录 课程中心 AI对练 AI实战训练场 陪练看板 更多 7 员 工作台 AI实战训练场 练习历程 练习历程 回顾已完成报告与暂停中的练习，快速继续上次进度。 总练习次数 6 次 累计用时 1.16 h 平均得分 62.6 分 覆盖主题 3 个 全部 6 已通过 2 未通过 4 练习中 0 所属主题 练习记录 状态 得分 用时 开始时间 操作 初次拜访：破冰与价值初探 主题：杰克新销售成套方案演练（复制） 未通过 87.8 13 分钟 今天 16:13 查看报告 初次拜访：破冰与价值初探 主题：杰克新销售成套方案演练（复制） 未通过 86.3 4 分钟 今天 15:50 查看报告 初次拜访：破冰与价值初探 主题：杰克新销售成套方案演练 已通过 77.5 15 分钟 今天 11:59 查看报告 深度沟通：应对交付与数据质疑 主题：杰克新销售成套方案演练 未通过 35 20 分钟 今天 11:27 查看报告 初次拜访：破冰与价值初探 主题：杰克新销售成套方案演练 已通过 88.7 15 分钟 今天 11:20 查看报告 初次拜访：破冰与价值初探 主题：杰克新销售成套方案演练 未通过 0 1 分钟 2026-10-27 11:47 查看报告",
+  "controls": [
+    {
+      "text": "更多",
+      "disabled": false,
+      "className": "yxtbiz-nav-top-stu__menu-name hover-primary-6-i yxtf-dropdown-selfdefine"
+    },
+    {
+      "text": "员",
+      "disabled": false,
+      "className": "yxtf-portrait hand yxtbiz-nav-top-stu__my-avatar yxt-portrait--small yxtf-dropdown-selfdefine"
+    },
+    {
+      "text": "工作台",
+      "disabled": false,
+      "className": "hover-primary-6-i color-gray-9 yxtf-dropdown-selfdefine"
+    },
+    {
+      "text": "AI实战训练场",
+      "disabled": false,
+      "className": "dm-breadcrumb__home cursor-pointer border-0 bg-transparent p-0 text-[13px] text-[#8c8c8c] outline-none focus:outline-none hover:text-[color:var(--color-primary-6,#436bff)]"
+    },
+    {
+      "text": "全部 6",
+      "disabled": false,
+      "className": "h-[32px] cursor-pointer rounded-[8px] px-[12px] text-[14px] font-[500] border border-[color:var(--color-primary-6,#436bff)] bg-[color:var(--color-primary-6,#436bff)] text-white"
+    },
+    {
+      "text": "已通过 2",
+      "disabled": false,
+      "className": "h-[32px] cursor-pointer rounded-[8px] px-[12px] text-[14px] font-[500] border border-transparent bg-[#f5f5f5] text-[#595959]"
+    },
+    {
+      "text": "未通过 4",
+      "disabled": false,
+      "className": "h-[32px] cursor-pointer rounded-[8px] px-[12px] text-[14px] font-[500] border border-transparent bg-[#f5f5f5] text-[#595959]"
+    },
+    {
+      "text": "练习中 0",
+      "disabled": false,
+      "className": "h-[32px] cursor-pointer rounded-[8px] px-[12px] text-[14px] font-[500] border border-transparent bg-[#f5f5f5] text-[#595959]"
+    },
+    {
+      "text": "全部主题",
+      "disabled": false,
+      "className": "yxt-input__inner"
+    },
+    {
+      "text": "查看报告",
+      "disabled": false,
+      "className": "yxt-button yxt-button--text"
+    },
+    {
+      "text": "查看报告",
+      "disabled": false,
+      "className": "yxt-button yxt-button--text"
+    },
+    {
+      "text": "查看报告",
+      "disabled": false,
+      "className": "yxt-button yxt-button--text"
+    },
+    {
+      "text": "查看报告",
+      "disabled": false,
+      "className": "yxt-button yxt-button--text"
+    },
+    {
+      "text": "查看报告",
+      "disabled": false,
+      "className": "yxt-button yxt-button--text"
+    },
+    {
+      "text": "查看报告",
+      "disabled": false,
+      "className": "yxt-button yxt-button--text"
+    }
+  ],
+  "snapshot": "[p3 \"AI实战训练场 - 杰克数字人陪练\" | space \"final-dream-drillmate-contract\"(15): 3 managed, 0 untracked — p1 \"训练主题 - 杰克数字人陪练\", p2 \"AI实战训练场 · 对练\", p3* \"AI实战训练场 - 杰克数字人陪练\"]\nroot\n  container\n    svg_root\n    svg_root\n    svg_root\n    svg_root\n    svg_root\n  svg_root \"2 3\"\n    text \"2\"\n    text \"3\"\n  container [ref=104]\n    table\n      table_row\n        table_cell\n    container\n      container\n        anchor [ref=105, loc=href:/#/studyindex?norequest=1, url=https://train.chinajack.com/#/studyindex?norequest=1]\n        container\n          anchor [ref=106, loc=href:/study/#/userhome, url=https://train.chinajack.com/study/#/userhome]\n            text \"我的陪练\"\n          anchor [ref=107, loc=href:/main/#/index, url=https://train.chinajack.com/main/#/index]\n            text \"首页\"\n          anchor [ref=108, url=https://train.chinajack.com/kng/#/list?catalogId=&cid=984354a0-d966-41db-80c6-09befd7749ad&order=0&sort=0&type=]\n            text \"话术目录\"\n          anchor [ref=109, url=https://train.chinajack.com/kng/#/list?catalogId=3c112c9a-eaaa-4b16-b247-e8c2458de6df&cid=984354a0-d966-41db-80c6-09befd7749ad&order=0&sort=0&type=]\n            text \"课程中心\"\n          anchor [ref=110, loc=href:/sparring/#/web, url=https://train.chinajack.com/sparring/#/web]\n            text \"AI对练\"\n          anchor [ref=111, loc=href:/sparring/#/web/drillmate, url=https://train.chinajack.com/sparring/#/web/drillmate]\n            text \"AI实战训练场\"\n          anchor [ref=112, url=https://alidocs.dingtalk.com/i/nodes/lyQod3RxJKvNkZKAcorL2ZvaVkb4Mw9r?corpId=dingb832549ed9dd356e&utm_medium=im_card&iframeQuery=utm_medium%3Dim_card%26utm_source%3Dim&utm_scene=person_space&utm_source=im]\n            text \"陪练看板\"\n          button [ref=113]\n            text \"更多\"\n            svg_root\n        container\n          container [ref=114]\n            image\n          svg_root [ref=115]\n          container [ref=116]\n            text \"7\"\n            svg_root\n          button [ref=117]\n            text \"员\"\n          button [ref=118]\n            svg_root\n            text \"工作台\"\n      container\n        container\n          button [ref=123]\n            text \"AI实战训练场\"\n          svg_root\n          text \"练习历程\"\n        container\n          container\n            container\n              heading\n                text \"练习历程\"\n              paragraph\n                text \"回顾已完成报告与暂停中的练习，快速继续上次进度。\"\n            container\n              container\n                container\n                  svg_root\n                  text \"总练习次数\"\n                text \"6 次\"\n              container\n                container\n                  svg_root\n                  text \"累计用时\"\n                text \"1.16 h\"\n              container\n                container\n                  svg_root\n                  text \"平均得分\"\n                text \"62.6 分\"\n              container\n                container\n                  svg_root\n                  text \"覆盖主题\"\n                text \"3 个\"\n          container\n            container\n              container\n                button [ref=124]\n                  text \"全部 6\"\n                button [ref=125]\n                  text \"已通过 2\"\n                button [ref=126]\n                  text \"未通过 4\"\n                button [ref=127]\n                  text \"练习中 0\"\n              container\n                text \"所属主题\"\n                table\n                  table_row\n                    table_cell\n                      textbox [ref=128, loc=css:input[placeholder=\"全部主题\"]]\n                        text \"全部主题\"\n                      text \"\"\n            container\n              table\n                table_row\n                  table_cell\n                    text \"练习记录\"\n                  table_cell\n                    text \"状态\"\n                  table_cell\n                    text \"得分\"\n                  table_cell\n                    text \"用时\"\n                  table_cell\n                    text \"开始时间\"\n                  table_cell\n                    text \"操作\"\n                table_row\n                  table_cell\n              table\n                table_row\n                  table_cell\n                    text \"初次拜访：破冰与价值初探\"\n                    text \"主题：杰克新销售成套方案演练（复制）\"\n                  table_cell\n                    text \"未通过\"\n                  table_cell\n                    text \"87.8\"\n                  table_cell\n                    text \"13 分钟\"\n                  table_cell\n                    text \"今天 16:13\"\n                  table_cell\n                    button [ref=129]\n                      text \"查看报告\"\n                table_row\n                  table_cell\n                    text \"初次拜访：破冰与价值初探\"\n                    text \"主题：杰克新销售成套方案演练（复制）\"\n                  table_cell\n                    text \"未通过\"\n                  table_cell\n                    text \"86.3\"\n                  table_cell\n                    text \"4 分钟\"\n                  table_cell\n                    text \"今天 15:50\"\n                  table_cell\n                    button [ref=130]\n                      text \"查看报告\"\n                table_row\n                  table_cell\n                    text \"初次拜访：破冰与价值初探\"\n                    text \"主题：杰克新销售成套方案演练\"\n                  table_cell\n                    text \"已通过\"\n                  table_cell\n                    text \"77.5\"\n                  table_cell\n                    text \"15 分钟\"\n                  table_cell\n                    text \"今天 11:59\"\n                  table_cell\n                    button [ref=131]\n                      text \"查看报告\"\n                table_row\n                  table_cell\n                    text \"深度沟通：应对交付与数据质疑\"\n                    text \"主题：杰克新销售成套方案演练\"\n                  table_cell\n                    text \"未通过\"\n                  table_cell\n                    text \"35\"\n                  table_cell\n                    text \"20 分钟\"\n                  table_cell\n                    text \"今天 11:27\"\n                  table_cell\n                    button [ref=132]\n                      text \"查看报告\"\n                table_row\n                  table_cell\n                    text \"初次拜访：破冰与价值初探\"\n                    text \"主题：杰克新销售成套方案演练\"\n                  table_cell\n                    text \"已通过\"\n                  table_cell\n                    text \"88.7\"\n                  table_cell\n                    text \"15 分钟\"\n                  table_cell\n                    text \"今天 11:20\"\n                  table_cell\n                    button [ref=133]\n                      text \"查看报告\"\n                table_row\n                  table_cell\n                    text \"初次拜访：破冰与价值初探\"\n                    text \"主题：杰克新销售成套方案演练\"\n                  table_cell\n                    text \"未通过\"\n                  table_cell\n                    text \"0\"\n                  table_cell\n                    text \"1 分钟\"\n                  table_cell\n                    text \"2026-10-27 11:47\"\n                  table_cell\n                    button [ref=134]\n                      text \"查看报告\"\n                table_row\n                  table_cell\n    table\n      table_row\n        table_cell\n"
+}

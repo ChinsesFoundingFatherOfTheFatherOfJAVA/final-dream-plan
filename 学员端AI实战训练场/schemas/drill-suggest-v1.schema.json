@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://final-dream.local/schemas/drill-suggest-v1.schema.json",
+  "title": "DrillSuggestV1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "analysis", "sampleReply", "focusHints"],
+  "properties": {
+    "schemaVersion": { "const": "drill-suggest-v1" },
+    "analysis": { "type": "string", "minLength": 1 },
+    "sampleReply": { "type": "string", "minLength": 1 },
+    "focusHints": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 5,
+      "items": { "type": "string", "minLength": 1 }
+    }
+  }
+}
