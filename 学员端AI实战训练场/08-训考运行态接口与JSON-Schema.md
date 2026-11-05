@@ -32,12 +32,52 @@ Content-Type: application/json
 
 | 编号 | 方法/路径 | 模式 | 用途 |
 |---|---|---|---|
-| AG-D01 | `POST /internal/agent/task/drill-script` | 阻塞 JSON | 生成随机/自定义练习脚本 |
+| AG-D01 | `POST /internal/agent/task/drill-script` | 阻塞 JSON | **生成自定义练习脚本**（随机练习已在发布期预生成，不再走本接口） |
 | AG-D02 | `POST /internal/agent/drill/chat` | SSE | 生成训练点评、角色回应和目标进度 |
 | AG-D03 | `POST /internal/agent/drill/suggest` | 阻塞 JSON | 训练模式建议 |
 | AG-D04 | `POST /internal/agent/task/drill-report` | 阻塞 JSON | 生成结构化报告 |
 
 案例练习优先直接使用发布快照，不调用 AG-D01；只有需要补全 AI 演员形象/语音参数时才可调用脚本规范化步骤。
+
+> **2026-11-04 变更（t13）**：AG-D01 的调用时机从「随机/自定义开练时」收窄为「仅自定义开练时」。
+> 原因见 §4.0，依据是抓包实测（`tmp/investigation-R2R3.md` §4.3）。
+> 影响模块：`AttemptLifecycleServiceImpl`（创建分流）、`RandomScriptServiceImpl`（新增，发布期调用）、
+> `PublishInitServiceImpl`（发布收尾触发预生成）。AG-D01 的**请求/响应契约本身未变**。
+
+### 4.0 随机脚本：发布期预生成 + 取档（2026-11-04 新增）
+
+**为什么改**：抓包实测证明原平台的随机脚本**不是开练现场生成的**——
+
+- 4 场景 × 3 难度 = 12 份随机脚本，全部在发布窗口 `2026-11-03T16:27:07~16:28:17`（70 秒）内生成完毕；
+- 从**从未练习过**的场景 3/4 直接调 `randomScript`，产物 `create_time` 仍是该发布窗口，且**没有新建**任何产物；
+- 即 `randomScript?difficulty=N` 是**取档接口，不调模型**。
+
+**落库形态**：新表 `act_random_script`（`05-建表SQL.md` §9.1），按
+`(theme_id, version_no, scenario_unit_id, difficulty, candidate_no)` 分档，
+唯一键保证重复发布幂等。
+
+**生成规则**：
+
+1. 发布收尾时（首次发布 v1 / AI 确认升版）为「每个场景 × 每个难度档 1/2/3」生成候选；
+2. 每档候选数 `CANDIDATES_PER_BUCKET = 2`（**首期定死，不可运行期配置**）——原平台上限未知，
+   只实测到同档在 2 个 targetId 间 7:7 摆动，先按实测下限实现；
+3. **命中案例难度档时复用案例正文**：若某难度档 == 该场景案例自带难度，直接落案例脚本正文，不调模型
+   （原平台实证：`a2_d2` 与场景 02 案例是同一个 artifact）；
+4. 单档生成失败只记日志并跳过，取档时由降级链兜底，不阻断整次发布。
+
+**取档接口**（本项目新增，对齐原平台 `randomScript`）：
+
+- `GET /api/act/student/themes/{themeId}/scenarios/{scenarioId}/random-script?difficulty=N`
+- 返回 `{difficulty, requestedDifficulty, degraded, script}`；`degraded=true` 表示发生了降级
+  （本档无候选 → 其他档 → 案例正文），前端可据此提示。
+- **降级链不静默返回空**：连案例正文都没有时明确报错「该场景尚未生成随机练习脚本，请先在管理端发布」。
+
+**与「再练一次」的关系（用户已拍板）**：
+
+- 再练一次**不走取档**，直接复用上次 attempt 的 `scriptSnapshotJson`（`reuseFromAttemptId` 分支）；
+- 理由：原平台同档取档**不可复现**（同一 (场景,难度) 在 2 个 targetId 间 7:7 摆动），
+  再练若重取必然换人换脸，与用户实测的「沿用上次」相矛盾。
+
 
 ## 3. 通用请求
 
@@ -149,8 +189,7 @@ ACT 必须解析 `script_json` 并按 §5 二次校验。
       "speed": 1.0
     },
     "avatarPrompt": "middle-aged Chinese manufacturing director"
-  },
-  "goals": {
+  },  "goals": {
     "practiceGoal": "建立信任并预约下一次方案演示",
     "behaviorGuidance": [
       "先回应客户旧项目失败的顾虑",
@@ -196,6 +235,18 @@ ACT 必须解析 `script_json` 并按 §5 二次校验。
 - `evaluation.dimensions` 1~8 项，ID 唯一，权重合计 100（容差 0.01）。
 - `runtime.maxDurationSeconds` 60~3600。
 - `runtime.maxRounds` 1~100。
+
+> **`actor.avatarPrompt` 已废弃（deprecated，2026-11-04）**。
+>
+> 保留字段位、**不删除**，但不再作为形象来源。原因：抓包实测（`tmp/r4-avatar-plan.md`）
+> 证明原平台的数字人形象来自**预置素材库按角色属性映射**（`actor_config.image_url` 形如
+> `av-gen-{m|f}-{年龄档}-{行业码}-{序号}.webp`），不是由提示词现场生图；
+> 且全库核查结果为「有字段、无数据、无消费、无存储」——生成提示词从未产出它，Java/Vue/SQL 零消费。
+>
+> 新的形象口径见 `tmp/r4-avatar-impl.md`：形象挂在**角色定义**上（与难度档解耦），
+> 通过 `gender` + `ageRange` 映射预置库。**写入方不得再填 avatarPrompt**；
+> 消费方读到该字段应忽略。Schema 中保留 `["string","null"]` 以兼容历史快照。
+
 - `schemaVersion` 必须为 `drill-script-v1`。
 - `studyMode` 只能是 1 或 2。
 - 考核脚本不得包含教练点评文案。

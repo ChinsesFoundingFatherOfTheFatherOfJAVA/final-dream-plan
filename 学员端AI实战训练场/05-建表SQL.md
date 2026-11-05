@@ -428,6 +428,37 @@ CREATE TABLE IF NOT EXISTS act_face_evidence (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='camera capture evidence; restricted access';
 ```
 
+## 9.1 随机练习脚本分档（2026-11-04 新增）
+
+> 背景：抓包实测（`tmp/investigation-R2R3.md` §4.3）确认原平台**随机脚本在发布阶段预生成**，
+> 4 场景 × 3 难度 = 12 份全部在发布窗口 70 秒内生成完毕；`randomScript?difficulty=N` 只是取档、
+> 不调模型。本项目此前是「开练现场调 AG-D01 生成」，与实测不符，改为发布预生成 + 取档。
+>
+> 为什么单独建表而不是给 `act_drill_script` 加列：随机脚本按「场景×难度×候选」分档，
+> 与案例「每案例一行、按 case_script_id 对齐」的口径完全不同。合并需要加 3 列并放宽
+> `case_script_id` 的 NOT NULL 约束，还要给既有 11 处 `act_drill_script` 查询逐一补
+> `kind='case'` 过滤——漏一处就会让案例练习取到随机脚本。单独建表后案例链路零改动。
+
+```sql
+CREATE TABLE IF NOT EXISTS act_random_script (
+  id                VARCHAR(32)  NOT NULL,
+  theme_id          VARCHAR(32)  NOT NULL,
+  version_no        INT          NOT NULL,
+  scenario_unit_id  VARCHAR(32)  NOT NULL,
+  difficulty        TINYINT      NOT NULL COMMENT '1 easy / 2 medium / 3 hard',
+  candidate_no      TINYINT      NOT NULL DEFAULT 1 COMMENT 'candidate index within the same bucket, 1-based',
+  compiled_payload  JSON         NOT NULL COMMENT 'drill-script-v1 JSON, stored as-is at publish',
+  compiled_at       DATETIME              DEFAULT NULL,
+  PRIMARY KEY (id),
+  UNIQUE KEY uk_random_script_slot (theme_id, version_no, scenario_unit_id, difficulty, candidate_no),
+  KEY idx_random_script_lookup (theme_id, version_no, scenario_unit_id, difficulty)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='random practice scripts pre-generated at publish (per scenario x difficulty x candidate)';
+```
+
+- 唯一键 `uk_random_script_slot` 是发布幂等的最终保证：重复发布先删该版本再插，不会堆积。
+- 每档候选数由代码常量 `CANDIDATES_PER_BUCKET` 决定（首期定死 2，见 t13 说明），不入库配置——
+  该常量一变，同档抽取结果全变，属于行为变更而非数据变更。
+
 ## 10. 索引与运行注意事项
 
 - 所有 JSON 列只在服务端解析，前端 DTO 使用普通对象。
