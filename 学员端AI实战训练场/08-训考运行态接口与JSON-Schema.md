@@ -176,6 +176,7 @@ ACT 必须解析 `script_json` 并按 §5 二次校验。
   "actor": {
     "name": "王总",
     "identity": "生产总监",
+    "gender": "男",
     "ageRange": "40-45岁",
     "personality": ["务实", "谨慎"],
     "communicationStyle": "语速中等，喜欢反问。",
@@ -246,6 +247,12 @@ ACT 必须解析 `script_json` 并按 §5 二次校验。
 > 新的形象口径见 `tmp/r4-avatar-impl.md`：形象挂在**角色定义**上（与难度档解耦），
 > 通过 `gender` + `ageRange` 映射预置库。**写入方不得再填 avatarPrompt**；
 > 消费方读到该字段应忽略。Schema 中保留 `["string","null"]` 以兼容历史快照。
+>
+> 2026-11-10：`actor.gender` 正式进入 Schema（`"男"` / `"女"` / null），
+> 它同时决定**数字人形象**和**对手 TTS 音色**，两者按同一套「性别 × 年龄段」口径映射：
+> 性别归一 male/female，年龄取区间下界落 A1(20-28)/A2(29-36)/A3(37-45)/A4(46-55)/A5(56+)。
+> 性别缺失时形象退化到场景默认图、音色回退默认音色，不报错也不猜。
+> 案例快照用扁平 `actorGender` / `actorAgeRange`，消费方两种形态都要认。
 
 - `schemaVersion` 必须为 `drill-script-v1`。
 - `studyMode` 只能是 1 或 2。

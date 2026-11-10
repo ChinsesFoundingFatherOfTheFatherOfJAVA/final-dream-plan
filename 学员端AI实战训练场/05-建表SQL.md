@@ -459,6 +459,87 @@ CREATE TABLE IF NOT EXISTS act_random_script (
 - 每档候选数由代码常量 `CANDIDATES_PER_BUCKET` 决定（首期定死 2，见 t13 说明），不入库配置——
   该常量一变，同档抽取结果全变，属于行为变更而非数据变更。
 
+## 9.2 案例学员角色（userRole 三列，2026-11-05 新增）
+
+> 背景：案例生成的 prompt/schema 补齐了 `userRoleName` / `userRolePosition` / `userRoleBackground`
+> 三个**可选**字段（case-gen v2，DSL 源头见 `plan/final_dream_difys/案例生成-case-gen-v2.yml`）。
+> 为什么先测缺失率再决定补填：字段可选，模型给不给要看真实生成情况，不能凭感觉写补填代码。
+>
+> 三列**全部可空**，且不允许"兜底造值"：取不到写 `NULL`，
+> **禁止**用 `script_background`／场景旁白顶替 `user_role_background`（会把场景描述伪装成学员小传）。
+> 列名口径：`user_role_position` 在运行时投影里映射到 `AttemptResp.userRoleIdentity`
+> （「身份摘要」语义），`user_role_name` → `userRoleName`，`user_role_background` → `userRoleBackground`；
+> `userRoleAge` 案例侧没有数据源，保持 `null`，不拿岗位顶替。
+
+```sql
+-- MySQL 8 不支持 ADD COLUMN IF NOT EXISTS；由 SchemaMigrationRunner 判断列后再 ALTER。
+ALTER TABLE act_case_script
+  ADD COLUMN user_role_name       VARCHAR(32) NULL COMMENT '学员角色名 (case-gen v2 userRoleName, optional)',
+  ADD COLUMN user_role_position   VARCHAR(64) NULL COMMENT '学员岗位 (userRolePosition); projected as AttemptResp.userRoleIdentity',
+  ADD COLUMN user_role_background TEXT        NULL COMMENT '学员人物背景 (userRoleBackground); never fallback to script_background';
+```
+
+- 发布快照 `act_drill_script.compiled_payload` 同步带上这三个键（payload 已有则保留、缺失才用列值补），
+  否则发布后案例快照会丢失它们。
+- 升版复制案例行（`ContentVersionServiceImpl.copyOf`）必须一并复制三列，否则新版本只剩 actor 侧字段。
+- 老数据无需回填：这三列本来就没有历史来源，留 `NULL` 正是"该案例没有学员角色"的准确表达。
+
+## 9.3 数字人形象（4 列，2026-11-05 新增）
+
+> 背景：`tmp/r4-avatar-impl.md` §5.1 选定**方案 B「双写」**——形象同时写进发布快照
+> `compiled_payload`（学员端实际读这里）与 `act_*.actor_avatar_url` 列（后台可单换图、可统计）。
+> 素材是 t1 自建的 60 张 WebP（2 性别 × 5 年龄档 × 6 张），落 `app.upload.avatar-dir`，
+> URL 形如 `/avatar/m-A3-04.webp`，浏览器经网关白名单 `/api/avatar/**` 访问。
+>
+> **属性两列** `actor_gender` / `actor_age_range` 来自 case-gen v3 的**可选**字段
+> （DSL 源头 `plan/final_dream_difys/案例生成-case-gen-v3.yml`，v2 未动）。
+> 为什么可选：v3 只增不改，required 仍是原 10 项，先测缺失率；取不到留 `NULL`，
+> **禁止**按角色名猜性别（设计 §3.4 勘误：模型会自行推断属性，猜比没有更糟）。
+> `actor_gender` 允许写「男」「女」或 `male`/`female`，归一化在
+> `AvatarMappingService.normalizeGender` 做，**不在库里做格式约束**——避免模型口径差异变成落库脏数据。
+>
+> **`actor_avatar_url` 的写入来源（优先级从高到低）**：
+> 1. 管理端上传覆盖（L0）：列已有值 → 发布时**原样透传**，覆盖任何自动映射；
+> 2. 定图服务算出的预置素材图（L1~L4），发布期 `compileOne` / 随机预生成写入；
+> 3. 无（返回 `NULL`）：前端「角色名首字圆形」占位（现网已有，零改动）。
+>
+> **不造假约束**：任何一层取不到就 `NULL`，禁止拿别的图顶替（如用男性图冒充女性）；
+> L4 场景默认图是设计里明确的一层，同 `scenario_id` 恒定映射，**不是**顶替。
+
+```sql
+-- MySQL 8 不支持 ADD COLUMN IF NOT EXISTS；由 SchemaMigrationRunner 判断列后再 ALTER。
+ALTER TABLE act_case_script
+  ADD COLUMN actor_gender     CHAR(1)      NULL COMMENT 'AI actor gender (case-gen v3 actorGender); null = not generated',
+  ADD COLUMN actor_age_range  VARCHAR(16)  NULL COMMENT 'AI actor age range (case-gen v3 actorAgeRange, e.g. 40-45岁); null = not generated',
+  ADD COLUMN actor_avatar_url VARCHAR(512) NULL COMMENT 'L0 admin upload override only (written by case-avatar API); publish never writes it; null = no override';
+
+ALTER TABLE act_drill_script
+  ADD COLUMN actor_avatar_url VARCHAR(512) NULL COMMENT 'same value as compiled_payload actor avatar (dual-write)';
+```
+
+- 定图时机统一在**发布期**（不运行时算）：案例 `PublishInitServiceImpl.compileOne`，
+  随机 `RandomScriptServiceImpl.pregenerate`。运行时 `AttemptResp.actorAvatarUrl`
+  只从快照投影（`StudentAttemptController.fillRoleDetails`），零计算零请求。
+- **两列的职责必须分清**（2026-11-05 端到端实测后修正，原注释写成"定图结果也写这里"是错的）：
+  - `act_drill_script.actor_avatar_url` = **定图结果的双写列**：发布时写，值与
+    `compiled_payload` 里的 avatar 键同值（学员端实际读 payload）。
+  - `act_case_script.actor_avatar_url` = **仅 L0 人工上传覆盖的输入端**：
+    只由管理端「换形象」接口（`CaseAvatarService`）写入；发布**只读不写**它。
+    **为什么发布不回写**：若发布把自动定的图写回这一列，`resolveAvatar` 下次就会把
+    上一轮的自动结果误判为"人工上传覆盖（L0）"，属性再怎么变都不会换图——
+    降级链和 hash 稳定性会一起失效。该列 `NULL` 才是准确的"没人上传过"。
+- **`seq = SHA-256(actorName|identity) 前 4 字节 % pool.length`**，算法写死、不用语言内建 hash
+  （设计 §7.2 B4：要跨进程稳定，否则「重练沿用同图」不成立）。
+- **每组合 N=6 首期定死**（`AvatarMappingServiceImpl.IMAGES_PER_GROUP`，设计 §7.2 B5）：
+  池大小一变 `% N` 结果全变 → 所有已分配角色**全量换脸**，属行为变更而非数据变更。
+- 升版复制案例行（`ContentVersionServiceImpl.copyOf`）必须复制这 3 列，
+  否则新版本丢掉性别/年龄（定图降级到 L3/L4 换脸），上传覆盖（L0）也会失效。
+- `act_random_script` **不加列**：随机脚本的形象写在 `compiled_payload.actor.avatarUrl` 里，
+  与「图挂档内角色、不另存档位形象」的设计一致（设计 §3.3）。
+- `act_practice_attempt` **不加列**：运行时读 `script_snapshot_json` 即可（设计 §5.2 D4）。
+- 存量已发布主题不回填：老 payload 无 avatarUrl → `actorAvatarUrl` 为 `null` → 前端首字占位，
+  不报错、也不降级成错误图片。
+
 ## 10. 索引与运行注意事项
 
 - 所有 JSON 列只在服务端解析，前端 DTO 使用普通对象。
