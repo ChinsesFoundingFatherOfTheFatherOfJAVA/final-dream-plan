@@ -86,6 +86,7 @@ CREATE TABLE IF NOT EXISTS `exam_paper_question` (
   `sub_scores` mediumtext COMMENT '组合题各小题分值 JSON：[{score,missScore,missScoreType}]（与子题同序；非组合题为空）',
   `miss_score` decimal(5,2) NOT NULL DEFAULT 0 COMMENT '多选漏选得分',
   `miss_score_type` tinyint NOT NULL DEFAULT 0 COMMENT '0不漏选得分 1统一得 2按漏选数量均分',
+  `blank_scores` varchar(2048) DEFAULT NULL COMMENT '填空题按空得分 JSON：[{blankIndex,score}]（与答案空同序；未开启按空得分为空）',
   `section_index` tinyint NOT NULL DEFAULT 0 COMMENT '大题=题型值（0单选..5组合），中文编号前端算',
   `order_index` int NOT NULL DEFAULT 0 COMMENT '组内排序',
   `deleted` tinyint NOT NULL DEFAULT 0,

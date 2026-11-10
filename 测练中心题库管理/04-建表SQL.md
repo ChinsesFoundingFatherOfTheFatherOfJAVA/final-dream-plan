@@ -102,6 +102,7 @@ CREATE TABLE IF NOT EXISTS `exam_question` (
   `answer_play` varchar(1024) DEFAULT NULL COMMENT '问答题答案媒体 JSON',
   `answer_keywords` varchar(2048) DEFAULT NULL COMMENT '问答题关键词 JSON [{keyword,scoreRatio}]',
   `no_order_mark` tinyint NOT NULL DEFAULT 0 COMMENT '填空题多空答案不分先后',
+  `blank_score_mark` tinyint NOT NULL DEFAULT 0 COMMENT '填空题按空得分开关（1=可自定义每空得分，具体分值存试卷侧 blank_scores）',
   `duplicate` tinyint NOT NULL DEFAULT 0 COMMENT '查重重复标记',
   `sim_hash` bigint DEFAULT NULL COMMENT '查重增强预留（本期不用）',
   `disabled` tinyint NOT NULL DEFAULT 0,
