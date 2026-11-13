@@ -19,3 +19,5 @@ Thumbs.db
 t.json
 svc.java
 ai-assistant-analysis/
+# IDE
+.openidea

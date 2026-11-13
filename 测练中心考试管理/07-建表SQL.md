@@ -410,3 +410,165 @@ WHERE NOT EXISTS (SELECT 1 FROM `exam_arrange_catalog` WHERE `id`='root');
 --   SELECT COUNT(*) FROM exam_paper_use u WHERE u.paper_id=p.id AND u.ref_type=1
 -- );
 
+
+---
+
+## 附录 B2. 契约漏记的表（2026-11-10 核查发现）
+
+> 以下表在**实际数据库中已存在且被代码使用**，但本契约 `07` 正文未收录。
+> 属历史遗漏，非本次变更引入；此处补记以免后续按契约建库时缺表。
+
+| 表 | 用途 | 佐证 |
+|---|---|---|
+| `exam_question_point` | 试题 ↔ 考核点多对多关联；一个题挂多个考核点时按参与统计的考核点分别计入 | `03` §判分维度引用；实际库中存在 |
+
+## 附录 C. 学员端考试与批阅 · 表结构变更（2026-11-10）
+
+> 全部为**增量变更**，不改动既有列语义，可重复执行。
+> 变更理由见 `03-技术实现方案-后端.md` §10B 与 `学员端考试-补充待讨论点.md`。
+
+### C1. `exam_attempt` 新增 3 列
+
+| 列 | 类型 | 用途 |
+|---|---|---|
+| `config_snapshot` | mediumtext | 开考时的配置快照（时长/通过分/作答样式/交卷限制）。<br>**进行中的答卷沿用快照**，避免管理员中途改配置导致「时间突然变短」 |
+| `identity_status` | tinyint | 人脸核验结果：0 未核验 / 1 通过 / 2 不通过 / 3 无法核验 |
+| `identity_evidence` | varchar(512) | 核验抓拍图 URL，复用 `/exam/files/**` |
+
+### C2. `exam_attempt_answer` 新增 1 列
+
+| 列 | 类型 | 用途 |
+|---|---|---|
+| `marked` | tinyint | 学员标记（不确定的题），答题卡可快速定位 |
+
+### C3. `exam_attempt_answer` 唯一键
+
+逐题保存需要 upsert，必须保证 `(attempt_id, ques_id)` 唯一：
+
+```sql
+ALTER TABLE `exam_attempt_answer`
+  ADD UNIQUE KEY `uk_attempt_ques` (`attempt_id`, `ques_id`);
+```
+
+> 组合题子题各自一行，`ques_id` 为子题 id，天然不冲突。
+
+### C3b. 人脸核验手段与相似度（2026-11-13 新增，DER-34）
+
+```sql
+ALTER TABLE `exam_attempt`
+  ADD COLUMN `identity_method` tinyint NULL COMMENT '1仅活体 2活体+基准照比对',
+  ADD COLUMN `identity_score` decimal(6,4) NULL COMMENT '比对相似度 0..1，未比对为 NULL';
+```
+
+**为什么只加两列而不是新建表**：这两个值是「某一次答卷的核验属性」，与已有的
+`identity_status`/`identity_evidence` 同一层级；新建表会让「一次核验」拆到两处，
+批阅页取证据时要多一次查询。
+
+**为什么存原始相似度而不是只存「过/不过」**：阈值将来必然要按真实样本重标，
+保留原始值才能在不重采样本的前提下重新判定。
+
+**为什么 `identity_method` 可空**：历史数据（本列上线前）本来就是「不知道做了什么核验」，
+填 0 或 1 都是编造。查询时按「NULL = 仅活体（旧数据）」理解即可。
+
+### C4. 人脸基准照表（新增；2026-11-12 启用，DER-33）
+
+> 建表语句一直在，但此前从未被使用（表内 0 行）。
+> 2026-11-12 起用作学员**自愿录入**的基准照，供后续 1:1 比对。
+> **能力边界（DEF-01）**：照片由学员自己拍，首次就可以是别人，
+> 只能检测「这次与上次不是同一人」，**不是身份认证**。
+
+```sql
+CREATE TABLE IF NOT EXISTS `exam_face_baseline` (
+  `id` varchar(32) NOT NULL,
+  `user_id` varchar(32) NOT NULL,
+  `image_url` varchar(512) NOT NULL COMMENT '基准照 URL（/api/exam/files/**，必须带 /api 前缀）',
+  `source` tinyint NOT NULL DEFAULT 1 COMMENT '1学员自建 2管理员预录',
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uk_user` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='学员人脸基准照（DEF-01：防不住首次替考）';
+```
+
+**为什么 `uk_user` 唯一**：比对时永远只能有唯一基准，不用纠结「该跟哪张比」。
+重录直接覆盖（`FaceBaselineServiceImpl.save` 走 updateById）。
+
+### C5. 迁移脚本（可重复执行）
+
+```sql
+SET @db := DATABASE();
+
+-- exam_attempt.config_snapshot
+SET @sql := (SELECT IF((SELECT COUNT(*) FROM information_schema.columns
+    WHERE table_schema=@db AND table_name='exam_attempt' AND column_name='config_snapshot')=0,
+  'ALTER TABLE `exam_attempt` ADD COLUMN `config_snapshot` mediumtext COMMENT ''开考时配置快照'' AFTER `analysis_version`',
+  'SELECT ''exam_attempt.config_snapshot exists'''));
+PREPARE s FROM @sql; EXECUTE s; DEALLOCATE PREPARE s;
+
+-- exam_attempt.identity_status
+SET @sql := (SELECT IF((SELECT COUNT(*) FROM information_schema.columns
+    WHERE table_schema=@db AND table_name='exam_attempt' AND column_name='identity_status')=0,
+  'ALTER TABLE `exam_attempt` ADD COLUMN `identity_status` tinyint NOT NULL DEFAULT 0 COMMENT ''0未核验 1通过 2不通过 3无法核验'' AFTER `config_snapshot`',
+  'SELECT ''exam_attempt.identity_status exists'''));
+PREPARE s FROM @sql; EXECUTE s; DEALLOCATE PREPARE s;
+
+-- exam_attempt.identity_evidence
+SET @sql := (SELECT IF((SELECT COUNT(*) FROM information_schema.columns
+    WHERE table_schema=@db AND table_name='exam_attempt' AND column_name='identity_evidence')=0,
+  'ALTER TABLE `exam_attempt` ADD COLUMN `identity_evidence` varchar(512) DEFAULT NULL COMMENT ''核验抓拍图 URL'' AFTER `identity_status`',
+  'SELECT ''exam_attempt.identity_evidence exists'''));
+PREPARE s FROM @sql; EXECUTE s; DEALLOCATE PREPARE s;
+
+-- exam_attempt_answer.marked
+SET @sql := (SELECT IF((SELECT COUNT(*) FROM information_schema.columns
+    WHERE table_schema=@db AND table_name='exam_attempt_answer' AND column_name='marked')=0,
+  'ALTER TABLE `exam_attempt_answer` ADD COLUMN `marked` tinyint NOT NULL DEFAULT 0 COMMENT ''学员标记'' AFTER `grade_mode`',
+  'SELECT ''exam_attempt_answer.marked exists'''));
+PREPARE s FROM @sql; EXECUTE s; DEALLOCATE PREPARE s;
+
+-- exam_attempt_answer 唯一键
+SET @sql := (SELECT IF((SELECT COUNT(*) FROM information_schema.statistics
+    WHERE table_schema=@db AND table_name='exam_attempt_answer' AND index_name='uk_attempt_ques')=0,
+  'ALTER TABLE `exam_attempt_answer` ADD UNIQUE KEY `uk_attempt_ques` (`attempt_id`,`ques_id`)',
+  'SELECT ''uk_attempt_ques exists'''));
+PREPARE s FROM @sql; EXECUTE s; DEALLOCATE PREPARE s;
+```
+
+> 执行前先确认 `exam_attempt_answer` 无重复 `(attempt_id, ques_id)`，否则加唯一键会失败：
+> ```sql
+> SELECT attempt_id, ques_id, COUNT(*) c FROM exam_attempt_answer
+> GROUP BY attempt_id, ques_id HAVING c > 1;
+> ```
+
+---
+
+## 附录 D. 批阅评语列（v1.6，2026-11-11 新增 / DER-21）
+
+> **必须在部署代码之前执行。** 实体已加 `overallComment` / `gradeComment`，
+> MyBatis-Plus 的 `selectById` 会拼出全部列，列缺失会让 `exam_attempt` 与
+> `exam_attempt_answer` 的**所有**读写报 `Unknown column`——连学员交卷、结果页一起挂，
+> 不只是批阅接口。已在 `sql/README.md` 写明部署顺序。
+
+| 表 | 新增列 | 类型 | 用途 |
+|---|---|---|---|
+| `exam_attempt` | `overall_comment` | varchar(1000) | 整卷批阅总评 |
+| `exam_attempt_answer` | `grade_comment` | varchar(500) | 单题批阅评语 |
+
+```sql
+SET @db := DATABASE();
+
+SET @sql := (SELECT IF((SELECT COUNT(*) FROM information_schema.columns
+    WHERE table_schema=@db AND table_name='exam_attempt' AND column_name='overall_comment')=0,
+  'ALTER TABLE `exam_attempt` ADD COLUMN `overall_comment` varchar(1000) DEFAULT NULL COMMENT ''整卷批阅总评'' AFTER `grader_names`',
+  'SELECT ''exam_attempt.overall_comment exists'''));
+PREPARE s FROM @sql; EXECUTE s; DEALLOCATE PREPARE s;
+
+SET @sql := (SELECT IF((SELECT COUNT(*) FROM information_schema.columns
+    WHERE table_schema=@db AND table_name='exam_attempt_answer' AND column_name='grade_comment')=0,
+  'ALTER TABLE `exam_attempt_answer` ADD COLUMN `grade_comment` varchar(500) DEFAULT NULL COMMENT ''单题批阅评语'' AFTER `score`',
+  'SELECT ''exam_attempt_answer.grade_comment exists'''));
+PREPARE s FROM @sql; EXECUTE s; DEALLOCATE PREPARE s;
+```
+
+**为什么评语要独立列而不是塞进 `exam_arrange_operation_log.detail_json`**：
+「重新批阅」要回显上一次的评语，而日志写入路径用 try/catch 吞异常——
+落库失败评语会静默消失。批阅评语是学员要看到的业务数据，不能挂在「可以不成功」的链路上。
